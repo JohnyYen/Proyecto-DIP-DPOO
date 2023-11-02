@@ -1,32 +1,26 @@
 package Logica;
 
 import java.util.ArrayList;
-
-import Util.Pregunta;
+import Util.*;
 
 public class EstadoJuego {
-	private ArrayList<Pregunta> preguntas;
+	private ArrayList<PreguntaNivelUno> preguntasNivelUno;
+	private ArrayList<PreguntaNivelDos> preguntasNivelDos;
+	
 	public EstadoJuego(){
-		preguntas = new ArrayList<Pregunta>();
+		preguntasNivelUno = new ArrayList<PreguntaNivelUno>();
+		preguntasNivelDos = new ArrayList<PreguntaNivelDos>();
 	}
 	
-	public void crearPregunta(String textoPregunta, boolean respuesta){
-		preguntas.add(new Pregunta(textoPregunta, respuesta));
+	public ArrayList<PreguntaNivelUno> getPreguntasNivelUno(){
+		return this.preguntasNivelUno;
 	}
 	
-	public boolean eliminarPregunta(Pregunta p){
-		return preguntas.remove(p);		
+	public void crearPreguntaNivelUno(String texto, boolean respuesta){
+		this.preguntasNivelUno.add(new PreguntaNivelUno(texto, respuesta));
 	}
 	
-	public boolean modificarPregunta(Pregunta p, String nuevoTexto, boolean nuevaRespuesta){
-		boolean modificado = false;
-		int index = preguntas.indexOf(p);
-		if (index >= 0){
-			modificado = true;
-			preguntas.get(index).setTexto(nuevoTexto);
-			preguntas.get(index).setRespuesta(nuevaRespuesta);			
-		}
-		return modificado;		
+	public void crearPreguntaNivelDos(String texto, ArrayList<String> respuestas, String respuesta){
+		this.preguntasNivelDos.add(new PreguntaNivelDos(texto, respuestas, respuesta));
 	}
-	
 }

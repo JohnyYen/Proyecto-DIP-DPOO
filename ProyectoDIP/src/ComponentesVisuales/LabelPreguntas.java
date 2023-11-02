@@ -7,6 +7,8 @@ import javax.swing.*;
 
 import Recursos.*;
 import Util.Pregunta;
+import Util.PreguntaNivelDos;
+import Util.PreguntaNivelUno;
 
 public class LabelPreguntas extends JLabel{
 	private static final long serialVersionUID = 1L;
@@ -14,7 +16,7 @@ public class LabelPreguntas extends JLabel{
 	private int PreguntaActual;
 	private ImageIcon imagenLabel = new ImageIcon("src/Recursos/CuadroDialogos.png");
 	
-	public LabelPreguntas(int x, int y, int ancho, int alto){
+	private LabelPreguntas(int x, int y, int ancho, int alto){
 		Image iconLabel = imagenLabel.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
 		PreguntaActual = 0;
 		
@@ -28,22 +30,19 @@ public class LabelPreguntas extends JLabel{
 		this.setHorizontalTextPosition(SwingConstants.CENTER);
 		this.setPreferredSize (new Dimension(ancho,alto));   
 			
-		preguntas = new ArrayList<Pregunta>();
-		llenarPreguntas();
 		
 	}
 	
-	
-	private void llenarPreguntas(){
-		preguntas.add(new Pregunta("Si x = 5 es cierto que ( x > 3 && x < 7)?", true));
-			
-		preguntas.add(new Pregunta("Si x < 2 entonces (x > 0 && x < 3)?", false));
-		
-		preguntas.add(new Pregunta("Si x = 1 && y = 2 es cierto que (++x - y > -1)?", false));
-		
-		preguntas.add(new Pregunta("Si x = 1 y y = 2 es cierto que despues de 5 ciclos x vale 6?", true));
+	public LabelPreguntas(int x, int y, int ancho, int alto, ArrayList<PreguntaNivelUno> preguntas){
+		this(x,y,ancho,alto);
+		this.preguntas.addAll(preguntas);
 	}
 	
+	public LabelPreguntas(ArrayList<PreguntaNivelDos> preguntas, int x, int y, int ancho, int alto){
+		this(x,y,ancho,alto);
+		this.preguntas.addAll(preguntas);
+	}
+
 	public void ponerPregunta(){
 		if(PreguntaActual < preguntas.size()){
 			setText(preguntas.get(PreguntaActual++).getPregunta());

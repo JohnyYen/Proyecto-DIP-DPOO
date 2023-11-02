@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import ComponentesVisuales.*
 ;
+import Logica.EstadoJuego;
+import Logica.EstadoJuegoActual;
 
 public class Iniciadora {
 
@@ -18,6 +20,14 @@ public class Iniciadora {
 				}
 			}
 		});
+	}
+	
+	public void inicializarDatos(){
+		EstadoJuego estadoJuego = new EstadoJuego();
+		estadoJuego.crearPreguntaNivelUno("Hola", true);
+		estadoJuego.crearPreguntaNivelUno("Hola2", false);
+		
+		EstadoJuegoActual.setEstadoJuego(estadoJuego);
 	}
 	
 }

@@ -12,6 +12,10 @@ public class TablaModificaciones extends JFrame {
 	private JPanel contentPane;
 	private JTable tablaPreguntas;
 
+	public static void main(String[] args){
+		TablaModificaciones t = new TablaModificaciones();
+		t.setVisible(true);
+	}
 	public TablaModificaciones() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -26,8 +30,7 @@ public class TablaModificaciones extends JFrame {
 		
 		tablaPreguntas = new JTable();
 		PreguntaTableModel model = new PreguntaTableModel();
-		//tablaPreguntas.setBounds(0,0,200,200);
 		tablaPreguntas.setModel(model);
-		tabbedPane.add("Preguntas", tablaPreguntas);
+		tabbedPane.add("Nivel 1", tablaPreguntas);
 	}
 }

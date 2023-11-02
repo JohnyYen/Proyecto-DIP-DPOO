@@ -1,18 +1,18 @@
 package Logica;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import Personajes.*;
 import Util.Pregunta;
+import Util.PreguntaNivelUno;
 public class ControladorPrimerNivel extends ControladorJuego {
-	private ArrayList<Pregunta> preguntas;
+	private ArrayList<PreguntaNivelUno> preguntas;
 	private int respuestaActual;
 	
-	public ControladorPrimerNivel(Heroe heroe, Villana villano, ArrayList<Pregunta> preg){
+	public ControladorPrimerNivel(Heroe heroe, Villana villano){
 		super(heroe, villano);
-		preguntas = new ArrayList<Pregunta>();
-		for(Pregunta p: preg) this.preguntas.add(p);
-		respuestaActual = 0;
+		preguntas.addAll(EstadoJuegoActual.getPreguntaNivelUno());
 	}
 	
 	public boolean analizarRespuesta(boolean respuesta){
