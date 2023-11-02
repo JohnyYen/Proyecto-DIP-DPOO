@@ -3,11 +3,10 @@ package ComponentesVisuales;
 
 import java.awt.*;
 
-import ControladoresJuego.*;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Logica.*;
 import Personajes.Heroe;
 import Personajes.Villana;
 

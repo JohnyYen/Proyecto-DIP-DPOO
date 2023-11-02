@@ -1,4 +1,4 @@
-package ControladoresJuego;
+package Logica;
 
 public class EstadoJuegoActual {
 	private static EstadoJuego estadoJuegoActual;

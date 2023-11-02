@@ -1,4 +1,4 @@
-package ControladoresJuego;
+package Logica;
 
 import java.util.ArrayList;
 
