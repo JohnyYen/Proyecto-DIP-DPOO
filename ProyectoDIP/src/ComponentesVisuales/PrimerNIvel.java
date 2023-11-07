@@ -87,7 +87,7 @@ public class PrimerNIvel extends JFrame {
 		
 		
 		//Label donde se ven las preguntas
-		labelPreguntas = new LabelPreguntas(200, 150, 400, 150, EstadoJuegoActual.getPreguntaNivelUno());
+		labelPreguntas = new LabelPreguntas(200, 150, 400, 150, InformacionJuegoActual.getPreguntaNivelUno());
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPreguntas.ponerPregunta();
 		contentPane.add(labelPreguntas);

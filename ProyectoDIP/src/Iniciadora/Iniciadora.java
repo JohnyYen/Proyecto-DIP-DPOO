@@ -2,10 +2,8 @@ package Iniciadora;
 
 import java.awt.EventQueue;
 
-import ComponentesVisuales.*
-;
-import Logica.EstadoJuego;
-import Logica.EstadoJuegoActual;
+import ComponentesVisuales.*;
+import Logica.*;
 
 public class Iniciadora {
 
@@ -23,11 +21,11 @@ public class Iniciadora {
 	}
 	
 	public void inicializarDatos(){
-		EstadoJuego estadoJuego = new EstadoJuego();
+		InformacionJuego estadoJuego = new InformacionJuego();
 		estadoJuego.crearPreguntaNivelUno("Hola", true);
 		estadoJuego.crearPreguntaNivelUno("Hola2", false);
 		
-		EstadoJuegoActual.setEstadoJuego(estadoJuego);
+		InformacionJuegoActual.setEstadoJuego(estadoJuego);
 	}
 	
 }

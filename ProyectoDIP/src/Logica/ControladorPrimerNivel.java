@@ -12,7 +12,7 @@ public class ControladorPrimerNivel extends ControladorJuego {
 	
 	public ControladorPrimerNivel(Heroe heroe, Villana villano){
 		super(heroe, villano);
-		preguntas.addAll(EstadoJuegoActual.getPreguntaNivelUno());
+		preguntas.addAll(InformacionJuegoActual.getPreguntaNivelUno());
 	}
 	
 	public boolean analizarRespuesta(boolean respuesta){

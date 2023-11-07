@@ -3,11 +3,11 @@ package Logica;
 import java.util.ArrayList;
 import Util.*;
 
-public class EstadoJuego {
+public class InformacionJuego {
 	private ArrayList<PreguntaNivelUno> preguntasNivelUno;
 	private ArrayList<PreguntaNivelDos> preguntasNivelDos;
 	
-	public EstadoJuego(){
+	public InformacionJuego(){
 		preguntasNivelUno = new ArrayList<PreguntaNivelUno>();
 		preguntasNivelDos = new ArrayList<PreguntaNivelDos>();
 	}

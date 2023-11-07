@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 
 public class Profesor {
-	private EstadoJuego estadoJuego;
+	private InformacionJuego informacionJuego;
 	private ArrayList<Estudiante> estudiantes;
 	private String nombre;
 	public Profesor(String nombre){
-		estadoJuego = new EstadoJuego();
+		informacionJuego = new InformacionJuego();
 		estudiantes = new ArrayList<Estudiante>();
 		this.setNombre(nombre);	
 	}

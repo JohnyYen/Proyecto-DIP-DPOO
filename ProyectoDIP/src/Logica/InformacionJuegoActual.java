@@ -3,14 +3,14 @@ package Logica;
 import java.util.ArrayList;
 import Util.*;
 
-public class EstadoJuegoActual {
-	private static EstadoJuego estadoJuegoActual;
-	public EstadoJuegoActual(EstadoJuego juego){
+public class InformacionJuegoActual {
+	private static InformacionJuego estadoJuegoActual;
+	public InformacionJuegoActual(InformacionJuego juego){
 		estadoJuegoActual = juego;
 	}
-	public EstadoJuegoActual(){}
+	public InformacionJuegoActual(){}
 	
-	public static void setEstadoJuego(EstadoJuego juego){
+	public static void setEstadoJuego(InformacionJuego juego){
 		if(!juego.equals(null)) estadoJuegoActual = juego;
 		else throw new IllegalArgumentException("Error en los parametros");
 	}
