@@ -21,41 +21,46 @@ public class Login extends JFrame {
 
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 282, 253);
+		setBounds(100, 100, 392, 253);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
-		lblUsuario.setBounds(57, 23, 80, 14);
+		lblUsuario.setBounds(91, 23, 80, 14);
 		contentPane.add(lblUsuario);
 		
 		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(57, 104, 165, 20);
+		passwordField_1.setBounds(101, 104, 165, 20);
 		contentPane.add(passwordField_1);
 		
 		textField = new JTextField();
-		textField.setBounds(57, 48, 165, 20);
+		textField.setBounds(101, 48, 165, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:  ");
-		lblContrasea.setBounds(57, 79, 88, 14);
+		lblContrasea.setBounds(91, 79, 88, 14);
 		contentPane.add(lblContrasea);
 		
-		JButton btnLogin = new JButton("Login");
-		btnLogin.addActionListener(new ActionListener() {
+		Boton botonSalir = new Boton("Salir", 100, 100, 50, 50);
+		botonSalir.setSize(117, 34);
+		botonSalir.setLocation(113, 151);
+		contentPane.add(botonSalir);
+		
+		Boton botonLogin = new Boton("Login", 100, 100, 50, 50);
+		botonLogin.setSize(100, 34);
+		botonLogin.setLocation(240, 151);
+		botonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PantallaProfesores profesores = new PantallaProfesores();
 				profesores.setVisible(true);
 			}
 		});
-		btnLogin.setBounds(178, 135, 68, 23);
-		contentPane.add(btnLogin);
+		contentPane.add(botonLogin);
 		
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(100, 135, 68, 23);
-		contentPane.add(btnSalir);
+		//Boton botonCrearUsuario = new Boton("Crear Usuario", 100, 200, 100, 100);
+		//contentPane.add(botonCrearUsuario);
 	}
 }

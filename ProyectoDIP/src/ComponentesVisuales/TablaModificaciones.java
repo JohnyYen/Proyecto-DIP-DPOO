@@ -5,12 +5,17 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
+
+import Util.PreguntaNivelUno;
 import Util.PreguntaTableModel;
+import javax.swing.JScrollPane;
 
 public class TablaModificaciones extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable tablaPreguntas;
+	private JTable table;
+	private JScrollPane scrollPane;
+	private JTable tabla;
 
 	public static void main(String[] args){
 		TablaModificaciones t = new TablaModificaciones();
@@ -28,9 +33,12 @@ public class TablaModificaciones extends JFrame {
 		tabbedPane.setBounds(10, 11, 414, 239);
 		contentPane.add(tabbedPane);
 		
-		tablaPreguntas = new JTable();
+		scrollPane = new JScrollPane();
+		tabbedPane.addTab("Nivel 1", null, scrollPane, null);
+		
+		tabla = new JTable();
+		scrollPane.setViewportView(tabla);
 		PreguntaTableModel model = new PreguntaTableModel();
-		tablaPreguntas.setModel(model);
-		tabbedPane.add("Nivel 1", tablaPreguntas);
+		tabla.setModel(model);	
 	}
 }
