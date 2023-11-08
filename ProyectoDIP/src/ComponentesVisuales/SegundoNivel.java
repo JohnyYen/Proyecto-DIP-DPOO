@@ -2,8 +2,6 @@ package ComponentesVisuales;
 
 import java.awt.*;
 
-import ControladoresJuego.*;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
