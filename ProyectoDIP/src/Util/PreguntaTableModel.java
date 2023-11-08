@@ -9,7 +9,7 @@ public class PreguntaTableModel extends DefaultTableModel{
 		this.setColumnIdentifiers(columNames);
 	}
 	
-	public void adicionar(Pregunta p){
+	public void adicionar(PreguntaNivelUno p){
 		Object[] row = {p.getPregunta(), p.getRespuesta()};
 		addRow(row);
 	}

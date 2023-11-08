@@ -24,11 +24,10 @@ public class Transicion extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel cuadroDialogos;
+	private JLabel BotonZ;
 	private JLabel BotonX;
-	private JLabel BotonY;
 	private ArrayList<String> dialogos;
 	private KeyListener tocarTecla;
-	private int cantDialogos = 0;
 
 	/**
 	 * Launch the application.
@@ -86,19 +85,19 @@ public class Transicion extends JFrame {
 		};
 		CustomFont myfont = new CustomFont();
 		this.addKeyListener(tocarTecla);
-		BotonX = new JLabel("X -> Saltar");
-		BotonX.setForeground(Color.black);
-		BotonX.setBounds(154, 464, 131, 50);
-		BotonX.setFont(myfont.MyFont(1, 15));
+		BotonZ = new JLabel("Z -> Continuar");
+		BotonZ.setForeground(Color.black);
+		BotonZ.setBounds(154, 464, 131, 50);
+		BotonZ.setFont(myfont.MyFont(1, 15));
 		
-		BotonY = new JLabel("Y -> Continuar");
-		BotonY.setBounds(295, 464, 138, 50);
-		BotonY.setFont(myfont.MyFont(1, 15));
-		BotonY.setForeground(Color.black);
+		BotonX = new JLabel("X -> Saltar");
+		BotonX.setBounds(295, 464, 138, 50);
+		BotonX.setFont(myfont.MyFont(1, 15));
+		BotonX.setForeground(Color.black);
 		contentPane.setLayout(null);
 		
 		contentPane.add(BotonX);
-		contentPane.add(BotonY);
+		contentPane.add(BotonZ);
 		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

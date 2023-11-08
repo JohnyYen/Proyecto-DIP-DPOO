@@ -3,11 +3,10 @@ package ComponentesVisuales;
 
 import java.awt.*;
 
-import ControladoresJuego.*;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Logica.*;
 import Personajes.Heroe;
 import Personajes.Villana;
 
@@ -88,13 +87,13 @@ public class PrimerNIvel extends JFrame {
 		
 		
 		//Label donde se ven las preguntas
-		labelPreguntas = new LabelPreguntas(200, 150, 400, 150);
+		labelPreguntas = new LabelPreguntas(200, 150, 400, 150, InformacionJuegoActual.getPreguntaNivelUno());
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPreguntas.ponerPregunta();
 		contentPane.add(labelPreguntas);
 		
 		//Controlador Primer Nivel
-		controlador = new ControladorPrimerNivel(heroe, villana, labelPreguntas.getPreguntas());
+		controlador = new ControladorPrimerNivel(heroe, villana);
 		
 		//Label donde estan las respuestas
 		labelRespuestas = new LabelRespuestas(200, 500, 400,150 );
