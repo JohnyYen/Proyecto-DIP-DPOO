@@ -1,41 +1,38 @@
 package ComponentesVisuales;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Image;
+import java.awt.*;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
+import Logica.InformacionJuegoActual;
+import Personajes.Heroe;
+import Personajes.Villana;
+import Util.PreguntaNivelDos;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import java.awt.Color;
-
-import javax.swing.border.BevelBorder;
-
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JLabel;
-
-import Recursos.CustomFont;
-
 public class SegundoNivel extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4285398109221870651L;
 	private JPanel contentPane;
-	private JPanel setCarta1;
-	private JPanel setCarta2;
-	private JPanel setCarta3;
-	private JPanel setCarta1Enemigo;
-	private JPanel setCarta2Enemigo;
-	private JPanel setCarta3Enemigo;
-	private JLabel cuadroDialogos; 
-	private JLabel cuadroDescripcion;
-	private JPanel Carta;
-	private JPanel Carta2;
-	private JPanel Carta3;
-	private JPanel Carta4;
+	private LabelPreguntas labelPreguntas;
+	private LabelRespuestasSegundoNivel labelRespuestas;
+	private Villana villana;
+	private SubMenu submenu;
 
 	/**
 	 * Launch the application.
@@ -57,122 +54,73 @@ public class SegundoNivel extends JFrame {
 	 * Create the frame.
 	 */
 	public SegundoNivel() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 746);
-		contentPane = new JPanel();
+		//setBounds(100, 100, 786, 565);
+		setBounds(300, 20, 920, 700);
+		contentPane = new JPanel(){
+			private static final long serialVersionUID = 1L;
+
+			//Dibujar el Fondo
+			public void paintComponent(Graphics g) {
+				Image img = Toolkit.getDefaultToolkit().getImage(SegundoNivel.class.getResource("/Recursos/FondoSegundoNivel.png"));
+				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		setCarta1 = new JPanel();
-		setCarta1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setCarta1.setBackground(Color.WHITE);
-		setCarta1.setBounds(299, 308, 84, 109);
-		contentPane.add(setCarta1);
+		villana = new Villana(500, 150, 250, 200, 6);
+		villana.setLocation(654, 71);
+		contentPane.add(villana);
 		
-		setCarta2 = new JPanel();
-		setCarta2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setCarta2.setBackground(Color.WHITE);
-		setCarta2.setBounds(393, 308, 84, 109);
-		contentPane.add(setCarta2);
-		
-		setCarta3 = new JPanel();
-		setCarta3.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setCarta3.setBackground(Color.WHITE);
-		setCarta3.setBounds(487, 308, 84, 109);
-		contentPane.add(setCarta3);
-		
-		setCarta1Enemigo = new JPanel();
-		setCarta1Enemigo.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setCarta1Enemigo.setBackground(Color.WHITE);
-		setCarta1Enemigo.setBounds(299, 173, 84, 109);
-		contentPane.add(setCarta1Enemigo);
-		
-		setCarta2Enemigo = new JPanel();
-		setCarta2Enemigo.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setCarta2Enemigo.setBackground(Color.WHITE);
-		setCarta2Enemigo.setBounds(393, 173, 84, 109);
-		contentPane.add(setCarta2Enemigo);
-		
-		setCarta3Enemigo = new JPanel();
-		setCarta3Enemigo.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setCarta3Enemigo.setBackground(Color.WHITE);
-		setCarta3Enemigo.setBounds(487, 173, 84, 109);
-		contentPane.add(setCarta3Enemigo);
-		
-		cuadroDialogos = new JLabel();
-		diseniarLabel(cuadroDialogos);
-		
-		cuadroDescripcion = new JLabel("New label");
-		cuadroDescripcion.setBounds(165, 447, 502, 68);
-		diseniarLabel(cuadroDescripcion);
-		contentPane.add(cuadroDescripcion);
-		
-		Carta = new JPanel();
-		Carta.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		Carta.setBackground(Color.WHITE);
-		Carta.setBounds(10, 173, 84, 109);
-		contentPane.add(Carta);
-		
-		Carta2 = new JPanel();
-		Carta2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		Carta2.setBackground(Color.WHITE);
-		Carta2.setBounds(116, 173, 84, 109);
-		contentPane.add(Carta2);
-		
-		Carta3 = new JPanel();
-		Carta3.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		Carta3.setBackground(Color.WHITE);
-		Carta3.setBounds(10, 308, 84, 109);
-		contentPane.add(Carta3);
-		
-		Carta4 = new JPanel();
-		Carta4.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		Carta4.setBackground(Color.WHITE);
-		Carta4.setBounds(116, 308, 84, 109);
-		contentPane.add(Carta4);
-		
-		reversoCarta(Carta);
-		reversoCarta(Carta2);
-		reversoCarta(Carta3);
-		reversoCarta(Carta4);
-		
-		agregarEventoCarta(Carta);
-		agregarEventoCarta(Carta2);
-		agregarEventoCarta(Carta3);
-		agregarEventoCarta(Carta4);
-	}
-	
-	public void diseniarLabel(JLabel cuadro){
-		ImageIcon imagenLabel = new ImageIcon("src/Recursos/CuadroDialogos.png");
-		Image iconLabel = imagenLabel.getImage().getScaledInstance(450, 150, Image.SCALE_SMOOTH);
-		
-		CustomFont mf = new CustomFont();
-		cuadro.setFont(mf.MyFont(1, 15));
-		cuadro.setForeground(Color.WHITE);
-		
-		cuadro.setText("Tengo que hacer el proyecto de DPOO");
-		cuadro.setBounds(217, 11, 450, 115);
-		cuadro.setIcon(new ImageIcon(iconLabel)); //Cambiar de imagen en el Label
-		cuadro.setVerticalTextPosition(SwingConstants.CENTER);
-		cuadro.setHorizontalTextPosition(SwingConstants.CENTER);
-		//cuadroDialogos.setPreferredSize (new Dimension(200,200)); 
-		contentPane.add(cuadro);
-	}
-	
-	public void reversoCarta(JPanel carta){
-		JLabel label = new JLabel();
-		label.setSize(carta.getWidth(), carta.getHeight());
-		Image imagen = new ImageIcon("src/Recursos/reversoCarta.png").getImage().getScaledInstance(carta.getWidth(), carta.getHeight()-5, Image.SCALE_SMOOTH);
-		label.setIcon(new ImageIcon(imagen));
-		carta.add(label);
-	}
-	
-	public void agregarEventoCarta(JPanel carta){
-		carta.addMouseMotionListener(new MouseMotionAdapter() {
-			@Override
-			public void mouseDragged(MouseEvent e) {
+		//El submenu del juego
+		submenu = new SubMenu(this, true);
+		contentPane.add(submenu);
+		submenu.setVisible(false);
+
+		//Bot�n de Men�
+		JButton botonMenu = new JButton();
+		botonMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!submenu.isVisible()) submenu.setVisible(true);
 			}
 		});
+		botonMenu.setBounds(733,-77,200,200);
+		diseniarBoton(botonMenu);
+		contentPane.add(botonMenu);
+	
+		//Label donde se ven las preguntas
+		labelPreguntas = new LabelPreguntas(,200, 150, 400, 150);
+		labelPreguntas.setLocation(345, 102);
+		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPreguntas.setText("<html>�En qu� se diferencian los bucles<br> -for- y -while- en programaci�n?</html>");
+		contentPane.add(labelPreguntas);
+		
+		Heroe heroe = new Heroe(20, 450, 250, 250, 3);
+		heroe.setLocation(0, 468);
+		contentPane.add(heroe);		
+		
+		labelRespuestas = new LabelRespuestasSegundoNivel(200, 1000, 400,150);
+		labelRespuestas.getOpcion3().setLocation(new Point(30, 225));
+		labelRespuestas.getOpcion3().setSize(new Dimension(700, 100));
+		labelRespuestas.getOpcion2().setLocation(new Point(30, 150));
+		labelRespuestas.getOpcion2().setSize(new Dimension(700, 100));
+		labelRespuestas.getOpcion1().setLocation(new Point(30, 70));
+		labelRespuestas.getOpcion1().setSize(new Dimension(700, 100));
+		labelRespuestas.getOpcion1().setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		labelRespuestas.setSize(748, 408);
+		labelRespuestas.setLocation(166, 263);
+		contentPane.add(labelRespuestas);		
+	}
+	
+	private void diseniarBoton(JButton boton){
+		ImageIcon icono = new ImageIcon("src/Recursos/MenuPrincipalBoton.png");
+		boton.setIcon(new ImageIcon(icono.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH)));
+		boton.setBorderPainted(false);
+		boton.setFocusPainted(false);
+		boton.setContentAreaFilled(false);
+		boton.setLayout(new OverlayLayout(boton) );
 	}
 }
