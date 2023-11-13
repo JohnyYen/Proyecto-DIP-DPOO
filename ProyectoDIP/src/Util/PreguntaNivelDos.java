@@ -8,7 +8,17 @@ public class PreguntaNivelDos extends Pregunta{
 	
 	public PreguntaNivelDos(String texto,ArrayList<String> respuestas, String respuestaFinal){
 		super(texto);
-		posiblesRespuestas = respuestas;
+		posiblesRespuestas.addAll(respuestas);
 		this.respuesta = respuestaFinal;
 	}
+
+	public ArrayList<String> getPosiblesRespuestas() {
+		return posiblesRespuestas;
+	}
+
+	public String getRespuesta() {
+		return respuesta;
+	}
+	
+	
 }

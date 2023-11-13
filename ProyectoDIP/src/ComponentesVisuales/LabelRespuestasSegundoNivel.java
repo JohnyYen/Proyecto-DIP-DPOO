@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import Logica.InformacionJuegoActual;
 import Recursos.CustomFont;
 import Util.Pregunta;
 
@@ -21,7 +22,7 @@ public class LabelRespuestasSegundoNivel extends JLabel{
 	
 	public LabelRespuestasSegundoNivel(int x, int y, int ancho, int alto){
 		//Crear los  botones
-		opcion1 = new Boton("<html>Un bucle -for- siempre ejecuta un número fijo de iteraciones,<br> mientras que un bucle -while- depende de una condición.", 700, 450, 50,0);
+		opcion1 = new Boton(InformacionJuegoActual.getPreguntaNivelDos().get(0).getPosiblesRespuestas().get(0), 700, 450, 50,0);
 		opcion2 = new Boton("<html>Un bucle -for- solo se utiliza para contar, mientras que un<br> bucle -while- se utiliza para otras tareas.", 700, 450, 50, 100);
 		opcion3 = new Boton("<html>Un bucle -while- siempre ejecuta un número fijo de iteraciones,<br> mientras que un bucle -for- depende de una condición.", 700, 450, 50, 100);
 		add(opcion1);

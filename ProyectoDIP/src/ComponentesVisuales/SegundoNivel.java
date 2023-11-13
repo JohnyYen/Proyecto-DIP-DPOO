@@ -5,6 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Logica.ControladorPrimerNivel;
+import Logica.ControladorSegundoNivel;
 import Logica.InformacionJuegoActual;
 import Personajes.Heroe;
 import Personajes.Villana;
@@ -33,6 +35,7 @@ public class SegundoNivel extends JFrame {
 	private LabelRespuestasSegundoNivel labelRespuestas;
 	private Villana villana;
 	private SubMenu submenu;
+	private ControladorSegundoNivel controlador;
 
 	/**
 	 * Launch the application.
@@ -92,7 +95,7 @@ public class SegundoNivel extends JFrame {
 		contentPane.add(botonMenu);
 	
 		//Label donde se ven las preguntas
-		labelPreguntas = new LabelPreguntas(200, 150, 400, 150);
+		labelPreguntas = new LabelPreguntas(InformacionJuegoActual.getPreguntaNivelDos(),200, 150, 400, 150);
 		labelPreguntas.setLocation(345, 102);
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPreguntas.setText("<html>�En qu� se diferencian los bucles<br> -for- y -while- en programaci�n?</html>");
@@ -113,6 +116,42 @@ public class SegundoNivel extends JFrame {
 		labelRespuestas.setSize(748, 408);
 		labelRespuestas.setLocation(166, 263);
 		contentPane.add(labelRespuestas);		
+		
+		//Controlador Segundo Nivel
+		controlador = new ControladorSegundoNivel(heroe, villana);
+		
+		labelRespuestas.getOpcion1().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(labelPreguntas.getPreguntaActual() < labelPreguntas.getPreguntas().size()){
+					controlador.analizarRespuesta(labelRespuestas.getOpcion1().getText());
+					labelPreguntas.ponerPregunta();
+				}
+			}
+		});
+		
+		labelRespuestas.getOpcion2().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(labelPreguntas.getPreguntaActual() < labelPreguntas.getPreguntas().size()){
+					controlador.analizarRespuesta(labelRespuestas.getOpcion2().getText());
+					labelPreguntas.ponerPregunta();
+				}
+			}
+		});
+		
+		labelRespuestas.getOpcion3().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(labelPreguntas.getPreguntaActual() < labelPreguntas.getPreguntas().size()){
+					controlador.analizarRespuesta(labelRespuestas.getOpcion3().getText());
+					labelPreguntas.ponerPregunta();
+				}
+			}
+		});
 	}
 	
 	private void diseniarBoton(JButton boton){

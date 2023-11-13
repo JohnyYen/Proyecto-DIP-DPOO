@@ -16,6 +16,10 @@ public class InformacionJuego {
 		return this.preguntasNivelUno;
 	}
 	
+	public ArrayList<PreguntaNivelDos> getPreguntasNivelDos(){
+		return this.preguntasNivelDos;
+	}
+	
 	public void crearPreguntaNivelUno(String texto, boolean respuesta){
 		this.preguntasNivelUno.add(new PreguntaNivelUno(texto, respuesta));
 	}
