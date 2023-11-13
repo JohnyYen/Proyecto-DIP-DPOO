@@ -21,7 +21,7 @@ import javax.swing.JLabel;
 
 import Recursos.CustomFont;
 
-public class SegundoNivel extends JFrame {
+public class TercerNivel extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel setCarta1;
@@ -44,7 +44,7 @@ public class SegundoNivel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SegundoNivel frame = new SegundoNivel();
+					TercerNivel frame = new TercerNivel();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +56,7 @@ public class SegundoNivel extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SegundoNivel() {
+	public TercerNivel() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 746);
 		contentPane = new JPanel();
