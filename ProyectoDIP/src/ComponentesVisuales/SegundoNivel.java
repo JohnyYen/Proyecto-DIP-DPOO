@@ -92,7 +92,7 @@ public class SegundoNivel extends JFrame {
 		contentPane.add(botonMenu);
 	
 		//Label donde se ven las preguntas
-		labelPreguntas = new LabelPreguntas(,200, 150, 400, 150);
+		labelPreguntas = new LabelPreguntas(200, 150, 400, 150);
 		labelPreguntas.setLocation(345, 102);
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPreguntas.setText("<html>�En qu� se diferencian los bucles<br> -for- y -while- en programaci�n?</html>");
