@@ -10,6 +10,7 @@ import javax.swing.JTabbedPane;
 
 import Util.PreguntaNivelUno;
 import Util.PreguntaTableModel;
+import Util.PreguntaTableModelSegundoNivel;
 
 import javax.swing.JScrollPane;
 
@@ -19,6 +20,7 @@ public class TablaModificaciones extends JFrame {
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JTable tabla;
+	private JTable tablaNivelDos;
 
 	public static void main(String[] args){
 		TablaModificaciones t = new TablaModificaciones();
@@ -42,15 +44,14 @@ public class TablaModificaciones extends JFrame {
 		tabla = new JTable();
 		scrollPane.setViewportView(tabla);
 		PreguntaTableModel model = new PreguntaTableModel();
-		tabla.setModel(model);	
+		tabla.setModel(model);
 		
-		Nivel3Editar nivel3 = new Nivel3Editar();
-		tabbedPane.add("Nivel 3", nivel3);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		tabbedPane.addTab("Nivel 2", null, scrollPane_1, null);
 		
-		EditarNivel4 nivel4 = new EditarNivel4();
-		nivel4.setVisible(true);
-		JScrollPane scroll4 = new JScrollPane();
-		scroll4.setViewportView(nivel4);
-		tabbedPane.add("Nivel 4", scroll4);
+		tablaNivelDos = new JTable();
+		scrollPane_1.setViewportView(tablaNivelDos);
+		PreguntaTableModelSegundoNivel modelNivelDos = new PreguntaTableModelSegundoNivel();
+		tablaNivelDos.setModel(modelNivelDos);
 	}
 }
