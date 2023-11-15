@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
+import Logica.ControladorSegundoNivel;
 
 
 public class LabelRespuestasSegundoNivel extends JLabel{
@@ -11,11 +12,12 @@ public class LabelRespuestasSegundoNivel extends JLabel{
 	private Boton opcion1, opcion2, opcion3;
 	
 	
-	public LabelRespuestasSegundoNivel(int x, int y, int ancho, int alto){
+	public LabelRespuestasSegundoNivel(ControladorSegundoNivel controlador, int x, int y, int ancho, int alto){
 		//Crear los  botones
-		opcion1 = new Boton("<html>Un bucle -for- solo se utiliza para contar, mientras que un<br> bucle -while- se utiliza para otras tareas.", 700, 450, 50,0);
-		opcion2 = new Boton("<html>Un bucle -for- solo se utiliza para contar, mientras que un<br> bucle -while- se utiliza para otras tareas.", 700, 450, 50, 100);
-		opcion3 = new Boton("<html>Un bucle -while- siempre ejecuta un número fijo de iteraciones,<br> mientras que un bucle -for- depende de una condición.", 700, 450, 50, 100);
+		int preguntaActual = controlador.getPreguntaActual();
+		opcion1 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0), 700, 450, 50,0);
+		opcion2 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1), 700, 450, 50, 100);
+		opcion3 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2), 700, 450, 50, 100);
 		add(opcion1);
 		add(opcion2);
 		add(opcion3);

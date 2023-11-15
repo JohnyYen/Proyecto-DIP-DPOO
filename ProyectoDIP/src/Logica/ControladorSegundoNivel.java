@@ -45,4 +45,12 @@ public class ControladorSegundoNivel extends ControladorJuego {
 		if(cleopatra.getVidas() > 0) 
 			cleopatra.perderVida();
 	}
+
+	public int getPreguntaActual() {
+		return preguntaActual;
+	}
+	
+	public ArrayList<PreguntaNivelDos> getPreguntas() {
+		return preguntas;
+	}
 }

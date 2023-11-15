@@ -58,6 +58,7 @@ public class Iniciadora {
 			while(buffer.ready()){
 				textoPregunta = buffer.readLine();
 				textoRespuesta = buffer.readLine();
+				posiblesRespuestas.clear();
 				
 				for (int i = 0; i < 3; i++)
 					posiblesRespuestas.add(buffer.readLine());

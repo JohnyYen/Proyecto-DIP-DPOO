@@ -59,8 +59,6 @@ public class SegundoNivel extends JFrame {
 		//Controlador Segundo Nivel
 		juego.crearControladorNivelDos(heroe, cleopatra);
 		
-		
-		
 		//El submenu del juego
 		submenu = new SubMenu(this, true);
 		contentPane.add(submenu);
@@ -88,7 +86,8 @@ public class SegundoNivel extends JFrame {
 		labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 		contentPane.add(labelPreguntas);
 		
-		labelRespuestas = new LabelRespuestasSegundoNivel(200, 1000, 400,150);
+		//label de las respuestas
+		labelRespuestas = new LabelRespuestasSegundoNivel(juego.getControladorNivelDos(), 200, 1000, 400,150);
 		labelRespuestas.getOpcion3().setLocation(new Point(30, 225));
 		labelRespuestas.getOpcion3().setSize(new Dimension(700, 100));
 		labelRespuestas.getOpcion2().setLocation(new Point(30, 150));
