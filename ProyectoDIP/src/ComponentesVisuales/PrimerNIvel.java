@@ -22,27 +22,8 @@ public class PrimerNIvel extends JFrame {
 	private LabelPreguntas labelPreguntas;
 	private ControladorPrimerNivel controlador;
 	private Villana villana;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PrimerNIvel frame = new PrimerNIvel();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public PrimerNIvel() {
+	
+	public PrimerNIvel(Juego juego) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 700, 700);
@@ -87,7 +68,7 @@ public class PrimerNIvel extends JFrame {
 		
 		
 		//Label donde se ven las preguntas
-		labelPreguntas = new LabelPreguntas(200, 150, 400, 150, InformacionJuegoActual.getPreguntaNivelUno());
+		labelPreguntas = new LabelPreguntas(200, 150, 400, 150, juego.getInformacionJuego().getPreguntasNivelUno());
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPreguntas.ponerPregunta();
 		contentPane.add(labelPreguntas);
