@@ -9,6 +9,9 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -18,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Logica.Juego;
 import Recursos.CustomFont;
 
 public class Transicion extends JFrame {
@@ -28,6 +32,8 @@ public class Transicion extends JFrame {
 	private JLabel BotonX;
 	private ArrayList<String> dialogos;
 	private KeyListener tocarTecla;
+	private FileReader file;
+	private BufferedReader buffer;
 
 	/**
 	 * Launch the application.
@@ -36,7 +42,9 @@ public class Transicion extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Transicion frame = new Transicion();
+					Juego juego = null;
+					Juego.crearJuego();
+					Transicion frame = new Transicion(Juego.obtenerJuego());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +56,7 @@ public class Transicion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Transicion() {
+	public Transicion(final Juego juego) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 700, 576);
 		contentPane = new JPanel(){
@@ -58,6 +66,14 @@ public class Transicion extends JFrame {
 				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
 			}
 		};
+		try{
+			file = new FileReader("src/DialogosTransicion.txt");
+			buffer = new BufferedReader(file);
+		}
+		catch(IOException e){
+			 
+		}
+		
 		tocarTecla = new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -73,10 +89,16 @@ public class Transicion extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyChar() == 'z'){
-					cuadroDialogos.setText("Sino cojo 2");
+					try{
+						if(buffer.ready())
+							cuadroDialogos.setText(buffer.readLine());
+					}
+					catch(IOException a){
+						
+					}
 				}
 				if(e.getKeyChar() == 'x'){
-					PrimerNIvel pri = new PrimerNIvel();
+					PrimerNivel pri = new PrimerNivel(juego);
 					dispose();
 					pri.setVisible(true);
 				}
@@ -125,7 +147,12 @@ public class Transicion extends JFrame {
 		cuadroDialogos.setFont(mf.MyFont(1, 15));
 		cuadroDialogos.setForeground(Color.WHITE);
 		
-		cuadroDialogos.setText("Tengo que hacer el proyecto de DPOO");
+		try{
+			cuadroDialogos.setText(buffer.readLine());
+		}
+		catch(IOException e){
+			
+		}
 		cuadroDialogos.setBounds(100, 350, 500, 200);
 		cuadroDialogos.setIcon(new ImageIcon(iconLabel)); //Cambiar de imagen en el Label
 		cuadroDialogos.setVerticalTextPosition(SwingConstants.CENTER);

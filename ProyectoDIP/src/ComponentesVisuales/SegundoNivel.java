@@ -7,7 +7,9 @@ import javax.swing.border.EmptyBorder;
 
 import Logica.ControladorPrimerNivel;
 import Logica.ControladorSegundoNivel;
+import Logica.InformacionJuego;
 import Logica.InformacionJuegoActual;
+import Logica.Juego;
 import Personajes.Heroe;
 import Personajes.Villana;
 import Util.PreguntaNivelDos;
@@ -37,26 +39,7 @@ public class SegundoNivel extends JFrame {
 	private SubMenu submenu;
 	private ControladorSegundoNivel controlador;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SegundoNivel frame = new SegundoNivel();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public SegundoNivel() {
+	public SegundoNivel(Juego juego) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 786, 565);
@@ -96,6 +79,7 @@ public class SegundoNivel extends JFrame {
 	
 		//Label donde se ven las preguntas
 		labelPreguntas = new LabelPreguntas(InformacionJuegoActual.getPreguntaNivelDos(),200, 150, 400, 150);
+		labelPreguntas = new LabelPreguntas(juego.getInformacionJuego().getPreguntaNivelDos(),200, 150, 400, 150);
 		labelPreguntas.setLocation(345, 102);
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPreguntas.setText("<html>�En qu� se diferencian los bucles<br> -for- y -while- en programaci�n?</html>");
