@@ -9,8 +9,7 @@ public abstract class Personaje extends JPanel {
 	private static final long serialVersionUID = 1L;
 	protected int cantVidas;
 	
-	public Personaje(int x, int y, int ancho, int alto, int cantVidas) {
-		this.setBounds(x,y,ancho,alto);
+	public Personaje(int cantVidas) {
 		this.cantVidas = cantVidas;
 		this.setOpaque(false);
 	}

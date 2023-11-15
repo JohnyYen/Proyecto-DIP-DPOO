@@ -3,15 +3,33 @@ package Personajes;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class Heroe extends Personaje {
 
-	public Heroe(int x, int y, int ancho, int largo, int cantVida) {
-		super(x,y,ancho,largo, cantVida);
+	private String urlNormal = "src/Recursos/HeroeNormal";
+	private ImageIcon imagen;
+	public Heroe() {
+		super(3);
+		
+		try{
+			BufferedImage img = ImageIO.read(new File(urlNormal));
+			imagen = new ImageIcon(img);
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+		
 	}
 	
+	@Override
 	protected void paintComponent(Graphics g) {
-		Image im = Toolkit.getDefaultToolkit().getImage("src/Recursos/HeroeNormal.png");
-		g.drawImage(im, 0, 0, getWidth(), getHeight(), this);
+		super.paintComponent(g);
+		imagen.paintIcon(this, g, 0, 0);
 	}
 }

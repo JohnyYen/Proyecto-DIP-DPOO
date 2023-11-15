@@ -41,6 +41,7 @@ public class Pruebas extends JFrame {
 		
 		Corazon corazon = new Corazon();
 		corazon.setBounds(149, 97, 76, 71);
+		//corazon.setVacio();
 		contentPane.add(corazon);
 	}
 }
