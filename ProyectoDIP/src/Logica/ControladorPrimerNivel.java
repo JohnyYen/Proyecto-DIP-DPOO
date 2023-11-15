@@ -9,11 +9,13 @@ import Util.Pregunta;
 import Util.PreguntaNivelUno;
 public class ControladorPrimerNivel extends ControladorJuego {
 	private ArrayList<PreguntaNivelUno> preguntas;
+	private Cleopatra cleopatra;
 	private ArrayList<PreguntaNivelUno> preguntasAnteriores;
 	private int preguntaActual;
 	
-	public ControladorPrimerNivel(Heroe heroe, Villana villano, InformacionJuego informacionActual){
-		super(heroe, villano, informacionActual);
+	public ControladorPrimerNivel(Heroe heroe,Cleopatra cleopatra,InformacionJuego informacionActual){
+		super(heroe, informacionActual);
+		this.cleopatra = cleopatra;
 		preguntas = informacionActual.getPreguntasNivelUno();
 		preguntasAnteriores = new ArrayList<PreguntaNivelUno>();
 	}
@@ -34,5 +36,11 @@ public class ControladorPrimerNivel extends ControladorJuego {
 		preguntasAnteriores.add(preguntas.get(indicePregunta));
 		preguntaActual = indicePregunta;
 		return preguntas.get(indicePregunta).getPregunta();
+	}
+	
+	@Override
+	public void quitarVidaVillano() {
+		if(cleopatra.getVidas() > 0) cleopatra.perderVida();
+		
 	}
 }

@@ -7,11 +7,11 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Logica.*;
-import Personajes.Heroe;
-import Personajes.Villana;
+import Personajes.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import Util.Corazon;
 
 public class PrimerNivel extends JFrame {
 
@@ -21,7 +21,6 @@ public class PrimerNivel extends JFrame {
 	private SubMenu submenu;
 	private LabelRespuestas labelRespuestas;
 	private LabelPreguntas labelPreguntas;
-	private Villana villana;
 	
 	public PrimerNivel(final Juego juego) {
 		this.juego = juego;
@@ -41,17 +40,16 @@ public class PrimerNivel extends JFrame {
 		contentPane.setLayout(null);
 		
 		//Personajes
-		//Sprite de la Villana
-		villana = new Villana(500, 150, 250, 200, 6);
-		contentPane.add(villana);
+		Cleopatra cleopatra = new Cleopatra();
+		cleopatra.setBounds(560, 101, 124, 158);
+		contentPane.add(cleopatra);
 		
-		//Sprite del heroe
-		Heroe heroe = new Heroe(20, 450, 250, 250, 3);
+		Heroe heroe = new Heroe();
+		heroe.setBounds(63, 481, 172, 138);
 		contentPane.add(heroe);
 		
-		//Controlador del Juego
-		juego.crearControladorNivelUno(heroe, villana);
-		
+		//Controlador
+		juego.crearControladorNivelUno(heroe, cleopatra);
 		//El submenu del juego
 		submenu = new SubMenu(this, true);
 		contentPane.add(submenu);
@@ -98,7 +96,19 @@ public class PrimerNivel extends JFrame {
 		});
 		
 		contentPane.add(labelRespuestas);	
-	
+		
+		Corazon corazon = new Corazon();
+		corazon.setBounds(10, 11, 36, 37);
+		contentPane.add(corazon);
+		
+		Corazon corazon_1 = new Corazon();
+		corazon_1.setBounds(55, 11, 36, 37);
+		contentPane.add(corazon_1);
+		
+		Corazon corazon_2 = new Corazon();
+		corazon_2.setBounds(106, 11, 36, 37);
+		contentPane.add(corazon_2);
+		
 		//Modificaciones al Frame
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -113,5 +123,4 @@ public class PrimerNivel extends JFrame {
 		boton.setContentAreaFilled(false);
 		boton.setLayout(new OverlayLayout(boton) );
 	}
-
 }

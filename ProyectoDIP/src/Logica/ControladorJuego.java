@@ -6,11 +6,9 @@ import ComponentesVisuales.MenuPrincipal;
 
 public abstract class ControladorJuego {
 	protected Heroe guardarHeroe;
-	protected Villana guardarVillano;
 	protected InformacionJuego informacionActual;
-	public ControladorJuego(Heroe heroe, Villana villano, InformacionJuego informacionActual){
-		this.guardarHeroe = heroe;
-		this.guardarVillano = villano; 
+	public ControladorJuego(Heroe heroe, InformacionJuego informacionActual){
+		this.guardarHeroe = heroe; 
 		this.informacionActual = informacionActual;
 	}
 	
@@ -20,8 +18,6 @@ public abstract class ControladorJuego {
 	public void quitarVidaHeroe(){
 		if(guardarHeroe.getVidas() > 0) guardarHeroe.perderVida();
 	}
-	public void quitarVidaVillano(){
-		if(guardarVillano.getVidas() > 0) guardarVillano.perderVida();
-	}
+	public abstract void quitarVidaVillano();
 	
 }

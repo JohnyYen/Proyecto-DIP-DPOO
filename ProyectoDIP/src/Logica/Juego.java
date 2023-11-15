@@ -23,7 +23,7 @@ public class Juego {
 	public static Juego obtenerJuego(){
 		return unicoJuego;
 	}
-	public void crearControladorNivelUno(Heroe heroe, Villana villana){
+	public void crearControladorNivelUno(Heroe heroe, Cleopatra villana){
 		controlador = new ControladorPrimerNivel(heroe, villana, informacionActual);
 	}
 	public ControladorPrimerNivel getControladorNivelUno(){ return (ControladorPrimerNivel)controlador;}

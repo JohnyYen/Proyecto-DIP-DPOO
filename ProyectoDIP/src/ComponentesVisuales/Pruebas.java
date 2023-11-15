@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import Util.Corazon;
+import Personajes.Cleopatra;
+import Personajes.Heroe;
 
 public class Pruebas extends JFrame {
 
@@ -39,9 +41,19 @@ public class Pruebas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Corazon corazon = new Corazon();
-		corazon.setBounds(149, 97, 76, 71);
-		//corazon.setVacio();
-		contentPane.add(corazon);
+		Heroe heroe = new Heroe();
+		heroe.setNormal();
+		heroe.setBounds(172, 67, 134, 157);
+		contentPane.add(heroe);
+		
+		Cleopatra cleopatra = new Cleopatra();
+		cleopatra.setPerdio();
+		cleopatra.setSorprendida();
+		cleopatra.setBounds(46, 67, 152, 157);
+		contentPane.add(cleopatra);
+		
+		
+		
+		
 	}
 }
