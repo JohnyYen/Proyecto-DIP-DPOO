@@ -98,7 +98,7 @@ public class Transicion extends JFrame {
 					}
 				}
 				if(e.getKeyChar() == 'x'){
-					PrimerNIvel pri = new PrimerNIvel(juego);
+					PrimerNivel pri = new PrimerNivel(juego);
 					dispose();
 					pri.setVisible(true);
 				}

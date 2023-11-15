@@ -1,12 +1,14 @@
 package Logica;
 
+import Personajes.*;
+
 public class Juego {
 	private InformacionJuego informacionActual;
 	private Usuario usuario;
 	private ControladorJuego controlador;
 	private static Juego unicoJuego = null;
 	
-	private Juego(){
+	public Juego(){
 		informacionActual = new InformacionJuego();
 	}
 	
@@ -21,4 +23,8 @@ public class Juego {
 	public static Juego obtenerJuego(){
 		return unicoJuego;
 	}
+	public void crearControladorNivelUno(Heroe heroe, Villana villana){
+		controlador = new ControladorPrimerNivel(heroe, villana, informacionActual);
+	}
+	public ControladorPrimerNivel getControladorNivelUno(){ return (ControladorPrimerNivel)controlador;}
 }

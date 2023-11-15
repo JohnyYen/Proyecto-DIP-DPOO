@@ -13,18 +13,18 @@ import Personajes.Villana;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PrimerNIvel extends JFrame {
+public class PrimerNivel extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private Juego juego;
 	private JPanel contentPane;
 	private SubMenu submenu;
 	private LabelRespuestas labelRespuestas;
 	private LabelPreguntas labelPreguntas;
-	private ControladorPrimerNivel controlador;
 	private Villana villana;
 	
-	public PrimerNIvel(Juego juego) {
-		
+	public PrimerNivel(final Juego juego) {
+		this.juego = juego;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 700, 700);
 		contentPane = new JPanel(){
@@ -32,7 +32,7 @@ public class PrimerNIvel extends JFrame {
 
 			//Dibujar el Fondo
 			public void paintComponent(Graphics g) {
-				Image img = Toolkit.getDefaultToolkit().getImage(PrimerNIvel.class.getResource("/Recursos/FondoPrimerNivel.png"));
+				Image img = Toolkit.getDefaultToolkit().getImage(PrimerNivel.class.getResource("/Recursos/FondoPrimerNivel.png"));
 				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
 			}
 		};
@@ -49,6 +49,8 @@ public class PrimerNIvel extends JFrame {
 		Heroe heroe = new Heroe(20, 450, 250, 250, 3);
 		contentPane.add(heroe);
 		
+		//Controlador del Juego
+		juego.crearControladorNivelUno(heroe, villana);
 		
 		//El submenu del juego
 		submenu = new SubMenu(this, true);
@@ -70,30 +72,28 @@ public class PrimerNIvel extends JFrame {
 		//Label donde se ven las preguntas
 		labelPreguntas = new LabelPreguntas(200, 150, 400, 150, juego.getInformacionJuego().getPreguntasNivelUno());
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPreguntas.ponerPregunta();
+		labelPreguntas.ponerPregunta(juego.getControladorNivelUno().darPregunta());
 		contentPane.add(labelPreguntas);
-		
-		//Controlador Primer Nivel
-		controlador = new ControladorPrimerNivel(heroe, villana);
-		
+			
 		//Label donde estan las respuestas
 		labelRespuestas = new LabelRespuestas(200, 500, 400,150 );
 		labelRespuestas.getBotonVerdadero().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(labelPreguntas.getPreguntaActual() < labelPreguntas.getPreguntas().size()){
-					controlador.analizarRespuesta(true);
-					labelPreguntas.ponerPregunta();
-				}
+			public void actionPerformed(ActionEvent action) {
+				if(juego.getControladorNivelUno().analizarRespuesta(true))
+					juego.getControladorNivelUno().quitarVidaVillano();
+				else juego.getControladorNivelUno().quitarVidaHeroe();
+				
+				labelPreguntas.ponerPregunta(juego.getControladorNivelUno().darPregunta());
 			}
 		});
 		
 		labelRespuestas.getBotonFalso().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(labelPreguntas.getPreguntaActual() < labelPreguntas.getPreguntas().size()){
-					controlador.analizarRespuesta(false);
-					labelPreguntas.ponerPregunta();
-				}
+			public void actionPerformed(ActionEvent action) {
+				if(juego.getControladorNivelUno().analizarRespuesta(false))
+					juego.getControladorNivelUno().quitarVidaVillano();
+				else juego.getControladorNivelUno().quitarVidaHeroe();
 				
+				labelPreguntas.ponerPregunta(juego.getControladorNivelUno().darPregunta());
 			}
 		});
 		

@@ -13,11 +13,12 @@ public class Iniciadora {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					Juego juego = null;  
-					juego.crearJuego();
-					Login frame = new Login();
-					frame.setVisible(true);
+				try {  
+					Juego juego = new Juego();
+					inicializarDatosPrimerNivel(juego);
+					PrimerNivel primerNivel = new PrimerNivel(juego);
+					
+					primerNivel.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -25,7 +26,7 @@ public class Iniciadora {
 		});
 	}
 	
-	public void inicializarDatosPrimerNivel(Juego juego){
+	public static void inicializarDatosPrimerNivel(Juego juego){
 		try{
 			FileReader file = new FileReader("src/Textos/PreguntasNivelUno.txt");
 			BufferedReader buffer = new BufferedReader(file);
