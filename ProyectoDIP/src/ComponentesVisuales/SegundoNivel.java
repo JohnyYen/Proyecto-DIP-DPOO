@@ -2,9 +2,9 @@ package ComponentesVisuales;
 
 import java.awt.*;
 
-
 import javax.swing.border.EmptyBorder;
 
+import Logica.ControladorSegundoNivel;
 import Logica.Juego;
 import Personajes.Cleopatra;
 import Personajes.Heroe;
@@ -103,7 +103,13 @@ public class SegundoNivel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				if(juego.getControladorNivelDos().analizarRespuesta(labelRespuestas.getOpcion1().getText()))
+					juego.getControladorNivelDos().quitarVidaVillano();
+				else
+					juego.getControladorNivelDos().quitarVidaHeroe();
 				
+				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
+				ponerRespuestas(labelRespuestas);
 			}
 		});
 		
@@ -111,7 +117,13 @@ public class SegundoNivel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				if(juego.getControladorNivelDos().analizarRespuesta(labelRespuestas.getOpcion1().getText()))
+					juego.getControladorNivelDos().quitarVidaVillano();
+				else
+					juego.getControladorNivelDos().quitarVidaHeroe();
 				
+				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
+				ponerRespuestas(labelRespuestas);
 			}
 		});
 		
@@ -119,7 +131,13 @@ public class SegundoNivel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				if(juego.getControladorNivelDos().analizarRespuesta(labelRespuestas.getOpcion1().getText()))
+					juego.getControladorNivelDos().quitarVidaVillano();
+				else
+					juego.getControladorNivelDos().quitarVidaHeroe();
 				
+				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
+				ponerRespuestas(labelRespuestas);
 			}
 		});
 	}
@@ -131,5 +149,12 @@ public class SegundoNivel extends JFrame {
 		boton.setFocusPainted(false);
 		boton.setContentAreaFilled(false);
 		boton.setLayout(new OverlayLayout(boton) );
+	}
+	
+	public void ponerRespuestas(LabelRespuestasSegundoNivel labelRespuestas) {
+		int preguntaActual = juego.getControladorNivelDos().getPreguntaActual();
+		labelRespuestas.getOpcion1().setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));
+		labelRespuestas.getOpcion2().setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1));
+		labelRespuestas.getOpcion3().setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2));
 	}
 }

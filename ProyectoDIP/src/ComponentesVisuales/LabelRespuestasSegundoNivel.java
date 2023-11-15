@@ -23,6 +23,13 @@ public class LabelRespuestasSegundoNivel extends JLabel{
 		add(opcion3);
 		this.setBounds(x,y,ancho,alto);
 	}
+	
+	public void ponerRespuestas(ControladorSegundoNivel controlador) {
+		int preguntaActual = controlador.getPreguntaActual();
+		opcion1.setText(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));
+		opcion2.setText(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1));
+		opcion3.setText(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2));
+	}
 
 	public Boton getOpcion1() {
 		return opcion1;
