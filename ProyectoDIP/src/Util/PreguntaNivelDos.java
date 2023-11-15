@@ -8,6 +8,7 @@ public class PreguntaNivelDos extends Pregunta{
 	
 	public PreguntaNivelDos(String texto,ArrayList<String> respuestas, String respuestaFinal){
 		super(texto);
+		posiblesRespuestas = new ArrayList<String>();
 		posiblesRespuestas.addAll(respuestas);
 		this.respuesta = respuestaFinal;
 	}
@@ -19,6 +20,5 @@ public class PreguntaNivelDos extends Pregunta{
 	public String getRespuesta() {
 		return respuesta;
 	}
-	
 	
 }

@@ -2,21 +2,15 @@ package ComponentesVisuales;
 
 import java.awt.*;
 
-import javax.swing.*;
+
 import javax.swing.border.EmptyBorder;
 
-import Logica.ControladorPrimerNivel;
-import Logica.ControladorSegundoNivel;
-import Logica.InformacionJuego;
-import Logica.InformacionJuegoActual;
 import Logica.Juego;
+import Personajes.Cleopatra;
 import Personajes.Heroe;
-import Personajes.Villana;
-import Util.PreguntaNivelDos;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,22 +18,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 
 public class SegundoNivel extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4285398109221870651L;
 	private JPanel contentPane;
 	private LabelPreguntas labelPreguntas;
 	private LabelRespuestasSegundoNivel labelRespuestas;
-	private Villana villana;
 	private SubMenu submenu;
-	private ControladorSegundoNivel controlador;
+	private Juego juego;
 
-	public SegundoNivel(Juego juego) {
+	public SegundoNivel(final Juego juego) {
+		this.juego = juego;
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 786, 565);
@@ -53,13 +43,23 @@ public class SegundoNivel extends JFrame {
 				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
 			}
 		};
+		contentPane.setSize(new Dimension(1500, 300));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		villana = new Villana(500, 150, 250, 200, 6);
-		villana.setLocation(654, 71);
-		contentPane.add(villana);
+		Cleopatra cleopatra = new Cleopatra();
+		cleopatra.setBounds(793, 91, 268, 246);
+		contentPane.add(cleopatra);
+		
+		Heroe heroe = new Heroe();
+		heroe.setBounds(28, 457, 305, 308);
+		contentPane.add(heroe);
+		
+		//Controlador Segundo Nivel
+		juego.crearControladorNivelDos(heroe, cleopatra);
+		
+		
 		
 		//El submenu del juego
 		submenu = new SubMenu(this, true);
@@ -78,16 +78,15 @@ public class SegundoNivel extends JFrame {
 		contentPane.add(botonMenu);
 	
 		//Label donde se ven las preguntas
-		labelPreguntas = new LabelPreguntas(InformacionJuegoActual.getPreguntaNivelDos(),200, 150, 400, 150);
-		labelPreguntas = new LabelPreguntas(juego.getInformacionJuego().getPreguntaNivelDos(),200, 150, 400, 150);
+		labelPreguntas = new LabelPreguntas(juego.getInformacionJuego().getPreguntasNivelDos(),200, 150, 400, 150);
+		labelPreguntas.setPreferredSize(new Dimension(400, 300));
+		labelPreguntas.setBounds(new Rectangle(200, 150, 400, 500));
+		labelPreguntas.setSize(new Dimension(450, 179));
+		labelPreguntas.setSize(450, 179);
 		labelPreguntas.setLocation(345, 102);
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPreguntas.setText("<html>�En qu� se diferencian los bucles<br> -for- y -while- en programaci�n?</html>");
+		labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 		contentPane.add(labelPreguntas);
-		
-		Heroe heroe = new Heroe(20, 450, 250, 250, 3);
-		heroe.setLocation(0, 468);
-		contentPane.add(heroe);		
 		
 		labelRespuestas = new LabelRespuestasSegundoNivel(200, 1000, 400,150);
 		labelRespuestas.getOpcion3().setLocation(new Point(30, 225));
@@ -101,17 +100,11 @@ public class SegundoNivel extends JFrame {
 		labelRespuestas.setLocation(166, 263);
 		contentPane.add(labelRespuestas);		
 		
-		//Controlador Segundo Nivel
-		controlador = new ControladorSegundoNivel(heroe, villana);
-		
 		labelRespuestas.getOpcion1().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(labelPreguntas.getPreguntaActual() < labelPreguntas.getPreguntas().size()){
-					controlador.analizarRespuesta(labelRespuestas.getOpcion1().getText());
-					labelPreguntas.ponerPregunta();
-				}
+				
 			}
 		});
 		
@@ -119,10 +112,7 @@ public class SegundoNivel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(labelPreguntas.getPreguntaActual() < labelPreguntas.getPreguntas().size()){
-					controlador.analizarRespuesta(labelRespuestas.getOpcion2().getText());
-					labelPreguntas.ponerPregunta();
-				}
+				
 			}
 		});
 		
@@ -130,10 +120,7 @@ public class SegundoNivel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(labelPreguntas.getPreguntaActual() < labelPreguntas.getPreguntas().size()){
-					controlador.analizarRespuesta(labelRespuestas.getOpcion3().getText());
-					labelPreguntas.ponerPregunta();
-				}
+				
 			}
 		});
 	}

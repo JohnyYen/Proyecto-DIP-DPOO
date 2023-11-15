@@ -27,4 +27,13 @@ public class Juego {
 		controlador = new ControladorPrimerNivel(heroe, villana, informacionActual);
 	}
 	public ControladorPrimerNivel getControladorNivelUno(){ return (ControladorPrimerNivel)controlador;}
+	
+	public void crearControladorNivelDos(Heroe heroe, Cleopatra villana){
+		controlador = new ControladorSegundoNivel(heroe, villana, informacionActual);
+	}
+
+	public ControladorSegundoNivel getControladorNivelDos() {
+		return (ControladorSegundoNivel)controlador;
+	}
+	
 }
