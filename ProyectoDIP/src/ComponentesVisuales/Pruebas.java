@@ -16,6 +16,8 @@ import javax.swing.border.EmptyBorder;
 import Util.Corazon;
 import Personajes.Cleopatra;
 import Personajes.Heroe;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
 
 import java.awt.Rectangle;
 
@@ -84,6 +86,31 @@ public class Pruebas extends JFrame {
 		btnprueba_.setText("holaa mi nombre es rafael");
 		btnprueba_.setBounds(405, 45, 478, 82);
 		contentPane.add(btnprueba_);
+		BotonExtendidoNivel2 btnxtndnvl2Hola = new BotonExtendidoNivel2();
+		btnxtndnvl2Hola.setText("Hola");
+		btnxtndnvl2Hola.setBounds(33, 97, 463, 76);
+		contentPane.add(btnxtndnvl2Hola);
+		
+		BotonExtendido btnxtndHola = new BotonExtendido();
+		btnxtndHola.setText("Hola");
+		btnxtndHola.setBounds(98, 35, 284, 51);
+		contentPane.add(btnxtndHola);
+		
+		JTextPane txtpnHola = new JTextPane();
+		txtpnHola.setText("Hola\\nHello");
+		txtpnHola.setBounds(52, 229, 200, 50);
+		contentPane.add(txtpnHola);
+		
+		TextPanel txtpnlHola = new TextPanel();
+		txtpnlHola.setText("Hola\nHola\nHello\nHola\nHola\nHola\nHola\n");
+		txtpnlHola.setBounds(305, 237, 153, 51);
+		contentPane.add(txtpnlHola);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(19, 97, 97, 51);
+		contentPane.add(textArea);
+		
+		System.out.println((int)3.254+ System.lineSeparator() + "Hola");
 		
 	}
 }
