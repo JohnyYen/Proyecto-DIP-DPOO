@@ -21,12 +21,12 @@ public class LabelRespuestasSegundoNivel extends JLabel{
 	
 	public LabelRespuestasSegundoNivel(int x, int y, int ancho, int alto){
 		//Crear los  botones
-		opcion1 = new Boton("<html>Un bucle -for- siempre ejecuta un número fijo de iteraciones,<br> mientras que un bucle -while- depende de una condición.", 700, 450, 50,0);
+		/*opcion1 = new Boton("<html>Un bucle -for- siempre ejecuta un número fijo de iteraciones,<br> mientras que un bucle -while- depende de una condición.", 700, 450, 50,0);
 		opcion2 = new Boton("<html>Un bucle -for- solo se utiliza para contar, mientras que un<br> bucle -while- se utiliza para otras tareas.", 700, 450, 50, 100);
 		opcion3 = new Boton("<html>Un bucle -while- siempre ejecuta un número fijo de iteraciones,<br> mientras que un bucle -for- depende de una condición.", 700, 450, 50, 100);
 		add(opcion1);
 		add(opcion2);
-		add(opcion3);
+		add(opcion3);*/
 		this.setBounds(x,y,ancho,alto);
 	}
 
@@ -47,4 +47,5 @@ public class LabelRespuestasSegundoNivel extends JLabel{
 		Image im = Toolkit.getDefaultToolkit().getImage("src/Recursos/CuadroDialogos.png");
 		g.drawImage(im, 0, 0, getWidth(), getHeight(), this);
 	}
+	
 }
