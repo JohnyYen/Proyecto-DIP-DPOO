@@ -12,6 +12,10 @@ public class Juego {
 		informacionActual = new InformacionJuego();
 	}
 	
+	public void crearUsuario(String nombre, String password){
+		usuario = new Usuario(nombre, password);
+	}
+	
 	public static void crearJuego(){
 		if(unicoJuego == null) unicoJuego = new Juego();
 		else throw new IllegalArgumentException();
