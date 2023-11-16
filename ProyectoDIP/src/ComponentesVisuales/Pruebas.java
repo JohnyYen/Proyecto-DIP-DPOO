@@ -35,26 +35,16 @@ public class Pruebas extends JFrame {
 	 */
 	public Pruebas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 610, 464);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Heroe heroe = new Heroe();
-		heroe.setNormal();
-		heroe.setBounds(172, 67, 134, 157);
-		contentPane.add(heroe);
-		
-		Cleopatra cleopatra = new Cleopatra();
-		cleopatra.setPerdio();
-		cleopatra.setSorprendida();
-		cleopatra.setBounds(46, 67, 152, 157);
-		contentPane.add(cleopatra);
-		
-		Boton boton = new Boton("Hola", 100, 100, 0, 0);
-		boton.setText("Buenas Noches");
-		contentPane.add(boton);
+		BotonExtendidoNivel2 btnxtndnvl2Holaaaaaaa = new BotonExtendidoNivel2();
+		btnxtndnvl2Holaaaaaaa.setText("HOlaaaaaaa");
+		btnxtndnvl2Holaaaaaaa.setBounds(22, 22, 562, 64);
+		contentPane.add(btnxtndnvl2Holaaaaaaa);
 		
 		
 		
