@@ -5,7 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import ComponentesVisuales.*;
+import ComponentesVisuales.Niveles.*;
 import ComponentesVisuales.Niveles.PrimerNivel;
 import Logica.*;
 
