@@ -1,15 +1,23 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Niveles;
 
 import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import ComponentesVisuales.LabelPreguntas;
+import ComponentesVisuales.LabelRespuestasSegundoNivel;
+import ComponentesVisuales.SubMenu;
+import Logica.InformacionJuego;
+import Logica.InformacionJuegoActual;
+import Logica.Juego;
 import Personajes.Heroe;
 import Personajes.Villana;
+import Util.PreguntaNivelDos;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,26 +39,7 @@ public class SegundoNivel extends JFrame {
 	private Villana villana;
 	private SubMenu submenu;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SegundoNivel frame = new SegundoNivel();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public SegundoNivel() {
+	public SegundoNivel(Juego juego) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 786, 565);
@@ -77,7 +66,7 @@ public class SegundoNivel extends JFrame {
 		contentPane.add(submenu);
 		submenu.setVisible(false);
 
-		//Botón de Menú
+		//Botï¿½n de Menï¿½
 		JButton botonMenu = new JButton();
 		botonMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -87,18 +76,18 @@ public class SegundoNivel extends JFrame {
 		botonMenu.setBounds(733,-77,200,200);
 		diseniarBoton(botonMenu);
 		contentPane.add(botonMenu);
-		
+	
 		//Label donde se ven las preguntas
-		labelPreguntas = new LabelPreguntas(200, 150, 400, 150);
+		labelPreguntas = new LabelPreguntas(juego.getInformacionJuego().getPreguntaNivelDos(),200, 150, 400, 150);
 		labelPreguntas.setLocation(345, 102);
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPreguntas.setText("<html>¿En qué se diferencian los bucles<br> -for- y -while- en programación?</html>");
+		labelPreguntas.setText("<html>ï¿½En quï¿½ se diferencian los bucles<br> -for- y -while- en programaciï¿½n?</html>");
 		contentPane.add(labelPreguntas);
 		
 		Heroe heroe = new Heroe(20, 450, 250, 250, 3);
 		heroe.setLocation(0, 468);
 		contentPane.add(heroe);		
-				
+		
 		labelRespuestas = new LabelRespuestasSegundoNivel(200, 1000, 400,150);
 		labelRespuestas.getOpcion3().setLocation(new Point(30, 225));
 		labelRespuestas.getOpcion3().setSize(new Dimension(700, 100));

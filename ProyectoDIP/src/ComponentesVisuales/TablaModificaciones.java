@@ -1,5 +1,7 @@
 package ComponentesVisuales;
 
+import java.awt.ScrollPane;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -26,14 +28,14 @@ public class TablaModificaciones extends JFrame {
 	}
 	public TablaModificaciones() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1000, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 414, 239);
+		tabbedPane.setBounds(10, 11, 900, 600);
 		contentPane.add(tabbedPane);
 		
 		scrollPane = new JScrollPane();

@@ -19,6 +19,7 @@ public class LabelPreguntas extends JLabel{
 	private LabelPreguntas(int x, int y, int ancho, int alto){
 		Image iconLabel = imagenLabel.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
 		PreguntaActual = 0;
+		preguntas = new ArrayList<Pregunta>();
 		
 		CustomFont mf = new CustomFont();
 		this.setFont(mf.MyFont(1, 15));
@@ -35,7 +36,8 @@ public class LabelPreguntas extends JLabel{
 	
 	public LabelPreguntas(int x, int y, int ancho, int alto, ArrayList<PreguntaNivelUno> preguntas){
 		this(x,y,ancho,alto);
-		this.preguntas.addAll(preguntas);
+		for(PreguntaNivelUno p : preguntas)
+			this.preguntas.add(p);
 	}
 	
 	public LabelPreguntas(ArrayList<PreguntaNivelDos> preguntas, int x, int y, int ancho, int alto){
@@ -43,11 +45,8 @@ public class LabelPreguntas extends JLabel{
 		this.preguntas.addAll(preguntas);
 	}
 
-	public void ponerPregunta(){
-		if(PreguntaActual < preguntas.size()){
-			setText(preguntas.get(PreguntaActual++).getPregunta());
-		}
-		else JOptionPane.showMessageDialog(null, "Se terminaron las preguntas");
+	public void ponerPregunta(String textoPregunta){
+		setText(textoPregunta);
 	}
 	public int getPreguntaActual(){return this.PreguntaActual;}
 	public ArrayList<Pregunta> getPreguntas(){return this.preguntas;}
