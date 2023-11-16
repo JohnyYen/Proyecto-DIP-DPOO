@@ -1,10 +1,13 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Niveles;
 
 import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import ComponentesVisuales.LabelPreguntas;
+import ComponentesVisuales.LabelRespuestasSegundoNivel;
+import ComponentesVisuales.SubMenu;
 import Logica.InformacionJuego;
 import Logica.InformacionJuegoActual;
 import Logica.Juego;

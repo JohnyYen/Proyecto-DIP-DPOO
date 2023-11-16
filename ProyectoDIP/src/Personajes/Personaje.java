@@ -27,5 +27,8 @@ public abstract class Personaje extends JPanel {
 	public abstract void setPerdio();
 	
 	public int getVidas(){return cantVidas;}
-	public void perderVida(){cantVidas--;}
+	public void perderVida()
+	{
+		cantVidas--;
+	}
 }

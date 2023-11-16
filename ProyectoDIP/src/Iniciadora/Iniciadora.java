@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import ComponentesVisuales.*;
+import ComponentesVisuales.Niveles.PrimerNivel;
 import Logica.*;
 
 public class Iniciadora {

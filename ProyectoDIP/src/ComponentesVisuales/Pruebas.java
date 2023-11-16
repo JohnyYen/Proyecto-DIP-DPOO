@@ -36,21 +36,22 @@ public class Pruebas extends JFrame {
 	public Pruebas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		
+		BarraMenu barraMenu = new BarraMenu();
+		setJMenuBar(barraMenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Heroe heroe = new Heroe();
-		heroe.setNormal();
-		heroe.setBounds(172, 67, 134, 157);
-		contentPane.add(heroe);
+		CartaVisual cartaVisual = new CartaVisual();
+		cartaVisual.setBounds(104, 71, 287, 146);
+		contentPane.add(cartaVisual);
+		cartaVisual.voltearCarta();
 		
-		Cleopatra cleopatra = new Cleopatra();
-		cleopatra.setPerdio();
-		cleopatra.setSorprendida();
-		cleopatra.setBounds(46, 67, 152, 157);
-		contentPane.add(cleopatra);
+		Heroe heroe = new Heroe();
+		heroe.setBounds(22, 32, 96, 78);
+		contentPane.add(heroe);
 		
 		
 		

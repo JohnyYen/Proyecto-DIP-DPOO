@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Niveles;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
