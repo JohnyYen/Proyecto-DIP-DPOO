@@ -76,7 +76,7 @@ public class Transicion extends JFrame {
 					cuadroDialogos.setText("Sino cojo 2");
 				}
 				if(e.getKeyChar() == 'x'){
-					PrimerNIvel pri = new PrimerNIvel();
+					PrimerNivel pri = new PrimerNivel();
 					dispose();
 					pri.setVisible(true);
 				}

@@ -13,7 +13,7 @@ import Personajes.Villana;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PrimerNIvel extends JFrame {
+public class PrimerNivel extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -30,7 +30,7 @@ public class PrimerNIvel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PrimerNIvel frame = new PrimerNIvel();
+					PrimerNivel frame = new PrimerNivel();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class PrimerNIvel extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PrimerNIvel() {
+	public PrimerNivel() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 700, 700);
@@ -51,7 +51,7 @@ public class PrimerNIvel extends JFrame {
 
 			//Dibujar el Fondo
 			public void paintComponent(Graphics g) {
-				Image img = Toolkit.getDefaultToolkit().getImage(PrimerNIvel.class.getResource("/Recursos/FondoPrimerNivel.png"));
+				Image img = Toolkit.getDefaultToolkit().getImage(PrimerNivel.class.getResource("/Recursos/FondoPrimerNivel.png"));
 				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
 			}
 		};

@@ -11,7 +11,7 @@ public class Iniciadora {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
+					PrimerNivel frame = new PrimerNivel();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
