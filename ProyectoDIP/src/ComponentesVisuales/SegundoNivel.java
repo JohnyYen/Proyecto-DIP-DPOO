@@ -4,7 +4,6 @@ import java.awt.*;
 
 import javax.swing.border.EmptyBorder;
 
-import Logica.ControladorSegundoNivel;
 import Logica.Juego;
 import Personajes.Cleopatra;
 import Personajes.Heroe;
@@ -97,7 +96,8 @@ public class SegundoNivel extends JFrame {
 		labelRespuestas.getOpcion1().setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		labelRespuestas.setSize(748, 408);
 		labelRespuestas.setLocation(166, 263);
-		contentPane.add(labelRespuestas);		
+		contentPane.add(labelRespuestas);
+		
 		
 		labelRespuestas.getOpcion1().addActionListener(new ActionListener() {
 			@Override
@@ -109,7 +109,7 @@ public class SegundoNivel extends JFrame {
 					juego.getControladorNivelDos().quitarVidaHeroe();
 				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
-				ponerRespuestas(labelRespuestas);
+				labelRespuestas.ponerRespuestas(juego.getControladorNivelDos());
 			}
 		});
 		
@@ -123,7 +123,7 @@ public class SegundoNivel extends JFrame {
 					juego.getControladorNivelDos().quitarVidaHeroe();
 				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
-				ponerRespuestas(labelRespuestas);
+				labelRespuestas.ponerRespuestas(juego.getControladorNivelDos());
 			}
 		});
 		
@@ -137,7 +137,7 @@ public class SegundoNivel extends JFrame {
 					juego.getControladorNivelDos().quitarVidaHeroe();
 				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
-				ponerRespuestas(labelRespuestas);
+				labelRespuestas.ponerRespuestas(juego.getControladorNivelDos());
 			}
 		});
 	}

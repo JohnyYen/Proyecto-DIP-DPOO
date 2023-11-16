@@ -52,6 +52,9 @@ public class Pruebas extends JFrame {
 		cleopatra.setBounds(46, 67, 152, 157);
 		contentPane.add(cleopatra);
 		
+		Boton boton = new Boton("Hola", 100, 100, 0, 0);
+		boton.setText("Buenas Noches");
+		contentPane.add(boton);
 		
 		
 		

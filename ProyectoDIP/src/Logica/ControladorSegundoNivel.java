@@ -33,9 +33,10 @@ public class ControladorSegundoNivel extends ControladorJuego {
 	public String darPregunta(){
 		Random random = new Random();
 		int indicePregunta = random.nextInt(preguntas.size());
-		while(preguntasAnteriores.contains(preguntas.get(indicePregunta))){
+		
+		while(preguntasAnteriores.contains(preguntas.get(indicePregunta)))
 			indicePregunta = random.nextInt(preguntas.size());
-		}
+		
 		preguntasAnteriores.add(preguntas.get(indicePregunta));
 		preguntaActual = indicePregunta;
 		return preguntas.get(indicePregunta).getPregunta();

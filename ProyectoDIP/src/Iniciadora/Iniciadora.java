@@ -60,7 +60,7 @@ public class Iniciadora {
 				textoRespuesta = buffer.readLine();
 				posiblesRespuestas.clear();
 				
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 3; i++) 
 					posiblesRespuestas.add(buffer.readLine());
 				
 				juego.getInformacionJuego().crearPreguntaNivelDos(textoPregunta, posiblesRespuestas, textoRespuesta);

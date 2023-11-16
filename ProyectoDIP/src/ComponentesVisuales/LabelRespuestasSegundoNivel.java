@@ -11,11 +11,10 @@ public class LabelRespuestasSegundoNivel extends JLabel{
 	private static final long serialVersionUID = 1L;
 	private Boton opcion1, opcion2, opcion3;
 	
-	
 	public LabelRespuestasSegundoNivel(ControladorSegundoNivel controlador, int x, int y, int ancho, int alto){
 		//Crear los  botones
 		int preguntaActual = controlador.getPreguntaActual();
-		opcion1 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0), 700, 450, 50,0);
+		opcion1 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0),700, 450, 50,100);
 		opcion2 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1), 700, 450, 50, 100);
 		opcion3 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2), 700, 450, 50, 100);
 		add(opcion1);
@@ -29,6 +28,15 @@ public class LabelRespuestasSegundoNivel extends JLabel{
 		opcion1.setText(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));
 		opcion2.setText(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1));
 		opcion3.setText(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2));
+		
+		opcion1.repaint();
+		opcion1.revalidate();
+		opcion2.repaint();
+		opcion2.revalidate();
+		opcion3.repaint();
+		opcion3.revalidate();
+		this.repaint();
+		this.revalidate();
 	}
 
 	public Boton getOpcion1() {
