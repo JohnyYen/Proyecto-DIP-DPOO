@@ -45,6 +45,10 @@ public class Pruebas extends JFrame {
 		btnxtndnvl2Hola.setBounds(33, 97, 463, 76);
 		contentPane.add(btnxtndnvl2Hola);
 		
+		BotonExtendido botonExtendido = new BotonExtendido();
+		botonExtendido.setBounds(47, 33, 149, 31);
+		contentPane.add(botonExtendido);
+		
 		
 		
 	}
