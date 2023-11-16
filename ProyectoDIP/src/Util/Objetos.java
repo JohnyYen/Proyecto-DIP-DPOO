@@ -5,6 +5,7 @@ import java.lang.String;
 public class Objetos {
 private String nombre;
 private float tamaño;
+private String tipo;
 
 
 public Objetos(String nombre,float tamaño){
@@ -30,6 +31,24 @@ if(tamaño > 0|| tamaño < 1000){
 else {
 throw new IllegalArgumentException ("Error. Solo valores superiores a 0 e inferiores a 1000");
 }
+}
+
+
+
+/**
+ * @return the tipo
+ */
+public String getTipo() {
+	return tipo;
+}
+
+
+
+/**
+ * @param tipo the tipo to set
+ */
+public void setTipo(String tipo) {
+	this.tipo = tipo;
 }
 
 
