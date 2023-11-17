@@ -6,9 +6,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import ComponentesVisuales.SubMenu;
 import ComponentesVisuales.Componentes.LabelPreguntas;
 import ComponentesVisuales.Componentes.LabelRespuestas;
+import ComponentesVisuales.Pantallas.SubMenu;
 import Logica.*;
 import Personajes.*;
 

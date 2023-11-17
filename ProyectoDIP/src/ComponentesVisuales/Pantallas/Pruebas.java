@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Pantallas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Pantallas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -18,7 +18,7 @@ import Logica.Validacion;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class CrearUsuario extends JFrame {
+public class PantallaCrearUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -44,7 +44,7 @@ public class CrearUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CrearUsuario(Juego juego) {
+	public PantallaCrearUsuario(Juego juego) {
 		this.juego = juego;
 		final Validacion validacion = new Validacion();
 		

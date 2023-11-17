@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Pantallas;
 
 import java.awt.ScrollPane;
 
@@ -14,7 +14,7 @@ import Util.PreguntaTableModelSegundoNivel;
 
 import javax.swing.JScrollPane;
 
-public class TablaModificaciones extends JFrame {
+public class PantallaModifciones extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
@@ -23,10 +23,10 @@ public class TablaModificaciones extends JFrame {
 	private JTable tablaNivelDos;
 
 	public static void main(String[] args){
-		TablaModificaciones t = new TablaModificaciones();
+		PantallaModifciones t = new PantallaModifciones();
 		t.setVisible(true);
 	}
-	public TablaModificaciones() {
+	public PantallaModifciones() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 700);
 		contentPane = new JPanel();

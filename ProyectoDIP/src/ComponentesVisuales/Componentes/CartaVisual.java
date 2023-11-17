@@ -12,11 +12,16 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Util.Carta;
+
+import com.sun.crypto.provider.DESCipher;
+
 public class CartaVisual extends JPanel {
 
 	private String urlReverso;
 	private ImageIcon imagen;
 	private Point punto;
+	private TextPanel titulo, descripcion;
 	
 	public CartaVisual() {
 		urlReverso = "src/Recursos/reversoCarta.png";
@@ -27,6 +32,9 @@ public class CartaVisual extends JPanel {
 		catch(IOException e){
 			e.printStackTrace();
 		}
+		
+		titulo = new TextPanel();
+		descripcion = new TextPanel();
 		
 		addMouseListener(new MouseAdapter(){
 			@Override
@@ -46,7 +54,9 @@ public class CartaVisual extends JPanel {
 		});
 	}
 
-	public void voltearCarta(){
+	public void voltearCarta(Carta carta){
+		titulo.setText(carta.getNombre());
+		this.add(titulo);
 	}
 	
 	@Override

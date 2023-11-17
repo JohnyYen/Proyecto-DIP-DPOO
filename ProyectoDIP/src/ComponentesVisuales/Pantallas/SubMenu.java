@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Pantallas;
 
 import java.awt.Color;
 import java.awt.FlowLayout;

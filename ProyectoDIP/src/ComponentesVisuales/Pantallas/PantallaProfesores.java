@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Pantallas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -32,7 +32,7 @@ public class PantallaProfesores extends JFrame {
 		Boton editarNiveles = new Boton("Editar Niveles", 200,200, 10, 10);
 		editarNiveles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TablaModificaciones tabla = new TablaModificaciones();
+				PantallaModifciones tabla = new PantallaModifciones();
 				dispose();
 				tabla.setVisible(true);
 			}

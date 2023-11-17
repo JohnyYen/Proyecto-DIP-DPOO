@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Componentes;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -11,12 +11,12 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JTextField;
 
-public class Nivel3Editar extends JPanel {
+public class EditarNivel3 extends JPanel {
 
 	private JPanel contentPane;
 	private JTextField nombCarta;
 	private JTextField descCarta;
-	public Nivel3Editar() {
+	public EditarNivel3() {
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 300);
 		//contentPane = new JPanel();

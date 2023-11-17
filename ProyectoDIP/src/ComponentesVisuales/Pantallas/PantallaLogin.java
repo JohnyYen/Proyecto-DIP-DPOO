@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Pantallas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -16,13 +16,13 @@ import ComponentesVisuales.Componentes.Boton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Login extends JFrame {
+public class PantallaLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField passwordField_1;
 	private JTextField textField;
 
-	public Login() {
+	public PantallaLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 392, 253);
 		contentPane = new JPanel();

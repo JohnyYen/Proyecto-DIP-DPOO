@@ -37,10 +37,12 @@ public class Iniciadora {
 				textoRespuesta = buffer.readLine();
 				juego.getInformacionJuego().crearPreguntaNivelUno(textoPregunta, Boolean.parseBoolean(textoRespuesta));
 			}
+			buffer.close();
 		}
 		catch(IOException e){
-			
+			e.printStackTrace();
 		}
+		
 	}
 	
 }

@@ -1,8 +1,9 @@
 package Logica;
 
 import javax.swing.*;
+
 import Personajes.*;
-import ComponentesVisuales.MenuPrincipal;
+import ComponentesVisuales.Pantallas.MenuPrincipal;
 
 public abstract class ControladorJuego {
 	protected Heroe guardarHeroe;

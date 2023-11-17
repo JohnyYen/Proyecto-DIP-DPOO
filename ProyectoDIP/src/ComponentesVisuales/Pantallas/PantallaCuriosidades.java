@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Pantallas;
 
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -23,10 +23,10 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.ScrollPaneConstants;
 
-public class Curiosidades extends JFrame {
+public class PantallaCuriosidades extends JFrame {
 	private JTable table;
 
-	public Curiosidades() {
+	public PantallaCuriosidades() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 700, 576);
 		JPanel contentPane = new JPanel(){

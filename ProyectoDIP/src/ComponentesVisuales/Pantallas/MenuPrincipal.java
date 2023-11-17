@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Pantallas;
 
 
 import java.awt.*;
@@ -73,7 +73,7 @@ public class MenuPrincipal extends JFrame {
 		botonNuevoJuego.setBounds(202, 216, 280, 61);
 		botonNuevoJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Transicion transicion = new Transicion();
+				PantallaTransicion transicion = new PantallaTransicion();
 				dispose();
 				transicion.setVisible(true);
 			}
@@ -116,7 +116,7 @@ public class MenuPrincipal extends JFrame {
 		botonCuriosidades.setBounds(202, 374, 280, 53);
 		botonCuriosidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Curiosidades curiosidades = new Curiosidades();
+				PantallaCuriosidades curiosidades = new PantallaCuriosidades();
 				dispose();
 				curiosidades.setVisible(true);
 			}

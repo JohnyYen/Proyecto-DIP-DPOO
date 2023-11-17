@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Pantallas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,7 +25,7 @@ import ComponentesVisuales.Niveles.PrimerNivel;
 import Logica.Juego;
 import Recursos.CustomFont;
 
-public class Transicion extends JFrame {
+public class PantallaTransicion extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel cuadroDialogos;
@@ -45,7 +45,7 @@ public class Transicion extends JFrame {
 				try {
 					Juego juego = null;
 					Juego.crearJuego();
-					Transicion frame = new Transicion(Juego.obtenerJuego());
+					PantallaTransicion frame = new PantallaTransicion(Juego.obtenerJuego());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +57,7 @@ public class Transicion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Transicion(final Juego juego) {
+	public PantallaTransicion(final Juego juego) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 700, 576);
 		contentPane = new JPanel(){

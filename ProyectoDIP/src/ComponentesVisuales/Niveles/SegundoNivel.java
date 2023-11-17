@@ -5,9 +5,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import ComponentesVisuales.SubMenu;
 import ComponentesVisuales.Componentes.LabelPreguntas;
 import ComponentesVisuales.Componentes.LabelRespuestasSegundoNivel;
+import ComponentesVisuales.Pantallas.SubMenu;
 import Logica.InformacionJuego;
 import Logica.InformacionJuegoActual;
 import Logica.Juego;
