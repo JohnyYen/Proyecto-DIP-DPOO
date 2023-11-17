@@ -17,13 +17,13 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import Util.Corazon;
+import ComponentesVisuales.Componentes.BarraMenu;
 
 public class PrimerNivel extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private Juego juego;
 	private JPanel contentPane;
-	private SubMenu submenu;
 	private LabelRespuestas labelRespuestas;
 	private LabelPreguntas labelPreguntas;
 	private ArrayList<Corazon> corazones;
@@ -53,6 +53,9 @@ public class PrimerNivel extends JFrame {
 		corazones = new ArrayList<Corazon>();
 		corazonesVillano = new ArrayList<Corazon>();
 		
+		BarraMenu barraMenu = new BarraMenu();
+		setJMenuBar(barraMenu);
+		
 		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -69,21 +72,6 @@ public class PrimerNivel extends JFrame {
 		
 		//Controlador
 		juego.crearControladorNivelUno(heroe, cleopatra);
-		//El submenu del juego
-		submenu = new SubMenu(this, true);
-		contentPane.add(submenu);
-		submenu.setVisible(false);
-		
-		//Botón de Menú
-		JButton botonMenu = new JButton();
-		botonMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(!submenu.isVisible()) submenu.setVisible(true);
-			}
-		});
-		botonMenu.setBounds(550,-50,200,200);
-		diseniarBoton(botonMenu);
-		contentPane.add(botonMenu);
 		
 		
 		//Label donde se ven las preguntas
@@ -185,10 +173,5 @@ public class PrimerNivel extends JFrame {
 	
 	private void diseniarBoton(JButton boton){
 		ImageIcon icono = new ImageIcon("src/Recursos/MenuPrincipalBoton.png");
-		boton.setIcon(new ImageIcon(icono.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH)));
-		boton.setBorderPainted(false);
-		boton.setFocusPainted(false);
-		boton.setContentAreaFilled(false);
-		boton.setLayout(new OverlayLayout(boton) );
 	}
 }

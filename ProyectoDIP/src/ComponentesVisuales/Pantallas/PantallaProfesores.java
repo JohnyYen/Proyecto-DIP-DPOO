@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import ComponentesVisuales.Componentes.Boton;
 import Recursos.CustomFont;
 import ComponentesVisuales.Componentes.BotonExtendido;
+import ComponentesVisuales.Componentes.BarraMenu;
 
 public class PantallaProfesores extends JFrame {
 
@@ -26,6 +27,9 @@ public class PantallaProfesores extends JFrame {
 		setTitle("Hello World!: Modo Profesor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 900, 700);
+		
+		BarraMenu barraMenu = new BarraMenu();
+		setJMenuBar(barraMenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

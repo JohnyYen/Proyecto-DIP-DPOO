@@ -35,22 +35,15 @@ public class TextPanel extends JTextArea {
 	
 	@Override
 	public void setText(String texto) {
-		
-		if(!texto.contains("\n")){
-			super.setText(texto);
+		//Reemplazar todos los \n con saltos de Linea
+		String textoModificado = texto.replaceAll("\\n", System.lineSeparator());
+		try{
+			//Cambiar el texto del componente
+			super.setText(textoModificado);			
 		}
-		else{
-			//Reemplazar todos los \n con saltos de Linea
-			String textoModificado = texto.replaceAll("\n", System.lineSeparator());
-			try{
-				//Cambiar el texto del componente
-				super.setText(textoModificado);			
-			}
-			catch( NullPointerException e){
-				e.printStackTrace();
-			}
-		}
-		
+		catch( NullPointerException e){
+			e.printStackTrace();
+		}		
 	}
 	
 	

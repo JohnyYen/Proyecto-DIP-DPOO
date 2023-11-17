@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 
 import Recursos.CustomFont;
 import ComponentesVisuales.Componentes.CartaVisual;
+import ComponentesVisuales.Componentes.BarraMenu;
 
 public class TercerNivel extends JFrame {
 
@@ -54,6 +55,9 @@ public class TercerNivel extends JFrame {
 		setTitle("Hello World! : Tercer Nivel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 900, 700);
+		
+		BarraMenu barraMenu = new BarraMenu();
+		setJMenuBar(barraMenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

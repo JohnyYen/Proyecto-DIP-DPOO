@@ -15,6 +15,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 import ComponentesVisuales.Componentes.BotonExtendido;
+import ComponentesVisuales.Componentes.BarraMenu;
 
 public class MenuPrincipal extends JFrame {
 
@@ -51,6 +52,9 @@ public class MenuPrincipal extends JFrame {
 		setTitle("Hello World!: Men\u00FA Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 700, 576);
+		
+		BarraMenu barraMenu = new BarraMenu();
+		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;
 
@@ -150,7 +154,7 @@ public class MenuPrincipal extends JFrame {
 				int width = getContentPane().getWidth();
 				int height = getContentPane().getHeight();
 				
-				titulo.setsi
+				
 				titulo.setBounds(titulo.getX()+1, titulo.getY(), titulo.getWidth(), titulo.getHeight());
 				
 			}

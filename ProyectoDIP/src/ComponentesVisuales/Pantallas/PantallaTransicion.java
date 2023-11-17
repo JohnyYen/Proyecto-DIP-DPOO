@@ -31,6 +31,7 @@ import Logica.Juego;
 import Recursos.CustomFont;
 import ComponentesVisuales.Componentes.CuadroDialogo;
 import ComponentesVisuales.Componentes.TextPanel;
+import ComponentesVisuales.Componentes.BotonExtendido;
 
 public class PantallaTransicion extends JFrame {
 	private JLabel BotonZ;
@@ -68,7 +69,7 @@ public class PantallaTransicion extends JFrame {
 		//TextPane para los dialogos
 		textPane = new TextPanel();
 		textPane.setForeground(Color.RED);
-		//textPane.setText("Tengo que hacer el proyecto de DPOO");
+		textPane.setText("Tengo que hacer el proyecto de DPOO");
 		textPane.setBounds(10, 580, 480, 70);
 		frame.add(textPane);
 		
@@ -93,18 +94,52 @@ public class PantallaTransicion extends JFrame {
 		BotonX.setForeground(Color.black);
 		frame.setLayout(null);
 		
-		frame.add(BotonX);
-		frame.add(BotonZ);
+		//frame.add(BotonX);
+		//frame.add(BotonZ);
 		
 		frame.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(frame);
 		
 		getContentPane().setLayout(null);
 		
+		BotonExtendido teclaZ = new BotonExtendido();
+		teclaZ.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					System.out.print("Hola");
+					if(buffer.ready()){
+						textPane.setText(buffer.readLine());
+						frame.aumentarFrame();
+					}
+					else{
+						//PrimerNivel primerNivel = new PrimerNivel(juego);
+						dispose();
+						//primerNivel.setVisible(true);
+					}
+			    }
+				catch(IOException a){
+					
+				}
+			}
+		});
+		teclaZ.setText("Z - Continuar");
+		teclaZ.setBounds(10, 490, 231, 28);
+		frame.add(teclaZ);
 		
-		this.setLocationRelativeTo(null);
+		BotonExtendido btnxtndXSaltar = new BotonExtendido();
+		btnxtndXSaltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//PrimerNivel pri = new PrimerNivel(juego);
+				dispose();
+				//pri.setVisible(true);
+			}
+		});
+		btnxtndXSaltar.setText("X - Saltar");
+		btnxtndXSaltar.setBounds(243, 490, 231, 28);
+		frame.add(btnxtndXSaltar);
 		
 		eventoTeclado();
+		this.setLocationRelativeTo(null);
 	}
 	
 	public void eventoTeclado(){

@@ -7,10 +7,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import ComponentesVisuales.Componentes.CuadroDialogo;
+import ComponentesVisuales.Componentes.TextPanel;
+import ComponentesVisuales.Componentes.BotonExtendido;
+import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Pruebas extends JFrame {
 
 	private JPanel contentPane;
+	private JTextArea textArea;
+	private TextPanel textPanel;
+	private BotonExtendido btnxtndTocame;
 
 	/**
 	 * Launch the application.
@@ -39,15 +47,24 @@ public class Pruebas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		CuadroDialogo cdrdlgHola = new CuadroDialogo();
-		cdrdlgHola.setText("Hola");
-		cdrdlgHola.setBounds(51, 11, 457, 191);
-		contentPane.add(cdrdlgHola);
+		textPanel = new TextPanel();
+		textPanel.setText("hello\nhello");
+		textPanel.setBounds(10, 121, 210, 78);
+		contentPane.add(textPanel);
 		
-		CuadroDialogo cdrdlgHello = new CuadroDialogo();
-		cdrdlgHello.setText("Hello");
-		cdrdlgHello.setBounds(-18, 134, 451, 68);
-		contentPane.add(cdrdlgHello);
+		btnxtndTocame = new BotonExtendido();
+		btnxtndTocame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textPanel.setText(textArea.getText());
+			}
+		});
+		btnxtndTocame.setText("Tocame");
+		btnxtndTocame.setBounds(222, 150, 210, 28);
+		contentPane.add(btnxtndTocame);
+		
+		textArea = new JTextArea();
+		textArea.setBounds(247, 26, 173, 20);
+		contentPane.add(textArea);
 		
 		System.out.println((int)3.254+ System.lineSeparator() + "Hola");
 		
