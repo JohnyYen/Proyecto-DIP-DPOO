@@ -56,22 +56,6 @@ public class Pruebas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		PanelPreguntasNivelDos p = new PanelPreguntasNivelDos();
-		p.getOpcion3().setText("holaaaaa");
-		p.getOpcion2().setText("holaaaaaaaaa");
-		p.getOpcion1().setText("hola");
-		p.getOpcion2().setSize(679, 64);
-		p.getOpcion3().setSize(668, 64);
-		p.getOpcion1().setSize(679, 64);
-		p.getOpcion3().setLocation(80, 206);
-		p.getOpcion2().setLocation(103, 313);
-		p.getOpcion1().setLocation(80, 120);
-		p.setBounds(167, 174, 931, 513);
-		p.setLayout(null);
-		//p.repaint();
-		//p.revalidate();
-		contentPane.add(p);
-		
 		JTextArea txtrDasdsasasadsadsadsadsadsadsad = new JTextArea();
 		txtrDasdsasasadsadsadsadsadsadsad.setOpaque(false);
 		txtrDasdsasasadsadsadsadsadsadsad.setFocusable(false);
@@ -81,11 +65,6 @@ public class Pruebas extends JFrame {
 		txtrDasdsasasadsadsadsadsadsadsad.setText("dasdsasasadsadsadsadsadsadsad");
 		txtrDasdsasasadsadsadsadsadsadsad.setBounds(29, 30, 166, 67);
 		contentPane.add(txtrDasdsasasadsadsadsadsadsadsad);
-		
-		btnprueba btnprueba_ = new btnprueba();
-		btnprueba_.setText("holaa mi nombre es rafael");
-		btnprueba_.setBounds(405, 45, 478, 82);
-		contentPane.add(btnprueba_);
 		BotonExtendidoNivel2 btnxtndnvl2Hola = new BotonExtendidoNivel2();
 		btnxtndnvl2Hola.setText("Hola");
 		btnxtndnvl2Hola.setBounds(33, 97, 463, 76);
@@ -97,13 +76,14 @@ public class Pruebas extends JFrame {
 		contentPane.add(btnxtndHola);
 		
 		JTextPane txtpnHola = new JTextPane();
+		txtpnHola.setEditable(false);
 		txtpnHola.setText("Hola\\nHello");
 		txtpnHola.setBounds(52, 229, 200, 50);
 		contentPane.add(txtpnHola);
 		
 		TextPanel txtpnlHola = new TextPanel();
 		txtpnlHola.setText("Hola\nHola\nHello\nHola\nHola\nHola\nHola\n");
-		txtpnlHola.setBounds(305, 237, 153, 51);
+		txtpnlHola.setBounds(431, 30, 153, 51);
 		contentPane.add(txtpnlHola);
 		
 		JTextArea textArea = new JTextArea();
