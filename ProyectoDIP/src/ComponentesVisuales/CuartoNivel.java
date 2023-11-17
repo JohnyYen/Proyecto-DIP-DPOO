@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.border.LineBorder;
 
@@ -20,6 +21,8 @@ import Logica.ControladorCuartoNivel;
 
 public class CuartoNivel extends JFrame {
 	private JPanel contentPane;
+	private String comunicar;
+	 private  int ordenar;
 	
 	public CuartoNivel(){
 		setTitle("¡Encuentra los objetos!");
@@ -55,10 +58,15 @@ public class CuartoNivel extends JFrame {
         /*Peticion objetos*/
         
        JPanel labelPanel = new JPanel();
-        labelPanel.setLayout(new FlowLayout()); 
-        labelPanel.setBounds(64, 58, 551, 53);
+        labelPanel.setBounds(56, 49, 580, 75);
         labelPanel.setBackground(Color.WHITE); 
         getContentPane().add(labelPanel);
+        labelPanel.setLayout(null);
+        
+        
+        JLabel lblNewLabel = new JLabel(this.comunicar);
+        lblNewLabel.setBounds(12, 0, 568, 75);
+        labelPanel.add(lblNewLabel);
        
        
         
@@ -128,8 +136,38 @@ public class CuartoNivel extends JFrame {
              labelPanel.add(label);
          }
      }
-         
+        
 	
+	public void informarOrden(){
+		int control = 0;
+		Random r =new Random();
+	   control = (int)(r.nextDouble()*10-5);
+		
+	   switch(control){
+		case 1: this.comunicar = "El orden seleccionado es: de forma ascendente" ;
+			
+			break;
+			
+		case 2: this.comunicar = "El orden seleccionado es: de forma ascendente";
+			break;
+			
+			
+		case 3: this.comunicar = "El orden seleccionado es: de forma ascendente";
+			break;
+			
+		case 4: this.comunicar = "El orden seleccionado es: de forma ascendente";
+			
+			break;
+		
+			
+			default: this.comunicar = "El orden seleccionado es: de forma ascendente"
+				
+				 ;
+				
+		}
+	   
+	}
+
 	
 	
 
@@ -147,5 +185,27 @@ public class CuartoNivel extends JFrame {
 				}
 			}
 		});
+	}
+
+	/**
+	 * @return the ordenar
+	 */
+	public int getOrdenar() {
+		return ordenar;
+	}
+
+	/**
+	 * @param ordenar the ordenar to set
+	 */
+ private void setOrdenar(int ordenar) {
+		this.ordenar = ordenar;
+	}
+
+	public String getComunicar() {
+		return comunicar;
+	}
+
+	public void setComunicar(String comunicar) {
+		this.comunicar = comunicar;
 	}
 }

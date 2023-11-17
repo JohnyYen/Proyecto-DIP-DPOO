@@ -7,6 +7,8 @@ import Personajes.Heroe;
 import Personajes.Villana;
 import Util.Objetos;
 
+
+
 public class ControladorCuartoNivel extends ControladorJuego {
 
 private ArrayList <Objetos> objDisponibles ;
@@ -20,6 +22,9 @@ public ControladorCuartoNivel(Heroe heroe, Villana villano,ArrayList <Objetos> o
 		objDisponibles = new ArrayList <Objetos>(12);
 		objPerdidos = new ArrayList<Objetos>(4);
 		objEncontrados  = new ArrayList<Objetos>(4);
+		asignarObjetosPerdidos();
+		int orde = ComponentesVisuales.CuartoNivel.
+		ordenEsCorrecto(, ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados)
 		
 	}
 
@@ -70,33 +75,6 @@ public void asignarObjetosPerdidos() {
 }
 
 
-public int informarOrden(){
-	int control = 0;
-	Random r =new Random();
-   control = (int)(r.nextDouble()*10-5);
-	
-   switch(control){
-	case 1: System.out.println("");
-		
-		break;
-		
-	case 2: System.out.println("");
-		break;
-		
-		
-	case 3: System.out.println("");
-		break;
-	
-		
-		default:
-			
-			 System.out.println("");
-			
-	}
-   
-   
-	return control;
-}
 
 
 public ArrayList<String> obtenerInfo() {
