@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import ComponentesVisuales.Niveles.*;
-import ComponentesVisuales.Niveles.PrimerNivel;
+import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
 
 public class Iniciadora {
@@ -17,9 +17,9 @@ public class Iniciadora {
 				try {  
 					Juego juego = new Juego();
 					inicializarDatosPrimerNivel(juego);
-					PrimerNivel primerNivel = new PrimerNivel(juego);
-					
-					primerNivel.setVisible(true);
+					PrimerNivel frame = new PrimerNivel(juego);
+					//PantallaProfesores frame = new PantallaProfesores();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,10 +37,12 @@ public class Iniciadora {
 				textoRespuesta = buffer.readLine();
 				juego.getInformacionJuego().crearPreguntaNivelUno(textoPregunta, Boolean.parseBoolean(textoRespuesta));
 			}
+			buffer.close();
 		}
 		catch(IOException e){
-			
+			e.printStackTrace();
 		}
+		
 	}
 	
 }

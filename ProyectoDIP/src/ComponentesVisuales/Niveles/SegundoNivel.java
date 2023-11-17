@@ -5,9 +5,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import ComponentesVisuales.LabelPreguntas;
-import ComponentesVisuales.LabelRespuestasSegundoNivel;
-import ComponentesVisuales.SubMenu;
+import ComponentesVisuales.Componentes.LabelPreguntas;
+import ComponentesVisuales.Componentes.LabelRespuestasSegundoNivel;
+import ComponentesVisuales.Pantallas.SubMenu;
 import Logica.InformacionJuego;
 import Logica.InformacionJuegoActual;
 import Logica.Juego;
@@ -40,6 +40,7 @@ public class SegundoNivel extends JFrame {
 	private SubMenu submenu;
 
 	public SegundoNivel(Juego juego) {
+		setTitle("Hello World! : Segundo Nivel");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 786, 565);

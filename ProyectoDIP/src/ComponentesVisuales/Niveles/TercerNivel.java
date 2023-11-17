@@ -20,7 +20,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
 import Recursos.CustomFont;
-import ComponentesVisuales.CartaVisual;
+import ComponentesVisuales.Componentes.CartaVisual;
+import ComponentesVisuales.Componentes.BarraMenu;
 
 public class TercerNivel extends JFrame {
 
@@ -29,7 +30,7 @@ public class TercerNivel extends JFrame {
 	private JPanel setCarta2Enemigo;
 	private JPanel setCarta3Enemigo;
 	private JLabel cuadroDialogos; 
-	private JLabel cuadroDescripcion;
+	private JPanel descripcionCarta;
 
 	/**
 	 * Launch the application.
@@ -51,8 +52,12 @@ public class TercerNivel extends JFrame {
 	 * Create the frame.
 	 */
 	public TercerNivel() {
+		setTitle("Hello World! : Tercer Nivel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 746);
+		setBounds(300, 20, 900, 700);
+		
+		BarraMenu barraMenu = new BarraMenu();
+		setJMenuBar(barraMenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -96,10 +101,11 @@ public class TercerNivel extends JFrame {
 		cuadroDialogos = new JLabel();
 		diseniarLabel(cuadroDialogos);
 		
-		cuadroDescripcion = new JLabel("Hola");
-		cuadroDescripcion.setBounds(165, 447, 502, 68);
-		diseniarLabel(cuadroDescripcion);
-		contentPane.add(cuadroDescripcion);
+		descripcionCarta = new JPanel();
+		descripcionCarta.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		descripcionCarta.setBackground(Color.WHITE);
+		descripcionCarta.setBounds(64, 416, 63, 89);
+		contentPane.add(descripcionCarta);
 		
 	}
 	
@@ -112,7 +118,7 @@ public class TercerNivel extends JFrame {
 		cuadro.setForeground(Color.WHITE);
 		
 		cuadro.setText("Tengo que hacer el proyecto de DPOO");
-		cuadro.setBounds(257, 73, 450, 115);
+		cuadro.setBounds(273, 73, 450, 115);
 		cuadro.setIcon(new ImageIcon(iconLabel)); //Cambiar de imagen en el Label
 		cuadro.setVerticalTextPosition(SwingConstants.CENTER);
 		cuadro.setHorizontalTextPosition(SwingConstants.CENTER);
