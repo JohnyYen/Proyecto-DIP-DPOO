@@ -32,8 +32,8 @@ public class Juego {
 	}
 	public ControladorPrimerNivel getControladorNivelUno(){ return (ControladorPrimerNivel)controlador;}
 	
-	public void crearControladorNivelDos(Heroe heroe, Cleopatra villana){
-		controlador = new ControladorSegundoNivel(heroe, villana, informacionActual);
+	public void crearControladorNivelDos(Heroe heroe, Medusa medusa){
+		controlador = new ControladorSegundoNivel(heroe, medusa, informacionActual);
 	}
 
 	public ControladorSegundoNivel getControladorNivelDos() {

@@ -4,9 +4,13 @@ import java.awt.*;
 
 import javax.swing.border.EmptyBorder;
 
+import ComponentesVisuales.Componentes.LabelPreguntas;
+import ComponentesVisuales.Componentes.LabelRespuestasSegundoNivel;
+import ComponentesVisuales.Pantallas.SubMenu;
 import Logica.Juego;
 import Personajes.Cleopatra;
 import Personajes.Heroe;
+import Personajes.Medusa;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -27,7 +31,7 @@ public class SegundoNivel extends JFrame {
 	private SubMenu submenu;
 	private Juego juego;
 
-	public SegundoNivel(Juego juego) {
+	public SegundoNivel(final Juego juego) {
 		setTitle("Hello World! : Segundo Nivel");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,16 +51,16 @@ public class SegundoNivel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Cleopatra cleopatra = new Cleopatra();
-		cleopatra.setBounds(793, 91, 268, 246);
-		contentPane.add(cleopatra);
+		Medusa medusa = new Medusa();
+		medusa.setBounds(793, 91, 268, 246);
+		contentPane.add(medusa);
 		
 		Heroe heroe = new Heroe();
 		heroe.setBounds(28, 457, 305, 308);
 		contentPane.add(heroe);
 		
 		//Controlador Segundo Nivel
-		juego.crearControladorNivelDos(heroe, cleopatra);
+		juego.crearControladorNivelDos(heroe, medusa);
 		
 		//El submenu del juego
 		submenu = new SubMenu(this, true);
@@ -75,7 +79,7 @@ public class SegundoNivel extends JFrame {
 		contentPane.add(botonMenu);
 	
 		//Label donde se ven las preguntas
-		labelPreguntas = new LabelPreguntas(juego.getInformacionJuego().getPreguntasNivelDos(),200, 150, 400, 150);
+		labelPreguntas = new LabelPreguntas(200, 150, 400, 150);
 		labelPreguntas.setPreferredSize(new Dimension(400, 300));
 		labelPreguntas.setBounds(new Rectangle(200, 150, 400, 500));
 		labelPreguntas.setSize(new Dimension(450, 179));
@@ -149,12 +153,5 @@ public class SegundoNivel extends JFrame {
 		boton.setFocusPainted(false);
 		boton.setContentAreaFilled(false);
 		boton.setLayout(new OverlayLayout(boton) );
-	}
-	
-	public void ponerRespuestas(LabelRespuestasSegundoNivel labelRespuestas) {
-		int preguntaActual = juego.getControladorNivelDos().getPreguntaActual();
-		labelRespuestas.getOpcion1().setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));
-		labelRespuestas.getOpcion2().setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1));
-		labelRespuestas.getOpcion3().setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2));
 	}
 }

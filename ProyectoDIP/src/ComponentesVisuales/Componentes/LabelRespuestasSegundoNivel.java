@@ -19,7 +19,7 @@ public class LabelRespuestasSegundoNivel extends JLabel{
 		opcion3 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2), 700, 450, 50, 100);
 		add(opcion1);
 		add(opcion2);
-		add(opcion3);*/
+		add(opcion3);
 		this.setBounds(x,y,ancho,alto);
 	}
 	
