@@ -23,8 +23,6 @@ public ControladorCuartoNivel(Heroe heroe, Villana villano,ArrayList <Objetos> o
 		objPerdidos = new ArrayList<Objetos>(4);
 		objEncontrados  = new ArrayList<Objetos>(4);
 		asignarObjetosPerdidos();
-		int orde = ComponentesVisuales.CuartoNivel.
-		ordenEsCorrecto(, ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados)
 		
 	}
 
@@ -114,9 +112,14 @@ public boolean ordenEsCorrecto(int control, ArrayList<Objetos> objPerdidos,Array
 		
 		default:
 		orden = false;	
+		super.quitarVidaHeroe();
+	}
+	}
 	
+	if(orden == true){
+		super.quitarVidaVillano();
 	}
-	}
+	
 	return orden;
 	
 	

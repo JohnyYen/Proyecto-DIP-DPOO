@@ -26,7 +26,7 @@ public class CuartoNivel extends JFrame {
 	
 	public CuartoNivel(){
 		setTitle("¡Encuentra los objetos!");
-        setSize(843, 660);
+        setSize(900, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		/*Fondo*/
