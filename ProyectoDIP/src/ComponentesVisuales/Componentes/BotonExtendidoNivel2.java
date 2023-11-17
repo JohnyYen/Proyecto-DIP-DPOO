@@ -10,6 +10,11 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class BotonExtendidoNivel2 extends BotonExtendido {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BotonExtendidoNivel2(){
 		super();
 		urlLiberado = "src/Recursos/BotonNivel2.png";

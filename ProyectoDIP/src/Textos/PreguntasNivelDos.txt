@@ -1,14 +1,14 @@
-<html>¿En que se diferencian los bucles "for" y "while" en programacion?
+¿En que se diferencian los bucles "for" y "while" en programacion?
 <html>Un bucle "for" siempre ejecuta un numero fijo de iteraciones, mientras que un bucle "while" depende de una condicion.
 <html>Un bucle "for" siempre ejecuta un numero fijo de iteraciones, mientras que un bucle "while" depende de una condicion.
 <html>Un bucle "for" solo se utiliza para contar, mientras que un bucle "while" se utiliza para otras tareas.
 <html>Un bucle "for" siempre es mas eficiente que un bucle "while".
-<html>¿Cual es la diferencia principal entre un bucle while y un bucle do-while?
+¿Cual es la diferencia principal entre un bucle while y un bucle do-while?
 <html>Un bucle do-while se ejecuta al menos una vez, independientemente de la condicion.
 <html>Un bucle while se ejecuta al menos una vez, independientemente de la condicion.
 <html>Un bucle do-while se ejecuta al menos una vez, independientemente de la condicion.
 <html>Un bucle do-while se ejecuta solo si la condicion es verdadera desde el principio.
-<html>¿Cual es el proposito de la declaracion break en un bucle?
+¿Cual es el proposito de la declaracion break en un bucle?
 <html>Para salir de un bucle y continuar con la ejecucion del programa.
 <html>Para salir de un bucle y continuar con la ejecucion del programa.
 <html>Para detener por completo la ejecucion del programa.
