@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import ComponentesVisuales.Componentes.Boton;
 import Recursos.CustomFont;
 
 public class PantallaProfesores extends JFrame {

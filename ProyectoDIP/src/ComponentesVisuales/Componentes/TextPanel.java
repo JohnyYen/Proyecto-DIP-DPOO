@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Componentes;
 
 import java.awt.Component;
 import java.awt.Dimension;

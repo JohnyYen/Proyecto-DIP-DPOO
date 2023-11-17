@@ -6,6 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import ComponentesVisuales.Componentes.Boton;
 import Recursos.CustomFont;
 
 import java.awt.event.ActionListener;

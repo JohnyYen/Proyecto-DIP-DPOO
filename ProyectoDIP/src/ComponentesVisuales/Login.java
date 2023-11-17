@@ -10,6 +10,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import ComponentesVisuales.Componentes.Boton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 

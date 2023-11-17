@@ -10,6 +10,8 @@ import java.awt.Toolkit;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
+import ComponentesVisuales.Componentes.Boton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.ObjectInputStream.GetField;

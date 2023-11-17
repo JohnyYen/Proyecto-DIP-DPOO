@@ -1,4 +1,4 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Componentes;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -10,10 +10,12 @@ public class BarraMenu extends JMenuBar{
 		JMenu menuOpciones = new JMenu("Opciones");
 		JMenu menuNiveles = new JMenu("Niveles");
 		JMenu menuPuntuaciones = new JMenu("Puntuaciones");
+		JMenu menuEditar = new JMenu("Editar Niveles");
 		
 		this.add(menuOpciones);
 		this.add(menuNiveles);
 		this.add(menuPuntuaciones);
+		this.add(menuEditar);		
 		
 		JMenuItem guardarPartida = new JMenuItem("Guardar Partida");
 		JMenuItem configuraciones = new JMenuItem("Configuraciones");
@@ -51,6 +53,16 @@ public class BarraMenu extends JMenuBar{
 		menuPuntuaciones.add(puntuacionNivelDos);
 		menuPuntuaciones.add(puntuacionNivelTres);
 		menuPuntuaciones.add(puntuacionNivelCuatro);
+		
+		JMenuItem editarNivelUno = new JMenuItem("Editar Nivel 1");
+		JMenuItem editarNivelDos = new JMenuItem("Editar Nivel 2");
+		JMenuItem editarNivelTres = new JMenuItem("Editar Nivel 3");
+		JMenuItem editarNivelCuatro = new JMenuItem("Editar Nivel 4");
+		
+		menuEditar.add(editarNivelUno);
+		menuEditar.add(editarNivelDos);
+		menuEditar.add(editarNivelTres);
+		menuEditar.add(editarNivelCuatro);
 	}
 
 }

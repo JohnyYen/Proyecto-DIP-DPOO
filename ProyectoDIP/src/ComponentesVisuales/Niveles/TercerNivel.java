@@ -20,7 +20,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
 import Recursos.CustomFont;
-import ComponentesVisuales.CartaVisual;
+import ComponentesVisuales.Componentes.CartaVisual;
 
 public class TercerNivel extends JFrame {
 

@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import ComponentesVisuales.Componentes.Boton;
 import Recursos.CustomFont;
 import Util.CuriosidadesTableModel;
 import Util.RenderizadorImagenes;

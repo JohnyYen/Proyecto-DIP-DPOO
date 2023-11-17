@@ -1,8 +1,10 @@
 package ComponentesVisuales;
 
 import java.awt.BorderLayout;
+
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicRadioButtonUI;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -14,13 +16,18 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JRadioButton;
 
+import ComponentesVisuales.Componentes.Boton;
 import Recursos.CustomFont;
 
 import java.awt.Color;
+
 import javax.swing.ImageIcon;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.plaf.basic.BasicRadioButtonUI;
+
 import java.awt.Component;
 import java.awt.Font;
 public class MenuOpciones extends JFrame {
