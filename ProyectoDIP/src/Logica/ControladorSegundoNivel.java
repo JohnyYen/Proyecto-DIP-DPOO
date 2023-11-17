@@ -22,10 +22,9 @@ public class ControladorSegundoNivel extends ControladorJuego {
 	
 	public boolean analizarRespuesta(String respuesta){
 		boolean respuestaCorrecta = false;
-		
-		if(respuesta.equalsIgnoreCase(preguntas.get(preguntaActual).getRespuesta()))
+		if(respuesta.equals(preguntas.get(preguntaActual).getRespuesta())){
 			respuestaCorrecta = true;
-		
+		}
 		return respuestaCorrecta;
 	}
 	

@@ -16,7 +16,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
+
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -95,10 +97,13 @@ public class SegundoNivel extends JFrame {
 		opcion1 = new BotonExtendidoNivel2();
 		opcion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(juego.getControladorNivelDos().analizarRespuesta(opcion1.getText()))
+				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(0))){
 					juego.getControladorNivelDos().quitarVidaVillano();
-				else
+					corazonesNivel.quitarVidaVillano();
+				}else{
 					juego.getControladorNivelDos().quitarVidaHeroe();
+					corazonesNivel.quitarVidaHeroe();
+				}
 				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 				ponerPosiblesRespuestas();
@@ -110,11 +115,13 @@ public class SegundoNivel extends JFrame {
 		opcion2 = new BotonExtendidoNivel2();
 		opcion2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(juego.getControladorNivelDos().analizarRespuesta(opcion2.getText()))
+				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(1))){
 					juego.getControladorNivelDos().quitarVidaVillano();
-				else
+					corazonesNivel.quitarVidaVillano();
+				}else{
 					juego.getControladorNivelDos().quitarVidaHeroe();
-				
+					corazonesNivel.quitarVidaHeroe();
+				}
 				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 				ponerPosiblesRespuestas();
 			}
@@ -125,11 +132,13 @@ public class SegundoNivel extends JFrame {
 		opcion3 = new BotonExtendidoNivel2();
 		opcion3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(juego.getControladorNivelDos().analizarRespuesta(opcion3.getText()))
+				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(2))){
 					juego.getControladorNivelDos().quitarVidaVillano();
-				else
+					corazonesNivel.quitarVidaVillano();
+				}else{
 					juego.getControladorNivelDos().quitarVidaHeroe();
-				
+					corazonesNivel.quitarVidaHeroe();
+				}
 				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 				ponerPosiblesRespuestas();
 			}

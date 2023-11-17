@@ -13,3 +13,28 @@
 <html>Para salir de un bucle y continuar con la ejecucion del programa.
 <html>Para detener por completo la ejecucion del programa.
 <html>Para cambiar el valor de una variable de control en un bucle.
+¿Cuál es el propósito de la palabra clave "continue" en un bucle?
+<html>Pasar a la siguiente iteración del bucle.
+<html>Salir del bucle por completo.
+<html>Ejecutar el bloque de código una vez más.
+<html>Pasar a la siguiente iteración del bucle.
+¿Cuál es la sintaxis de un bucle do-while?
+<html>do {acción} while (condición)
+<html>do-while (inicialización; condición; incremento) {acción}
+<html>do-while (condición; incremento) {acción}
+<html>do {acción} while (condición)
+¿Qué es un bucle anidado?
+<html>Un bucle que se ejecuta dentro de otro bucle.
+<html>Un bucle que se ejecuta varias veces.
+<html>Un bucle que se ejecuta dentro de otro bucle.
+<html>Un bucle que se ejecuta una sola vez.
+¿Cuál es la sintaxis de un bucle while infinito?
+<html>while (true) {acción}
+<html>while (true) {acción}
+<html>while (condición) {acción}
+<html>while (0) {acción}
+¿Cuál es la sintaxis de un bucle for-each?
+<html>for (tipo variable : arreglo) {acción}
+<html>for (inicialización; condición; incremento) {acción}
+<html>for (tipo variable : arreglo) {acción}
+<html>for (inicialización; condición; incremento) {tipo variable : arreglo}
