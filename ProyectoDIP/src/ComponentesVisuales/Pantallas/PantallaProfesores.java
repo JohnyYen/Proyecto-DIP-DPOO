@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import ComponentesVisuales.Componentes.Boton;
 import Recursos.CustomFont;
+import ComponentesVisuales.Componentes.BotonExtendido;
 
 public class PantallaProfesores extends JFrame {
 
@@ -20,29 +21,13 @@ public class PantallaProfesores extends JFrame {
 	private JPanel contentPane;
 	
 	public PantallaProfesores() {
+		setTitle("Hello World!: Modo Profesor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 524, 405);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
-		
-		Boton editarNiveles = new Boton("Editar Niveles", 200,200, 10, 10);
-		editarNiveles.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PantallaModifciones tabla = new PantallaModifciones();
-				dispose();
-				tabla.setVisible(true);
-			}
-		});
-		editarNiveles.setBounds(158, 179, 204, 39);
-		contentPane.add(editarNiveles);
-		
-		Boton verEstudiantes = new Boton("Ver Estudiantes", 200,200, 10, 60);
-		verEstudiantes.setBounds(148, 229, 214, 39);
-		contentPane.add(verEstudiantes);
 		
 		//Nueva Fuente
 		CustomFont cf = new CustomFont();
@@ -54,9 +39,11 @@ public class PantallaProfesores extends JFrame {
 		titulo.setBounds(183, 104, 348, 101);
 		contentPane.add(titulo);
 		
+		BotonExtendido btnxtndEditarNiveles = new BotonExtendido();
+		btnxtndEditarNiveles.setText("Editar Niveles");
+		btnxtndEditarNiveles.setBounds(128, 216, 209, 28);
+		contentPane.add(btnxtndEditarNiveles);
+		
 		
 	}
-
-	
-	
 }

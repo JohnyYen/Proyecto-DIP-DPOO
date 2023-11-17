@@ -27,6 +27,7 @@ public class PantallaModifciones extends JFrame {
 		t.setVisible(true);
 	}
 	public PantallaModifciones() {
+		setTitle("Hello World!: Editar Niveles");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 700);
 		contentPane = new JPanel();

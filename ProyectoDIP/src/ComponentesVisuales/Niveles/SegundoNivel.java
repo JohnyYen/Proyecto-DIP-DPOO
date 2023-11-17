@@ -40,6 +40,7 @@ public class SegundoNivel extends JFrame {
 	private SubMenu submenu;
 
 	public SegundoNivel(Juego juego) {
+		setTitle("Hello World! : Segundo Nivel");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 786, 565);

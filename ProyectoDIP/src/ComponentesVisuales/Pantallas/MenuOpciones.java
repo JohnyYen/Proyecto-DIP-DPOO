@@ -58,6 +58,7 @@ public class MenuOpciones extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuOpciones() {
+		setTitle("Hello World!: Opciones");
 		CustomFont cf = new CustomFont();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 694, 561);

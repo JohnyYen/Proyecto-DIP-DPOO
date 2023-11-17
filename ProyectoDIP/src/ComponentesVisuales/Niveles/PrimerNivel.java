@@ -36,6 +36,7 @@ public class PrimerNivel extends JFrame {
 	private Corazon corazon;
 	
 	public PrimerNivel(final Juego juego) {
+		setTitle("Hello World! : Primer Nivel");
 		this.juego = juego;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 700, 700);

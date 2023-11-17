@@ -21,13 +21,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import ComponentesVisuales.Componentes.FrameTransicion;
 import ComponentesVisuales.Niveles.PrimerNivel;
 import Logica.Juego;
 import Recursos.CustomFont;
 
 public class PantallaTransicion extends JFrame {
 
-	private JPanel contentPane;
 	private JLabel cuadroDialogos;
 	private JLabel BotonZ;
 	private JLabel BotonX;
@@ -35,6 +35,7 @@ public class PantallaTransicion extends JFrame {
 	private KeyListener tocarTecla;
 	private FileReader file;
 	private BufferedReader buffer;
+	private FrameTransicion frame;
 
 	/**
 	 * Launch the application.
@@ -59,14 +60,8 @@ public class PantallaTransicion extends JFrame {
 	 */
 	public PantallaTransicion(final Juego juego) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 20, 700, 576);
-		contentPane = new JPanel(){
-			private static final long serialVersionUID = 1L;
-			public void paintComponent(Graphics g) {
-				Image img = Toolkit.getDefaultToolkit().getImage(MenuPrincipal.class.getResource("/Recursos/Primera.png"));
-				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-			}
-		};
+		setBounds(300, 20, 900, 700);
+		frame = new FrameTransicion();
 		try{
 			file = new FileReader("src/DialogosTransicion.txt");
 			buffer = new BufferedReader(file);
@@ -117,13 +112,13 @@ public class PantallaTransicion extends JFrame {
 		BotonX.setBounds(295, 464, 138, 50);
 		BotonX.setFont(myfont.MyFont(1, 15));
 		BotonX.setForeground(Color.black);
-		contentPane.setLayout(null);
+		frame.setLayout(null);
 		
-		contentPane.add(BotonX);
-		contentPane.add(BotonZ);
+		frame.add(BotonX);
+		frame.add(BotonZ);
 		
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		frame.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(frame);
 		
 		cuadroDialogos = new JLabel();
 		diseniarLabel(cuadroDialogos);
@@ -149,9 +144,9 @@ public class PantallaTransicion extends JFrame {
 		cuadroDialogos.setForeground(Color.WHITE);
 		
 		try{
-			cuadroDialogos.setText(buffer.readLine());
+			cuadroDialogos.setText("Gola");
 		}
-		catch(IOException e){
+		catch(Exception e){
 			
 		}
 		cuadroDialogos.setBounds(100, 350, 500, 200);
@@ -159,7 +154,7 @@ public class PantallaTransicion extends JFrame {
 		cuadroDialogos.setVerticalTextPosition(SwingConstants.CENTER);
 		cuadroDialogos.setHorizontalTextPosition(SwingConstants.CENTER);
 		//cuadroDialogos.setPreferredSize (new Dimension(200,200)); 
-		contentPane.add(cuadroDialogos);
+		frame.add(cuadroDialogos);
 	}
 
 }

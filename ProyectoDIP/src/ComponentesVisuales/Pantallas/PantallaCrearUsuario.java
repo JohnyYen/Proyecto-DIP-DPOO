@@ -45,6 +45,7 @@ public class PantallaCrearUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public PantallaCrearUsuario(Juego juego) {
+		setTitle("Hello World! : Crear Usuario");
 		this.juego = juego;
 		final Validacion validacion = new Validacion();
 		

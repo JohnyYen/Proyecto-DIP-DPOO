@@ -51,6 +51,7 @@ public class TercerNivel extends JFrame {
 	 * Create the frame.
 	 */
 	public TercerNivel() {
+		setTitle("Hello World! : Tercer Nivel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 746);
 		contentPane = new JPanel();
