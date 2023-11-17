@@ -19,8 +19,6 @@ import javax.swing.text.View;
 import Recursos.CustomFont;
 
 public class TextPanel extends JTextArea {
-	private ImageIcon imagen;
-	
 	public TextPanel(){
 		
 		this.setEditable(false); //Que no sea editable
@@ -38,15 +36,21 @@ public class TextPanel extends JTextArea {
 	@Override
 	public void setText(String texto) {
 		
-		//Reemplazar todos los \n con saltos de Linea
-		String textoModificado = texto.replaceAll("\n", System.lineSeparator());
-		try{
-			//Cambiar el texto del componente
-			super.setText(textoModificado);			
+		if(!texto.contains("\n")){
+			super.setText(texto);
 		}
-		catch( NullPointerException e){
-			e.printStackTrace();
+		else{
+			//Reemplazar todos los \n con saltos de Linea
+			String textoModificado = texto.replaceAll("\n", System.lineSeparator());
+			try{
+				//Cambiar el texto del componente
+				super.setText(textoModificado);			
+			}
+			catch( NullPointerException e){
+				e.printStackTrace();
+			}
 		}
+		
 	}
 	
 	

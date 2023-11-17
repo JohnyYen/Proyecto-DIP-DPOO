@@ -7,12 +7,16 @@ import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -25,10 +29,10 @@ import ComponentesVisuales.Componentes.FrameTransicion;
 import ComponentesVisuales.Niveles.PrimerNivel;
 import Logica.Juego;
 import Recursos.CustomFont;
+import ComponentesVisuales.Componentes.CuadroDialogo;
+import ComponentesVisuales.Componentes.TextPanel;
 
 public class PantallaTransicion extends JFrame {
-
-	private JLabel cuadroDialogos;
 	private JLabel BotonZ;
 	private JLabel BotonX;
 	private ArrayList<String> dialogos;
@@ -36,6 +40,7 @@ public class PantallaTransicion extends JFrame {
 	private FileReader file;
 	private BufferedReader buffer;
 	private FrameTransicion frame;
+	private TextPanel textPane;
 
 	/**
 	 * Launch the application.
@@ -44,9 +49,8 @@ public class PantallaTransicion extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Juego juego = null;
-					Juego.crearJuego();
-					PantallaTransicion frame = new PantallaTransicion(Juego.obtenerJuego());
+					
+					PantallaTransicion frame = new PantallaTransicion();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,58 +62,63 @@ public class PantallaTransicion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PantallaTransicion(final Juego juego) {
+	public PantallaTransicion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 900, 700);
 		frame = new FrameTransicion();
+		
+		//TextPane para los dialogos
+		textPane = new TextPanel();
+		textPane.setForeground(Color.RED);
+		//textPane.setText("Tengo que hacer el proyecto de DPOO");
+		textPane.setBounds(10, 580, 480, 70);
+		frame.add(textPane);
+		
 		try{
-			file = new FileReader("src/DialogosTransicion.txt");
+			file = new FileReader("src/Textos/DialogosTransicion.txt");
 			buffer = new BufferedReader(file);
 		}
 		catch(IOException e){
-			 
+			 e.printStackTrace();
 		}
 		
-		tocarTecla = new KeyListener() {
+		CustomFont myfont = new CustomFont();
+		this.requestFocus();
+		this.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent e) {
-				
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if(e.getKeyChar() == 'z'){
+			public void keyPressed(KeyEvent tecla) {
+				if(tecla.getKeyCode() == KeyEvent.VK_Z){
 					try{
-						if(buffer.ready())
-							cuadroDialogos.setText(buffer.readLine());
+						System.out.print("Hola");
+						if(buffer.ready()){
+							textPane.setText(buffer.readLine());
+						}
+						else{
+							//PrimerNivel primerNivel = new PrimerNivel(juego);
+							dispose();
+							//primerNivel.setVisible(true);
+						}
+							
 					}
 					catch(IOException a){
 						
 					}
 				}
-				if(e.getKeyChar() == 'x'){
-					PrimerNivel pri = new PrimerNivel(juego);
+				if(tecla.getKeyCode() == KeyEvent.VK_X){
+					//PrimerNivel pri = new PrimerNivel(juego);
 					dispose();
-					pri.setVisible(true);
+					//pri.setVisible(true);
 				}
 				
 			}
-		};
-		CustomFont myfont = new CustomFont();
-		this.addKeyListener(tocarTecla);
+		});
 		BotonZ = new JLabel("Z -> Continuar");
 		BotonZ.setForeground(Color.black);
-		BotonZ.setBounds(154, 464, 131, 50);
+		BotonZ.setBounds(10, 519, 131, 50);
 		BotonZ.setFont(myfont.MyFont(1, 15));
 		
 		BotonX = new JLabel("X -> Saltar");
-		BotonX.setBounds(295, 464, 138, 50);
+		BotonX.setBounds(151, 519, 138, 50);
 		BotonX.setFont(myfont.MyFont(1, 15));
 		BotonX.setForeground(Color.black);
 		frame.setLayout(null);
@@ -120,41 +129,9 @@ public class PantallaTransicion extends JFrame {
 		frame.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(frame);
 		
-		cuadroDialogos = new JLabel();
-		diseniarLabel(cuadroDialogos);
-		
 		getContentPane().setLayout(null);
+		
+		
 		this.setLocationRelativeTo(null);
 	}
-	
-	
-	public void getDialogos(){
-		dialogos = new ArrayList<>();
-		dialogos.add("Tengo que terminar el proyecto de DPOO");
-		dialogos.add("Si no la profesora me da 2");
-		dialogos.add("Me falta poco");
-	}
-	
-	public void diseniarLabel(JLabel dialogos){
-		ImageIcon imagenLabel = new ImageIcon("src/Recursos/CuadroDialogos.png");
-		Image iconLabel = imagenLabel.getImage().getScaledInstance(500, 200, Image.SCALE_SMOOTH);
-		
-		CustomFont mf = new CustomFont();
-		cuadroDialogos.setFont(mf.MyFont(1, 15));
-		cuadroDialogos.setForeground(Color.WHITE);
-		
-		try{
-			cuadroDialogos.setText("Gola");
-		}
-		catch(Exception e){
-			
-		}
-		cuadroDialogos.setBounds(100, 350, 500, 200);
-		cuadroDialogos.setIcon(new ImageIcon(iconLabel)); //Cambiar de imagen en el Label
-		cuadroDialogos.setVerticalTextPosition(SwingConstants.CENTER);
-		cuadroDialogos.setHorizontalTextPosition(SwingConstants.CENTER);
-		//cuadroDialogos.setPreferredSize (new Dimension(200,200)); 
-		frame.add(cuadroDialogos);
-	}
-
 }

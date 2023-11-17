@@ -114,7 +114,7 @@ public class TercerNivel extends JFrame {
 		cuadro.setForeground(Color.WHITE);
 		
 		cuadro.setText("Tengo que hacer el proyecto de DPOO");
-		cuadro.setBounds(257, 73, 450, 115);
+		cuadro.setBounds(273, 73, 450, 115);
 		cuadro.setIcon(new ImageIcon(iconLabel)); //Cambiar de imagen en el Label
 		cuadro.setVerticalTextPosition(SwingConstants.CENTER);
 		cuadro.setHorizontalTextPosition(SwingConstants.CENTER);
