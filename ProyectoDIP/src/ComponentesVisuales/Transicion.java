@@ -74,7 +74,7 @@ public class Transicion extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyChar() == 'z'){
-					cuadroDialogos.setText("Sino cojo 2");
+					cuadroDialogos.setText("Sino cojo 20");
 				}
 				if(e.getKeyChar() == 'x'){
 					PrimerNIvel pri = new PrimerNIvel();
