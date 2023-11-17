@@ -67,50 +67,6 @@ public class CuartoNivel extends JFrame {
         JLabel lblNewLabel = new JLabel(this.comunicar);
         lblNewLabel.setBounds(12, 0, 568, 75);
         labelPanel.add(lblNewLabel);
-       
-       
-        
-	   /*Botones para los objetos*/
-        
-        JButton Obj1Boton = new JButton("Sillón");
-        Obj1Boton.setBounds(56, 181, 108, 44);
-        getContentPane().add(Obj1Boton);  
-        
-        JButton Obj2Boton = new JButton("Cascabel");
-        Obj2Boton.setBounds(201, 181, 108, 44);
-        getContentPane().add(Obj2Boton);
-        
-        JButton Obj3Boton = new JButton("Arbusto");
-        Obj3Boton.setBounds(347, 181, 108, 44);
-        getContentPane().add(Obj3Boton);
-        
-        JButton Obj4Boton = new JButton("Reloj");
-        Obj4Boton.setBounds(486, 181, 108, 44);
-        getContentPane().add(Obj4Boton);
-        
-        JButton Obj5Boton = new JButton("Sombrero");
-        Obj5Boton.setBounds(620, 181, 108, 44);
-        getContentPane().add(Obj5Boton);
-        
-        JButton Obj6Boton = new JButton("Sombrilla");
-        Obj6Boton.setBounds(56, 255, 108, 44);
-        getContentPane().add(Obj6Boton);
-        
-        JButton Obj7Boton = new JButton("Silla");
-        Obj7Boton.setBounds(201, 255, 108, 44);
-        getContentPane().add(Obj7Boton);
-        
-        JButton button_6 = new JButton("Sill\u00F3n");
-        button_6.setBounds(347, 255, 108, 44);
-        getContentPane().add(button_6);
-        
-        JButton button_7 = new JButton("Sill\u00F3n");
-        button_7.setBounds(486, 255, 108, 44);
-        getContentPane().add(button_7);
-        
-        JButton button_8 = new JButton("Sill\u00F3n");
-        button_8.setBounds(620, 255, 108, 44);
-        getContentPane().add(button_8);
         
         /*Aceptar*/
         JButton acceptButton = new JButton("Aceptar");
@@ -121,8 +77,53 @@ public class CuartoNivel extends JFrame {
         JButton menuButton = new JButton("Menú");
         menuButton.setBounds(700, 20, 80, 30);
         getContentPane().add(menuButton);
+        
+        JPanel panel = new JPanel();
+        panel.setBounds(43, 165, 765, 151);
+        getContentPane().add(panel);
+        panel.setLayout(null);
+        
+        JButton button = new JButton("Sill\u00F3n");
+        button.setBounds(54, 13, 108, 44);
+        panel.add(button);
+        
+        JButton button_1 = new JButton("Cascabel");
+        button_1.setBounds(199, 13, 108, 44);
+        panel.add(button_1);
+        
+        JButton button_2 = new JButton("Arbusto");
+        button_2.setBounds(345, 13, 108, 44);
+        panel.add(button_2);
+        
+        JButton button_3 = new JButton("Reloj");
+        button_3.setBounds(484, 13, 108, 44);
+        panel.add(button_3);
+        
+        JButton button_4 = new JButton("Sombrero");
+        button_4.setBounds(618, 13, 108, 44);
+        panel.add(button_4);
+        
+        JButton button_5 = new JButton("Sombrilla");
+        button_5.setBounds(54, 87, 108, 44);
+        panel.add(button_5);
+        
+        JButton button_6 = new JButton("Silla");
+        button_6.setBounds(199, 87, 108, 44);
+        panel.add(button_6);
+        
+        JButton button_7 = new JButton("Sill\u00F3n");
+        button_7.setBounds(345, 87, 108, 44);
+        panel.add(button_7);
+        
+        JButton button_8 = new JButton("Sill\u00F3n");
+        button_8.setBounds(484, 87, 108, 44);
+        panel.add(button_8);
+        
+        JButton button_9 = new JButton("Sill\u00F3n");
+        button_9.setBounds(618, 87, 108, 44);
+        panel.add(button_9);
         JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, 800, 600);
+        backgroundLabel.setBounds(0, 0, 882, 653);
         getContentPane().add(backgroundLabel);
 
         
