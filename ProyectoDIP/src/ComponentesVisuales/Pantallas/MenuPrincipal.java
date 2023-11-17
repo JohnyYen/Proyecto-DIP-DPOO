@@ -11,18 +11,22 @@ import Recursos.CustomFont;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+
+import ComponentesVisuales.Componentes.BotonExtendido;
 
 public class MenuPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private Boton botonNuevoJuego;
-	private Boton botonReanudarPartida;
-	private Boton botonCuriosidades;
-	private Boton botonSalir;
-	private Boton botonOpciones;
 	private JLabel titulo;
 	private static Frame save;
+	private BotonExtendido botonNuevoJuego;
+	private BotonExtendido botonReanudar;
+	private BotonExtendido botonOpciones;
+	private BotonExtendido botonCuriosidades;
+	private BotonExtendido botonSalir;
 
 	/**
 	 * Launch the application.
@@ -69,9 +73,7 @@ public class MenuPrincipal extends JFrame {
 		titulo.setBounds(183, 104, 348, 101);
 		contentPane.add(titulo);
 		
-		//Boton Nuevo Juego
-		botonNuevoJuego = new Boton("Nuevo Juego", 300, 300, 200, 250);
-		botonNuevoJuego.setBounds(202, 216, 280, 61);
+		botonNuevoJuego = new BotonExtendido();
 		botonNuevoJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PantallaTransicion transicion = new PantallaTransicion();
@@ -79,12 +81,12 @@ public class MenuPrincipal extends JFrame {
 				transicion.setVisible(true);
 			}
 		});
+		botonNuevoJuego.setText("Nuevo Juego");
+		botonNuevoJuego.setBounds(202, 238, 252, 28);
 		contentPane.add(botonNuevoJuego);
 		
-		//Botón Reanudar Partida
-		botonReanudarPartida = new Boton("Reanudar Partida", 300, 300, 200, 300);
-		botonReanudarPartida.setBounds(202, 263, 280, 61);
-		botonReanudarPartida.addActionListener(new ActionListener() {
+		botonReanudar = new BotonExtendido();
+		botonReanudar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Validar en caso que el save este vacio
 				try{
@@ -98,10 +100,11 @@ public class MenuPrincipal extends JFrame {
 				
 			}
 		});
-		contentPane.add(botonReanudarPartida);
+		botonReanudar.setText("Reanudar Partida");
+		botonReanudar.setBounds(202, 280, 252, 28);
+		contentPane.add(botonReanudar);
 		
-		//Botón Opciones
-		botonOpciones = new Boton("Opciones", 300, 300, 200, 350);
+		botonOpciones = new BotonExtendido();
 		botonOpciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuOpciones menuOpciones = new MenuOpciones();
@@ -109,12 +112,11 @@ public class MenuPrincipal extends JFrame {
 				menuOpciones.setVisible(true);
 			}
 		});
-		botonOpciones.setBounds(202, 322, 280, 53);
+		botonOpciones.setText("Opciones");
+		botonOpciones.setBounds(202, 326, 252, 28);
 		contentPane.add(botonOpciones);
 		
-		//Botón de Curiosidades
-		botonCuriosidades = new Boton("Curiosidades", 300, 300, 200, 400);
-		botonCuriosidades.setBounds(202, 374, 280, 53);
+		botonCuriosidades = new BotonExtendido();
 		botonCuriosidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PantallaCuriosidades curiosidades = new PantallaCuriosidades();
@@ -122,22 +124,37 @@ public class MenuPrincipal extends JFrame {
 				curiosidades.setVisible(true);
 			}
 		});
+		botonCuriosidades.setText("Curiosidades");
+		botonCuriosidades.setBounds(202, 376, 252, 28);
 		contentPane.add(botonCuriosidades);
 		
-		//Botón para salir del Juego
-		botonSalir = new Boton("Salir", 300, 300, 200, 450);
+		botonSalir = new BotonExtendido();
 		botonSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				//Se comprueba que el usuario de verdad quiere salir del juego 
 				if(JOptionPane.showConfirmDialog(contentPane, "Estas seguro que vas a salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) dispose();
 			}
 		});
-		botonSalir.setBounds(202, 424, 280, 61);
+		botonSalir.setText("Salir");
+		botonSalir.setBounds(202, 415, 252, 28);
 		contentPane.add(botonSalir);
 		
 		//Modificaciones al Frame
-		this.setResizable(false);
+		//this.setResizable(false);
 		this.setIconImage(new ImageIcon("src/Recursos/GameIcon.png").getImage());
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				
+				super.componentResized(e);
+				int width = getContentPane().getWidth();
+				int height = getContentPane().getHeight();
+				
+				titulo.setsi
+				titulo.setBounds(titulo.getX()+1, titulo.getY(), titulo.getWidth(), titulo.getHeight());
+				
+			}
+		});
 		
 	}
 	
@@ -145,5 +162,4 @@ public class MenuPrincipal extends JFrame {
 	public static void guardarEstado(Frame partidaGuardada){
 		save = partidaGuardada;
 	}
-
 }

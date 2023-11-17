@@ -33,7 +33,7 @@ public class BotonExtendido extends JButton {
 	
 	public BotonExtendido() {
 		CustomFont cf = new CustomFont();
-		urlLiberado = "src/Recursos/NBotones.png";
+		urlLiberado = "src/Recursos/Boton.png";
 		urlPresionado = "src/Recursos/BotonPressed.png";
 				
 		try{

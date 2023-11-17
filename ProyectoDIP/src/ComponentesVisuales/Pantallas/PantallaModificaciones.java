@@ -14,7 +14,7 @@ import Util.PreguntaTableModelSegundoNivel;
 
 import javax.swing.JScrollPane;
 
-public class PantallaModifciones extends JFrame {
+public class PantallaModificaciones extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
@@ -23,10 +23,10 @@ public class PantallaModifciones extends JFrame {
 	private JTable tablaNivelDos;
 
 	public static void main(String[] args){
-		PantallaModifciones t = new PantallaModifciones();
+		PantallaModificaciones t = new PantallaModificaciones();
 		t.setVisible(true);
 	}
-	public PantallaModifciones() {
+	public PantallaModificaciones() {
 		setTitle("Hello World!: Editar Niveles");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 700);

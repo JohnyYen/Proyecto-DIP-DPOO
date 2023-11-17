@@ -29,7 +29,7 @@ public class TercerNivel extends JFrame {
 	private JPanel setCarta2Enemigo;
 	private JPanel setCarta3Enemigo;
 	private JLabel cuadroDialogos; 
-	private JLabel cuadroDescripcion;
+	private JPanel descripcionCarta;
 
 	/**
 	 * Launch the application.
@@ -53,7 +53,7 @@ public class TercerNivel extends JFrame {
 	public TercerNivel() {
 		setTitle("Hello World! : Tercer Nivel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 746);
+		setBounds(300, 20, 900, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -97,10 +97,11 @@ public class TercerNivel extends JFrame {
 		cuadroDialogos = new JLabel();
 		diseniarLabel(cuadroDialogos);
 		
-		cuadroDescripcion = new JLabel("Hola");
-		cuadroDescripcion.setBounds(165, 447, 502, 68);
-		diseniarLabel(cuadroDescripcion);
-		contentPane.add(cuadroDescripcion);
+		descripcionCarta = new JPanel();
+		descripcionCarta.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		descripcionCarta.setBackground(Color.WHITE);
+		descripcionCarta.setBounds(64, 416, 63, 89);
+		contentPane.add(descripcionCarta);
 		
 	}
 	
