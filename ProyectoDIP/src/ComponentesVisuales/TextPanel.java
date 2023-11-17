@@ -29,7 +29,7 @@ public class TextPanel extends JTextArea {
 		
 		CustomFont mf = new CustomFont();
 		this.setFont(mf.MyFont(1, 15));		
-		//this.setOpaque(false);
+		this.setOpaque(false);
 		this.setAlignmentX(Component.BOTTOM_ALIGNMENT);
 		this.setAlignmentY(Component.CENTER_ALIGNMENT);
 		

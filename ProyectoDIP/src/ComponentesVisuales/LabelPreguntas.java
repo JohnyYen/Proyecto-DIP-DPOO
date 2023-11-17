@@ -17,9 +17,12 @@ public class LabelPreguntas extends JLabel{
 	
 	public LabelPreguntas(int x, int y, int ancho, int alto){
 		Image iconLabel = imagenLabel.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
-		PreguntaActual = 0;
-		preguntas = new ArrayList<Pregunta>();
+		textoPanel = new TextPanel();
 		
+		textoPanel.setSize(ancho, alto);
+		
+		
+		this.add(textoPanel);
 		CustomFont mf = new CustomFont();
 		this.setFont(mf.MyFont(1, 15));
 		this.setForeground(Color.WHITE);
