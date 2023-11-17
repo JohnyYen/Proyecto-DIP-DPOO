@@ -6,13 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import ComponentesVisuales.Componentes.CuadroDialogo;
 import ComponentesVisuales.Componentes.TextPanel;
 import ComponentesVisuales.Componentes.BotonExtendido;
+
 import javax.swing.JTextArea;
+
+import Util.Carta;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import ComponentesVisuales.Componentes.BotonExtendidoNivel2;
+import ComponentesVisuales.Componentes.CartaVisual;
 
 public class Pruebas extends JFrame {
 
@@ -56,7 +63,10 @@ public class Pruebas extends JFrame {
 		btnxtndTocame = new BotonExtendido();
 		btnxtndTocame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textPanel.setText(textArea.getText());
+				boolean algo = false;
+				boolean tru = true;
+				String texto = textArea.getText();
+				textPanel.setText(texto);
 			}
 		});
 		btnxtndTocame.setText("Tocame");
@@ -67,12 +77,14 @@ public class Pruebas extends JFrame {
 		textArea.setBounds(247, 26, 173, 20);
 		contentPane.add(textArea);
 		
-		BotonExtendidoNivel2 btnxtndnvl2Hello = new BotonExtendidoNivel2();
-		btnxtndnvl2Hello.setText("Hello");
-		btnxtndnvl2Hello.setBounds(25, 299, 735, 92);
-		contentPane.add(btnxtndnvl2Hello);
+		CartaVisual cartaVisual = new CartaVisual();
+		cartaVisual.setBounds(104, 76, 163, 194);
+		cartaVisual.voltearCarta(new Carta("Hola", "Hola"));
+		contentPane.add(cartaVisual);
 		
 		System.out.println((int)3.254+ System.lineSeparator() + "Hola");
+		
+		
 		
 	}
 }

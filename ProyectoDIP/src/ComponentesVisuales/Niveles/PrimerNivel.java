@@ -42,7 +42,7 @@ public class PrimerNivel extends JFrame {
 		setTitle("Hello World! : Primer Nivel");
 		this.juego = juego;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 20, 700, 700);
+		setBounds(300, 20, 900, 700);
 		contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;
 

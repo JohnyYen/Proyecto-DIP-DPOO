@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import Recursos.CustomFont;
 import ComponentesVisuales.Componentes.CartaVisual;
 import ComponentesVisuales.Componentes.BarraMenu;
+import java.awt.event.MouseAdapter;
 
 public class TercerNivel extends JFrame {
 
@@ -63,12 +64,32 @@ public class TercerNivel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Zona describir la carta
+		descripcionCarta = new JPanel();
+		descripcionCarta.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		descripcionCarta.setBackground(Color.WHITE);
+		descripcionCarta.setBounds(64, 416, 63, 89);
+		contentPane.add(descripcionCarta);
+		descripcionCarta.setVisible(false);
+		
+		
 		//Carta
 		CartaVisual cartaUno = new CartaVisual();
 		cartaUno.setBounds(31, 173, 63, 89);
 		contentPane.add(cartaUno);
 		
 		CartaVisual cartaDos = new CartaVisual();
+		cartaDos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				descripcionCarta.setVisible(true);
+			}
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				descripcionCarta.setVisible(false);
+			}
+		});
 		cartaDos.setBounds(104, 173, 63, 89);
 		contentPane.add(cartaDos);
 		
@@ -101,11 +122,7 @@ public class TercerNivel extends JFrame {
 		cuadroDialogos = new JLabel();
 		diseniarLabel(cuadroDialogos);
 		
-		descripcionCarta = new JPanel();
-		descripcionCarta.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		descripcionCarta.setBackground(Color.WHITE);
-		descripcionCarta.setBounds(64, 416, 63, 89);
-		contentPane.add(descripcionCarta);
+		
 		
 	}
 	

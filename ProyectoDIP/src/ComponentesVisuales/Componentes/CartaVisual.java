@@ -55,6 +55,8 @@ public class CartaVisual extends JPanel {
 	}
 
 	public void voltearCarta(Carta carta){
+		imagen = null;
+		repaint();
 		titulo.setText(carta.getNombre());
 		this.add(titulo);
 	}
@@ -64,6 +66,10 @@ public class CartaVisual extends JPanel {
 		super.paintComponents(g);
 		if(imagen != null)
 			imagen.paintIcon(this, g, 0, 0);
+		else{
+			g.setColor(Color.LIGHT_GRAY);
+			g.fillRect(0, 0, getWidth(), getHeight());
+		}
 	}
 
 }

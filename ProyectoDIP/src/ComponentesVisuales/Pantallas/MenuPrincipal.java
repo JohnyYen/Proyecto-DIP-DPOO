@@ -51,7 +51,7 @@ public class MenuPrincipal extends JFrame {
 	public MenuPrincipal() {
 		setTitle("Hello World!: Men\u00FA Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 20, 700, 576);
+		setBounds(300, 20, 900, 700);
 		
 		BarraMenu barraMenu = new BarraMenu();
 		setJMenuBar(barraMenu);

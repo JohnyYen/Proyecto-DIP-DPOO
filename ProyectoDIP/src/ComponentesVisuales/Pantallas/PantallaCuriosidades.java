@@ -28,7 +28,7 @@ public class PantallaCuriosidades extends JFrame {
 
 	public PantallaCuriosidades() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 20, 700, 576);
+		setBounds(300, 20, 900, 700);
 		JPanel contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;
 

@@ -61,7 +61,7 @@ public class MenuOpciones extends JFrame {
 		setTitle("Hello World!: Opciones");
 		CustomFont cf = new CustomFont();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 694, 561);
+		setBounds(300, 20, 900, 700);
 		contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;
 			public void paintComponent(Graphics g) {
