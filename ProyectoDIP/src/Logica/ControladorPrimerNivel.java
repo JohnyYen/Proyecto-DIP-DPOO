@@ -1,8 +1,10 @@
 package Logica;
 
 import java.lang.reflect.Array;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
 
 import Personajes.*;
 import Util.Pregunta;
@@ -40,7 +42,16 @@ public class ControladorPrimerNivel extends ControladorJuego {
 	
 	@Override
 	public void quitarVidaVillano() {
-		if(cleopatra.getVidas() > 0) cleopatra.perderVida();
+		if(cleopatra.getVidas() > 0) {
+			cleopatra.perderVida();
+		}
 		
+	}
+	@Override
+	public boolean finalizarPartida(){
+		boolean ganoHeroe = false;
+		if(cleopatra.getVidas() == 0) ganoHeroe = true;
+		
+		return ganoHeroe;
 	}
 }

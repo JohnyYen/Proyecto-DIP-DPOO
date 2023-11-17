@@ -6,7 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import ComponentesVisuales.*;
+import ComponentesVisuales.Niveles.*;
+import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
 import Util.PreguntaNivelDos;
 
@@ -71,6 +72,7 @@ public class Iniciadora {
 		catch(IOException e){
 			e.printStackTrace();
 		}
+		
 	}
 	
 }

@@ -33,10 +33,12 @@ public class Cleopatra extends Personaje{
 		imagen = new  ImageIcon(urlNormal);
 		repaint();
 	}
+	@Override
 	public void setGano(){
 		imagen = new ImageIcon(urlGano);
 		repaint();
 	}
+	@Override
 	public void setPerdio(){
 		imagen = new ImageIcon(urlPerdio);
 		repaint();

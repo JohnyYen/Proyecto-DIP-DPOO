@@ -1,8 +1,9 @@
 package Logica;
 
 import javax.swing.*;
+
 import Personajes.*;
-import ComponentesVisuales.MenuPrincipal;
+import ComponentesVisuales.Pantallas.MenuPrincipal;
 
 public abstract class ControladorJuego {
 	protected Heroe guardarHeroe;
@@ -19,5 +20,5 @@ public abstract class ControladorJuego {
 		if(guardarHeroe.getVidas() > 0) guardarHeroe.perderVida();
 	}
 	public abstract void quitarVidaVillano();
-	
+	public abstract boolean finalizarPartida();
 }
