@@ -12,6 +12,7 @@ import ComponentesVisuales.Componentes.BotonExtendido;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import ComponentesVisuales.Componentes.BotonExtendidoNivel2;
 
 public class Pruebas extends JFrame {
 
@@ -65,6 +66,11 @@ public class Pruebas extends JFrame {
 		textArea = new JTextArea();
 		textArea.setBounds(247, 26, 173, 20);
 		contentPane.add(textArea);
+		
+		BotonExtendidoNivel2 btnxtndnvl2Hello = new BotonExtendidoNivel2();
+		btnxtndnvl2Hello.setText("Hello");
+		btnxtndnvl2Hello.setBounds(25, 299, 735, 92);
+		contentPane.add(btnxtndnvl2Hello);
 		
 		System.out.println((int)3.254+ System.lineSeparator() + "Hola");
 		

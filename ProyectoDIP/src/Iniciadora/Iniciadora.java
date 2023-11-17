@@ -17,8 +17,8 @@ public class Iniciadora {
 				try {  
 					Juego juego = new Juego();
 					inicializarDatosPrimerNivel(juego);
-					//PrimerNivel primerNivel = new PrimerNivel(juego);
-					PantallaProfesores frame = new PantallaProfesores();
+					PrimerNivel frame = new PrimerNivel(juego);
+					//PantallaProfesores frame = new PantallaProfesores();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
