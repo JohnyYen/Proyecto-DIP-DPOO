@@ -22,7 +22,14 @@ import javax.swing.JLabel;
 import Recursos.CustomFont;
 import ComponentesVisuales.Componentes.CartaVisual;
 import ComponentesVisuales.Componentes.BarraMenu;
+import ComponentesVisuales.Componentes.TextPanel;
+
 import java.awt.event.MouseAdapter;
+
+import javax.swing.BoxLayout;
+
+import Personajes.Heroe;
+import ComponentesVisuales.Componentes.BotonExtendido;
 
 public class TercerNivel extends JFrame {
 
@@ -32,6 +39,7 @@ public class TercerNivel extends JFrame {
 	private JPanel setCarta3Enemigo;
 	private JLabel cuadroDialogos; 
 	private JPanel descripcionCarta;
+	private TextPanel titulo, texto;
 
 	/**
 	 * Launch the application.
@@ -64,12 +72,20 @@ public class TercerNivel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		titulo = new TextPanel();
+		texto = new TextPanel();
+		
 		//Zona describir la carta
 		descripcionCarta = new JPanel();
 		descripcionCarta.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		descripcionCarta.setBackground(Color.WHITE);
-		descripcionCarta.setBounds(64, 416, 63, 89);
+		descripcionCarta.setBounds(193, 416, 265, 89);
 		contentPane.add(descripcionCarta);
+		descripcionCarta.setLayout(new BoxLayout(descripcionCarta, BoxLayout.Y_AXIS));
+		descripcionCarta.add(titulo);
+		descripcionCarta.add(texto);
+		titulo.setText("Hola");
+		texto.setText("Adios");
 		descripcionCarta.setVisible(false);
 		
 		
@@ -79,17 +95,6 @@ public class TercerNivel extends JFrame {
 		contentPane.add(cartaUno);
 		
 		CartaVisual cartaDos = new CartaVisual();
-		cartaDos.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				descripcionCarta.setVisible(true);
-			}
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				descripcionCarta.setVisible(false);
-			}
-		});
 		cartaDos.setBounds(104, 173, 63, 89);
 		contentPane.add(cartaDos);
 		
@@ -122,8 +127,43 @@ public class TercerNivel extends JFrame {
 		cuadroDialogos = new JLabel();
 		diseniarLabel(cuadroDialogos);
 		
+		Heroe heroe = new Heroe();
+		heroe.setBounds(31, 416, 137, 150);
+		contentPane.add(heroe);
+		
+		//Eventos
+		agregarEventoCartas(cartaUno);
+		agregarEventoCartas(cartaDos);
+		agregarEventoCartas(cartaTres);
+		agregarEventoCartas(cartaCuatro );
+		
+		BotonExtendido btnxtndAceptarRespuesta = new BotonExtendido();
+		btnxtndAceptarRespuesta.setText("Aceptar Respuesta");
+		btnxtndAceptarRespuesta.setBounds(553, 360, 248, 36);
+		contentPane.add(btnxtndAceptarRespuesta);
 		
 		
+	}
+	
+	public void agregarEventoCartas(final CartaVisual carta){
+		carta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				descripcionCarta.setVisible(true);
+			}
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				try {
+					Thread.sleep(1000);
+					texto.setText("                            ");
+					titulo.setText("                      ");
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 	}
 	
 	public void diseniarLabel(JLabel cuadro){
@@ -141,11 +181,5 @@ public class TercerNivel extends JFrame {
 		cuadro.setHorizontalTextPosition(SwingConstants.CENTER);
 		//cuadroDialogos.setPreferredSize (new Dimension(200,200)); 
 		contentPane.add(cuadro);
-	}
-	
-	public void reversoCarta(JPanel carta){
-	}
-	
-	public void agregarEventoCarta(JPanel carta){
 	}
 }

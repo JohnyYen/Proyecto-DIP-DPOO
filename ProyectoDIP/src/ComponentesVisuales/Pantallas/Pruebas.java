@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 
 import ComponentesVisuales.Componentes.BotonExtendidoNivel2;
 import ComponentesVisuales.Componentes.CartaVisual;
+import javax.swing.JProgressBar;
 
 public class Pruebas extends JFrame {
 
@@ -81,6 +82,10 @@ public class Pruebas extends JFrame {
 		cartaVisual.setBounds(104, 76, 163, 194);
 		cartaVisual.voltearCarta(new Carta("Hola", "Hola"));
 		contentPane.add(cartaVisual);
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(286, 87, 163, 20);
+		contentPane.add(progressBar);
 		
 		System.out.println((int)3.254+ System.lineSeparator() + "Hola");
 		

@@ -1,12 +1,23 @@
 package Util;
 
 public class Carta {
-	private String nombre, funcionalidad;
+	private String nombre, funcionalidad, codigo;
 	
-	public Carta(String nombre, String funcionalidad){
+	public Carta(String nombre, String funcionalidad, String codigo){
 		this.setNombre(nombre);
+		this.setFuncionalidad(funcionalidad);
+		this.setCodigo(codigo);
 		
 	}
+	
+	public void setCodigo(String codigo){
+		if(nombre.equalsIgnoreCase(""))
+			throw new IllegalArgumentException();
+		else
+			this.codigo = codigo;
+	}
+	
+	public String getCodigo(){return this.codigo;}
 	
 	public void setNombre(String nombre){
 		if(nombre.equalsIgnoreCase(""))

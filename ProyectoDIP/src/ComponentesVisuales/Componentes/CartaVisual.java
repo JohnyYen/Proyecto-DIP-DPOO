@@ -22,7 +22,7 @@ public class CartaVisual extends JPanel {
 	private ImageIcon imagen;
 	private Point punto;
 	private TextPanel titulo, descripcion;
-	
+	private Carta carta;
 	public CartaVisual() {
 		urlReverso = "src/Recursos/reversoCarta.png";
 		try{
@@ -54,12 +54,18 @@ public class CartaVisual extends JPanel {
 		});
 	}
 
+	public Carta getCarta(){return this.carta;}
 	public void voltearCarta(Carta carta){
 		imagen = null;
 		repaint();
-		titulo.setText(carta.getNombre());
+		this.carta = new Carta(carta.getNombre(), carta.getFuncionalidad(), carta.getCodigo());
+		titulo.setText(this.carta.getNombre());
+		descripcion.setText(this.carta.getFuncionalidad());
 		this.add(titulo);
 	}
+	
+	public TextPanel getTitulo(){return titulo;}
+	public TextPanel getDescripcion(){return descripcion;}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
