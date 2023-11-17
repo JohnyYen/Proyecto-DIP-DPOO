@@ -197,7 +197,7 @@ public class CuartoNivel extends JFrame {
 	/**
 	 * @param ordenar the ordenar to set
 	 */
- private void setOrdenar(int ordenar) {
+ public void setOrdenar(int ordenar) {
 		this.ordenar = ordenar;
 	}
 
