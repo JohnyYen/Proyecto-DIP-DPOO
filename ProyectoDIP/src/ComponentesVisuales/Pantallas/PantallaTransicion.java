@@ -35,8 +35,6 @@ import ComponentesVisuales.Componentes.TextPanel;
 public class PantallaTransicion extends JFrame {
 	private JLabel BotonZ;
 	private JLabel BotonX;
-	private ArrayList<String> dialogos;
-	private KeyListener tocarTecla;
 	private FileReader file;
 	private BufferedReader buffer;
 	private FrameTransicion frame;
@@ -83,35 +81,7 @@ public class PantallaTransicion extends JFrame {
 		}
 		
 		CustomFont myfont = new CustomFont();
-		this.requestFocus();
-		this.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent tecla) {
-				if(tecla.getKeyCode() == KeyEvent.VK_Z){
-					try{
-						System.out.print("Hola");
-						if(buffer.ready()){
-							textPane.setText(buffer.readLine());
-						}
-						else{
-							//PrimerNivel primerNivel = new PrimerNivel(juego);
-							dispose();
-							//primerNivel.setVisible(true);
-						}
-							
-					}
-					catch(IOException a){
-						
-					}
-				}
-				if(tecla.getKeyCode() == KeyEvent.VK_X){
-					//PrimerNivel pri = new PrimerNivel(juego);
-					dispose();
-					//pri.setVisible(true);
-				}
-				
-			}
-		});
+	
 		BotonZ = new JLabel("Z -> Continuar");
 		BotonZ.setForeground(Color.black);
 		BotonZ.setBounds(10, 519, 131, 50);
@@ -133,5 +103,41 @@ public class PantallaTransicion extends JFrame {
 		
 		
 		this.setLocationRelativeTo(null);
+		
+		eventoTeclado();
+	}
+	
+	public void eventoTeclado(){
+		this.requestFocus();
+		this.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent tecla) {
+				System.out.print("Hola");
+				if(tecla.getKeyCode() == KeyEvent.VK_Z){
+					try{
+						System.out.print("Hola");
+						if(buffer.ready()){
+							textPane.setText(buffer.readLine());
+							frame.aumentarFrame();
+						}
+						else{
+							//PrimerNivel primerNivel = new PrimerNivel(juego);
+							dispose();
+							//primerNivel.setVisible(true);
+						}
+							
+					}
+					catch(IOException a){
+						
+					}
+				}
+				if(tecla.getKeyCode() == KeyEvent.VK_X){
+					//PrimerNivel pri = new PrimerNivel(juego);
+					dispose();
+					//pri.setVisible(true);
+				}
+				
+			}
+		});
 	}
 }
