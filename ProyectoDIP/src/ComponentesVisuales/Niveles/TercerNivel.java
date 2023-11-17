@@ -20,22 +20,16 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
 import Recursos.CustomFont;
+import ComponentesVisuales.CartaVisual;
 
 public class TercerNivel extends JFrame {
 
 	private JPanel contentPane;
-	private JPanel setCarta1;
-	private JPanel setCarta2;
-	private JPanel setCarta3;
 	private JPanel setCarta1Enemigo;
 	private JPanel setCarta2Enemigo;
 	private JPanel setCarta3Enemigo;
 	private JLabel cuadroDialogos; 
 	private JLabel cuadroDescripcion;
-	private JPanel Carta;
-	private JPanel Carta2;
-	private JPanel Carta3;
-	private JPanel Carta4;
 
 	/**
 	 * Launch the application.
@@ -64,83 +58,49 @@ public class TercerNivel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		setCarta1 = new JPanel();
-		setCarta1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setCarta1.setBackground(Color.WHITE);
-		setCarta1.setBounds(299, 308, 84, 109);
-		contentPane.add(setCarta1);
+		//Carta
+		CartaVisual cartaUno = new CartaVisual();
+		cartaUno.setBounds(31, 173, 63, 89);
+		contentPane.add(cartaUno);
 		
-		setCarta2 = new JPanel();
-		setCarta2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setCarta2.setBackground(Color.WHITE);
-		setCarta2.setBounds(393, 308, 84, 109);
-		contentPane.add(setCarta2);
+		CartaVisual cartaDos = new CartaVisual();
+		cartaDos.setBounds(104, 173, 63, 89);
+		contentPane.add(cartaDos);
 		
-		setCarta3 = new JPanel();
-		setCarta3.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setCarta3.setBackground(Color.WHITE);
-		setCarta3.setBounds(487, 308, 84, 109);
-		contentPane.add(setCarta3);
+		CartaVisual cartaTres = new CartaVisual();
+		cartaTres.setBounds(31, 294, 63, 89);
+		contentPane.add(cartaTres);
+		
+		CartaVisual cartaCuatro = new CartaVisual();
+		cartaCuatro.setBounds(104, 293, 63, 89);
+		contentPane.add(cartaCuatro);
 		
 		setCarta1Enemigo = new JPanel();
 		setCarta1Enemigo.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setCarta1Enemigo.setBackground(Color.WHITE);
-		setCarta1Enemigo.setBounds(299, 173, 84, 109);
+		setCarta1Enemigo.setBounds(301, 245, 63, 89);
 		contentPane.add(setCarta1Enemigo);
 		
 		setCarta2Enemigo = new JPanel();
 		setCarta2Enemigo.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setCarta2Enemigo.setBackground(Color.WHITE);
-		setCarta2Enemigo.setBounds(393, 173, 84, 109);
+		setCarta2Enemigo.setBounds(395, 245, 63, 89);
 		contentPane.add(setCarta2Enemigo);
 		
 		setCarta3Enemigo = new JPanel();
 		setCarta3Enemigo.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setCarta3Enemigo.setBackground(Color.WHITE);
-		setCarta3Enemigo.setBounds(487, 173, 84, 109);
+		setCarta3Enemigo.setBounds(492, 245, 63, 89);
 		contentPane.add(setCarta3Enemigo);
 		
 		cuadroDialogos = new JLabel();
 		diseniarLabel(cuadroDialogos);
 		
-		cuadroDescripcion = new JLabel("New label");
+		cuadroDescripcion = new JLabel("Hola");
 		cuadroDescripcion.setBounds(165, 447, 502, 68);
 		diseniarLabel(cuadroDescripcion);
 		contentPane.add(cuadroDescripcion);
 		
-		Carta = new JPanel();
-		Carta.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		Carta.setBackground(Color.WHITE);
-		Carta.setBounds(10, 173, 84, 109);
-		contentPane.add(Carta);
-		
-		Carta2 = new JPanel();
-		Carta2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		Carta2.setBackground(Color.WHITE);
-		Carta2.setBounds(116, 173, 84, 109);
-		contentPane.add(Carta2);
-		
-		Carta3 = new JPanel();
-		Carta3.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		Carta3.setBackground(Color.WHITE);
-		Carta3.setBounds(10, 308, 84, 109);
-		contentPane.add(Carta3);
-		
-		Carta4 = new JPanel();
-		Carta4.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		Carta4.setBackground(Color.WHITE);
-		Carta4.setBounds(116, 308, 84, 109);
-		contentPane.add(Carta4);
-		
-		reversoCarta(Carta);
-		reversoCarta(Carta2);
-		reversoCarta(Carta3);
-		reversoCarta(Carta4);
-		
-		agregarEventoCarta(Carta);
-		agregarEventoCarta(Carta2);
-		agregarEventoCarta(Carta3);
-		agregarEventoCarta(Carta4);
 	}
 	
 	public void diseniarLabel(JLabel cuadro){
@@ -152,7 +112,7 @@ public class TercerNivel extends JFrame {
 		cuadro.setForeground(Color.WHITE);
 		
 		cuadro.setText("Tengo que hacer el proyecto de DPOO");
-		cuadro.setBounds(217, 11, 450, 115);
+		cuadro.setBounds(257, 73, 450, 115);
 		cuadro.setIcon(new ImageIcon(iconLabel)); //Cambiar de imagen en el Label
 		cuadro.setVerticalTextPosition(SwingConstants.CENTER);
 		cuadro.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -161,18 +121,8 @@ public class TercerNivel extends JFrame {
 	}
 	
 	public void reversoCarta(JPanel carta){
-		JLabel label = new JLabel();
-		label.setSize(carta.getWidth(), carta.getHeight());
-		Image imagen = new ImageIcon("src/Recursos/reversoCarta.png").getImage().getScaledInstance(carta.getWidth(), carta.getHeight()-5, Image.SCALE_SMOOTH);
-		label.setIcon(new ImageIcon(imagen));
-		carta.add(label);
 	}
 	
 	public void agregarEventoCarta(JPanel carta){
-		carta.addMouseMotionListener(new MouseMotionAdapter() {
-			@Override
-			public void mouseDragged(MouseEvent e) {
-			}
-		});
 	}
 }
