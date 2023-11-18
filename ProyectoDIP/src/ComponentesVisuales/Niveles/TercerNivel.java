@@ -111,7 +111,7 @@ public class TercerNivel extends JFrame {
 		this.miJuego = juego;
 		
 		//Crear Controlador
-		this.miJuego.crearControladorNivelTres(heroe);
+		this.miJuego.crearControladorNivelTres(2,2);
 		controlCorazon = new ControladorCorazones();
 		//Zona describir la carta
 		descripcionCarta = new JPanel();
@@ -175,6 +175,18 @@ public class TercerNivel extends JFrame {
 		cuadroDialogos = new JLabel();
 		diseniarLabel(cuadroDialogos);
 		
+		//Evento frame
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				if(miJuego.getControladorTercerNivel().finalizarPartida() > 0) System.out.println("Gane");
+				else if(miJuego.getControladorTercerNivel().finalizarPartida() < 0) {
+					TercerNivel frame = new TercerNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+			}
+		});
 		
 		//Eventos
 		agregarEventoCartas(cartaUno);
@@ -185,8 +197,6 @@ public class TercerNivel extends JFrame {
 		BotonExtendido btnxtndAceptarRespuesta = new BotonExtendido();
 		btnxtndAceptarRespuesta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(miJuego.getControladorTercerNivel().finalizarPartida() > 0) System.out.println("Gane");
-				else if(miJuego.getControladorTercerNivel().finalizarPartida() < 0)System.out.println("Perdi");
 				if(ocupadoSetUno || ocupadoSetDos || ocupadoSetTres){
 					String respuestaJugador = "";
 					if(cartaUno.getLocation().equals(setCarta1.getLocation()) || cartaUno.getLocation().equals(setCarta2.getLocation()) || cartaUno.getLocation().equals(setCarta3.getLocation()))
@@ -198,24 +208,24 @@ public class TercerNivel extends JFrame {
 					if(cartaCuatro.getLocation().equals(setCarta1.getLocation()) || cartaCuatro.getLocation().equals(setCarta2.getLocation()) || cartaCuatro.getLocation().equals(setCarta3.getLocation()))
 						respuestaJugador += cartaCuatro.getCarta().getCodigo();
 					
-				
-					
-					cartaUno.setBounds(10,138, 91, 124);
-					cartaDos.setBounds(117, 138, 91, 124);
-					cartaTres.setBounds(10, 273, 91, 124);
-					cartaCuatro.setBounds(117, 273, 91, 124);
-					ocupadoSetUno = false;
-					ocupadoSetDos = false;
-					ocupadoSetTres = false;
-					
-					try {
-						cuadroDialogos.setText(buffer.readLine());
+					if(miJuego.getControladorTercerNivel().finalizarPartida() == 0){
+						cartaUno.setBounds(10,138, 91, 124);
+						cartaDos.setBounds(117, 138, 91, 124);
+						cartaTres.setBounds(10, 273, 91, 124);
+						cartaCuatro.setBounds(117, 273, 91, 124);
+						ocupadoSetUno = false;
+						ocupadoSetDos = false;
+						ocupadoSetTres = false;
+						
+						try {
+							cuadroDialogos.setText(buffer.readLine());
+						}
+						catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						
 					}
-					catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
 				}
 				
 			}
@@ -225,13 +235,15 @@ public class TercerNivel extends JFrame {
 		contentPane.add(btnxtndAceptarRespuesta);
 		
 		
+		//Corazones
+		agregarCorazonesHeroe();
+		agregarCorazonVillano();
+		
 		//Leer el fichero de las preguntas
 		try{
 			FileReader file = new FileReader("src/Textos/PreguntasNivelTres.txt");
 			buffer = new BufferedReader(file);
-			cuadroDialogos.setText(buffer.readLine());
-			
-			
+			cuadroDialogos.setText(buffer.readLine());			
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -263,7 +275,7 @@ public class TercerNivel extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			
-				if(!ocupadoSetUno || !ocupadoSetDos || !ocupadoSetTres){
+				if((!ocupadoSetUno || !ocupadoSetDos || !ocupadoSetTres) && !carta.esUsadaCarta()){
 					if(!ocupadoSetUno){
 						carta.setBounds(setCarta1.getX(), setCarta1.getY(), 91, 124);
 						ocupadoSetUno = true;
@@ -276,9 +288,12 @@ public class TercerNivel extends JFrame {
 						carta.setBounds(setCarta3.getX(), setCarta3.getY(), 91, 124);
 						ocupadoSetTres = true;
 					}
+					
+					 carta.usarCarta();
 				}
 				else{
 					carta.setBounds(punto.x, punto.y, 91,124);
+					carta.liberarCarta();
 					ocupadoSetUno = false;
 				}
 			}
@@ -295,6 +310,15 @@ public class TercerNivel extends JFrame {
 		contentPane.add(controlCorazon.getLastCorazonHeroe());
 	}
 	
+	public void agregarCorazonVillano(){
+		controlCorazon.agregarCorazonVillano(new Corazon());
+		controlCorazon.getLastCorazonVillano().setBounds(790, 50, 25, 25);
+		contentPane.add(controlCorazon.getLastCorazonVillano());
+		
+		controlCorazon.agregarCorazonVillano(new Corazon());
+		controlCorazon.getLastCorazonVillano().setBounds(830, 50, 25, 25);
+		contentPane.add(		controlCorazon.getLastCorazonVillano());
+	}
 	public void diseniarLabel(JLabel cuadro){
 		ImageIcon imagenLabel = new ImageIcon("src/Recursos/CuadroDialogos.png");
 		Image iconLabel = imagenLabel.getImage().getScaledInstance(450, 150, Image.SCALE_SMOOTH);

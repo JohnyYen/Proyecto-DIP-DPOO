@@ -10,13 +10,11 @@ import Personajes.*;
 import Util.Pregunta;
 import Util.PreguntaNivelUno;
 public class ControladorPrimerNivel extends ControladorJuego {
-	private Cleopatra cleopatra;
 	private ArrayList<PreguntaNivelUno> preguntasAnteriores;
 	private int preguntaActual;
 	
-	public ControladorPrimerNivel(Heroe heroe,Cleopatra cleopatra,InformacionJuego informacionActual){
-		super(heroe, informacionActual);
-		this.cleopatra = cleopatra;
+	public ControladorPrimerNivel(int vidaHeroe, int vidaVillano,InformacionJuego informacionActual){
+		super(vidaHeroe, vidaVillano, informacionActual);
 		preguntasAnteriores = new ArrayList<PreguntaNivelUno>();
 	}
 	
@@ -38,19 +36,12 @@ public class ControladorPrimerNivel extends ControladorJuego {
 		return informacionActual.getPreguntasNivelUno().get(indicePregunta).getPregunta();
 	}
 	
-	@Override
-	public void quitarVidaVillano() {
-		if(cleopatra.getVidas() > 0) {
-			cleopatra.perderVida();
-		}
-		
-	}
 	
 	@Override
 	public int  finalizarPartida() {
 		int ganar = 0;
-		if(guardarHeroe.getVidas() == 0) ganar = -1;
-		else if(guardarHeroe.getVidas() == 0) ganar = 1;
+		if(vidaHeroe == 0) ganar = -1;
+		else if(vidaVillano == 0) ganar = 1;
 		return ganar;
 	}
 }

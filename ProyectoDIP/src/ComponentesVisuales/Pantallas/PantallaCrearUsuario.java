@@ -1,13 +1,10 @@
 package ComponentesVisuales.Pantallas;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -25,6 +22,7 @@ import java.awt.Font;
 
 public class PantallaCrearUsuario extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
@@ -90,7 +88,7 @@ public class PantallaCrearUsuario extends JFrame {
 					
 				}
 				else{
-					System.out.println("Noooooo");
+					JOptionPane.showMessageDialog(null, "Error en la creación de usuario, la contraseña tiene que minimo dos números, una letra mayúscula, y tres letras minúscuñas");
 				}
 			}
 		});
