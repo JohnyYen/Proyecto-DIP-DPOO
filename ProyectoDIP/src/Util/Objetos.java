@@ -8,9 +8,10 @@ private float tamaño;
 private String tipo;
 
 
-public Objetos(String nombre,float tamaño){
+public Objetos(String nombre,float tamaño, String tipo){
 	setNombre(nombre);
 	setTamaño(tamaño);
+	setTipo(tipo);
 }
 
 

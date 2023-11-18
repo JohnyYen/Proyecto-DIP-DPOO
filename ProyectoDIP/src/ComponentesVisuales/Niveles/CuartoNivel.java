@@ -1,4 +1,5 @@
 package ComponentesVisuales.Niveles;
+import javax.swing.*;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -14,17 +15,42 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Logica.ControladorCuartoNivel;
+import Personajes.Dullahan;
+import Personajes.GlitchMonster;
+import Util.ControladorCorazones;
+import Util.Objetos;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
 
 public class CuartoNivel extends JFrame {
 	private JPanel contentPane;
 	private String comunicar;
-	 private  int ordenar;
+    private  int ordenar;
+	private GlitchMonster monstruo;
+	private  ImageIcon GlitchImage;
+	private  JLabel GlitchLabel;
+	private  JPanel labelPanel;
+	private JLabel labelBotones;
+	private JButton button;
+	private JButton button_1;
+	private JButton button_2;
+	private JButton button_3;
+	private JButton button_4;
+	private JButton button_5;
+	private JButton button_6;
+	private JButton button_7;
+	private JButton button_8;
+	private JButton button_9;
 	
-	public CuartoNivel(){
+	private ControladorCorazones controlCorazon;
+	BufferedReader buffer;
+	
+	
+	public CuartoNivel(ArrayList<Objetos>objDisponibles,ArrayList<Objetos>objPerdidos,ArrayList<Objetos>objEncontrados){
 		setTitle("¡Encuentra los objetos!");
-        setSize(900, 700);
+        setSize(923, 736);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		/*Fondo*/
@@ -34,36 +60,40 @@ public class CuartoNivel extends JFrame {
 
         
         /*Glitch*/
-        JPanel GlitchPanel = new JPanel();
-        GlitchPanel.setBounds(604, 389, 155, 202);
-        GlitchPanel.setBackground(Color.WHITE);
-        getContentPane().add(GlitchPanel);
-    
-        ImageIcon GlitchImage = new ImageIcon("src/recursos/monstruo.jpg");
-        Image image = GlitchImage.getImage();
         int newWidth = 198; 
-        int newHeight = 178; 
-        Image newImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
- 
-        ImageIcon resizedImageGlitch = new ImageIcon(newImage);
-        GlitchPanel.setLayout(null);
-        
-        JLabel GlitchLabel = new JLabel(new ImageIcon("C:\\Users\\mirai\\OneDrive\\Desktop\\Proyecto-DIP-DPOO\\ProyectoDIP\\src\\Recursos\\monstruo.jpg"));
-        GlitchLabel.setBounds(-23, 0, 188, 202);
-        GlitchPanel.add(GlitchLabel);
-    
+        int newHeight = 178;
+      
+        monstruo = new GlitchMonster();
+        monstruo.setBounds(604, 389, newWidth, newHeight);
+        getContentPane().add(monstruo);
+        monstruo.setLayout(null);
+       /* 
+       Image newImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+
+       ImageIcon resizedImageGlitch = new ImageIcon(newImage);
+       GlitchPanel.setLayout(null);
+       
+       GlitchLabel = new JLabel(new ImageIcon("C:\\Users\\mirai\\OneDrive\\Desktop\\Proyecto-DIP-DPOO\\ProyectoDIP\\src\\Recursos\\monstruo.jpg"));
+       GlitchLabel.setBounds(-23, 0, 188, 202);
+       GlitchPanel.add(GlitchLabel);*/
+   
         
         /*Peticion objetos*/
         
-       JPanel labelPanel = new JPanel();
+       labelPanel = new JPanel();
         labelPanel.setBounds(107, 58, 580, 75);
         labelPanel.setBackground(Color.WHITE); 
         getContentPane().add(labelPanel);
         labelPanel.setLayout(null);
         
+        
+        JLabel lblNewLabel = new JLabel(this.comunicar);
+        lblNewLabel.setBounds(0, 0, 568, 75);
+        labelPanel.add(lblNewLabel);
+        
         /*Aceptar*/
         JButton acceptButton = new JButton("Aceptar");
-        acceptButton.setBounds(247, 443, 253, 75);
+        acceptButton.setBounds(266, 463, 253, 75);
         getContentPane().add(acceptButton);
         
         /*Menú*/
@@ -76,73 +106,65 @@ public class CuartoNivel extends JFrame {
         getContentPane().add(panel);
         panel.setLayout(null);
         
-        JButton button = new JButton("Sill\u00F3n");
+         button = new JButton();
         button.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		
         	}
         });
         button.setBounds(61, 27, 108, 44);
         panel.add(button);
         
-        JButton button_1 = new JButton("Cascabel");
+         button_1 = new JButton();
         button_1.setBounds(206, 27, 108, 44);
         panel.add(button_1);
         
-        JButton button_2 = new JButton("Arbusto");
+        button_2 = new JButton("Arbusto");
         button_2.setBounds(352, 27, 108, 44);
         panel.add(button_2);
         
-        JButton button_3 = new JButton("Reloj");
+       button_3 = new JButton("Reloj");
         button_3.setBounds(491, 27, 108, 44);
         panel.add(button_3);
         
-        JButton button_4 = new JButton("Sombrero");
+         button_4 = new JButton("Sombrero");
         button_4.setBounds(625, 27, 108, 44);
         panel.add(button_4);
         
-        JButton button_5 = new JButton("Sombrilla");
+         button_5 = new JButton("Sombrilla");
         button_5.setBounds(61, 101, 108, 44);
         panel.add(button_5);
         
-        JButton button_6 = new JButton("Silla");
+         button_6 = new JButton("Silla");
         button_6.setBounds(206, 101, 108, 44);
         panel.add(button_6);
         
-        JButton button_7 = new JButton("Sill\u00F3n");
+         button_7 = new JButton("Sill\u00F3n");
         button_7.setBounds(352, 101, 108, 44);
         panel.add(button_7);
         
-        JButton button_8 = new JButton("Sill\u00F3n");
+        button_8 = new JButton("Sill\u00F3n");
         button_8.setBounds(491, 101, 108, 44);
         panel.add(button_8);
         
-        JButton button_9 = new JButton("Sill\u00F3n");
+        button_9 = new JButton("Sill\u00F3n");
         button_9.setBounds(625, 101, 108, 44);
         panel.add(button_9);
         
-        JLabel lblNewLabel_1 = new JLabel("New label");
-        lblNewLabel_1.setBounds(-25, 0, 817, 175);
-        panel.add(lblNewLabel_1);
+        labelBotones = new JLabel();
+        labelBotones.setIcon(new ImageIcon("src/Recursos/fondo cuarto nivel - copia.jpg"));
+        labelBotones.setBounds(0, 0, 821, 175);
+        panel.add(labelBotones);
+       
         JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, 882, 653);
+        backgroundLabel.setBounds(0, 0, 900, 700);
         getContentPane().add(backgroundLabel);
         
-        
-        JLabel lblNewLabel = new JLabel(this.comunicar);
-        lblNewLabel.setBounds(119, 58, 568, 75);
-        getContentPane().add(lblNewLabel);
 
         
         
 	}
 	
-	public void mostrarInfo(ControladorCuartoNivel controlador,JPanel labelPanel) {
-         ArrayList<String> informacionObjetos = controlador.obtenerInfo();
-         for (int i = 0; i < informacionObjetos.size(); i++) {
-             JLabel label = new JLabel(informacionObjetos.get(i));
-             labelPanel.add(label);
-         }
-     }
         
 	
 	public void informarOrden(){
@@ -185,7 +207,7 @@ public class CuartoNivel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CuartoNivel frame = new CuartoNivel();
+					CuartoNivel frame = new CuartoNivel(null, null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

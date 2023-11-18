@@ -16,7 +16,22 @@ public class GlitchMonster extends Personaje{
 	private ImageIcon imagen; 
 	private static final long serialVersionUID = 1L;
 
-
+    
+	
+	public GlitchMonster(){
+	super(2);
+	super.urlNormal = "src/Recursos/monstruo.jpg";
+	try{
+		BufferedImage img = ImageIO.read(new File(urlNormal));
+		imagen = new ImageIcon(img);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	}
+	
+	
+	
 	public GlitchMonster(int x, int y, int ancho, int alto, int cantVidas) {
 		super(cantVidas);
 	cantVidas = getCantVidas();

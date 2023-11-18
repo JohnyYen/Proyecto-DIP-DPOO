@@ -47,6 +47,7 @@ public class Juego {
 	public void crearControladorCuartoNivel(Heroe heroe, GlitchMonster monster,InformacionJuego info,ArrayList <Objetos> objPerdidos,ArrayList <Objetos> objEncontrados,ArrayList <Objetos> objDisponibles){
 		controlador = null;
 		controlador = new ControladorCuartoNivel(heroe, monster, informacionActual, objPerdidos, objEncontrados,objDisponibles);
+		((ControladorCuartoNivel)controlador).procesarArchivoTexto();
 	}
 	
 	

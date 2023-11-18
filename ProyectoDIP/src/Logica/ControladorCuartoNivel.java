@@ -8,8 +8,12 @@ import Personajes.*;
 import Personajes.Heroe;
 import Personajes.Cleopatra;
 import Util.Objetos;
+import ComponentesVisuales.Niveles.CuartoNivel;
 
-
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class ControladorCuartoNivel extends ControladorJuego {
 private GlitchMonster monster;
@@ -25,8 +29,9 @@ public ControladorCuartoNivel(Heroe heroe,GlitchMonster monster,InformacionJuego
 		objDisponibles = new ArrayList <Objetos>(12);
 		objPerdidos = new ArrayList<Objetos>(4);
 		objEncontrados  = new ArrayList<Objetos>(4);
+		procesarArchivoTexto();
 		asignarObjetosPerdidos();
-		
+	    CuartoNivel cuart = new CuartoNivel( objDisponibles,objPerdidos,objEncontrados);
 	}
 
 
@@ -77,17 +82,6 @@ public void asignarObjetosPerdidos() {
 
 
 
-
-public ArrayList<String> obtenerInfo() {
-    ArrayList<String> informacion = new ArrayList<>();
-    for (Objetos objeto : objPerdidos) {
-        String info = "Nombre: " + objeto.getNombre() + ", Tipo: " + objeto.getTipo() + ", Tamaño: " + objeto.getTamaño();
-        informacion.add(info);
-    }
-    return informacion;
-}
-
-
 	
 public boolean ordenEsCorrecto(int control, ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados){
 	boolean orden = true;
@@ -129,6 +123,40 @@ public boolean ordenEsCorrecto(int control, ArrayList<Objetos> objPerdidos,Array
 	
 }	
 	
+
+
+
+public ArrayList<Objetos> procesarArchivoTexto() {
+    ArrayList<Objetos> objDisponibles = new ArrayList<>();
+
+    try {
+        File archivo = new File("src/recursos/parametrosObjetos.txt");
+        FileReader fr = new FileReader(archivo);
+        BufferedReader br = new BufferedReader(fr);
+        String linea;
+
+        while ((linea = br.readLine()) != null) {
+            String[] partes = linea.split(","); 
+            if (partes.length == 3) {
+                String nombre = partes[0].trim();
+                int tamaño = Integer.parseInt(partes[1].trim());
+                String tipo = partes[2].trim();
+                Objetos obj = new Objetos(nombre, tamaño, tipo);
+                objDisponibles.add(obj);
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    return objDisponibles;
+}
+
+
+
+
+
+
 public boolean mismOrden( ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados){
 	boolean correcto = true;
 	
@@ -140,6 +168,9 @@ public boolean mismOrden( ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objE
 	
 	
 	return correcto;}
+
+
+
 
 
 
