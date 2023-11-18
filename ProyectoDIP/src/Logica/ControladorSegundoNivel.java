@@ -43,11 +43,4 @@ public class ControladorSegundoNivel extends ControladorJuego {
 		return informacionActual.getPreguntasNivelDos();
 	}
 	
-	@Override
-	public int finalizarPartida(){
-		int ganoHeroe = 0;
-		if(vidaHeroe == 0) ganoHeroe = -1;
-		else if(vidaVillano == 0) ganoHeroe = 1;
-		return ganoHeroe;
-	}
 }

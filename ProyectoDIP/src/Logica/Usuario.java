@@ -10,8 +10,17 @@ public class Usuario {
 		this.esProfesor = esProfesor;
 	}
 	
+	public void setPassword(String contrasenia){
+		if(contrasenia.trim().equalsIgnoreCase(""))
+			throw new IllegalArgumentException();
+		else
+			this.password = contrasenia;
+	}
+	
+	public String getPassword(){return this.password;}
+	
 	public void setNombre(String nombre){
-		if(nombre.equalsIgnoreCase(""))
+		if(nombre.trim().equalsIgnoreCase(""))
 			throw new IllegalArgumentException();
 		else
 			this.nombreUsuario = nombre;

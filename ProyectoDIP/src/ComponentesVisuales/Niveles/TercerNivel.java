@@ -8,8 +8,10 @@ import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.Color;
@@ -51,6 +53,7 @@ public class TercerNivel extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel setCarta1;
+	private boolean mensajeHecho = false;
 	private JPanel setCarta2;
 	private JPanel setCarta3;
 	private JLabel cuadroDialogos; 
@@ -74,6 +77,8 @@ public class TercerNivel extends JFrame {
 		
 		//Barra de Menú
 		BarraMenu barraMenu = new BarraMenu();
+		BarraMenu.guardarFrameActual(this);
+		BarraMenu.guardarJuegoActual(miJuego);
 		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;
@@ -88,6 +93,7 @@ public class TercerNivel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Las variables para verificar si las zonas donde se colocan las cartas estan ocupadas
 		ocupadoSetUno = false;
 		ocupadoSetDos = false;
 		ocupadoSetTres = false;
@@ -113,7 +119,8 @@ public class TercerNivel extends JFrame {
 		//Crear Controlador
 		this.miJuego.crearControladorNivelTres(2,2);
 		controlCorazon = new ControladorCorazones();
-		//Zona describir la carta
+		
+		//Zona donde describe la carta cuando se toca
 		descripcionCarta = new JPanel();
 		descripcionCarta.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		descripcionCarta.setBackground(Color.WHITE);
@@ -172,6 +179,7 @@ public class TercerNivel extends JFrame {
 		setCarta3.setBounds(475, 245, 91, 124);
 		contentPane.add(setCarta3);
 		
+		//Crear el cuadro de Dialogo del nivel y diseñarlo
 		cuadroDialogos = new JLabel();
 		diseniarLabel(cuadroDialogos);
 		
@@ -179,6 +187,8 @@ public class TercerNivel extends JFrame {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				//Cuando el mouse entra en contacto con el frame y se finalizo el nivel
+				//Se pasa al siguiente o se mantiene en el mismo
 				if(miJuego.getControladorTercerNivel().finalizarPartida() > 0) System.out.println("Gane");
 				else if(miJuego.getControladorTercerNivel().finalizarPartida() < 0) {
 					TercerNivel frame = new TercerNivel(miJuego);
@@ -193,35 +203,73 @@ public class TercerNivel extends JFrame {
 		agregarEventoCartas(cartaDos);
 		agregarEventoCartas(cartaTres);
 		agregarEventoCartas(cartaCuatro );
-		
+				
+		//Boton para comprobar la respuesta del jugador
 		BotonExtendido btnxtndAceptarRespuesta = new BotonExtendido();
 		btnxtndAceptarRespuesta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//Se comprueba si alguna zona esta ocupada
 				if(ocupadoSetUno || ocupadoSetDos || ocupadoSetTres){
 					String respuestaJugador = "";
+					
+					//Se verifica si es la primera Carta
+					//En caso de serlo se coje el codigo de la carta
 					if(cartaUno.getLocation().equals(setCarta1.getLocation()) || cartaUno.getLocation().equals(setCarta2.getLocation()) || cartaUno.getLocation().equals(setCarta3.getLocation()))
 						respuestaJugador += cartaUno.getCarta().getCodigo();
+					//Se verifica si es la segunda Carta
+					//En caso de serlo se coje el codigo de la carta
 					if(cartaDos.getLocation().equals(setCarta1.getLocation()) || cartaDos.getLocation().equals(setCarta2.getLocation()) || cartaDos.getLocation().equals(setCarta3.getLocation()))
 						respuestaJugador += cartaDos.getCarta().getCodigo();
+					//Se verifica si es la tercera Carta
+					//En caso de serlo se coje el codigo de la carta
 					if(cartaTres.getLocation().equals(setCarta1.getLocation()) || cartaTres.getLocation().equals(setCarta2.getLocation()) || cartaTres.getLocation().equals(setCarta3.getLocation()))
 						respuestaJugador += cartaTres.getCarta().getCodigo();
+					//Se verifica si es la cuarta Carta
+					//En caso de serlo se coje el codigo de la carta
 					if(cartaCuatro.getLocation().equals(setCarta1.getLocation()) || cartaCuatro.getLocation().equals(setCarta2.getLocation()) || cartaCuatro.getLocation().equals(setCarta3.getLocation()))
 						respuestaJugador += cartaCuatro.getCarta().getCodigo();
 					
+					
+					//En el caso que no se haya finalizado la partida
 					if(miJuego.getControladorTercerNivel().finalizarPartida() == 0){
+						
+						String textoRespuesta;
+						try {
+							//El texto de la respuesta
+							textoRespuesta = buffer.readLine();
+						} catch (IOException e2) {
+							textoRespuesta = "Error"; 
+							e2.printStackTrace();
+						}
+						
+						//Compruebo la respuesta del jugado
+						if(miJuego.getControladorTercerNivel().respuestaCorrecta(respuestaJugador, textoRespuesta)){
+							miJuego.getControladorTercerNivel().quitarVidaVillano();
+							controlCorazon.quitarVidaVillano();
+						}
+						else{
+							miJuego.getControladorTercerNivel().quitarVidaHeroe();
+							controlCorazon.quitarVidaHeroe();
+						}
+						
+						//Despues se recolocan las cartas en las posiciones iniciales
 						cartaUno.setBounds(10,138, 91, 124);
 						cartaDos.setBounds(117, 138, 91, 124);
 						cartaTres.setBounds(10, 273, 91, 124);
 						cartaCuatro.setBounds(117, 273, 91, 124);
+						
+						//Las zonas vuelven a estar desocupadas
 						ocupadoSetUno = false;
 						ocupadoSetDos = false;
 						ocupadoSetTres = false;
 						
 						try {
+							//Se coloca una nueva pregunta en el cuadro de dialogos
 							cuadroDialogos.setText(buffer.readLine());
 						}
 						catch (IOException e1) {
-							// TODO Auto-generated catch block
+							cuadroDialogos.setText("Ocurrio un Error");
 							e1.printStackTrace();
 						}
 						
@@ -249,11 +297,31 @@ public class TercerNivel extends JFrame {
 			e.printStackTrace();
 		}
 		
+		//Colocar un mensaje informátivo de lo que consiste el nivel en 1 segundo
+		Timer timer = new Timer(1000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(!mensajeHecho){
+					JOptionPane.showMessageDialog(null, "La batalla con Dullahan no sera como las otras\n"
+							+ "tendrás que resolver los problemas del jinete, con las cartas disponibles");
+					mensajeHecho = true;
+				}
+					
+				
+			}
+		});
+		timer.start();
+		
+		
+		
 	}
 	
 	public void agregarEventoCartas(final CartaVisual carta){
 		final Point punto = new Point(carta.getX(), carta.getY());
 		carta.addMouseListener(new MouseAdapter() {
+			//Si la carta es presionada sus datos, titulo y descripción aparecen
+			//en la zona para describir la carta
 			@Override
 			public void mousePressed(MouseEvent e) {
 				descripcionCarta.setVisible(true);
@@ -263,18 +331,25 @@ public class TercerNivel extends JFrame {
 			
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				try {
-					//Thread.sleep(1000);
-					texto.setText("                            ");
-					titulo.setText("                           ");
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				//Cuando son retirado al cabo de 0.5 segundos se vacia la información
+				Timer time = new Timer(500, new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						texto.setText("                            ");
+						titulo.setText("                           ");
+						
+					}
+				});
+				
+				time.start();
 				
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			
+				//Si a la carta se le hace Clic se verifica que zona esta disponible y
+				// si la carta esta siendo usada, y despues se coloca en la zona del setCarta disponibles
 				if((!ocupadoSetUno || !ocupadoSetDos || !ocupadoSetTres) && !carta.esUsadaCarta()){
 					if(!ocupadoSetUno){
 						carta.setBounds(setCarta1.getX(), setCarta1.getY(), 91, 124);
@@ -288,9 +363,13 @@ public class TercerNivel extends JFrame {
 						carta.setBounds(setCarta3.getX(), setCarta3.getY(), 91, 124);
 						ocupadoSetTres = true;
 					}
+					else{
+						carta.setBounds(punto.x, punto.y, 91,124);
+					}
 					
 					 carta.usarCarta();
 				}
+				//En caso que se le haga clic y esta siendo usada se coloca en su posición inicial
 				else{
 					carta.setBounds(punto.x, punto.y, 91,124);
 					carta.liberarCarta();

@@ -17,8 +17,6 @@ public class Heroe extends Personaje {
 	public Heroe() {
 		super(3);
 		super.urlNormal = "src/Recursos/Heroe/HeroeNormal.png";
-		super.urlGano = "src/Recursos/Heroe/HeroeGano.png";
-		super.urlPerdio = "src/Recursos/Heroe/HeroeDerrotado.png";
 		try{
 			BufferedImage img = ImageIO.read(new File(urlNormal));
 			imagen = new ImageIcon(img);
@@ -34,12 +32,10 @@ public class Heroe extends Personaje {
 		repaint();
 	}
 	public void setGano(){
-		imagen = new ImageIcon(urlGano);
-		repaint();
+		//Sin implementar
 	}
 	public void setPerdio(){
-		imagen = new ImageIcon(urlPerdio);
-		repaint();
+		//Sin implementar
 	}
 	
 	@Override

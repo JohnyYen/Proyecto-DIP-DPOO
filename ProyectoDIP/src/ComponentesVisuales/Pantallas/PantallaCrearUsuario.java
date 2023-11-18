@@ -36,36 +36,32 @@ public class PantallaCrearUsuario extends JFrame {
 		
 		setTitle("Hello World!: Crear Usuario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 487, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(37, 38, 79, 14);
+		lblNombre.setBounds(20, 11, 79, 14);
 		contentPane.add(lblNombre);
 		
 		textField = new JTextField();
-		textField.setBounds(37, 63, 185, 20);
+		textField.setBounds(20, 36, 185, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setBounds(37, 116, 100, 14);
+		lblContrasea.setBounds(20, 67, 100, 14);
 		contentPane.add(lblContrasea);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(37, 144, 185, 20);
+		passwordField.setBounds(20, 95, 185, 20);
 		contentPane.add(passwordField);
 		
 		final JRadioButton profesor = new JRadioButton("Profesor");
-		profesor.setBounds(28, 188, 109, 23);
+		profesor.setBounds(21, 143, 109, 23);
 		contentPane.add(profesor);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(142, 188, 100, 34);
-		contentPane.add(btnCancelar);
 		
 		BotonExtendido btnxtndCrearUsuario = new BotonExtendido();
 		btnxtndCrearUsuario.addActionListener(new ActionListener() {
@@ -88,13 +84,27 @@ public class PantallaCrearUsuario extends JFrame {
 					
 				}
 				else{
-					JOptionPane.showMessageDialog(null, "Error en la creación de usuario, la contraseña tiene que minimo dos números, una letra mayúscula, y tres letras minúscuñas");
+					JOptionPane.showMessageDialog(null, "Error en la creación de usuario, la contraseña tiene\n que tener minimo dos números, una letra mayúscula, y tres letras minúsculas, y el nombre\n de Usuario tiene que tener mínimo dos carácteres");
 				}
 			}
 		});
 		btnxtndCrearUsuario.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnxtndCrearUsuario.setText("Crear Usuario");
-		btnxtndCrearUsuario.setBounds(252, 188, 172, 34);
+		btnxtndCrearUsuario.setBounds(223, 188, 238, 34);
 		contentPane.add(btnxtndCrearUsuario);
+		
+		JLabel lblEresProfesor = new JLabel("Eres Profesor:");
+		lblEresProfesor.setBounds(20, 122, 110, 14);
+		contentPane.add(lblEresProfesor);
+		
+		BotonExtendido btnxtndCancelar = new BotonExtendido();
+		btnxtndCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnxtndCancelar.setText("Cancelar");
+		btnxtndCancelar.setBounds(10, 188, 216, 34);
+		contentPane.add(btnxtndCancelar);
 	}
 }

@@ -14,14 +14,23 @@ public abstract class ControladorJuego {
 		this.informacionActual = informacionActual;
 	}
 	
-	public void guardarPartida(JFrame frame){
-		MenuPrincipal.guardarEstado(frame);
-	}
+	//Método para quitar vida del heroe
 	public void quitarVidaHeroe(){
 		if(vidaHeroe > 0 ) vidaHeroe--;
 	}
+	
+	//Método para quitar vida al villano
 	public void quitarVidaVillano(){
 		if(vidaVillano > 0) vidaVillano--;
 	}
-	public abstract int finalizarPartida();
+	
+	//Método para verificar si la partida ya se termino
+	//En caso que gano el heroe devuelve 1, en caso que gano el villano devuelve -1
+	//Si nadie ha ganado devuelve 0
+		public int  finalizarPartida() {
+			int ganar = 0;
+			if(vidaHeroe == 0) ganar = -1;
+			else if(vidaVillano == 0) ganar = 1;
+			return ganar;
+		}
 }

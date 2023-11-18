@@ -17,12 +17,15 @@ import java.awt.event.ActionEvent;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import ComponentesVisuales.Componentes.BotonExtendidoNivel2;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -30,6 +33,7 @@ public class SegundoNivel extends JFrame {
 
 	private static final long serialVersionUID = -4285398109221870651L;
 	private JPanel contentPane;
+	private boolean mensajeHecho = false;
 	private LabelPreguntas labelPreguntas;
 	private Juego miJuego;
 	private boolean seTermino = false;
@@ -69,6 +73,8 @@ public class SegundoNivel extends JFrame {
 		contentPane.setLayout(null);
 		
 		BarraMenu barraMenu = new BarraMenu();
+		BarraMenu.guardarFrameActual(this);
+		BarraMenu.guardarJuegoActual(miJuego);
 		setJMenuBar(barraMenu);
 		
 		Medusa medusa = new Medusa();
@@ -172,7 +178,21 @@ public class SegundoNivel extends JFrame {
 		opcion3.setBounds(180, 535, 645, 115);
 		contentPane.add(opcion3);
 		
-		
+		Timer timer = new Timer(1000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(!mensajeHecho){
+					JOptionPane.showMessageDialog(null, "Para ganarle a Medusa tendrás que ser inteligente y\n"
+							+ "responder correctamente las preguntas pero no te confies\n"
+							+ "este nivel no es como el anterior. Buena Suerte");
+					mensajeHecho = true;
+				}
+					
+				
+			}
+		});
+		timer.start();
 		
 		ponerPosiblesRespuestas();
 		
