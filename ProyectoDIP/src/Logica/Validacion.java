@@ -2,15 +2,14 @@ package Logica;
 
 //Clase que se usara para todas las validaciones en el juego
 public class Validacion {
-
+	
 	public boolean esValidaContrasenia(char[] password){
 		int cantNumeros = 0,cantLetras = 0, cantMayusculas = 0;
 		
-		for(char c : password
-				){
+		for(char c : password){
 			if(Character.isDigit(c)) cantNumeros++;
-			else if(Character.isLetter(c)) cantLetras++;
-			else if(Character.isUpperCase(c)) cantMayusculas++;
+			if(Character.isLetter(c)) cantLetras++;
+			if(Character.isUpperCase(c)) cantMayusculas++;
 		}
 		
 		return ((cantNumeros >= 2)&&(cantLetras >= 3) && (cantMayusculas >=1)) ? true : false;
