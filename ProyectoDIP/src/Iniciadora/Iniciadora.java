@@ -22,7 +22,8 @@ public class Iniciadora {
 					inicializarDatosPrimerNivel(juego);
 					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
-					PantallaCarga frame = new PantallaCarga(juego);
+					//PantallaCarga frame = new PantallaCarga(juego);
+					SegundoNivel frame = new  SegundoNivel(juego);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

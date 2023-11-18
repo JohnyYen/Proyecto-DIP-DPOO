@@ -29,21 +29,21 @@ public class Juego {
 	public static Juego obtenerJuego(){
 		return unicoJuego;
 	}
-	public void crearControladorNivelUno(Heroe heroe, Cleopatra villana){
+	public void crearControladorNivelUno(int vidaHeroe, int vidaVillano){
 		controlador = null;
-		controlador = new ControladorPrimerNivel(heroe, villana, informacionActual);
+		controlador = new ControladorPrimerNivel(vidaHeroe, vidaVillano, informacionActual);
 	}
-	public void crearControladorNivelTres(Heroe heroe){
+	public void crearControladorNivelTres(int vidaHeroe, int vidaVillano){
 		controlador = null;
-		controlador = new ControladorTercerNivel(heroe, informacionActual);
+		controlador = new ControladorTercerNivel(vidaHeroe, vidaVillano, informacionActual);
 	}
 	
 	public ControladorTercerNivel getControladorTercerNivel(){return (ControladorTercerNivel)controlador;}
 	public ControladorPrimerNivel getControladorNivelUno(){ return (ControladorPrimerNivel)controlador;}
 	
-	public void crearControladorNivelDos(Heroe heroe, Medusa medusa){
+	public void crearControladorNivelDos(int vidaHeroe, int vidaVillano){
 		controlador = null;
-		controlador = new ControladorSegundoNivel(heroe, medusa, informacionActual);
+		controlador = new ControladorSegundoNivel(vidaHeroe, vidaVillano, informacionActual);
 	}
 
 	public ControladorSegundoNivel getControladorNivelDos() {

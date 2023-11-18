@@ -111,7 +111,7 @@ public class TercerNivel extends JFrame {
 		this.miJuego = juego;
 		
 		//Crear Controlador
-		this.miJuego.crearControladorNivelTres(heroe);
+		this.miJuego.crearControladorNivelTres(2,2);
 		controlCorazon = new ControladorCorazones();
 		//Zona describir la carta
 		descripcionCarta = new JPanel();

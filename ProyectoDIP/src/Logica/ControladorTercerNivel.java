@@ -6,8 +6,8 @@ import Personajes.Heroe;
 import Util.*;
 public class ControladorTercerNivel extends ControladorJuego{
 	private int indiceCarta;
-	public ControladorTercerNivel(Heroe heroe, InformacionJuego informacionActual){
-		super(heroe, informacionActual);
+	public ControladorTercerNivel(int vidaHeroe, int vidaVillano, InformacionJuego informacionActual){
+		super(vidaHeroe, vidaVillano, informacionActual);
 		indiceCarta = 0;
 	}
 	public boolean respuestaCorrecta(String respuestaJugador, String respuesta){
@@ -21,15 +21,10 @@ public class ControladorTercerNivel extends ControladorJuego{
 		return informacionActual.getCartas().get(indiceCarta++);
 	}
 	@Override
-	public void quitarVidaVillano() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
 	public int  finalizarPartida() {
 		int ganar = 0;
-		if(guardarHeroe.getVidas() == 0) ganar = -1;
-		else if(guardarHeroe.getVidas() == 0) ganar = 1;
+		if(vidaHeroe == 0) ganar = -1;
+		else if(vidaVillano == 0) ganar = 1;
 		return ganar;
 	}
 	
