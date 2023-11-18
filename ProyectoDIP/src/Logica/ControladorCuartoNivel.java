@@ -20,7 +20,7 @@ private GlitchMonster monster;
 private ArrayList <Objetos> objDisponibles ;
 private ArrayList<Objetos>objPerdidos;	
 private	ArrayList<Objetos> objEncontrados;
-
+public int acept;
 
 
 public ControladorCuartoNivel(Heroe heroe,GlitchMonster monster,InformacionJuego info,ArrayList <Objetos> objPerdidos,ArrayList <Objetos> objEncontrados,ArrayList <Objetos> objDisponibles ) {
@@ -31,11 +31,15 @@ public ControladorCuartoNivel(Heroe heroe,GlitchMonster monster,InformacionJuego
 		objEncontrados  = new ArrayList<Objetos>(4);
 		procesarArchivoTexto();
 		asignarObjetosPerdidos();
-	    CuartoNivel cuart = new CuartoNivel( objDisponibles,objPerdidos,objEncontrados);
+	    CuartoNivel cuart = new CuartoNivel( objDisponibles,objPerdidos,objEncontrados, acept);
+	    int control = cuart.informarOrden();
+	    ordenEsCorrecto(acept,control,  objPerdidos, objEncontrados);
 	}
 
 
-
+public void setAcept(int a){
+	acept =a;
+}
 public ArrayList <Objetos> getObjDisponibles() {
 	return objDisponibles;
 }
@@ -87,9 +91,9 @@ public void asignarObjetosPerdidos() {
 
 
 	
-public boolean ordenEsCorrecto(int control, ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados){
+public boolean ordenEsCorrecto(int accept,int control, ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados){
 	boolean orden = true;
-
+if (accept ==1){
 	if(objEncontrados.size()!= objPerdidos.size()){
 		orden = false;
 		
@@ -120,7 +124,7 @@ public boolean ordenEsCorrecto(int control, ArrayList<Objetos> objPerdidos,Array
 	if(orden == true){
 		quitarVidaVillano();
 		
-	}
+	}}
 	
 	return orden;
 	

@@ -43,16 +43,16 @@ public class CuartoNivel extends JFrame {
 	private JButton button_7;
 	private JButton button_8;
 	private JButton button_9;
-	
+	private ArrayList <Objetos> objEncontrados ;
 	private ControladorCorazones controlCorazon;
 	BufferedReader buffer;
 	
 	
-	public CuartoNivel( final ArrayList<Objetos>objDisponibles,final ArrayList<Objetos>objPerdidos,ArrayList<Objetos>objEncontrados){
+	public CuartoNivel( final ArrayList<Objetos>objDisponibles,final ArrayList<Objetos>objPerdidos,int acept){
 		setTitle("¡Encuentra los objetos!");
         setSize(923, 736);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        this.objEncontrados = new ArrayList<Objetos>(4);
         
 		/*Fondo*/
         ImageIcon backgroundImage = new ImageIcon("src/Recursos/fondo cuarto nivel.jpg");
@@ -99,6 +99,7 @@ public class CuartoNivel extends JFrame {
         acceptButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	}
+        	 
         });
         acceptButton.setBounds(266, 463, 253, 75);
         getContentPane().add(acceptButton);
@@ -117,10 +118,11 @@ public class CuartoNivel extends JFrame {
         getContentPane().add(panel);
         panel.setLayout(null);
         
-         button = new JButton();
+         button = new JButton(objDisponibles.get(0).getNombre());
         button.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		button.setText(objDisponibles.get(0).getNombre());
+        		objEncontrados.add(objDisponibles.get(0));
+        		
         	}
         });
         button.setBounds(61, 27, 108, 44);
@@ -139,7 +141,7 @@ public class CuartoNivel extends JFrame {
         button_2 = new JButton(objDisponibles.get(8).getNombre());
         button_2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		
+        		objEncontrados.add(objDisponibles.get(8));	
         	}
         });
         button_2.setBounds(352, 27, 108, 44);
@@ -148,7 +150,7 @@ public class CuartoNivel extends JFrame {
        button_3 = new JButton(objPerdidos.get(1).getNombre());
        button_3.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
-       		
+       		objEncontrados.add(objPerdidos.get(1));
        	}
        });
         button_3.setBounds(491, 27, 108, 44);
@@ -157,7 +159,7 @@ public class CuartoNivel extends JFrame {
          button_4 = new JButton(objPerdidos.get(2).getNombre());
          button_4.addActionListener(new ActionListener() {
          	public void actionPerformed(ActionEvent e) {
-         		
+         		objEncontrados.add(objPerdidos.get(2));
          	}
          });
         button_4.setBounds(625, 27, 108, 44);
@@ -166,7 +168,7 @@ public class CuartoNivel extends JFrame {
          button_5 = new JButton(objPerdidos.get(3).getNombre());
          button_5.addActionListener(new ActionListener() {
          	public void actionPerformed(ActionEvent e) {
-         		
+         		objEncontrados.add(objPerdidos.get(3));
          	}
          });
         button_5.setBounds(61, 101, 108, 44);
@@ -175,7 +177,7 @@ public class CuartoNivel extends JFrame {
          button_6 = new JButton(objDisponibles.get(2).getNombre());
          button_6.addActionListener(new ActionListener() {
          	public void actionPerformed(ActionEvent e) {
-         		
+         		objEncontrados.add(objDisponibles.get(2));
          	}
          });
         button_6.setBounds(206, 101, 108, 44);
@@ -184,6 +186,7 @@ public class CuartoNivel extends JFrame {
          button_7 = new JButton(objDisponibles.get(7).getNombre());
          button_7.addActionListener(new ActionListener() {
          	public void actionPerformed(ActionEvent e) {
+         		objEncontrados.add(objDisponibles.get(7));
          	}
          });
         button_7.setBounds(352, 101, 108, 44);
@@ -192,14 +195,16 @@ public class CuartoNivel extends JFrame {
         button_8 = new JButton(objDisponibles.get(5).getNombre());
         button_8.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		objEncontrados.add(objDisponibles.get(5));
         	}
         });
         button_8.setBounds(491, 101, 108, 44);
         panel.add(button_8);
         
-        button_9 = new JButton("objDisponibles.get(9).getNombre()");
+        button_9 = new JButton(objDisponibles.get(9).getNombre());
         button_9.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		objEncontrados.add(objDisponibles.get(9));
         	}
         });
         button_9.setBounds(625, 101, 108, 44);
@@ -221,33 +226,39 @@ public class CuartoNivel extends JFrame {
 	
         
 	
-	public void informarOrden(){
+	public CuartoNivel(Object object, Object object2, Object object3,
+			Object object4) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public int informarOrden(){
 		int control = 0;
 		Random r =new Random();
-	   control = (int)(r.nextDouble()*10-5);
+	   control = (int)(r.nextDouble()*10-6);
 		
 	   switch(control){
-		case 1: this.comunicar = "El orden seleccionado es: de forma ascendente" ;
+		case 1: this.comunicar = "El orden seleccionado es: mismo orden" ;
 			
 			break;
 			
-		case 2: this.comunicar = "El orden seleccionado es: de forma ascendente";
+		case 2: this.comunicar = "El orden seleccionado es: orden inverso";
 			break;
 			
 			
-		case 3: this.comunicar = "El orden seleccionado es: de forma ascendente";
+		case 3: this.comunicar = "El orden seleccionado es: ascendente";
 			break;
 			
-		case 4: this.comunicar = "El orden seleccionado es: de forma ascendente";
-			
-			break;
+
 		
 			
-			default: this.comunicar = "El orden seleccionado es: de forma ascendente"
+			default: this.comunicar = "El orden seleccionado es: descendente"
 				
 				 ;
 				
 		}
+	return control;
 	   
 	}
 
@@ -261,7 +272,7 @@ public class CuartoNivel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CuartoNivel frame = new CuartoNivel(null, null, null);
+					CuartoNivel frame = new CuartoNivel(null, null, null,null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
