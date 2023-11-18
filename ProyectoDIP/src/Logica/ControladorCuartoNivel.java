@@ -54,8 +54,12 @@ public ArrayList<Objetos> getObjEncontrados() {
 
 
 
-public void setObjEncontrados(ArrayList<Objetos> objEncontrados) {
-	this.objEncontrados = objEncontrados;
+ void setObjEncontrados(Objetos objEncontrados) {
+	 if (this.objEncontrados.size() < 4) {
+	 this.objEncontrados.add(objEncontrados);
+	 } else {
+	      this.objEncontrados.clear();
+	    }
 }
 
 
@@ -114,7 +118,8 @@ public boolean ordenEsCorrecto(int control, ArrayList<Objetos> objPerdidos,Array
 	}
 	
 	if(orden == true){
-		monster.getCantVidas();
+		quitarVidaVillano();
+		
 	}
 	
 	return orden;
@@ -130,7 +135,7 @@ public ArrayList<Objetos> procesarArchivoTexto() {
     ArrayList<Objetos> objDisponibles = new ArrayList<>();
 
     try {
-        File archivo = new File("src/recursos/parametrosObjetos.txt");
+        File archivo = new File("src/Recursos/parametrosObjetos.txt");
         FileReader fr = new FileReader(archivo);
         BufferedReader br = new BufferedReader(fr);
         String linea;
@@ -221,7 +226,7 @@ for(int i=1;i<4 && correcto != false;i++){
 @Override
 public void quitarVidaVillano() {
 	if(monster.getCantVidas() > 0) {
-		monster.perderVida();
+		monster.setCantVidas();
 	}
 	
 }

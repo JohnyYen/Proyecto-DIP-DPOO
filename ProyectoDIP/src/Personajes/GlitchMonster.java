@@ -15,26 +15,19 @@ import javax.swing.ImageIcon;
 public class GlitchMonster extends Personaje{
 	private ImageIcon imagen; 
 	private static final long serialVersionUID = 1L;
-
+private  int cantVidas;
     
 	
 	public GlitchMonster(){
 	super(2);
 	super.urlNormal = "src/Recursos/monstruo.jpg";
-	try{
-		BufferedImage img = ImageIO.read(new File(urlNormal));
-		imagen = new ImageIcon(img);
-	}
-	catch(IOException e){
-		e.printStackTrace();
-	}
 	}
 	
 	
 	
 	public GlitchMonster(int x, int y, int ancho, int alto, int cantVidas) {
 		super(cantVidas);
-	cantVidas = getCantVidas();
+	cantVidas = 3;
 	ancho = 198;
 	alto=178;
 	x = 571;
@@ -58,10 +51,12 @@ public class GlitchMonster extends Personaje{
 		g.drawImage(im, 0, 0, getWidth(), getHeight(), this);
 	}
 public int getCantVidas(){
-	return cantVidas =3;
+	return cantVidas;
 	
 }
-	
+	public void setCantVidas(){
+		this.cantVidas --;
+	}
 	@Override
 	public void setNormal() {
 		// TODO Auto-generated method stub
