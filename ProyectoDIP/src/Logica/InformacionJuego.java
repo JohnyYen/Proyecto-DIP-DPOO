@@ -22,6 +22,10 @@ public class InformacionJuego {
 		preguntas.add(new PreguntaNivelUno(texto, respuesta));
 	}
 	
+	public void crearPreguntaNivelDos(String texto,ArrayList<String> respuestas, String respuestaFinal){
+		preguntas.add(new PreguntaNivelDos(texto, respuestas, respuestaFinal));
+	}
+	
 	public ArrayList<PreguntaNivelUno> getPreguntasNivelUno(){
 		ArrayList<PreguntaNivelUno> preguntasNivelUno = new ArrayList<PreguntaNivelUno>();
 		
@@ -31,11 +35,12 @@ public class InformacionJuego {
 		
 		return preguntasNivelUno;
 	}
-	public ArrayList<PreguntaNivelDos> getPreguntaNivelDos(){
+	public ArrayList<PreguntaNivelDos> getPreguntasNivelDos(){
 		ArrayList<PreguntaNivelDos> preguntasNivelDos = new ArrayList<PreguntaNivelDos>();
-		for(Pregunta p : preguntas)
+		for (Pregunta p : preguntas) {
 			if(p instanceof PreguntaNivelDos)
 				preguntasNivelDos.add((PreguntaNivelDos)p);
+		}
 		
 		return preguntasNivelDos;
 	}

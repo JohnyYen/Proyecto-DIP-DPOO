@@ -56,7 +56,6 @@ public class Boton extends JButton{
 				setIcon(new ImageIcon(iconPressed));
 			}
 		});
-		String algo;
 		addMouseListener(new MouseAdapter(){
 			@Override
 			public void mouseReleased(MouseEvent arg0) {

@@ -20,6 +20,7 @@ public class LabelPreguntas extends JLabel{
 		textoPanel = new TextPanel();
 		
 		textoPanel.setSize(ancho, alto);
+		this.setLayout(new GridBagLayout());
 		
 		
 		this.add(textoPanel);

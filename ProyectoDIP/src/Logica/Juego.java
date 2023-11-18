@@ -38,4 +38,13 @@ public class Juego {
 	
 	public ControladorTercerNivel getControladorTercerNivel(){return (ControladorTercerNivel)controlador;}
 	public ControladorPrimerNivel getControladorNivelUno(){ return (ControladorPrimerNivel)controlador;}
+	
+	public void crearControladorNivelDos(Heroe heroe, Medusa medusa){
+		controlador = new ControladorSegundoNivel(heroe, medusa, informacionActual);
+	}
+
+	public ControladorSegundoNivel getControladorNivelDos() {
+		return (ControladorSegundoNivel)controlador;
+	}
+	
 }
