@@ -32,8 +32,17 @@ public class FrameTransicion extends JPanel {
 	}
 	
 	public void aumentarFrame(){
-		if(++cantDialogos == 15){
-			imagen = new  ImageIcon(urlImagenes[++frameActual]);
+		cantDialogos++;
+		if(cantDialogos < 9){
+			imagen = new  ImageIcon(urlImagenes[0]);
+			repaint();
+		}
+		else if(cantDialogos > 9 && cantDialogos < 18){
+			imagen = new  ImageIcon(urlImagenes[1]);
+			repaint();
+		}
+		else if(cantDialogos > 19 && cantDialogos < 28){
+			imagen = new  ImageIcon(urlImagenes[2]);
 			repaint();
 		}
 	}
