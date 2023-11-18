@@ -1,26 +1,42 @@
 package Logica;
 
 import java.util.ArrayList;
+
 import Util.*;
 
 public class InformacionJuego {
-	private ArrayList<PreguntaNivelUno> preguntasNivelUno;
-	private ArrayList<PreguntaNivelDos> preguntasNivelDos;
+	private ArrayList<Pregunta> preguntas;
+	private ArrayList<Carta> cartas;
 	
 	public InformacionJuego(){
-		preguntasNivelUno = new ArrayList<PreguntaNivelUno>();
-		preguntasNivelDos = new ArrayList<PreguntaNivelDos>();
+		preguntas = new ArrayList<Pregunta>(); 
+		cartas = new ArrayList<Carta>();
+	}
+	
+	public void crearCarta(String nombre, String funcionalidad, String codigo){
+		cartas.add(new Carta(nombre, funcionalidad, codigo));
+	}
+	
+	public ArrayList<Carta> getCartas(){return this.cartas;}
+	public void crearPreguntaNivelUno(String texto, boolean respuesta){
+		preguntas.add(new PreguntaNivelUno(texto, respuesta));
 	}
 	
 	public ArrayList<PreguntaNivelUno> getPreguntasNivelUno(){
-		return this.preguntasNivelUno;
+		ArrayList<PreguntaNivelUno> preguntasNivelUno = new ArrayList<PreguntaNivelUno>();
+		
+		for(Pregunta p : preguntas)
+			if(p instanceof PreguntaNivelUno)
+				preguntasNivelUno.add((PreguntaNivelUno)p);
+		
+		return preguntasNivelUno;
 	}
-	
-	public void crearPreguntaNivelUno(String texto, boolean respuesta){
-		this.preguntasNivelUno.add(new PreguntaNivelUno(texto, respuesta));
-	}
-	
-	public void crearPreguntaNivelDos(String texto, ArrayList<String> respuestas, String respuesta){
-		this.preguntasNivelDos.add(new PreguntaNivelDos(texto, respuestas, respuesta));
+	public ArrayList<PreguntaNivelDos> getPreguntaNivelDos(){
+		ArrayList<PreguntaNivelDos> preguntasNivelDos = new ArrayList<PreguntaNivelDos>();
+		for(Pregunta p : preguntas)
+			if(p instanceof PreguntaNivelDos)
+				preguntasNivelDos.add((PreguntaNivelDos)p);
+		
+		return preguntasNivelDos;
 	}
 }

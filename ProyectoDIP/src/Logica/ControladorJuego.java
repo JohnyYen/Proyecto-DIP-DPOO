@@ -6,19 +6,25 @@ import Personajes.*;
 import ComponentesVisuales.Pantallas.MenuPrincipal;
 
 public abstract class ControladorJuego {
-        protected Heroe guardarHeroe;
-        protected InformacionJuego informacionActual;
-        public ControladorJuego(Heroe heroe, InformacionJuego informacionActual){
-                this.guardarHeroe = heroe; 
-                this.informacionActual = informacionActual;
-        }
-
-        public void guardarPartida(JFrame parent){
-                MenuPrincipal.guardarEstado(parent);
-        }
-        public void quitarVidaHeroe(){
-                if(guardarHeroe.getVidas() > 0) guardarHeroe.perderVida();
-        }
-        public abstract void quitarVidaVillano();
-        public abstract boolean finalizarPartida();
+	protected Heroe guardarHeroe;
+	protected InformacionJuego informacionActual;
+	public ControladorJuego(Heroe heroe, InformacionJuego informacionActual){
+		this.guardarHeroe = heroe; 
+		this.informacionActual = informacionActual;
+	}
+	
+	public void guardarPartida(JFrame parent){
+		MenuPrincipal.guardarEstado(parent);
+	}
+	public void quitarVidaHeroe(){
+		if(guardarHeroe.getVidas() > 0) guardarHeroe.perderVida();
+	}
+	public abstract void quitarVidaVillano();
+	
+	public int  finalizarPartida() {
+		int ganar = 0;
+		if(guardarHeroe.getVidas() == 0) ganar = -1;
+		else if(guardarHeroe.getVidas() == 0) ganar = 1;
+		return ganar;
+	}
 }

@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+
+import Personajes.*;
 import Personajes.Heroe;
 import Personajes.Cleopatra;
 import Util.Objetos;
@@ -10,14 +12,15 @@ import Util.Objetos;
 
 
 public class ControladorCuartoNivel extends ControladorJuego {
-
+private GlitchMonster monster;
 private ArrayList <Objetos> objDisponibles ;
 private ArrayList<Objetos>objPerdidos;	
 private	ArrayList<Objetos> objEncontrados;
 
 
-public ControladorCuartoNivel(Heroe heroe,Cleopatra villano,ArrayList <Objetos> objPerdidos,ArrayList <Objetos> objEncontrados,ArrayList <Objetos> objDisponibles ) {
-		super(heroe, villano);
+
+public ControladorCuartoNivel(Heroe heroe,GlitchMonster monster,InformacionJuego info,ArrayList <Objetos> objPerdidos,ArrayList <Objetos> objEncontrados,ArrayList <Objetos> objDisponibles ) {
+		super(heroe, info);
 			
 		objDisponibles = new ArrayList <Objetos>(12);
 		objPerdidos = new ArrayList<Objetos>(4);
@@ -117,7 +120,7 @@ public boolean ordenEsCorrecto(int control, ArrayList<Objetos> objPerdidos,Array
 	}
 	
 	if(orden == true){
-		super.quitarVidaVillano();
+		monster.getCantVidas();
 	}
 	
 	return orden;
@@ -180,6 +183,40 @@ for(int i=1;i<4 && correcto != false;i++){
 }
 	
 	return correcto;}
+
+
+
+
+@Override
+public void quitarVidaVillano() {
+	if(monster.getCantVidas() > 0) {
+		monster.perderVida();
+	}
+	
+}
+@Override
+public int finalizarPartida() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+
+
+/**
+ * @return the monster
+ */
+public GlitchMonster getMonster() {
+	return monster;
+}
+
+
+
+/**
+ * @param monster the monster to set
+ */
+public void setMonster(GlitchMonster monster) {
+	this.monster = monster;
+}
 
 
 

@@ -4,17 +4,26 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-public class GlitchMonster extends Cleopatra{
+import javax.swing.ImageIcon;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-	/**
-	 * 
-	 */
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+public class GlitchMonster extends Personaje{
+	private ImageIcon imagen; 
 	private static final long serialVersionUID = 1L;
 
 
 	public GlitchMonster(int x, int y, int ancho, int alto, int cantVidas) {
-		super();
-		// TODO Auto-generated constructor stub
+		super(cantVidas);
+	cantVidas = getCantVidas();
+	ancho = 198;
+	alto=178;
+	x = 571;
+	y = 380;
 	}
 
 	public void setGlitchMonster(){
@@ -32,6 +41,28 @@ public class GlitchMonster extends Cleopatra{
 	protected void paintComponent(Graphics g) {
 		Image im = Toolkit.getDefaultToolkit().getImage("src/Recursos/");
 		g.drawImage(im, 0, 0, getWidth(), getHeight(), this);
+	}
+public int getCantVidas(){
+	return cantVidas =3;
+	
+}
+	
+	@Override
+	public void setNormal() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setGano() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPerdio() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
