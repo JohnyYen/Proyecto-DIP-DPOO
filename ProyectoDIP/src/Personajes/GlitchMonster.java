@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-public class GlitchMonster extends Villana{
+public class GlitchMonster extends Cleopatra{
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class GlitchMonster extends Villana{
 
 
 	public GlitchMonster(int x, int y, int ancho, int alto, int cantVidas) {
-		super(x, y, ancho, alto, cantVidas);
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

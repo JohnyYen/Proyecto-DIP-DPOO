@@ -1,17 +1,21 @@
-package ComponentesVisuales;
+package ComponentesVisuales.Niveles;
+import java.awt.*;
 
-import java.awt.Color;
+import javax.swing.*;
+
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.Image;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import Logica.ControladorCuartoNivel;
 
@@ -75,48 +79,48 @@ public class CuartoNivel extends JFrame {
         getContentPane().add(menuButton);
         
         JPanel panel = new JPanel();
-        panel.setBounds(40, 172, 792, 175);
+        panel.setBounds(30, 167, 809, 171);
         getContentPane().add(panel);
         panel.setLayout(null);
         
         JButton button = new JButton("Sill\u00F3n");
-        button.setBounds(61, 27, 108, 44);
+        button.setBounds(66, 23, 108, 44);
         panel.add(button);
         
         JButton button_1 = new JButton("Cascabel");
-        button_1.setBounds(206, 27, 108, 44);
+        button_1.setBounds(211, 23, 108, 44);
         panel.add(button_1);
         
         JButton button_2 = new JButton("Arbusto");
-        button_2.setBounds(352, 27, 108, 44);
+        button_2.setBounds(357, 23, 108, 44);
         panel.add(button_2);
         
         JButton button_3 = new JButton("Reloj");
-        button_3.setBounds(491, 27, 108, 44);
+        button_3.setBounds(496, 23, 108, 44);
         panel.add(button_3);
         
         JButton button_4 = new JButton("Sombrero");
-        button_4.setBounds(625, 27, 108, 44);
+        button_4.setBounds(630, 23, 108, 44);
         panel.add(button_4);
         
         JButton button_5 = new JButton("Sombrilla");
-        button_5.setBounds(61, 101, 108, 44);
+        button_5.setBounds(66, 97, 108, 44);
         panel.add(button_5);
         
         JButton button_6 = new JButton("Silla");
-        button_6.setBounds(206, 101, 108, 44);
+        button_6.setBounds(211, 97, 108, 44);
         panel.add(button_6);
         
         JButton button_7 = new JButton("Sill\u00F3n");
-        button_7.setBounds(352, 101, 108, 44);
+        button_7.setBounds(357, 97, 108, 44);
         panel.add(button_7);
         
         JButton button_8 = new JButton("Sill\u00F3n");
-        button_8.setBounds(491, 101, 108, 44);
+        button_8.setBounds(496, 97, 108, 44);
         panel.add(button_8);
         
         JButton button_9 = new JButton("Sill\u00F3n");
-        button_9.setBounds(625, 101, 108, 44);
+        button_9.setBounds(630, 97, 108, 44);
         panel.add(button_9);
         JLabel backgroundLabel = new JLabel(backgroundImage);
         backgroundLabel.setBounds(0, 0, 882, 653);

@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Random;
 
 import Personajes.Heroe;
-import Personajes.Villana;
+import Personajes.Cleopatra;
 import Util.Objetos;
 
 
@@ -16,7 +16,7 @@ private ArrayList<Objetos>objPerdidos;
 private	ArrayList<Objetos> objEncontrados;
 
 
-public ControladorCuartoNivel(Heroe heroe, Villana villano,ArrayList <Objetos> objPerdidos,ArrayList <Objetos> objEncontrados,ArrayList <Objetos> objDisponibles ) {
+public ControladorCuartoNivel(Heroe heroe,Cleopatra villano,ArrayList <Objetos> objPerdidos,ArrayList <Objetos> objEncontrados,ArrayList <Objetos> objDisponibles ) {
 		super(heroe, villano);
 			
 		objDisponibles = new ArrayList <Objetos>(12);
