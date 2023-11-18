@@ -18,4 +18,8 @@ public class InformacionJuegoActual {
 	public static ArrayList<PreguntaNivelUno> getPreguntaNivelUno(){
 		return estadoJuegoActual.getPreguntasNivelUno();
 	}
+	
+	public static ArrayList<PreguntaNivelDos> getPreguntaNivelDos(){
+		return estadoJuegoActual.getPreguntasNivelDos();
+	}
 }
