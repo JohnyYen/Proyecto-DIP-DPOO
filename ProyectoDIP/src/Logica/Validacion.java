@@ -3,7 +3,6 @@ package Logica;
 public class Validacion {
 	
 	public boolean esValidaContrasenia(char[] password){
-		System.out.println(password);
 		int cantNumeros = 0,cantLetras = 0, cantMayusculas = 0;
 		
 		for(char c : password){

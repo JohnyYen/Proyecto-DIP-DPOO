@@ -68,13 +68,16 @@ public class SegundoNivel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Barra de menu
 		BarraMenu barraMenu = new BarraMenu();
 		setJMenuBar(barraMenu);
 		
+		//Se crea el villano
 		Medusa medusa = new Medusa();
 		medusa.setBounds(753, 70, 268, 246);
 		contentPane.add(medusa);
 		
+		//Se crea el heroe
 		Heroe heroe = new Heroe();
 		heroe.setBounds(28, 457, 305, 308);
 		contentPane.add(heroe);
@@ -98,6 +101,7 @@ public class SegundoNivel extends JFrame {
 		labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 		contentPane.add(labelPreguntas);
 		
+		//Posible respuesta 1
 		opcion1 = new BotonExtendidoNivel2();
 		opcion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,6 +126,7 @@ public class SegundoNivel extends JFrame {
 		opcion1.setBounds(180, 305, 645, 115);
 		contentPane.add(opcion1);
 		
+		//Posible respuesta 2
 		opcion2 = new BotonExtendidoNivel2();
 		opcion2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -146,6 +151,7 @@ public class SegundoNivel extends JFrame {
 		opcion2.setBounds(180, 420, 645, 115);
 		contentPane.add(opcion2);
 		
+		//Posible respuesta 3
 		opcion3 = new BotonExtendidoNivel2();
 		opcion3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -172,13 +178,12 @@ public class SegundoNivel extends JFrame {
 		opcion3.setBounds(180, 535, 645, 115);
 		contentPane.add(opcion3);
 		
-		
-		
 		ponerPosiblesRespuestas();
 		
 		crearCorazonesHeroe();
 		crearCorazonVillano();
 		
+		//Si gana el nivel pasa al siguiente, de lo contrario debe reintentar
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -210,6 +215,7 @@ public class SegundoNivel extends JFrame {
 	
 	}
 
+	//Metodo para poner las respuestas
 	private void ponerPosiblesRespuestas(){
 		int preguntaActual = miJuego.getControladorNivelDos().getPreguntaActual();
 		opcion1.setText(miJuego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));

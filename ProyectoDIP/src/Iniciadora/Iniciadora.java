@@ -24,7 +24,6 @@ public class Iniciadora {
 					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
 					PantallaCarga frame = new PantallaCarga(juego);
-					//PantallaTransicion frame = new PantallaTransicion(juego);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,6 +48,7 @@ public class Iniciadora {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public static void inicializarDatosSegundoNivel(Juego juego) {
 		try{

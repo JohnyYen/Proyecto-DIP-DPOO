@@ -23,6 +23,7 @@ public class ControladorSegundoNivel extends ControladorJuego {
 		return respuestaCorrecta;
 	}
 	
+	//De forma aleatoria se obtiene una pregunta garantizando que no se repita
 	public String darPregunta(){
 		Random random = new Random();
 		int indicePregunta = random.nextInt(informacionActual.getPreguntasNivelDos().size());
