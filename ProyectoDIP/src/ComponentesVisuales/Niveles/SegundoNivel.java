@@ -23,6 +23,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import ComponentesVisuales.Componentes.BotonExtendidoNivel2;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SegundoNivel extends JFrame {
 
@@ -30,6 +32,7 @@ public class SegundoNivel extends JFrame {
 	private JPanel contentPane;
 	private LabelPreguntas labelPreguntas;
 	private Juego miJuego;
+	private boolean seTermino = false;
 	private BotonExtendidoNivel2 opcion1;
 	private BotonExtendidoNivel2 opcion2;
 	private BotonExtendidoNivel2 opcion3;
@@ -45,6 +48,7 @@ public class SegundoNivel extends JFrame {
 	private Corazon heroe3;
 
 	public SegundoNivel(final Juego juego) {
+	
 		this.miJuego = juego;
 		setTitle("Hello World! : Segundo Nivel");
 		setResizable(false);
@@ -76,7 +80,7 @@ public class SegundoNivel extends JFrame {
 		contentPane.add(heroe);
 		
 		//Controlador Segundo Nivel
-		juego.crearControladorNivelDos(heroe, medusa);
+		miJuego.crearControladorNivelDos(3, 6);
 		
 		//Controlador de Corazones
 		corazonesNivel = new ControladorCorazones();
@@ -98,28 +102,21 @@ public class SegundoNivel extends JFrame {
 		opcion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
-					TercerNivel frame = new TercerNivel(miJuego);
-					dispose();
-					frame.setVisible(true);
+				if(!seTermino){
+					if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(0))){
+						juego.getControladorNivelDos().quitarVidaVillano();
+						corazonesNivel.quitarVidaVillano();
+					}else{
+						juego.getControladorNivelDos().quitarVidaHeroe();
+						corazonesNivel.quitarVidaHeroe();
+					}
+					
+					if(miJuego.getControladorNivelDos().finalizarPartida() != 0) seTermino = true;
+					else{
+						labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
+						ponerPosiblesRespuestas();
+					}
 				}
-				else if(miJuego.getControladorNivelDos().finalizarPartida() < 0){
-					SegundoNivel frame = new SegundoNivel(miJuego);
-					dispose();
-					frame.setVisible(true);
-				}
-				
-				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(0))){
-					juego.getControladorNivelDos().quitarVidaVillano();
-					corazonesNivel.quitarVidaVillano();
-				}else{
-					juego.getControladorNivelDos().quitarVidaHeroe();
-					corazonesNivel.quitarVidaHeroe();
-				}
-				
-				
-				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
-				ponerPosiblesRespuestas();
 			}
 		});
 		opcion1.setBounds(180, 305, 645, 115);
@@ -129,28 +126,21 @@ public class SegundoNivel extends JFrame {
 		opcion2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
-					TercerNivel frame = new TercerNivel(miJuego);
-					dispose();
-					frame.setVisible(true);
+				if(!seTermino){
+					if(miJuego.getControladorNivelDos().analizarRespuesta(miJuego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(1))){
+						miJuego.getControladorNivelDos().quitarVidaVillano();
+						corazonesNivel.quitarVidaVillano();
+					}else{
+						miJuego.getControladorNivelDos().quitarVidaHeroe();
+						corazonesNivel.quitarVidaHeroe();
+					}
+					
+					if(miJuego.getControladorNivelDos().finalizarPartida() != 0) seTermino = true;
+					else{
+						labelPreguntas.ponerPregunta(miJuego.getControladorNivelDos().darPregunta());
+						ponerPosiblesRespuestas();
+					}
 				}
-				else if(miJuego.getControladorNivelDos().finalizarPartida() < 0){
-					SegundoNivel frame = new SegundoNivel(miJuego);
-					dispose();
-					frame.setVisible(true);
-				}
-				
-				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(1))){
-					juego.getControladorNivelDos().quitarVidaVillano();
-					corazonesNivel.quitarVidaVillano();
-				}else{
-					juego.getControladorNivelDos().quitarVidaHeroe();
-					corazonesNivel.quitarVidaHeroe();
-				}
-				
-				
-				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
-				ponerPosiblesRespuestas();
 			}
 		});
 		opcion2.setBounds(180, 420, 645, 115);
@@ -160,6 +150,38 @@ public class SegundoNivel extends JFrame {
 		opcion3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if(!seTermino){
+					if(miJuego.getControladorNivelDos().analizarRespuesta(miJuego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(2))){
+						miJuego.getControladorNivelDos().quitarVidaVillano();
+						corazonesNivel.quitarVidaVillano();
+					}else{
+						miJuego.getControladorNivelDos().quitarVidaHeroe();
+						corazonesNivel.quitarVidaHeroe();
+					}
+					
+					if(miJuego.getControladorNivelDos().finalizarPartida() != 0) seTermino = true;
+					else{
+						labelPreguntas.ponerPregunta(miJuego.getControladorNivelDos().darPregunta());
+						ponerPosiblesRespuestas();
+					}
+					
+					
+				}
+			}
+		});
+		opcion3.setBounds(180, 535, 645, 115);
+		contentPane.add(opcion3);
+		
+		
+		
+		ponerPosiblesRespuestas();
+		
+		crearCorazonesHeroe();
+		crearCorazonVillano();
+		
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
 				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
 					TercerNivel frame = new TercerNivel(miJuego);
 					dispose();
@@ -170,26 +192,21 @@ public class SegundoNivel extends JFrame {
 					dispose();
 					frame.setVisible(true);
 				}
-				
-				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(2))){
-					juego.getControladorNivelDos().quitarVidaVillano();
-					corazonesNivel.quitarVidaVillano();
-				}else{
-					juego.getControladorNivelDos().quitarVidaHeroe();
-					corazonesNivel.quitarVidaHeroe();
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
+					TercerNivel frame = new TercerNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
 				}
-				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
-				ponerPosiblesRespuestas();
+				else if(miJuego.getControladorNivelDos().finalizarPartida() < 0){
+					SegundoNivel frame = new SegundoNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
 			}
 		});
-		opcion3.setBounds(180, 535, 645, 115);
-		contentPane.add(opcion3);
-		
-		ponerPosiblesRespuestas();
-		
-		crearCorazonesHeroe();
-		crearCorazonVillano();
-		
 	
 	}
 

@@ -22,7 +22,9 @@ public class CartaVisual extends JPanel {
 	private Point punto;
 	private TextPanel titulo;
 	private Carta carta;
+	private boolean cartaUsada;
 	public CartaVisual() {
+		cartaUsada = false;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
@@ -33,6 +35,9 @@ public class CartaVisual extends JPanel {
 		
 	}
 
+	public boolean esUsadaCarta(){return this.cartaUsada;}
+	public void usarCarta(){this.cartaUsada = true;}
+	public void liberarCarta(){this.cartaUsada = false;}
 	public Carta getCarta(){return this.carta;}
 	public void setCarta(Carta carta){
 		if(carta == null)

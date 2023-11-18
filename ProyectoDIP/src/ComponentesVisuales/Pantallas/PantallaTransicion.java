@@ -32,6 +32,7 @@ import Recursos.CustomFont;
 import ComponentesVisuales.Componentes.CuadroDialogo;
 import ComponentesVisuales.Componentes.TextPanel;
 import ComponentesVisuales.Componentes.BotonExtendido;
+import java.awt.Font;
 
 public class PantallaTransicion extends JFrame {
 	private JLabel BotonZ;
@@ -50,8 +51,9 @@ public class PantallaTransicion extends JFrame {
 		
 		//TextPane para los dialogos
 		textPane = new TextPanel();
+		textPane.setFont(new Font("Dialog", Font.BOLD, 18));
 		textPane.setForeground(Color.RED);
-		textPane.setText("Tengo que hacer el proyecto de DPOO");
+		textPane.setText("Qué tarde es...");
 		textPane.setBounds(10, 580, 480, 70);
 		frame.add(textPane);
 		
@@ -119,6 +121,7 @@ public class PantallaTransicion extends JFrame {
 		btnxtndXSaltar.setBounds(243, 490, 231, 28);
 		frame.add(btnxtndXSaltar);
 		
+		textPane.setForeground(Color.WHITE);
 		eventoTeclado();
 		this.setLocationRelativeTo(null);
 	}

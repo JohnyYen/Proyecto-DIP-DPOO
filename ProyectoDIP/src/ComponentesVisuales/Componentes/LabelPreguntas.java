@@ -33,7 +33,7 @@ public class LabelPreguntas extends JLabel{
 		this.setVerticalTextPosition(SwingConstants.CENTER);
 		this.setHorizontalTextPosition(SwingConstants.CENTER);
 		this.setPreferredSize (new Dimension(ancho,alto));   
-			
+		textoPanel.setForeground(Color.WHITE);	
 		
 	}
 

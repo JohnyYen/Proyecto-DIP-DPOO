@@ -128,6 +128,13 @@ public class MenuPrincipal extends JFrame {
 		botonSalir.setBounds(202, 415, 252, 28);
 		contentPane.add(botonSalir);
 		
+		JLabel nombreUsuario = new JLabel("Nombe Usuario:");
+		nombreUsuario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		nombreUsuario.setBounds(10, 11, 301, 28);
+		nombreUsuario.setText(nombreUsuario.getText() + "  " + miJuego.getUsuario().getNombreUsuario());
+		nombreUsuario.setForeground(Color.WHITE);
+		contentPane.add(nombreUsuario);
+		
 		//Modificaciones al Frame
 		this.setResizable(false);
 		this.setIconImage(new ImageIcon("src/Recursos/GameIcon.png").getImage());
