@@ -2,9 +2,9 @@ package Logica;
 
 public class Validacion {
 
-	public Validacion(){
+	/*public Validacion(){
 		
-	}
+	}*/
 	
 	public boolean esValidaContrasenia(char[] password){
 		int cantNumeros = 0,cantLetras = 0, cantMayusculas = 0;
