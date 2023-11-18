@@ -23,7 +23,7 @@ import ComponentesVisuales.Componentes.BarraMenu;
 public class PrimerNivel extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private Juego juego;
+	private Juego Mijuego;
 	private JPanel contentPane;
 	private LabelRespuestas labelRespuestas;
 	private LabelPreguntas labelPreguntas;
@@ -40,7 +40,7 @@ public class PrimerNivel extends JFrame {
 	
 	public PrimerNivel(final Juego juego) {
 		setTitle("Hello World! : Primer Nivel");
-		this.juego = juego;
+		this.Mijuego = juego;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 900, 700);
 		contentPane = new JPanel(){

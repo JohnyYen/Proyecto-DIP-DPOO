@@ -87,7 +87,7 @@ public class Pruebas extends JFrame {
 		contentPane.add(progressBar);
 		
 		Dullahan dullahan = new Dullahan();
-		dullahan.setBounds(135, 215, 126, 125);
+		dullahan.setBounds(85, 121, 390, 309);
 		dullahan.setNormal();
 		contentPane.add(dullahan);
 		

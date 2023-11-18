@@ -2,7 +2,9 @@ package ComponentesVisuales.Niveles;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -43,6 +45,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import Util.Corazon;
+import Personajes.Dullahan;
 
 public class TercerNivel extends JFrame {
 
@@ -62,6 +65,7 @@ public class TercerNivel extends JFrame {
 	private boolean ocupadoSetUno, ocupadoSetDos, ocupadoSetTres;
 	private ControladorCorazones controlCorazon;
 	BufferedReader buffer;
+	private Dullahan dullahan;
 
 	public TercerNivel(final Juego juego) {
 		setTitle("Hello World! : Tercer Nivel");
@@ -71,7 +75,15 @@ public class TercerNivel extends JFrame {
 		//Barra de Menú
 		BarraMenu barraMenu = new BarraMenu();
 		setJMenuBar(barraMenu);
-		contentPane = new JPanel();
+		contentPane = new JPanel(){
+			private static final long serialVersionUID = 1L;
+
+			//Dibujar el Fondo
+			public void paintComponent(Graphics g) {
+				Image img = Toolkit.getDefaultToolkit().getImage(PrimerNivel.class.getResource("/Recursos/FondoTercerNivel.jpg"));
+				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -91,7 +103,9 @@ public class TercerNivel extends JFrame {
 		contentPane.add(heroe);
 		
 		//Jinete
-		
+		dullahan = new Dullahan();
+		dullahan.setBounds(677, 11, 197, 269);
+		contentPane.add(dullahan);
 		
 		//Juego actual
 		this.miJuego = juego;
@@ -298,7 +312,7 @@ public class TercerNivel extends JFrame {
 		cuadro.setForeground(Color.WHITE);
 		
 		cuadro.setText("Tengo que hacer el proyecto de DPOO");
-		cuadro.setBounds(357, 73, 450, 115);
+		cuadro.setBounds(298, 70, 450, 115);
 		cuadro.setIcon(new ImageIcon(iconLabel)); //Cambiar de imagen en el Label
 		cuadro.setVerticalTextPosition(SwingConstants.CENTER);
 		cuadro.setHorizontalTextPosition(SwingConstants.CENTER);
