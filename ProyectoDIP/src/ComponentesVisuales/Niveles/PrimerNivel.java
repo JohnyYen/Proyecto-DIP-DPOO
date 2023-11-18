@@ -80,17 +80,6 @@ public class PrimerNivel extends JFrame {
 		labelRespuestas.getBotonVerdadero().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent action) {
 					
-				if(juego.getControladorNivelUno().analizarRespuesta(true)){
-					juego.getControladorNivelUno().quitarVidaVillano();
-					corazonesNivel.quitarVidaVillano();
-					
-				}
-					
-				else {
-					juego.getControladorNivelUno().quitarVidaHeroe();
-					corazonesNivel.quitarVidaHeroe();
-				}
-				
 				if(Mijuego.getControladorNivelUno().finalizarPartida() > 0){
 					dispose();
 					SegundoNivel frame = new SegundoNivel(Mijuego);
@@ -102,6 +91,19 @@ public class PrimerNivel extends JFrame {
 					frame.setVisible(true);
 				}
 				
+				if(juego.getControladorNivelUno().analizarRespuesta(true)){
+					juego.getControladorNivelUno().quitarVidaVillano();
+					corazonesNivel.quitarVidaVillano();
+					
+				}
+					
+				else {
+					juego.getControladorNivelUno().quitarVidaHeroe();
+					corazonesNivel.quitarVidaHeroe();
+				}
+				
+				
+				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelUno().darPregunta());
 			}
 		});
@@ -109,6 +111,17 @@ public class PrimerNivel extends JFrame {
 		labelRespuestas.getBotonFalso().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent action) {
 					
+				if(Mijuego.getControladorNivelUno().finalizarPartida() > 0){
+					dispose();
+					SegundoNivel frame = new SegundoNivel(Mijuego);
+					frame.setVisible(true);
+				}
+				else if(Mijuego.getControladorNivelUno().finalizarPartida() < 0){
+					dispose();
+					PrimerNivel frame = new PrimerNivel(Mijuego);
+					frame.setVisible(true);
+				}
+				
 				if(juego.getControladorNivelUno().analizarRespuesta(false)){
 					juego.getControladorNivelUno().quitarVidaVillano();
 					corazonesNivel.quitarVidaVillano();
@@ -121,23 +134,13 @@ public class PrimerNivel extends JFrame {
 					
 				}
 				
-				if(Mijuego.getControladorNivelUno().finalizarPartida() > 0){
-					dispose();
-					SegundoNivel frame = new SegundoNivel(Mijuego);
-					frame.setVisible(true);
-				}
-				else if(Mijuego.getControladorNivelUno().finalizarPartida() < 0){
-					dispose();
-					PrimerNivel frame = new PrimerNivel(Mijuego);
-					frame.setVisible(true);
-				}
+				
 				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelUno().darPregunta());
 			}
 		});
 		
 		contentPane.add(labelRespuestas);	
-		
 		
 		
 		crearCorazonesHeroe();

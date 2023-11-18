@@ -185,6 +185,8 @@ public class TercerNivel extends JFrame {
 		BotonExtendido btnxtndAceptarRespuesta = new BotonExtendido();
 		btnxtndAceptarRespuesta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(miJuego.getControladorTercerNivel().finalizarPartida() > 0) System.out.println("Gane");
+				else if(miJuego.getControladorTercerNivel().finalizarPartida() < 0)System.out.println("Perdi");
 				if(ocupadoSetUno || ocupadoSetDos || ocupadoSetTres){
 					String respuestaJugador = "";
 					if(cartaUno.getLocation().equals(setCarta1.getLocation()) || cartaUno.getLocation().equals(setCarta2.getLocation()) || cartaUno.getLocation().equals(setCarta3.getLocation()))
@@ -196,15 +198,7 @@ public class TercerNivel extends JFrame {
 					if(cartaCuatro.getLocation().equals(setCarta1.getLocation()) || cartaCuatro.getLocation().equals(setCarta2.getLocation()) || cartaCuatro.getLocation().equals(setCarta3.getLocation()))
 						respuestaJugador += cartaCuatro.getCarta().getCodigo();
 					
-					try {
-						if(miJuego.getControladorTercerNivel().respuestaCorrecta(respuestaJugador, buffer.readLine()))
-							miJuego.getControladorTercerNivel().quitarVidaVillano();
-						else
-							miJuego.getControladorTercerNivel().quitarVidaHeroe();
-					} catch (IOException e1) {
-						
-						e1.printStackTrace();
-					}
+				
 					
 					cartaUno.setBounds(10,138, 91, 124);
 					cartaDos.setBounds(117, 138, 91, 124);
@@ -223,8 +217,6 @@ public class TercerNivel extends JFrame {
 					}
 					
 				}
-				if(miJuego.getControladorTercerNivel().finalizarPartida() > 0) System.out.println("Gane");
-				else if(miJuego.getControladorTercerNivel().finalizarPartida() < 0)System.out.println("Perdi");
 				
 			}
 		});

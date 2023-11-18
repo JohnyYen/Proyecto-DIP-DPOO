@@ -97,13 +97,6 @@ public class SegundoNivel extends JFrame {
 		opcion1 = new BotonExtendidoNivel2();
 		opcion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(0))){
-					juego.getControladorNivelDos().quitarVidaVillano();
-					corazonesNivel.quitarVidaVillano();
-				}else{
-					juego.getControladorNivelDos().quitarVidaHeroe();
-					corazonesNivel.quitarVidaHeroe();
-				}
 				
 				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
 					TercerNivel frame = new TercerNivel(miJuego);
@@ -115,6 +108,16 @@ public class SegundoNivel extends JFrame {
 					dispose();
 					frame.setVisible(true);
 				}
+				
+				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(0))){
+					juego.getControladorNivelDos().quitarVidaVillano();
+					corazonesNivel.quitarVidaVillano();
+				}else{
+					juego.getControladorNivelDos().quitarVidaHeroe();
+					corazonesNivel.quitarVidaHeroe();
+				}
+				
+				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 				ponerPosiblesRespuestas();
 			}
@@ -125,6 +128,18 @@ public class SegundoNivel extends JFrame {
 		opcion2 = new BotonExtendidoNivel2();
 		opcion2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
+					TercerNivel frame = new TercerNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+				else if(miJuego.getControladorNivelDos().finalizarPartida() < 0){
+					SegundoNivel frame = new SegundoNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+				
 				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(1))){
 					juego.getControladorNivelDos().quitarVidaVillano();
 					corazonesNivel.quitarVidaVillano();
@@ -132,6 +147,8 @@ public class SegundoNivel extends JFrame {
 					juego.getControladorNivelDos().quitarVidaHeroe();
 					corazonesNivel.quitarVidaHeroe();
 				}
+				
+				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 				ponerPosiblesRespuestas();
 			}
@@ -142,6 +159,18 @@ public class SegundoNivel extends JFrame {
 		opcion3 = new BotonExtendidoNivel2();
 		opcion3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
+					TercerNivel frame = new TercerNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+				else if(miJuego.getControladorNivelDos().finalizarPartida() < 0){
+					SegundoNivel frame = new SegundoNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+				
 				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(2))){
 					juego.getControladorNivelDos().quitarVidaVillano();
 					corazonesNivel.quitarVidaVillano();
