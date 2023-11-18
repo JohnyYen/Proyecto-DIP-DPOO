@@ -2,6 +2,8 @@ package Util;
 
 import javax.swing.table.DefaultTableModel;
 
+import Logica.PreguntaNivelUno;
+
 public class PreguntaTableModel extends DefaultTableModel{
 	
 	public PreguntaTableModel(){

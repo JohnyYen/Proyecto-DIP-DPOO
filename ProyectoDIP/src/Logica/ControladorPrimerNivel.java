@@ -7,8 +7,6 @@ import java.util.Random;
 import java.util.Timer;
 
 import Personajes.*;
-import Util.Pregunta;
-import Util.PreguntaNivelUno;
 public class ControladorPrimerNivel extends ControladorJuego {
 	private ArrayList<PreguntaNivelUno> preguntasAnteriores;
 	private int preguntaActual;

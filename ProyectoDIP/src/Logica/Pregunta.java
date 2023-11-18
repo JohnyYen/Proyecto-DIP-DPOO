@@ -1,4 +1,4 @@
- package Util;
+ package Logica;
 
 import javax.swing.JOptionPane;
 import javax.swing.RepaintManager;
@@ -13,9 +13,6 @@ public class Pregunta {
 			textoPregunta = "Invalido";
 		}
 	}
-	
-	public Pregunta(){}
-	
 	public void setTexto(String text){
 		if (text.equals(null))
 			throw new IllegalArgumentException("Error, No puede estar vacio");

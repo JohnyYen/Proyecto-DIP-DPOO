@@ -1,4 +1,4 @@
-package Util;
+package Logica;
 
 public class PreguntaNivelUno extends Pregunta {
 	private boolean respuesta;

@@ -6,12 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import ComponentesVisuales.Niveles.*;
+
+
 import ComponentesVisuales.Pantallas.PantallaCarga;
-import ComponentesVisuales.Pantallas.PantallaProfesores;
-import ComponentesVisuales.Pantallas.PantallaTransicion;
 import Logica.*;
-import Util.PreguntaNivelDos;
 
 public class Iniciadora {
 

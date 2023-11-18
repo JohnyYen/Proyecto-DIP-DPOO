@@ -12,9 +12,10 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import Util.Carta;
+import Logica.Carta;
 
 import com.sun.crypto.provider.DESCipher;
+
 import javax.swing.BoxLayout;
 
 public class CartaVisual extends JPanel {

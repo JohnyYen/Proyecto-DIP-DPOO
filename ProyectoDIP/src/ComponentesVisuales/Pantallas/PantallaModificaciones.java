@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 
 import Logica.Juego;
-import Util.PreguntaNivelUno;
+import Logica.PreguntaNivelUno;
 import Util.PreguntaTableModel;
 import Util.PreguntaTableModelSegundoNivel;
 

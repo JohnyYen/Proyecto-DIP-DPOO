@@ -1,4 +1,4 @@
-package Util;
+package Logica;
 
 public class Carta {
 	private String nombre, funcionalidad, codigo;

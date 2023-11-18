@@ -9,7 +9,6 @@ public class Juego {
 	private InformacionJuego informacionActual;
 	private Usuario usuario;
 	private ControladorJuego controlador;
-	private static Juego unicoJuego = null;
 	
 	public Juego(){
 		informacionActual = new InformacionJuego();
@@ -20,11 +19,6 @@ public class Juego {
 	
 	public void crearUsuario(String nombre, String password, boolean esProfesor){
 		usuario = new Usuario(nombre, password, esProfesor);
-	}
-	
-	public static void crearJuego(){
-		if(unicoJuego == null) unicoJuego = new Juego();
-		else throw new IllegalArgumentException();
 	}
 	
 	public InformacionJuego getInformacionJuego(){

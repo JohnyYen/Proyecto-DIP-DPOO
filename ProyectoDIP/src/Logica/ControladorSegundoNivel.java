@@ -2,9 +2,9 @@ package Logica;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import Personajes.Heroe;
 import Personajes.Medusa;
-import Util.PreguntaNivelDos;
 
 public class ControladorSegundoNivel extends ControladorJuego {
 	private ArrayList<PreguntaNivelDos> preguntasAnteriores;

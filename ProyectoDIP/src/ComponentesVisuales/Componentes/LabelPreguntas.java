@@ -5,10 +5,10 @@ import java.util.*;
 
 import javax.swing.*;
 
+import Logica.Pregunta;
+import Logica.PreguntaNivelDos;
+import Logica.PreguntaNivelUno;
 import Recursos.*;
-import Util.Pregunta;
-import Util.PreguntaNivelDos;
-import Util.PreguntaNivelUno;
 
 public class LabelPreguntas extends JLabel{
 	private static final long serialVersionUID = 1L;
