@@ -20,5 +20,5 @@ public abstract class ControladorJuego {
 		if(guardarHeroe.getVidas() > 0) guardarHeroe.perderVida();
 	}
 	public abstract void quitarVidaVillano();
-	public abstract boolean finalizarPartida();
+	public abstract int finalizarPartida();
 }

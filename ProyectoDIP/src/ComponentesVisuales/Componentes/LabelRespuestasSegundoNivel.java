@@ -1,33 +1,42 @@
 package ComponentesVisuales.Componentes;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import Logica.ControladorSegundoNivel;
 
-import Recursos.CustomFont;
-import Util.Pregunta;
 
 public class LabelRespuestasSegundoNivel extends JLabel{
 	private static final long serialVersionUID = 1L;
 	private Boton opcion1, opcion2, opcion3;
 	
-	
-	public LabelRespuestasSegundoNivel(int x, int y, int ancho, int alto){
+	public LabelRespuestasSegundoNivel(ControladorSegundoNivel controlador, int x, int y, int ancho, int alto){
 		//Crear los  botones
-		/*opcion1 = new Boton("<html>Un bucle -for- siempre ejecuta un número fijo de iteraciones,<br> mientras que un bucle -while- depende de una condición.", 700, 450, 50,0);
-		opcion2 = new Boton("<html>Un bucle -for- solo se utiliza para contar, mientras que un<br> bucle -while- se utiliza para otras tareas.", 700, 450, 50, 100);
-		opcion3 = new Boton("<html>Un bucle -while- siempre ejecuta un número fijo de iteraciones,<br> mientras que un bucle -for- depende de una condición.", 700, 450, 50, 100);
+		int preguntaActual = controlador.getPreguntaActual();
+		opcion1 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0),700, 450, 50,100);
+		opcion2 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1), 700, 450, 50, 100);
+		opcion3 = new Boton(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2), 700, 450, 50, 100);
 		add(opcion1);
 		add(opcion2);
-		add(opcion3);*/
+		add(opcion3);
 		this.setBounds(x,y,ancho,alto);
+	}
+	
+	public void ponerRespuestas(ControladorSegundoNivel controlador) {
+		int preguntaActual = controlador.getPreguntaActual();
+		opcion1.setText(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));
+		opcion2.setText(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1));
+		opcion3.setText(controlador.getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2));
+		
+		opcion1.repaint();
+		opcion1.revalidate();
+		opcion2.repaint();
+		opcion2.revalidate();
+		opcion3.repaint();
+		opcion3.revalidate();
+		this.repaint();
+		this.revalidate();
 	}
 
 	public Boton getOpcion1() {

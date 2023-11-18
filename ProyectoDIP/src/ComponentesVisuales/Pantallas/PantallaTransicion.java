@@ -40,28 +40,10 @@ public class PantallaTransicion extends JFrame {
 	private BufferedReader buffer;
 	private FrameTransicion frame;
 	private TextPanel textPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					
-					PantallaTransicion frame = new PantallaTransicion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public PantallaTransicion() {
+	private Juego miJuego;
+	
+	public PantallaTransicion(Juego juego) {
+		this.miJuego = juego;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 900, 700);
 		frame = new FrameTransicion();
@@ -106,15 +88,14 @@ public class PantallaTransicion extends JFrame {
 		teclaZ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					System.out.print("Hola");
 					if(buffer.ready()){
 						textPane.setText(buffer.readLine());
 						frame.aumentarFrame();
 					}
 					else{
-						//PrimerNivel primerNivel = new PrimerNivel(juego);
+						PrimerNivel primerNivel = new PrimerNivel(miJuego);
 						dispose();
-						//primerNivel.setVisible(true);
+						primerNivel.setVisible(true);
 					}
 			    }
 				catch(IOException a){
@@ -129,9 +110,9 @@ public class PantallaTransicion extends JFrame {
 		BotonExtendido btnxtndXSaltar = new BotonExtendido();
 		btnxtndXSaltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//PrimerNivel pri = new PrimerNivel(juego);
+				PrimerNivel pri = new PrimerNivel(miJuego);
 				dispose();
-				//pri.setVisible(true);
+				pri.setVisible(true);
 			}
 		});
 		btnxtndXSaltar.setText("X - Saltar");

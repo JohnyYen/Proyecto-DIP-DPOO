@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -18,35 +19,21 @@ import Logica.Validacion;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import ComponentesVisuales.Componentes.BotonExtendido;
+
+import java.awt.Font;
+
 public class PantallaCrearUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	private Juego juego;
+	private Juego miJuego;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CrearUsuario frame = new CrearUsuario(juego);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public PantallaCrearUsuario(Juego juego) {
+	
+	public PantallaCrearUsuario(final Juego juego) {
 		setTitle("Hello World! : Crear Usuario");
-		this.juego = juego;
+		this.miJuego = juego;
 		final Validacion validacion = new Validacion();
 		
 		setTitle("Hello World!: Crear Usuario");
@@ -74,29 +61,42 @@ public class PantallaCrearUsuario extends JFrame {
 		passwordField.setBounds(37, 144, 185, 20);
 		contentPane.add(passwordField);
 		
-		JRadioButton rdbtnProfesor = new JRadioButton("Profesor");
-		rdbtnProfesor.setBounds(28, 188, 109, 23);
-		contentPane.add(rdbtnProfesor);
-		
-		JButton btnCrearUsuario = new JButton("Crear Usuario");
-		btnCrearUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				char[] texto = passwordField.getPassword();
-				boolean correcto = validacion.esValidaContrasenia(texto);
-				if(correcto && validacion.esUsuarioCorrecto(textField.getText())){
-					juego.crearUsuario()
-				}
-				else{
-					System.out.println("Noooooo");
-				}
-			
-			}
-		});
-		btnCrearUsuario.setBounds(252, 188, 115, 34);
-		contentPane.add(btnCrearUsuario);
+		final JRadioButton profesor = new JRadioButton("Profesor");
+		profesor.setBounds(28, 188, 109, 23);
+		contentPane.add(profesor);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(142, 188, 100, 34);
 		contentPane.add(btnCancelar);
+		
+		BotonExtendido btnxtndCrearUsuario = new BotonExtendido();
+		btnxtndCrearUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				char[] texto = passwordField.getPassword();
+				boolean correcto = validacion.esValidaContrasenia(texto);
+				if(validacion.esUsuarioCorrecto(textField.getText())){
+					if(profesor.isSelected()){
+						miJuego.crearUsuario(textField.getText(), "Pasworrd", true);
+						PantallaProfesores frame = new PantallaProfesores(miJuego);
+						dispose();
+						frame.setVisible(true);
+					}
+					else{
+						miJuego.crearUsuario(textField.getText(), "Pasworrd", true);
+						MenuPrincipal frame = new MenuPrincipal(miJuego);
+						dispose();
+						frame.setVisible(true);
+					}
+					
+				}
+				else{
+					System.out.println("Noooooo");
+				}
+			}
+		});
+		btnxtndCrearUsuario.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnxtndCrearUsuario.setText("Crear Usuario");
+		btnxtndCrearUsuario.setBounds(252, 188, 172, 34);
+		contentPane.add(btnxtndCrearUsuario);
 	}
 }

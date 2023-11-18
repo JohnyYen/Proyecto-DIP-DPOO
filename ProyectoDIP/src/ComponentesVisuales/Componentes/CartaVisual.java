@@ -15,27 +15,35 @@ import javax.swing.JPanel;
 import Util.Carta;
 
 import com.sun.crypto.provider.DESCipher;
+import javax.swing.BoxLayout;
 
 public class CartaVisual extends JPanel {
 
-	private String urlReverso;
-	private ImageIcon imagen;
 	private Point punto;
-	private TextPanel titulo, descripcion;
-	
+	private TextPanel titulo;
+	private Carta carta;
 	public CartaVisual() {
-		urlReverso = "src/Recursos/reversoCarta.png";
-		try{
-			BufferedImage img = ImageIO.read(new File(urlReverso));
-			imagen = new ImageIcon(img);
-		}
-		catch(IOException e){
-			e.printStackTrace();
-		}
+		setBackground(Color.LIGHT_GRAY);
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
 		
 		titulo = new TextPanel();
-		descripcion = new TextPanel();
+		add(titulo);
 		
+		
+	}
+
+	public Carta getCarta(){return this.carta;}
+	public void setCarta(Carta carta){
+		if(carta == null)
+			throw new NullPointerException();
+		else{
+			this.carta = new Carta(carta.getNombre(), carta.getFuncionalidad(), carta.getCodigo());
+			titulo.setText(carta.getNombre());
+		}
+	}
+
+	public void agregarEfecto(){
 		addMouseListener(new MouseAdapter(){
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -53,17 +61,4 @@ public class CartaVisual extends JPanel {
 			}
 		});
 	}
-
-	public void voltearCarta(Carta carta){
-		titulo.setText(carta.getNombre());
-		this.add(titulo);
-	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponents(g);
-		if(imagen != null)
-			imagen.paintIcon(this, g, 0, 0);
-	}
-
 }
