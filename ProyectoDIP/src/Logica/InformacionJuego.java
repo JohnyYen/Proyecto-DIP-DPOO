@@ -6,11 +6,18 @@ import Util.*;
 
 public class InformacionJuego {
 	private ArrayList<Pregunta> preguntas;
+	private ArrayList<Carta> cartas;
 	
 	public InformacionJuego(){
 		preguntas = new ArrayList<Pregunta>(); 
+		cartas = new ArrayList<Carta>();
 	}
 	
+	public void crearCarta(String nombre, String funcionalidad, String codigo){
+		cartas.add(new Carta(nombre, funcionalidad, codigo));
+	}
+	
+	public ArrayList<Carta> getCartas(){return this.cartas;}
 	public void crearPreguntaNivelUno(String texto, boolean respuesta){
 		preguntas.add(new PreguntaNivelUno(texto, respuesta));
 	}

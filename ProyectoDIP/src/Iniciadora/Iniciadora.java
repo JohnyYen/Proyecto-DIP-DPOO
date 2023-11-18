@@ -17,8 +17,10 @@ public class Iniciadora {
 				try {  
 					Juego juego = new Juego();
 					inicializarDatosPrimerNivel(juego);
-					PrimerNivel frame = new PrimerNivel(juego);
+					inicializarDatosTercerNivel(juego);
+					//PrimerNivel frame = new PrimerNivel(juego);
 					//PantallaProfesores frame = new PantallaProfesores();
+					TercerNivel frame = new TercerNivel(juego);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,6 +38,25 @@ public class Iniciadora {
 				textoPregunta = buffer.readLine();
 				textoRespuesta = buffer.readLine();
 				juego.getInformacionJuego().crearPreguntaNivelUno(textoPregunta, Boolean.parseBoolean(textoRespuesta));
+			}
+			buffer.close();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void inicializarDatosTercerNivel(Juego juego){
+		try{
+			FileReader file = new FileReader("src/Textos/Cartas.txt");
+			BufferedReader buffer = new BufferedReader(file);
+			String nombre, funcionalidad, codigo;
+			while(buffer.ready()){
+				nombre = buffer.readLine();
+				funcionalidad = buffer.readLine();
+				codigo = buffer.readLine();
+				juego.getInformacionJuego().crearCarta(nombre, funcionalidad, codigo);
 			}
 			buffer.close();
 		}

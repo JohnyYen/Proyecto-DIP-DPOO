@@ -28,7 +28,14 @@ public class Juego {
 		return unicoJuego;
 	}
 	public void crearControladorNivelUno(Heroe heroe, Cleopatra villana){
+		controlador = null;
 		controlador = new ControladorPrimerNivel(heroe, villana, informacionActual);
 	}
+	public void crearControladorNivelTres(Heroe heroe){
+		controlador = null;
+		controlador = new ControladorTercerNivel(heroe, informacionActual);
+	}
+	
+	public ControladorTercerNivel getControladorTercerNivel(){return (ControladorTercerNivel)controlador;}
 	public ControladorPrimerNivel getControladorNivelUno(){ return (ControladorPrimerNivel)controlador;}
 }

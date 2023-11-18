@@ -21,6 +21,8 @@ import java.awt.event.ActionEvent;
 import ComponentesVisuales.Componentes.BotonExtendidoNivel2;
 import ComponentesVisuales.Componentes.CartaVisual;
 import javax.swing.JProgressBar;
+import Personajes.Dullahan;
+import Personajes.Cleopatra;
 
 public class Pruebas extends JFrame {
 
@@ -78,14 +80,20 @@ public class Pruebas extends JFrame {
 		textArea.setBounds(247, 26, 173, 20);
 		contentPane.add(textArea);
 		
-		CartaVisual cartaVisual = new CartaVisual();
-		cartaVisual.setBounds(104, 76, 163, 194);
-		cartaVisual.voltearCarta(new Carta("Hola", "Hola"));
-		contentPane.add(cartaVisual);
+		
 		
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(286, 87, 163, 20);
 		contentPane.add(progressBar);
+		
+		Dullahan dullahan = new Dullahan();
+		dullahan.setBounds(135, 215, 126, 125);
+		dullahan.setNormal();
+		contentPane.add(dullahan);
+		
+		Cleopatra cleopatra = new Cleopatra();
+		cleopatra.setBounds(322, 215, 110, 125);
+		contentPane.add(cleopatra);
 		
 		System.out.println((int)3.254+ System.lineSeparator() + "Hola");
 		

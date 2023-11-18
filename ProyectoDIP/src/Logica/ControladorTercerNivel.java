@@ -2,12 +2,12 @@ package Logica;
 
 import java.util.ArrayList;
 
+import Personajes.Heroe;
 import Util.*;
-public class ControladorTercerNivel {
-	private ArrayList<Carta> cartas;
+public class ControladorTercerNivel extends ControladorJuego{
 	private int indiceCarta;
-	public ControladorTercerNivel(){
-		cartas = new ArrayList<>();
+	public ControladorTercerNivel(Heroe heroe, InformacionJuego informacionActual){
+		super(heroe, informacionActual);
 		indiceCarta = 0;
 	}
 	public boolean respuestaCorrecta(String respuestaJugador, String respuesta){
@@ -18,8 +18,12 @@ public class ControladorTercerNivel {
 	}
 	
 	public Carta repartirCarta(){
-		return cartas.get(indiceCarta++);
+		return informacionActual.getCartas().get(indiceCarta++);
 	}
-	
+	@Override
+	public void quitarVidaVillano() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
