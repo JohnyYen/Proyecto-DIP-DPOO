@@ -25,5 +25,12 @@ public class ControladorTercerNivel extends ControladorJuego{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public int  finalizarPartida() {
+		int ganar = 0;
+		if(guardarHeroe.getVidas() == 0) ganar = -1;
+		else if(guardarHeroe.getVidas() == 0) ganar = 1;
+		return ganar;
+	}
 	
 }

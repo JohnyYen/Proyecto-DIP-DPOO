@@ -45,4 +45,12 @@ public class ControladorPrimerNivel extends ControladorJuego {
 		}
 		
 	}
+	
+	@Override
+	public int  finalizarPartida() {
+		int ganar = 0;
+		if(guardarHeroe.getVidas() == 0) ganar = -1;
+		else if(guardarHeroe.getVidas() == 0) ganar = 1;
+		return ganar;
+	}
 }

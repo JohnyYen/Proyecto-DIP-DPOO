@@ -12,9 +12,11 @@ public class Juego {
 		informacionActual = new InformacionJuego();
 	}
 	
-	public void crearUsuario(String nombre, String password){
-		usuario = new Usuario(nombre, password);
+	public void crearUsuario(String nombre, String password, boolean esProfesor){
+		usuario = new Usuario(nombre, password, esProfesor);
 	}
+	
+	public Usuario getUsuario(){return this.usuario;}
 	
 	public static void crearJuego(){
 		if(unicoJuego == null) unicoJuego = new Juego();
@@ -40,6 +42,7 @@ public class Juego {
 	public ControladorPrimerNivel getControladorNivelUno(){ return (ControladorPrimerNivel)controlador;}
 	
 	public void crearControladorNivelDos(Heroe heroe, Medusa medusa){
+		controlador = null;
 		controlador = new ControladorSegundoNivel(heroe, medusa, informacionActual);
 	}
 

@@ -20,11 +20,5 @@ public abstract class ControladorJuego {
 		if(guardarHeroe.getVidas() > 0) guardarHeroe.perderVida();
 	}
 	public abstract void quitarVidaVillano();
-	
-	public int  finalizarPartida() {
-		int ganar = 0;
-		if(guardarHeroe.getVidas() == 0) ganar = -1;
-		else if(guardarHeroe.getVidas() == 0) ganar = 1;
-		return ganar;
-	}
+	public abstract int finalizarPartida();
 }

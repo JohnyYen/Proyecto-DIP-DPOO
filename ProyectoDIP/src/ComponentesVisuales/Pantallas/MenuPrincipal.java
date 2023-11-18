@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import ComponentesVisuales.Componentes.Boton;
+import Logica.Juego;
 import Recursos.CustomFont;
 
 import java.awt.event.ActionListener;
@@ -28,27 +29,11 @@ public class MenuPrincipal extends JFrame {
 	private BotonExtendido botonOpciones;
 	private BotonExtendido botonCuriosidades;
 	private BotonExtendido botonSalir;
+	private Juego miJuego;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuPrincipal frame = new MenuPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public MenuPrincipal() {
+	
+	public MenuPrincipal(Juego juego) {
+		this.miJuego = juego;
 		setTitle("Hello World!: Men\u00FA Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 900, 700);
@@ -80,7 +65,7 @@ public class MenuPrincipal extends JFrame {
 		botonNuevoJuego = new BotonExtendido();
 		botonNuevoJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PantallaTransicion transicion = new PantallaTransicion();
+				PantallaTransicion transicion = new PantallaTransicion(miJuego);
 				dispose();
 				transicion.setVisible(true);
 			}
@@ -111,7 +96,7 @@ public class MenuPrincipal extends JFrame {
 		botonOpciones = new BotonExtendido();
 		botonOpciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuOpciones menuOpciones = new MenuOpciones();
+				MenuOpciones menuOpciones = new MenuOpciones(miJuego);
 				dispose();
 				menuOpciones.setVisible(true);
 			}
@@ -123,7 +108,7 @@ public class MenuPrincipal extends JFrame {
 		botonCuriosidades = new BotonExtendido();
 		botonCuriosidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PantallaCuriosidades curiosidades = new PantallaCuriosidades();
+				PantallaCuriosidades curiosidades = new PantallaCuriosidades(miJuego);
 				dispose();
 				curiosidades.setVisible(true);
 			}
@@ -144,21 +129,8 @@ public class MenuPrincipal extends JFrame {
 		contentPane.add(botonSalir);
 		
 		//Modificaciones al Frame
-		//this.setResizable(false);
+		this.setResizable(false);
 		this.setIconImage(new ImageIcon("src/Recursos/GameIcon.png").getImage());
-		addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentResized(ComponentEvent e) {
-				
-				super.componentResized(e);
-				int width = getContentPane().getWidth();
-				int height = getContentPane().getHeight();
-				
-				
-				titulo.setBounds(titulo.getX()+1, titulo.getY(), titulo.getWidth(), titulo.getHeight());
-				
-			}
-		});
 		
 	}
 	

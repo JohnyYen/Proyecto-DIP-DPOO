@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import ComponentesVisuales.Niveles.*;
+import ComponentesVisuales.Pantallas.PantallaCarga;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
 import Util.PreguntaNivelDos;
@@ -20,16 +21,9 @@ public class Iniciadora {
 					Juego juego = new Juego();
 					inicializarDatosPrimerNivel(juego);
 					inicializarDatosTercerNivel(juego);
-					//PrimerNivel frame = new PrimerNivel(juego);
-					//PantallaProfesores frame = new PantallaProfesores();
-					TercerNivel frame = new TercerNivel(juego);
-					frame.setVisible(true);
 					inicializarDatosSegundoNivel(juego);
-					//PrimerNivel primerNivel = new PrimerNivel(juego);
-					SegundoNivel segundoNivel = new SegundoNivel(juego);
-					
-					//primerNivel.setVisible(true);
-					segundoNivel.setVisible(true);
+					PantallaCarga frame = new PantallaCarga(juego);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

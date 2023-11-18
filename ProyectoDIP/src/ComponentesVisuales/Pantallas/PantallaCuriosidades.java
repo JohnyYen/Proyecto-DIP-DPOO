@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import ComponentesVisuales.Componentes.Boton;
+import Logica.Juego;
 import Recursos.CustomFont;
 import Util.CuriosidadesTableModel;
 import Util.RenderizadorImagenes;
@@ -25,8 +26,10 @@ import javax.swing.ScrollPaneConstants;
 
 public class PantallaCuriosidades extends JFrame {
 	private JTable table;
-
-	public PantallaCuriosidades() {
+	private Juego miJuego;
+	
+	public PantallaCuriosidades(Juego juego) {
+		this.miJuego = juego;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 900, 700);
 		JPanel contentPane = new JPanel(){
@@ -60,7 +63,7 @@ public class PantallaCuriosidades extends JFrame {
 		Boton salir  = new Boton("Volver", 300, 300, 350, 350);
 		salir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MenuPrincipal menuPrincipal = new MenuPrincipal();
+				MenuPrincipal menuPrincipal = new MenuPrincipal(miJuego);
 				dispose();
 				menuPrincipal.setVisible(true);
 			}

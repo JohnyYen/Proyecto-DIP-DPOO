@@ -2,7 +2,6 @@ package ComponentesVisuales.Pantallas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,19 +9,20 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
 import ComponentesVisuales.Componentes.Boton;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import Logica.*;
 
 public class PantallaLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField passwordField_1;
 	private JTextField textField;
-
-	public PantallaLogin() {
+	private Juego miJuego;
+	
+	public PantallaLogin(Juego juego) {
+		this.miJuego = juego;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 392, 253);
 		contentPane = new JPanel();
@@ -57,7 +57,8 @@ public class PantallaLogin extends JFrame {
 		botonLogin.setLocation(240, 151);
 		botonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PantallaProfesores profesores = new PantallaProfesores();
+				PantallaProfesores profesores = new PantallaProfesores(miJuego);
+				dispose();
 				profesores.setVisible(true);
 			}
 		});

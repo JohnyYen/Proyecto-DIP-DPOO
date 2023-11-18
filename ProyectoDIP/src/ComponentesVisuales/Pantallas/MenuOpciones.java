@@ -1,6 +1,7 @@
 package ComponentesVisuales.Pantallas;
 
 import java.awt.BorderLayout;
+import Logica.*;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicRadioButtonUI;
@@ -37,27 +38,10 @@ public class MenuOpciones extends JFrame {
 	private JLabel lblClave;
 	private Boton btnEntrar;
 	private JLabel lblClaveErronea;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuOpciones frame = new MenuOpciones();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public MenuOpciones() {
+	private Juego miJuego;
+	
+	public MenuOpciones(Juego juego) {
+		this.miJuego = juego;
 		setTitle("Hello World!: Opciones");
 		CustomFont cf = new CustomFont();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +83,7 @@ public class MenuOpciones extends JFrame {
 		btnVolver.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal m = new MenuPrincipal();
+				MenuPrincipal m = new MenuPrincipal(miJuego);
 				m.setVisible(true);
 				dispose();
 			}

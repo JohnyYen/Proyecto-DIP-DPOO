@@ -29,7 +29,7 @@ public class SegundoNivel extends JFrame {
 	private static final long serialVersionUID = -4285398109221870651L;
 	private JPanel contentPane;
 	private LabelPreguntas labelPreguntas;
-	private Juego juego;
+	private Juego miJuego;
 	private BotonExtendidoNivel2 opcion1;
 	private BotonExtendidoNivel2 opcion2;
 	private BotonExtendidoNivel2 opcion3;
@@ -45,7 +45,7 @@ public class SegundoNivel extends JFrame {
 	private Corazon heroe3;
 
 	public SegundoNivel(final Juego juego) {
-		this.juego = juego;
+		this.miJuego = juego;
 		setTitle("Hello World! : Segundo Nivel");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,6 +105,16 @@ public class SegundoNivel extends JFrame {
 					corazonesNivel.quitarVidaHeroe();
 				}
 				
+				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
+					TercerNivel frame = new TercerNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+				else if(miJuego.getControladorNivelDos().finalizarPartida() < 0){
+					SegundoNivel frame = new SegundoNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
 				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 				ponerPosiblesRespuestas();
 			}
@@ -155,10 +165,10 @@ public class SegundoNivel extends JFrame {
 	}
 
 	private void ponerPosiblesRespuestas(){
-		int preguntaActual = juego.getControladorNivelDos().getPreguntaActual();
-		opcion1.setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));
-		opcion2.setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1));
-		opcion3.setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2));
+		int preguntaActual = miJuego.getControladorNivelDos().getPreguntaActual();
+		opcion1.setText(miJuego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));
+		opcion2.setText(miJuego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1));
+		opcion3.setText(miJuego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2));
 	}
 	
 public void crearCorazonesHeroe(){

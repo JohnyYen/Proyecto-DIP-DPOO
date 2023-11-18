@@ -55,9 +55,9 @@ public class ControladorSegundoNivel extends ControladorJuego {
 	
 	@Override
 	public int finalizarPartida(){
-		boolean ganoHeroe = false;
-		if(medusa.getVidas() == 0) ganoHeroe = true;
-		
+		int ganoHeroe = 0;
+		if(guardarHeroe.getVidas() == 0) ganoHeroe = -1;
+		else if(medusa.getVidas() == 0) ganoHeroe = 1;
 		return ganoHeroe;
 	}
 }

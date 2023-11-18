@@ -2,20 +2,14 @@
 package ComponentesVisuales.Niveles;
 
 import java.awt.*;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import ComponentesVisuales.Componentes.LabelPreguntas;
 import ComponentesVisuales.Componentes.LabelRespuestas;
-import ComponentesVisuales.Pantallas.SubMenu;
 import Logica.*;
 import Personajes.*;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-
 import Util.ControladorCorazones;
 import Util.Corazon;
 import ComponentesVisuales.Componentes.BarraMenu;
@@ -97,6 +91,17 @@ public class PrimerNivel extends JFrame {
 					corazonesNivel.quitarVidaHeroe();
 				}
 				
+				if(Mijuego.getControladorNivelUno().finalizarPartida() > 0){
+					dispose();
+					SegundoNivel frame = new SegundoNivel(Mijuego);
+					frame.setVisible(true);
+				}
+				else if(Mijuego.getControladorNivelUno().finalizarPartida() < 0){
+					dispose();
+					PrimerNivel frame = new PrimerNivel(Mijuego);
+					frame.setVisible(true);
+				}
+				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelUno().darPregunta());
 			}
 		});
@@ -114,6 +119,17 @@ public class PrimerNivel extends JFrame {
 					juego.getControladorNivelUno().quitarVidaHeroe();
 					corazonesNivel.quitarVidaHeroe();
 					
+				}
+				
+				if(Mijuego.getControladorNivelUno().finalizarPartida() > 0){
+					dispose();
+					SegundoNivel frame = new SegundoNivel(Mijuego);
+					frame.setVisible(true);
+				}
+				else if(Mijuego.getControladorNivelUno().finalizarPartida() < 0){
+					dispose();
+					PrimerNivel frame = new PrimerNivel(Mijuego);
+					frame.setVisible(true);
 				}
 				
 				labelPreguntas.ponerPregunta(juego.getControladorNivelUno().darPregunta());
