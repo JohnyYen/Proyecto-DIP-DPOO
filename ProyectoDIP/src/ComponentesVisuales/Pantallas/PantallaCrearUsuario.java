@@ -68,7 +68,7 @@ public class PantallaCrearUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(validacion.esUsuarioCorrecto(textField.getText()) && validacion.esValidaContrasenia(passwordField.getText().toCharArray())){
 					if(profesor.isSelected()){
-						miJuego.crearUsuario(textField.getText(), "Pasworrd", true);
+						miJuego.crearUsuario(textField.getText(), passwordField.getText(), true);
 						PantallaProfesores frame = new PantallaProfesores(miJuego);
 						dispose();
 						frame.setVisible(true);
@@ -81,11 +81,7 @@ public class PantallaCrearUsuario extends JFrame {
 					}
 				}
 				else{
-<<<<<<< HEAD
 					JOptionPane.showMessageDialog(null, "Error en la creación de usuario, la contraseña tiene\n que tener minimo dos números, una letra mayúscula, y tres letras minúsculas, y el nombre\n de Usuario tiene que tener mínimo dos carácteres");
-=======
-					JOptionPane.showMessageDialog(null, "Error en la creación de usuario, el usuario debe tener al menos tres caracteres y la contraseña tiene que tener minimo dos números, una letra mayúscula, y tres letras minúsculas");
->>>>>>> f12298cc8df6e83354aaa2fb5a81a7023d0010e8
 				}
 			}
 		});

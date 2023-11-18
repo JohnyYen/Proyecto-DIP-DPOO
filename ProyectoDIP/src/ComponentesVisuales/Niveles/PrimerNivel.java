@@ -25,15 +25,6 @@ public class PrimerNivel extends JFrame {
 	private LabelRespuestas labelRespuestas;
 	private LabelPreguntas labelPreguntas;
 	private ControladorCorazones corazonesNivel;
-	private Corazon villano1;
-	private Corazon villano2;
-	private Corazon villano3;
-	private Corazon villano4;
-	private Corazon villano5;
-	private Corazon villano6;
-	private Corazon heroe1;
-	private Corazon heroe2;
-	private Corazon heroe3;
 	private Juego miJuego;
 	public PrimerNivel(Juego juego) {
 		

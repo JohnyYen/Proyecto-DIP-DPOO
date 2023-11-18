@@ -184,13 +184,12 @@ public class SegundoNivel extends JFrame {
 		opcion3.setBounds(180, 535, 645, 115);
 		contentPane.add(opcion3);
 		
-<<<<<<< HEAD
 		Timer timer = new Timer(1000, new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!mensajeHecho){
-					JOptionPane.showMessageDialog(null, "Para ganarle a Medusa tendrás que ser inteligente y\n"
+					JOptionPane.showMessageDialog(null, "Para ganarle a Medusa tendrï¿½s que ser inteligente y\n"
 							+ "responder correctamente las preguntas pero no te confies\n"
 							+ "este nivel no es como el anterior. Buena Suerte");
 					mensajeHecho = true;
@@ -201,8 +200,6 @@ public class SegundoNivel extends JFrame {
 		});
 		timer.start();
 		
-=======
->>>>>>> f12298cc8df6e83354aaa2fb5a81a7023d0010e8
 		ponerPosiblesRespuestas();
 		
 		crearCorazonesHeroe();
