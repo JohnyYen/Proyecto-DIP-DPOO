@@ -4,11 +4,11 @@ import java.util.Collections;
 import java.util.Random;
 
 
+
 import Personajes.*;
-import Personajes.Heroe;
-import Personajes.Cleopatra;
 import Util.Objetos;
-import ComponentesVisuales.Niveles.CuartoNivel;
+
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,29 +17,26 @@ import java.io.IOException;
 
 public class ControladorCuartoNivel extends ControladorJuego {
 private GlitchMonster monster;
-private ArrayList <Objetos> objDisponibles ;
+public ArrayList <Objetos> objDisponibles ;
 private ArrayList<Objetos>objPerdidos;	
 private	ArrayList<Objetos> objEncontrados;
-public int acept;
+private String comunicar;
 
 
-public ControladorCuartoNivel(Heroe heroe,GlitchMonster monster,InformacionJuego info,ArrayList <Objetos> objPerdidos,ArrayList <Objetos> objEncontrados,ArrayList <Objetos> objDisponibles ) {
+
+public ControladorCuartoNivel(Heroe heroe,GlitchMonster monster,InformacionJuego info ) {
 		super(heroe, info);
 			
 		objDisponibles = new ArrayList <Objetos>(12);
 		objPerdidos = new ArrayList<Objetos>(4);
 		objEncontrados  = new ArrayList<Objetos>(4);
-		procesarArchivoTexto();
+		objDisponibles.addAll(procesarArchivoTexto());
 		asignarObjetosPerdidos();
-	    CuartoNivel cuart = new CuartoNivel( objDisponibles,objPerdidos,objEncontrados, acept);
-	    int control = cuart.informarOrden();
-	    ordenEsCorrecto(acept,control,  objPerdidos, objEncontrados);
+        this.monster = monster;
+	   
 	}
 
 
-public void setAcept(int a){
-	acept =a;
-}
 public ArrayList <Objetos> getObjDisponibles() {
 	return objDisponibles;
 }
@@ -58,7 +55,7 @@ public ArrayList<Objetos> getObjEncontrados() {
 
 
 
- void setObjEncontrados(Objetos objEncontrados) {
+ public void setObjEncontrados(Objetos objEncontrados) {
 	 if (this.objEncontrados.size() < 4) {
 	 this.objEncontrados.add(objEncontrados);
 	 } else {
@@ -139,7 +136,7 @@ public ArrayList<Objetos> procesarArchivoTexto() {
     ArrayList<Objetos> objDisponibles = new ArrayList<>();
 
     try {
-        File archivo = new File("src/Recursos/parametrosObjetos.txt");
+        File archivo = new File("src/Textos/parametrosObjetos.txt");
         FileReader fr = new FileReader(archivo);
         BufferedReader br = new BufferedReader(fr);
         String linea;
@@ -162,8 +159,52 @@ public ArrayList<Objetos> procesarArchivoTexto() {
 }
 
 
+public int informarOrden(){
+	int control = -1;
+	Random r =new Random();
+   control = (int)(r.nextDouble()*10-6);
+	
+   switch(control){
+	case 1: this.setComunicar("El orden seleccionado es: mismo orden") ;
+		
+		break;
+		
+	case 2: this.setComunicar("El orden seleccionado es: orden inverso");
+		break;
+		
+		
+	case 3: this.setComunicar("El orden seleccionado es: ascendente");
+		break;
+		
+
+	
+		
+		default: this.setComunicar("El orden seleccionado es: descendente")
+			
+			 ;
+			
+	}
+return control;
+   
+}
 
 
+
+
+/**
+ * @return the comunicar
+ */
+public String getComunicar() {
+	return comunicar;
+}
+
+
+/**
+ * @param comunicar the comunicar to set
+ */
+public void setComunicar(String comunicar) {
+	this.comunicar = comunicar;
+}
 
 
 public boolean mismOrden( ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados){
