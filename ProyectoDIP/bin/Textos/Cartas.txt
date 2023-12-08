@@ -1,0 +1,12 @@
+Martillar
+Martilla un objeto para colocarlo en un lugar X
+M
+Colocar
+Coloca un objeto en un lugar X
+C
+Nadar
+Se traslada por el mar de un lugar X a un lugar Y
+N
+Saltar
+Se traslada por el eje Y
+S
