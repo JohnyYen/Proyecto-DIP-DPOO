@@ -1,5 +1,6 @@
 package Logica;
 
+//Clase que se usara para todas las validaciones en el juego
 public class Validacion {
 	
 	public boolean esValidaContrasenia(char[] password){

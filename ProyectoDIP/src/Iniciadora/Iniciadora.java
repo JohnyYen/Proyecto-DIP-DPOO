@@ -6,12 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import ComponentesVisuales.Niveles.*;
+
+
+
 import ComponentesVisuales.Pantallas.PantallaCarga;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
-import ComponentesVisuales.Pantallas.PantallaTransicion;
 import Logica.*;
-import Util.PreguntaNivelDos;
 
 public class Iniciadora {
 
@@ -23,7 +23,8 @@ public class Iniciadora {
 					inicializarDatosPrimerNivel(juego);
 					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
-					PantallaCarga frame = new PantallaCarga(juego);
+					//PantallaCarga frame = new PantallaCarga(juego);
+					PantallaProfesores frame = new PantallaProfesores(juego);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

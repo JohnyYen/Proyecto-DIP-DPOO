@@ -7,8 +7,6 @@ import java.util.Random;
 import java.util.Timer;
 
 import Personajes.*;
-import Util.Pregunta;
-import Util.PreguntaNivelUno;
 public class ControladorPrimerNivel extends ControladorJuego {
 	private ArrayList<PreguntaNivelUno> preguntasAnteriores;
 	private int preguntaActual;
@@ -18,6 +16,7 @@ public class ControladorPrimerNivel extends ControladorJuego {
 		preguntasAnteriores = new ArrayList<PreguntaNivelUno>();
 	}
 	
+	//Se recibe una respuesta por parte del jugador y el controlador analiza si es la correcta
 	public boolean analizarRespuesta(boolean respuesta){
 		boolean respuestaFinal = false;
 		if(informacionActual.getPreguntasNivelUno().get(preguntaActual).getRespuesta() == respuesta)
@@ -25,6 +24,7 @@ public class ControladorPrimerNivel extends ControladorJuego {
 		return respuestaFinal;
 	}
 	
+	//El controlador da las preguntas de forma aleatoria
 	public String darPregunta(){
 		Random random = new Random();
 		int indicePregunta = random.nextInt(informacionActual.getPreguntasNivelUno().size());
@@ -34,14 +34,5 @@ public class ControladorPrimerNivel extends ControladorJuego {
 		preguntasAnteriores.add(informacionActual.getPreguntasNivelUno().get(indicePregunta));
 		preguntaActual = indicePregunta;
 		return informacionActual.getPreguntasNivelUno().get(indicePregunta).getPregunta();
-	}
-	
-	
-	@Override
-	public int  finalizarPartida() {
-		int ganar = 0;
-		if(vidaHeroe == 0) ganar = -1;
-		else if(vidaVillano == 0) ganar = 1;
-		return ganar;
 	}
 }

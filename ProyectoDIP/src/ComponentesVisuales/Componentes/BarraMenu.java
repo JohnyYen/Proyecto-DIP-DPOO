@@ -1,10 +1,21 @@
 package ComponentesVisuales.Componentes;
 
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import com.sun.glass.ui.Menu;
+
+import ComponentesVisuales.Pantallas.MenuPrincipal;
+import Logica.Juego;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class BarraMenu extends JMenuBar{
+	private static JFrame frame;
+	private static Juego juego;
 	public BarraMenu() {
 		
 		JMenu menuOpciones = new JMenu("Opciones");
@@ -18,8 +29,21 @@ public class BarraMenu extends JMenuBar{
 		this.add(menuEditar);		
 		
 		JMenuItem guardarPartida = new JMenuItem("Guardar Partida");
+		guardarPartida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuPrincipal.guardarEstado(frame);
+			}
+		});
 		JMenuItem configuraciones = new JMenuItem("Configuraciones");
 		JMenuItem volver = new JMenuItem("Volver a Menú");
+		volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuPrincipal menu = new MenuPrincipal(juego);
+				MenuPrincipal.guardarEstado(frame);
+				frame.dispose();
+				menu.setVisible(true);
+			}
+		});
 		JMenu resolucion = new JMenu("Resolucion");
 		JMenuItem baja = new JMenuItem("800x600");
 		JMenuItem media = new JMenuItem("1024x758");
@@ -64,5 +88,9 @@ public class BarraMenu extends JMenuBar{
 		menuEditar.add(editarNivelTres);
 		menuEditar.add(editarNivelCuatro);
 	}
-
+	
+	public static void guardarFrameActual(JFrame windows){
+		frame = windows;
+	}
+	public static void guardarJuegoActual(Juego game){juego = game;}
 }

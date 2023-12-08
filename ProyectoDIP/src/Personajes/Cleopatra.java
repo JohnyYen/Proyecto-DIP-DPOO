@@ -16,9 +16,6 @@ public class Cleopatra extends Personaje{
 	public Cleopatra(){
 		super(5);
 		urlNormal = "src/Recursos/Cleopatra/CleopatraNormal.png";
-		urlGano = "src/Recursos/Cleopatra/CleopatraGana.png";
-		urlPerdio = "src/Recursos/Cleopatra/CleopatraDerrotada.png";
-		urlSorprendida = "src/Recursos/Cleopatra/CleopatraSorprendida.png";
 		try{
 			BufferedImage img = ImageIO.read(new File(urlNormal));
 			imagen = new ImageIcon(img);
@@ -35,17 +32,14 @@ public class Cleopatra extends Personaje{
 	}
 	@Override
 	public void setGano(){
-		imagen = new ImageIcon(urlGano);
-		repaint();
+		//Sin implementar
 	}
 	@Override
 	public void setPerdio(){
-		imagen = new ImageIcon(urlPerdio);
-		repaint();
+		//Sin implementar
 	}
 	public void setSorprendida(){
-		imagen = new ImageIcon(urlSorprendida);
-		repaint();
+		//Sin implementar
 	}
 	@Override
 	protected void paintComponent(Graphics g) {

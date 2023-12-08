@@ -10,6 +10,8 @@ public class ControladorTercerNivel extends ControladorJuego{
 		super(vidaHeroe, vidaVillano, informacionActual);
 		indiceCarta = 0;
 	}
+	
+	//El controlador analiza la respuesta del jugador con la respuesta del problema
 	public boolean respuestaCorrecta(String respuestaJugador, String respuesta){
 		boolean correcto = false;
 		if(respuestaJugador.equals(respuesta)) correcto = true;
@@ -17,15 +19,9 @@ public class ControladorTercerNivel extends ControladorJuego{
 		return correcto;
 	}
 	
+	//El controlador reparte la carta
 	public Carta repartirCarta(){
 		return informacionActual.getCartas().get(indiceCarta++);
-	}
-	@Override
-	public int  finalizarPartida() {
-		int ganar = 0;
-		if(vidaHeroe == 0) ganar = -1;
-		else if(vidaVillano == 0) ganar = 1;
-		return ganar;
-	}
+	}	
 	
 }

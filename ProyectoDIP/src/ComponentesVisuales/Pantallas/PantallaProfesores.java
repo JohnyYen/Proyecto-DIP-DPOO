@@ -3,6 +3,9 @@ package ComponentesVisuales.Pantallas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,7 +36,14 @@ public class PantallaProfesores extends JFrame {
 		
 		BarraMenu barraMenu = new BarraMenu();
 		setJMenuBar(barraMenu);
-		contentPane = new JPanel();
+		contentPane = new JPanel(){
+			private static final long serialVersionUID = 1L;
+
+			public void paintComponent(Graphics g) {
+				Image img = Toolkit.getDefaultToolkit().getImage(MenuPrincipal.class.getResource("/Recursos/FondoMenuPrincipal.png"));
+				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -50,7 +60,7 @@ public class PantallaProfesores extends JFrame {
 		BotonExtendido botonEditar = new BotonExtendido();
 		botonEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PantallaModificaciones frame = new PantallaModificaciones();
+				PantallaModificaciones frame = new PantallaModificaciones(miJuego);
 				dispose();
 				frame.setVisible(true);
 			}

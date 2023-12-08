@@ -23,8 +23,6 @@ import javax.swing.SwingConstants;
 
 import Recursos.CustomFont;
 
-import com.sun.org.apache.xml.internal.security.encryption.AgreementMethod;
-
 public class BotonExtendido extends JButton {
 
 	protected ImageIcon imagen;

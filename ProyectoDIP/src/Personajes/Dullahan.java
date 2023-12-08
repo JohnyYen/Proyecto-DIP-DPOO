@@ -26,6 +26,14 @@ public class Dullahan extends Personaje {
 	}
 	
 	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if(imagen != null)
+			imagen.paintIcon(this, g, 0, 0);
+	}
+
+	
+	@Override
 	public void setNormal(){
 		imagen = new  ImageIcon(urlNormal);
 		repaint();
@@ -43,11 +51,5 @@ public class Dullahan extends Personaje {
 
 	}
 	
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(imagen != null)
-			imagen.paintIcon(this, g, 0, 0);
-	}
-
+	
 }

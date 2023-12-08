@@ -18,7 +18,7 @@
 <html>Salir del bucle por completo.
 <html>Ejecutar el bloque de código una vez más.
 <html>Pasar a la siguiente iteración del bucle.
-¿Cuál es la sintaxis de un bucle do-while?
+¿Cúal es la sintaxis de un bucle do-while?
 <html>do {acción} while (condición)
 <html>do-while (inicialización; condición; incremento) {acción}
 <html>do-while (condición; incremento) {acción}
