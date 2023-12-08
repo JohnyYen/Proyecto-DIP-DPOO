@@ -74,6 +74,7 @@ public class CuartoNivel extends JFrame {
 			private static final long serialVersionUID = 1L;
 
 			/*Fondo*/
+			
 
 			public void paintComponent(Graphics g) {
 				Image img = Toolkit.getDefaultToolkit().getImage(CuartoNivel.class.getResource("/Recursos/fondo cuarto nivel.jpg"));
