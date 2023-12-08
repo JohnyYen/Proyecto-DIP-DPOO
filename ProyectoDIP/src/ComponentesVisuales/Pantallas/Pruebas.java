@@ -22,6 +22,7 @@ import javax.swing.JProgressBar;
 
 import Personajes.Dullahan;
 import Personajes.Cleopatra;
+import ComponentesVisuales.Componentes.BotonExtendidoNivelCuatro;
 
 public class Pruebas extends JFrame {
 
@@ -107,6 +108,15 @@ public class Pruebas extends JFrame {
 		lb.setBounds(0, 0, 367, 172);
 		contentPane.add(lb);
 		lb.setText("Holaaaa");
+		
+		BotonExtendidoNivelCuatro btnxtndnvlctrBoton = new BotonExtendidoNivelCuatro();
+		btnxtndnvlctrBoton.setText("Boton");
+		btnxtndnvlctrBoton.setBounds(78, 151, 206, 65);
+		contentPane.add(btnxtndnvlctrBoton);
+		
+		BotonExtendidoNivelCuatro botonExtendidoNivelCuatro = new BotonExtendidoNivelCuatro();
+		botonExtendidoNivelCuatro.setBounds(0, 0, 32, 8);
+		contentPane.add(botonExtendidoNivelCuatro);
 		
 		
 		

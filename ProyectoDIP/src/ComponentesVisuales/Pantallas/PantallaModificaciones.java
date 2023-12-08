@@ -72,7 +72,7 @@ public class PantallaModificaciones extends JFrame {
 		tabbedPane.addTab("Nivel 3",editarTres);
 		
 		//Editar Nivel Cuatro
-		EditarNivel4 editarCuatro = new EditarNivel4();
+		EditarNivel4 editarCuatro = new EditarNivel4(miJuego.getInformacionJuego().getObjetos());
 		tabbedPane.addTab("Nivel 4",editarCuatro);
 		
 		BotonExtendido Volver = new BotonExtendido();

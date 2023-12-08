@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -27,6 +28,9 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+
+import Logica.Juego;
+import Logica.Objeto;
 
 public class EditarNivel4 extends JPanel {
 
@@ -52,25 +56,45 @@ public class EditarNivel4 extends JPanel {
 	private JTextField txtTamao_9;
 	private JTextField textNombre_10;
 	private JTextField txtTamao_10;
+	private JTextField textNombre_11;
+	private JTextField textNombre_12;
+	private JTextField txtTamao_11;
+	private JTextField txtTamao_12;
 	private JLabel lblNombres;
 	private JLabel lblTamaos;
-	
+	private Juego miJuego;
 	private ArrayList<JTextField> componentesNom = new ArrayList<JTextField>();
 	private ArrayList<JTextField> componentesTam = new ArrayList<JTextField>();
+	private int valor;
+	private ArrayList<Objeto> nuevosObjetos;
 	
-	public static void main(String[] args){
-		EditarNivel4 v = new EditarNivel4();
-		v.setVisible(true);
-	}
-	public EditarNivel4() {
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 501, 417);
-		//contentPane = new JPanel();
+	public EditarNivel4(ArrayList<Objeto> objetos) {
+		
+		nuevosObjetos = new ArrayList<Objeto>();
+		nuevosObjetos.addAll(objetos);
+		
+		setBounds(100, 100, 501, 440);
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//setContentPane(contentPane);
 		this.setLayout(null);
-
+		
+		
 		JButton btnAceptar = new JButton("Aplicar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				boolean correct = true;
+
+				for(int i = 0; i < valor; i++)
+					if(componentesNom.get(i).getText().trim().isEmpty() || componentesTam.get(i).getText().trim().isEmpty())
+						correct = false;
+
+				if(correct == false)
+					JOptionPane.showMessageDialog(null, "Te faltan campos por llenar!");
+
+				else{
+					JOptionPane.showMessageDialog(null, "Modificación Exitosa!");
+				}
+			}
+		});
 		btnAceptar.setBounds(338, 217, 115, 30);
 		this.add(btnAceptar);
 		
@@ -85,25 +109,23 @@ public class EditarNivel4 extends JPanel {
 		spinner.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				
-				int valor = Integer.parseInt(String.valueOf(spinner.getValue()));
+			    valor = Integer.parseInt(String.valueOf(spinner.getValue()));
 				for(int i = 0; i < valor; i++){
 					componentesNom.get(i).setEnabled(true);
 					componentesTam.get(i).setEnabled(true);
 				}
 				
-				for(int i = 9; i >= valor; i--){
+				for(int i = 11; i >= valor; i--){
 					componentesNom.get(i).setEnabled(false);
 					componentesTam.get(i).setEnabled(false);
 					
-					componentesNom.get(i).setText("");					
-					componentesTam.get(i).setText("");
 				}
 
 				
 					
 			}
 		});
-		spinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		spinner.setModel(new SpinnerNumberModel(0, 0, 12, 1));
 		spinner.setToolTipText("");
 		spinner.setBounds(345, 83, 57, 20);
 		this.add(spinner);
@@ -317,6 +339,34 @@ public class EditarNivel4 extends JPanel {
 		txtTamao_10.setBounds(112, 346, 69, 20);
 		this.add(txtTamao_10);
 		
+		textNombre_12 = new JTextField();
+		textNombre_12.setText("");
+		textNombre_12.setEnabled(false);
+		textNombre_12.setColumns(10);
+		textNombre_12.setBounds(33, 401, 69, 20);
+		add(textNombre_12);
+		
+		txtTamao_11 = new JTextField();
+		txtTamao_11.setText("");
+		txtTamao_11.setEnabled(false);
+		txtTamao_11.setColumns(10);
+		txtTamao_11.setBounds(112, 375, 69, 20);
+		add(txtTamao_11);
+		
+		txtTamao_12 = new JTextField();
+		txtTamao_12.setText("");
+		txtTamao_12.setEnabled(false);
+		txtTamao_12.setColumns(10);
+		txtTamao_12.setBounds(112, 401, 69, 20);
+		add(txtTamao_12);
+		
+		textNombre_11 = new JTextField();
+		textNombre_11.setText("");
+		textNombre_11.setEnabled(false);
+		textNombre_11.setColumns(10);
+		textNombre_11.setBounds(33, 375, 69, 20);
+		add(textNombre_11);
+		
 		lblNombres = new JLabel("Nombres");
 		lblNombres.setBounds(43, 70, 59, 14);
 		this.add(lblNombres);
@@ -335,6 +385,8 @@ public class EditarNivel4 extends JPanel {
 		componentesNom.add(textNombre_8);
 		componentesNom.add(textNombre_9);
 		componentesNom.add(textNombre_10);
+		componentesNom.add(textNombre_11);
+		componentesNom.add(textNombre_12);
 		
 		componentesTam.add(txtTamao_1);
 		componentesTam.add(txtTamao_2);
@@ -346,5 +398,27 @@ public class EditarNivel4 extends JPanel {
 		componentesTam.add(txtTamao_8);
 		componentesTam.add(txtTamao_9);
 		componentesTam.add(txtTamao_10);
+		componentesTam.add(txtTamao_11);
+		componentesTam.add(txtTamao_12);
+		
+		for(int i = 0; i < componentesNom.size(); i++){
+			componentesNom.get(i).setText((objetos.get(i).getNombre()));
+			componentesTam.get(i).setText(String.valueOf((objetos.get(i).getTamaño())));
+
+		}
+		
+		JLabel label_10 = new JLabel("#11");
+		label_10.setBounds(10, 378, 46, 14);
+		add(label_10);
+		
+		JLabel label_11 = new JLabel("#12");
+		label_11.setBounds(10, 404, 46, 14);
+		add(label_11);
+		
+		
+	}	
+	
+	public ArrayList<Objeto> getGuardados(){
+		return nuevosObjetos;
 	}
 }

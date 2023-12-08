@@ -7,7 +7,7 @@ import Util.*;
 public class InformacionJuego {
 	private ArrayList<Pregunta> preguntas;
 	private ArrayList<Carta> cartas;
-	
+	private ArrayList<Objeto> objetos;
 	public InformacionJuego(){
 		preguntas = new ArrayList<Pregunta>(); 
 		cartas = new ArrayList<Carta>();
@@ -19,6 +19,8 @@ public class InformacionJuego {
 	}
 	//Obtener el arrayList de cartas
 	public ArrayList<Carta> getCartas(){return this.cartas;}
+	
+	public ArrayList<Objeto> getObjetos(){return this.objetos;}
 	
 	//Crear una nueva pregunta para el nivel uno
 	public void crearPreguntaNivelUno(String texto, boolean respuesta){
