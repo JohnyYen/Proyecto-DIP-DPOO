@@ -64,7 +64,7 @@ public class PantallaModificaciones extends JFrame {
 		
 		tablaNivelDos = new JTable();
 		scrollPane_1.setViewportView(tablaNivelDos);
-		PreguntaTableModelSegundoNivel modelNivelDos = new PreguntaTableModelSegundoNivel();
+		final PreguntaTableModelSegundoNivel modelNivelDos = new PreguntaTableModelSegundoNivel(miJuego.getInformacionJuego().getPreguntasNivelDos());
 		tablaNivelDos.setModel(modelNivelDos);
 		
 		//Editar Nivel Tres
@@ -91,6 +91,7 @@ public class PantallaModificaciones extends JFrame {
 		Guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				miJuego.getInformacionJuego().setPreguntasNivelUno(model.getPreguntas());
+				miJuego.getInformacionJuego().setPreguntasNivelDos(modelNivelDos.getPreguntas());
 			}
 		});
 		Guardar.setText("Guardar");
