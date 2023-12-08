@@ -1,0 +1,20 @@
+Si x = 0, entonces (x < 2 && x > 5)
+False
+Si x = 5, entonces las condiciones (x == 5 || x > 5) y (x <= 5) son:
+True
+Si x = 2, y = x, x = 6 entonces (y > 5):
+False
+Si x = 8 && y = 2 entonces(x % 2 != 0):
+false
+Si x = 2, entonces (++x == 3)
+true
+Si x = 10, y = 5 entonces (x++ % y == 0)
+true
+Si x = 3, y = 3 entonces (x++ == ++y)
+false
+Si x = 2, y = 20 entonces (y % x == 0 && y++ % x == 0)
+true
+Si x = 5, y = 2 entonces (x == y)
+false
+Si x = 2, entonces (x++ == 3)
+false 
