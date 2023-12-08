@@ -30,7 +30,7 @@ public class InformacionJuego {
 		preguntas.add(new PreguntaNivelDos(texto, respuestas, respuestaFinal));
 	}
 	
-	//Obtener lsa preguntas para el nivel uno
+	//Obtener las preguntas para el nivel uno
 	public ArrayList<PreguntaNivelUno> getPreguntasNivelUno(){
 		ArrayList<PreguntaNivelUno> preguntasNivelUno = new ArrayList<PreguntaNivelUno>();
 		
@@ -39,6 +39,19 @@ public class InformacionJuego {
 				preguntasNivelUno.add((PreguntaNivelUno)p);
 		
 		return preguntasNivelUno;
+	}
+	
+	public void setPreguntasNivelUno(ArrayList<PreguntaNivelUno> preguntasNuevas){
+		int size = preguntas.size();
+		for(int i = 0; i < size; i++){
+			Pregunta p = preguntas.get(i);
+			if(p instanceof PreguntaNivelUno){
+				this.preguntas.remove(p);
+				size--;
+			}
+				
+		}
+		preguntas.addAll(preguntasNuevas);
 	}
 	
 	//Obtener lsa preguntas para el nivel dos
