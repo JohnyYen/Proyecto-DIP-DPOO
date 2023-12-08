@@ -3,13 +3,13 @@ package ComponentesVisuales.Pantallas;
 import java.awt.ScrollPane;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 
-import Logica.Juego;
-import Logica.PreguntaNivelUno;
+import Logica.*;
 import Util.PreguntaTableModel;
 import Util.PreguntaTableModelSegundoNivel;
 
@@ -26,6 +26,7 @@ public class PantallaModificaciones extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
+	private Validacion validacion;
 	private JScrollPane scrollPane;
 	private JTable tabla;
 	private JTable tablaNivelDos;
@@ -33,7 +34,7 @@ public class PantallaModificaciones extends JFrame {
 	private PreguntaTableModel model;
 	
 	public PantallaModificaciones(Juego juego) {
-		
+		validacion = new Validacion();
 		this.miJuego = juego;
 		setTitle("Hello World!: Editar Niveles");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,8 +91,15 @@ public class PantallaModificaciones extends JFrame {
 		BotonExtendido Guardar = new BotonExtendido();
 		Guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				miJuego.getInformacionJuego().setPreguntasNivelUno(model.getPreguntas());
-				miJuego.getInformacionJuego().setPreguntasNivelDos(modelNivelDos.getPreguntas());
+				if(validacion.casillasVaciasEnTablas(model, modelNivelDos)){
+					miJuego.getInformacionJuego().setPreguntasNivelUno(model.getPreguntas());
+					miJuego.getInformacionJuego().setPreguntasNivelDos(modelNivelDos.getPreguntas());
+				}
+				
+				else{
+					System.out.print("Holaaa");
+					JOptionPane.showMessageDialog(null, "Error en la edición de algún nivel, REVISE BIEN!");
+				}
 			}
 		});
 		Guardar.setText("Guardar");

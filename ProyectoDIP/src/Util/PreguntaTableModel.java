@@ -27,7 +27,6 @@ public class PreguntaTableModel extends DefaultTableModel{
 		ArrayList<PreguntaNivelUno> preguntas = new ArrayList<PreguntaNivelUno>();
 		for(int i = 0; i < this.getRowCount(); i++){
 			String texto = (String)this.getValueAt(i, 0);
-			System.out.println(texto);
 			if(this.getValueAt(i, 1) instanceof String){
 				String respuesta = (String)this.getValueAt(i, 1);
 				preguntas.add(new PreguntaNivelUno(texto,respuesta));
