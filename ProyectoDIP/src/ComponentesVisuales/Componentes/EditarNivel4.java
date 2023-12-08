@@ -401,9 +401,10 @@ public class EditarNivel4 extends JPanel {
 		componentesTam.add(txtTamao_11);
 		componentesTam.add(txtTamao_12);
 		
-		for(int i = 0; i < componentesNom.size(); i++){
-			componentesNom.get(i).setText((objetos.get(i).getNombre()));
-			componentesTam.get(i).setText(String.valueOf((objetos.get(i).getTamaño())));
+		for(int i = 0; i < nuevosObjetos.size(); i++){
+			componentesTam.get(i).setText(String.valueOf((nuevosObjetos.get(i).getTamaño())));
+			componentesNom.get(i).setText((nuevosObjetos.get(i).getNombre()));
+			
 
 		}
 		

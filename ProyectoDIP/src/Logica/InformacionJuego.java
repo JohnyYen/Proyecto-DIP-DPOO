@@ -11,12 +11,18 @@ public class InformacionJuego {
 	public InformacionJuego(){
 		preguntas = new ArrayList<Pregunta>(); 
 		cartas = new ArrayList<Carta>();
+		objetos = new ArrayList<Objeto>();
 	}
 	
 	//Crear la carta
 	public void crearCarta(String nombre, String funcionalidad, String codigo){
 		cartas.add(new Carta(nombre, funcionalidad, codigo));
 	}
+	
+	public void crearObjeto(String nombre, float tamanio, String tipo){
+		objetos.add(new Objeto(nombre, tamanio, tipo));
+	}
+	
 	//Obtener el arrayList de cartas
 	public ArrayList<Carta> getCartas(){return this.cartas;}
 	
