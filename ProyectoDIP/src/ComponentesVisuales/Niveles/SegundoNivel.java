@@ -17,19 +17,26 @@ import java.awt.event.ActionEvent;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import ComponentesVisuales.Componentes.BotonExtendidoNivel2;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SegundoNivel extends JFrame {
 
 	private static final long serialVersionUID = -4285398109221870651L;
 	private JPanel contentPane;
+	private boolean mensajeHecho = false;
 	private LabelPreguntas labelPreguntas;
-	private Juego juego;
+	private Juego miJuego;
+	private boolean seTermino = false;
 	private BotonExtendidoNivel2 opcion1;
 	private BotonExtendidoNivel2 opcion2;
 	private BotonExtendidoNivel2 opcion3;
@@ -45,7 +52,8 @@ public class SegundoNivel extends JFrame {
 	private Corazon heroe3;
 
 	public SegundoNivel(final Juego juego) {
-		this.juego = juego;
+	
+		this.miJuego = juego;
 		setTitle("Hello World! : Segundo Nivel");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,19 +72,24 @@ public class SegundoNivel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Barra de menu
 		BarraMenu barraMenu = new BarraMenu();
+		BarraMenu.guardarFrameActual(this);
+		BarraMenu.guardarJuegoActual(miJuego);
 		setJMenuBar(barraMenu);
 		
+		//Se crea el villano
 		Medusa medusa = new Medusa();
 		medusa.setBounds(753, 70, 268, 246);
 		contentPane.add(medusa);
 		
+		//Se crea el heroe
 		Heroe heroe = new Heroe();
 		heroe.setBounds(28, 457, 305, 308);
 		contentPane.add(heroe);
 		
 		//Controlador Segundo Nivel
-		juego.crearControladorNivelDos(heroe, medusa);
+		miJuego.crearControladorNivelDos(3, 6);
 		
 		//Controlador de Corazones
 		corazonesNivel = new ControladorCorazones();
@@ -94,71 +107,142 @@ public class SegundoNivel extends JFrame {
 		labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 		contentPane.add(labelPreguntas);
 		
+		//Posible respuesta 1
 		opcion1 = new BotonExtendidoNivel2();
 		opcion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(0))){
-					juego.getControladorNivelDos().quitarVidaVillano();
-					corazonesNivel.quitarVidaVillano();
-				}else{
-					juego.getControladorNivelDos().quitarVidaHeroe();
-					corazonesNivel.quitarVidaHeroe();
-				}
 				
-				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
-				ponerPosiblesRespuestas();
+				if(!seTermino){
+					if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(0))){
+						juego.getControladorNivelDos().quitarVidaVillano();
+						corazonesNivel.quitarVidaVillano();
+					}else{
+						juego.getControladorNivelDos().quitarVidaHeroe();
+						corazonesNivel.quitarVidaHeroe();
+					}
+					
+					if(miJuego.getControladorNivelDos().finalizarPartida() != 0) seTermino = true;
+					else{
+						labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
+						ponerPosiblesRespuestas();
+					}
+				}
 			}
 		});
 		opcion1.setBounds(180, 305, 645, 115);
 		contentPane.add(opcion1);
 		
+		//Posible respuesta 2
 		opcion2 = new BotonExtendidoNivel2();
 		opcion2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(1))){
-					juego.getControladorNivelDos().quitarVidaVillano();
-					corazonesNivel.quitarVidaVillano();
-				}else{
-					juego.getControladorNivelDos().quitarVidaHeroe();
-					corazonesNivel.quitarVidaHeroe();
+				
+				if(!seTermino){
+					if(miJuego.getControladorNivelDos().analizarRespuesta(miJuego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(1))){
+						miJuego.getControladorNivelDos().quitarVidaVillano();
+						corazonesNivel.quitarVidaVillano();
+					}else{
+						miJuego.getControladorNivelDos().quitarVidaHeroe();
+						corazonesNivel.quitarVidaHeroe();
+					}
+					
+					if(miJuego.getControladorNivelDos().finalizarPartida() != 0) seTermino = true;
+					else{
+						labelPreguntas.ponerPregunta(miJuego.getControladorNivelDos().darPregunta());
+						ponerPosiblesRespuestas();
+					}
 				}
-				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
-				ponerPosiblesRespuestas();
 			}
 		});
 		opcion2.setBounds(180, 420, 645, 115);
 		contentPane.add(opcion2);
 		
+		//Posible respuesta 3
 		opcion3 = new BotonExtendidoNivel2();
 		opcion3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(juego.getControladorNivelDos().analizarRespuesta(juego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(2))){
-					juego.getControladorNivelDos().quitarVidaVillano();
-					corazonesNivel.quitarVidaVillano();
-				}else{
-					juego.getControladorNivelDos().quitarVidaHeroe();
-					corazonesNivel.quitarVidaHeroe();
+				
+				if(!seTermino){
+					if(miJuego.getControladorNivelDos().analizarRespuesta(miJuego.getControladorNivelDos().getPreguntas().get(juego.getControladorNivelDos().getPreguntaActual()).getPosiblesRespuestas().get(2))){
+						miJuego.getControladorNivelDos().quitarVidaVillano();
+						corazonesNivel.quitarVidaVillano();
+					}else{
+						miJuego.getControladorNivelDos().quitarVidaHeroe();
+						corazonesNivel.quitarVidaHeroe();
+					}
+					
+					if(miJuego.getControladorNivelDos().finalizarPartida() != 0) seTermino = true;
+					else{
+						labelPreguntas.ponerPregunta(miJuego.getControladorNivelDos().darPregunta());
+						ponerPosiblesRespuestas();
+					}
+					
+					
 				}
-				labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
-				ponerPosiblesRespuestas();
 			}
 		});
 		opcion3.setBounds(180, 535, 645, 115);
 		contentPane.add(opcion3);
+		
+		Timer timer = new Timer(1000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(!mensajeHecho){
+					JOptionPane.showMessageDialog(null, "Para ganarle a Medusa tendr�s que ser inteligente y\n"
+							+ "responder correctamente las preguntas pero no te confies\n"
+							+ "este nivel no es como el anterior. Buena Suerte");
+					mensajeHecho = true;
+				}
+					
+				
+			}
+		});
+		timer.start();
 		
 		ponerPosiblesRespuestas();
 		
 		crearCorazonesHeroe();
 		crearCorazonVillano();
 		
+		//Si gana el nivel pasa al siguiente, de lo contrario debe reintentar
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
+					TercerNivel frame = new TercerNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+				else if(miJuego.getControladorNivelDos().finalizarPartida() < 0){
+					SegundoNivel frame = new SegundoNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
+					TercerNivel frame = new TercerNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+				else if(miJuego.getControladorNivelDos().finalizarPartida() < 0){
+					SegundoNivel frame = new SegundoNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+			}
+		});
 	
 	}
 
+	//Metodo para poner las respuestas
 	private void ponerPosiblesRespuestas(){
-		int preguntaActual = juego.getControladorNivelDos().getPreguntaActual();
-		opcion1.setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));
-		opcion2.setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1));
-		opcion3.setText(juego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2));
+		int preguntaActual = miJuego.getControladorNivelDos().getPreguntaActual();
+		opcion1.setText(miJuego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(0));
+		opcion2.setText(miJuego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(1));
+		opcion3.setText(miJuego.getControladorNivelDos().getPreguntas().get(preguntaActual).getPosiblesRespuestas().get(2));
 	}
 	
 public void crearCorazonesHeroe(){

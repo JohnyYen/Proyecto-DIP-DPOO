@@ -32,6 +32,7 @@ import Recursos.CustomFont;
 import ComponentesVisuales.Componentes.CuadroDialogo;
 import ComponentesVisuales.Componentes.TextPanel;
 import ComponentesVisuales.Componentes.BotonExtendido;
+import java.awt.Font;
 
 public class PantallaTransicion extends JFrame {
 	private JLabel BotonZ;
@@ -40,36 +41,19 @@ public class PantallaTransicion extends JFrame {
 	private BufferedReader buffer;
 	private FrameTransicion frame;
 	private TextPanel textPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					
-					PantallaTransicion frame = new PantallaTransicion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public PantallaTransicion() {
+	private Juego miJuego;
+	
+	public PantallaTransicion(Juego juego) {
+		this.miJuego = juego;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 900, 700);
 		frame = new FrameTransicion();
 		
 		//TextPane para los dialogos
 		textPane = new TextPanel();
+		textPane.setFont(new Font("Dialog", Font.BOLD, 18));
 		textPane.setForeground(Color.RED);
-		textPane.setText("Tengo que hacer el proyecto de DPOO");
+		textPane.setText("Qué tarde es...");
 		textPane.setBounds(10, 580, 480, 70);
 		frame.add(textPane);
 		
@@ -106,15 +90,14 @@ public class PantallaTransicion extends JFrame {
 		teclaZ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					System.out.print("Hola");
 					if(buffer.ready()){
 						textPane.setText(buffer.readLine());
 						frame.aumentarFrame();
 					}
 					else{
-						//PrimerNivel primerNivel = new PrimerNivel(juego);
+						PrimerNivel primerNivel = new PrimerNivel(miJuego);
 						dispose();
-						//primerNivel.setVisible(true);
+						primerNivel.setVisible(true);
 					}
 			    }
 				catch(IOException a){
@@ -129,15 +112,16 @@ public class PantallaTransicion extends JFrame {
 		BotonExtendido btnxtndXSaltar = new BotonExtendido();
 		btnxtndXSaltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//PrimerNivel pri = new PrimerNivel(juego);
+				PrimerNivel pri = new PrimerNivel(miJuego);
 				dispose();
-				//pri.setVisible(true);
+				pri.setVisible(true);
 			}
 		});
 		btnxtndXSaltar.setText("X - Saltar");
 		btnxtndXSaltar.setBounds(243, 490, 231, 28);
 		frame.add(btnxtndXSaltar);
 		
+		textPane.setForeground(Color.WHITE);
 		eventoTeclado();
 		this.setLocationRelativeTo(null);
 	}

@@ -6,10 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import ComponentesVisuales.Niveles.*;
+
+
+
+
+import ComponentesVisuales.Pantallas.MenuPrincipal;
+import ComponentesVisuales.Pantallas.PantallaCarga;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
-import Util.PreguntaNivelDos;
 
 public class Iniciadora {
 
@@ -19,12 +23,12 @@ public class Iniciadora {
 				try {  
 					Juego juego = new Juego();
 					inicializarDatosPrimerNivel(juego);
+					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
-					//PrimerNivel primerNivel = new PrimerNivel(juego);
-					SegundoNivel segundoNivel = new SegundoNivel(juego);
-					
-					//primerNivel.setVisible(true);
-					segundoNivel.setVisible(true);
+					//PantallaCarga frame = new PantallaCarga(juego);
+					PantallaProfesores frame = new PantallaProfesores(juego);
+					//MenuPrincipal frame = new MenuPrincipal(juego);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -49,6 +53,7 @@ public class Iniciadora {
 		}
 	}
 	
+	
 	public static void inicializarDatosSegundoNivel(Juego juego) {
 		try{
 			FileReader file = new FileReader("src/Textos/PreguntasNivelDos.txt");
@@ -67,6 +72,25 @@ public class Iniciadora {
 				juego.getInformacionJuego().crearPreguntaNivelDos(textoPregunta, posiblesRespuestas, textoRespuesta);
 			}
 			
+			buffer.close();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void inicializarDatosTercerNivel(Juego juego){
+		try{
+			FileReader file = new FileReader("src/Textos/Cartas.txt");
+			BufferedReader buffer = new BufferedReader(file);
+			String nombre, funcionalidad, codigo;
+			while(buffer.ready()){
+				nombre = buffer.readLine();
+				funcionalidad = buffer.readLine();
+				codigo = buffer.readLine();
+				juego.getInformacionJuego().crearCarta(nombre, funcionalidad, codigo);
+			}
 			buffer.close();
 		}
 		catch(IOException e){

@@ -15,11 +15,15 @@ public class ControladorCorazones {
 	}
 	
 	public void quitarVidaHeroe(){
-		corazonHeroe.get(indiceVidaHeroe++).setVacio();
+		if(indiceVidaHeroe < corazonHeroe.size()){
+			corazonHeroe.get(indiceVidaHeroe++).setVacio();
+		}
 	}
 	
 	public void quitarVidaVillano(){
-		corazonVillano.get(indiceVidaVillano++).setVacio();
+		if(indiceVidaVillano < corazonVillano.size()){
+			corazonVillano.get(indiceVidaVillano++).setVacio();
+		}
 	}
 	
 	public Corazon getLastCorazonHeroe(){

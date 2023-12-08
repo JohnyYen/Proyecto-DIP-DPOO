@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import ComponentesVisuales.Componentes.Boton;
+import Logica.Juego;
 import Recursos.CustomFont;
 
 import java.awt.event.ActionListener;
@@ -25,33 +26,16 @@ public class MenuPrincipal extends JFrame {
 	private static Frame save;
 	private BotonExtendido botonNuevoJuego;
 	private BotonExtendido botonReanudar;
-	private BotonExtendido botonOpciones;
 	private BotonExtendido botonCuriosidades;
 	private BotonExtendido botonSalir;
+	private Juego miJuego;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuPrincipal frame = new MenuPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public MenuPrincipal() {
+	
+	public MenuPrincipal(Juego juego) {
+		this.miJuego = juego;
 		setTitle("Hello World!: Men\u00FA Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 20, 700, 576);
+		setBounds(300, 20, 900, 700);
 		
 		BarraMenu barraMenu = new BarraMenu();
 		setJMenuBar(barraMenu);
@@ -73,14 +57,14 @@ public class MenuPrincipal extends JFrame {
 		//Titulo
 		titulo = new JLabel("Hello World!");
 		titulo.setForeground(Color.WHITE);
-		titulo.setFont(cf.MyFont(1, 50));
+		titulo.setFont(cf.MyFont(1, 500));
 		titulo.setBounds(183, 104, 348, 101);
 		contentPane.add(titulo);
 		
 		botonNuevoJuego = new BotonExtendido();
 		botonNuevoJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PantallaTransicion transicion = new PantallaTransicion();
+				PantallaTransicion transicion = new PantallaTransicion(miJuego);
 				dispose();
 				transicion.setVisible(true);
 			}
@@ -108,28 +92,16 @@ public class MenuPrincipal extends JFrame {
 		botonReanudar.setBounds(202, 280, 252, 28);
 		contentPane.add(botonReanudar);
 		
-		botonOpciones = new BotonExtendido();
-		botonOpciones.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MenuOpciones menuOpciones = new MenuOpciones();
-				dispose();
-				menuOpciones.setVisible(true);
-			}
-		});
-		botonOpciones.setText("Opciones");
-		botonOpciones.setBounds(202, 326, 252, 28);
-		contentPane.add(botonOpciones);
-		
 		botonCuriosidades = new BotonExtendido();
 		botonCuriosidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PantallaCuriosidades curiosidades = new PantallaCuriosidades();
+				PantallaCuriosidades curiosidades = new PantallaCuriosidades(miJuego);
 				dispose();
 				curiosidades.setVisible(true);
 			}
 		});
 		botonCuriosidades.setText("Curiosidades");
-		botonCuriosidades.setBounds(202, 376, 252, 28);
+		botonCuriosidades.setBounds(202, 319, 252, 28);
 		contentPane.add(botonCuriosidades);
 		
 		botonSalir = new BotonExtendido();
@@ -140,25 +112,19 @@ public class MenuPrincipal extends JFrame {
 			}
 		});
 		botonSalir.setText("Salir");
-		botonSalir.setBounds(202, 415, 252, 28);
+		botonSalir.setBounds(202, 358, 252, 28);
 		contentPane.add(botonSalir);
 		
+		JLabel nombreUsuario = new JLabel("Nombe Usuario:");
+		nombreUsuario.setFont(new Font("Tahoma", Font.BOLD, 17));
+		nombreUsuario.setBounds(10, 11, 301, 28);
+		nombreUsuario.setText(nombreUsuario.getText() + "  " + miJuego.getUsuario().getNombreUsuario());
+		nombreUsuario.setForeground(Color.WHITE);
+		contentPane.add(nombreUsuario);
+		
 		//Modificaciones al Frame
-		//this.setResizable(false);
+		this.setResizable(false);
 		this.setIconImage(new ImageIcon("src/Recursos/GameIcon.png").getImage());
-		addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentResized(ComponentEvent e) {
-				
-				super.componentResized(e);
-				int width = getContentPane().getWidth();
-				int height = getContentPane().getHeight();
-				
-				
-				titulo.setBounds(titulo.getX()+1, titulo.getY(), titulo.getWidth(), titulo.getHeight());
-				
-			}
-		});
 		
 	}
 	

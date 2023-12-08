@@ -23,8 +23,6 @@ import javax.swing.SwingConstants;
 
 import Recursos.CustomFont;
 
-import com.sun.org.apache.xml.internal.security.encryption.AgreementMethod;
-
 public class BotonExtendido extends JButton {
 
 	protected ImageIcon imagen;
@@ -55,7 +53,7 @@ public class BotonExtendido extends JButton {
 		
 		// Un Jlabel para poner el texto en el medio del boton
 		texto = new JLabel();
-		texto.setFont(cf.MyFont(1, 20));
+		texto.setFont(cf.MyFont(1, 23));
 		texto.setForeground(Color.LIGHT_GRAY);
 		texto.setHorizontalAlignment(SwingConstants.CENTER);
 		texto.setVerticalAlignment(SwingConstants.CENTER);

@@ -2,47 +2,38 @@ package Logica;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import Personajes.Heroe;
 import Personajes.Medusa;
-import Util.PreguntaNivelDos;
 
 public class ControladorSegundoNivel extends ControladorJuego {
-	private ArrayList<PreguntaNivelDos> preguntas;
 	private ArrayList<PreguntaNivelDos> preguntasAnteriores;
 	private int preguntaActual;
-	private Medusa medusa;
 	
-	public ControladorSegundoNivel(Heroe heroe, Medusa medusa, InformacionJuego informacionActual) {
-		super(heroe, informacionActual);
-		this.medusa = medusa;
-		preguntas = informacionActual.getPreguntasNivelDos();
+	public ControladorSegundoNivel(int vidaHeroe, int vidaVillano, InformacionJuego informacionActual) {
+		super(vidaHeroe, vidaVillano, informacionActual);
 		preguntasAnteriores = new ArrayList<PreguntaNivelDos>();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public boolean analizarRespuesta(String respuesta){
 		boolean respuestaCorrecta = false;
-		if(respuesta.equals(preguntas.get(preguntaActual).getRespuesta())){
+		if(respuesta.equals(informacionActual.getPreguntasNivelDos().get(preguntaActual).getRespuesta())){
 			respuestaCorrecta = true;
 		}
 		return respuestaCorrecta;
 	}
 	
+	//De forma aleatoria se obtiene una pregunta garantizando que no se repita
 	public String darPregunta(){
 		Random random = new Random();
-		int indicePregunta = random.nextInt(preguntas.size());
+		int indicePregunta = random.nextInt(informacionActual.getPreguntasNivelDos().size());
 		
-		while(preguntasAnteriores.contains(preguntas.get(indicePregunta)))
-			indicePregunta = random.nextInt(preguntas.size());
+		while(preguntasAnteriores.contains(informacionActual.getPreguntasNivelDos().get(indicePregunta)))
+			indicePregunta = random.nextInt(informacionActual.getPreguntasNivelDos().size());
 		
-		preguntasAnteriores.add(preguntas.get(indicePregunta));
+		preguntasAnteriores.add(informacionActual.getPreguntasNivelDos().get(indicePregunta));
 		preguntaActual = indicePregunta;
-		return preguntas.get(indicePregunta).getPregunta();
-	}
-	
-	public void quitarVidaVillano() {
-		if(medusa.getVidas() > 0) 
-			medusa.perderVida();
+		return informacionActual.getPreguntasNivelDos().get(indicePregunta).getPregunta();
 	}
 
 	public int getPreguntaActual() {
@@ -50,14 +41,7 @@ public class ControladorSegundoNivel extends ControladorJuego {
 	}
 	
 	public ArrayList<PreguntaNivelDos> getPreguntas() {
-		return preguntas;
+		return informacionActual.getPreguntasNivelDos();
 	}
 	
-	@Override
-	public boolean finalizarPartida(){
-		boolean ganoHeroe = false;
-		if(medusa.getVidas() == 0) ganoHeroe = true;
-		
-		return ganoHeroe;
-	}
 }

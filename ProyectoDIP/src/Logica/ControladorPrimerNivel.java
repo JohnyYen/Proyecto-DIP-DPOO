@@ -7,51 +7,32 @@ import java.util.Random;
 import java.util.Timer;
 
 import Personajes.*;
-import Util.Pregunta;
-import Util.PreguntaNivelUno;
 public class ControladorPrimerNivel extends ControladorJuego {
-	private ArrayList<PreguntaNivelUno> preguntas;
-	private Cleopatra cleopatra;
 	private ArrayList<PreguntaNivelUno> preguntasAnteriores;
 	private int preguntaActual;
 	
-	public ControladorPrimerNivel(Heroe heroe,Cleopatra cleopatra,InformacionJuego informacionActual){
-		super(heroe, informacionActual);
-		this.cleopatra = cleopatra;
-		preguntas = informacionActual.getPreguntasNivelUno();
+	public ControladorPrimerNivel(int vidaHeroe, int vidaVillano,InformacionJuego informacionActual){
+		super(vidaHeroe, vidaVillano, informacionActual);
 		preguntasAnteriores = new ArrayList<PreguntaNivelUno>();
 	}
 	
+	//Se recibe una respuesta por parte del jugador y el controlador analiza si es la correcta
 	public boolean analizarRespuesta(boolean respuesta){
 		boolean respuestaFinal = false;
-		if(preguntas.get(preguntaActual).getRespuesta() == respuesta)
+		if(informacionActual.getPreguntasNivelUno().get(preguntaActual).getRespuesta() == respuesta)
 			respuestaFinal = true;
 		return respuestaFinal;
 	}
 	
+	//El controlador da las preguntas de forma aleatoria
 	public String darPregunta(){
 		Random random = new Random();
-		int indicePregunta = random.nextInt(preguntas.size());
-		while(preguntasAnteriores.contains(preguntas.get(indicePregunta))){
-			indicePregunta = random.nextInt(preguntas.size());
+		int indicePregunta = random.nextInt(informacionActual.getPreguntasNivelUno().size());
+		while(preguntasAnteriores.contains(informacionActual.getPreguntasNivelUno().get(indicePregunta))){
+			indicePregunta = random.nextInt(informacionActual.getPreguntasNivelUno().size());
 		}
-		preguntasAnteriores.add(preguntas.get(indicePregunta));
+		preguntasAnteriores.add(informacionActual.getPreguntasNivelUno().get(indicePregunta));
 		preguntaActual = indicePregunta;
-		return preguntas.get(indicePregunta).getPregunta();
-	}
-	
-	@Override
-	public void quitarVidaVillano() {
-		if(cleopatra.getVidas() > 0) {
-			cleopatra.perderVida();
-		}
-		
-	}
-	@Override
-	public boolean finalizarPartida(){
-		boolean ganoHeroe = false;
-		if(cleopatra.getVidas() == 0) ganoHeroe = true;
-		
-		return ganoHeroe;
+		return informacionActual.getPreguntasNivelUno().get(indicePregunta).getPregunta();
 	}
 }
