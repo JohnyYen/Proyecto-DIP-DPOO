@@ -30,6 +30,7 @@ public class PantallaModificaciones extends JFrame {
 	private JTable tabla;
 	private JTable tablaNivelDos;
 	private Juego miJuego;
+	private PreguntaTableModel model;
 	
 	public PantallaModificaciones(Juego juego) {
 		
@@ -53,7 +54,7 @@ public class PantallaModificaciones extends JFrame {
 		
 		tabla = new JTable();
 		scrollPane.setViewportView(tabla);
-		PreguntaTableModel model = new PreguntaTableModel(miJuego.getInformacionJuego().getPreguntasNivelUno());
+		model = new PreguntaTableModel(miJuego.getInformacionJuego().getPreguntasNivelUno());
 		tabla.setModel(model);
 		
 		
@@ -74,16 +75,26 @@ public class PantallaModificaciones extends JFrame {
 		EditarNivel4 editarCuatro = new EditarNivel4();
 		tabbedPane.addTab("Nivel 4",editarCuatro);
 		
-		BotonExtendido btnxtndVolver = new BotonExtendido();
-		btnxtndVolver.addActionListener(new ActionListener() {
+		BotonExtendido Volver = new BotonExtendido();
+		Volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PantallaProfesores frame = new PantallaProfesores(miJuego);
 				dispose();
 				frame.setVisible(true);
 			}
 		});
-		btnxtndVolver.setText("Volver");
-		btnxtndVolver.setBounds(551, 585, 289, 50);
-		contentPane.add(btnxtndVolver);
+		Volver.setText("Volver");
+		Volver.setBounds(551, 585, 289, 50);
+		contentPane.add(Volver);
+		
+		BotonExtendido Guardar = new BotonExtendido();
+		Guardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				miJuego.getInformacionJuego().setPreguntasNivelUno(model.getPreguntas());
+			}
+		});
+		Guardar.setText("Guardar");
+		Guardar.setBounds(288, 585, 225, 38);
+		contentPane.add(Guardar);
 	}
 }

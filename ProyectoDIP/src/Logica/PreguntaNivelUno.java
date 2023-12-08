@@ -7,6 +7,11 @@ public class PreguntaNivelUno extends Pregunta {
 		super(pregunta);
 		this.respuesta = respuesta;
 	}
+	
+	public PreguntaNivelUno(String pregunta, String respuesta){
+		super(pregunta);
+		this.respuesta = Boolean.parseBoolean(respuesta);
+	}
 	public boolean getRespuesta(){return this.respuesta;}
 	
 	public  void setRespuesta(boolean respuesta){
