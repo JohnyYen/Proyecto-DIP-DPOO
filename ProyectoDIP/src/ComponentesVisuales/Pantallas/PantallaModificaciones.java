@@ -63,7 +63,7 @@ public class PantallaModificaciones extends JFrame {
 		
 		tablaNivelDos = new JTable();
 		scrollPane_1.setViewportView(tablaNivelDos);
-		PreguntaTableModelSegundoNivel modelNivelDos = new PreguntaTableModelSegundoNivel();
+		PreguntaTableModelSegundoNivel modelNivelDos = new PreguntaTableModelSegundoNivel(miJuego.getInformacionJuego().getPreguntasNivelDos());
 		tablaNivelDos.setModel(modelNivelDos);
 		
 		//Editar Nivel Tres
