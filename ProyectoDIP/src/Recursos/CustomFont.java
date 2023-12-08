@@ -20,9 +20,6 @@ public class CustomFont {
         }
   }
 
-    /* Font.PLAIN = 0 , Font.BOLD = 1 , Font.ITALIC = 2
- * tamanio = float
- */
     public Font MyFont( int estilo, float tamanio)
     {
         Font tfont = font.deriveFont(estilo, tamanio);

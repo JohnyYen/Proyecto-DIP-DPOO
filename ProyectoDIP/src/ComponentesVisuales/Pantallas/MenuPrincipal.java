@@ -57,7 +57,7 @@ public class MenuPrincipal extends JFrame {
 		//Titulo
 		titulo = new JLabel("Hello World!");
 		titulo.setForeground(Color.WHITE);
-		titulo.setFont(cf.MyFont(1, 50));
+		titulo.setFont(cf.MyFont(1, 500));
 		titulo.setBounds(183, 104, 348, 101);
 		contentPane.add(titulo);
 		

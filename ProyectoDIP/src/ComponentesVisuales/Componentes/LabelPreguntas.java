@@ -25,7 +25,7 @@ public class LabelPreguntas extends JLabel{
 		
 		this.add(textoPanel);
 		CustomFont mf = new CustomFont();
-		this.setFont(mf.MyFont(1, 15));
+		this.setFont(mf.MyFont(1, 18));
 		this.setForeground(Color.WHITE);
 		
 		this.setBounds(x, y, ancho, alto);
