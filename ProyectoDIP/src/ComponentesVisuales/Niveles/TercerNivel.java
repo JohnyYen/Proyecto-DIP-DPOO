@@ -204,6 +204,7 @@ public class TercerNivel extends JFrame {
 		agregarEventoCartas(cartaTres);
 		agregarEventoCartas(cartaCuatro );
 				
+		
 		//Boton para comprobar la respuesta del jugador
 		BotonExtendido btnxtndAceptarRespuesta = new BotonExtendido();
 		btnxtndAceptarRespuesta.addActionListener(new ActionListener() {

@@ -56,6 +56,7 @@ public class PrimerNivel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
 		//Personajes
 		//Cleopatra
 		Cleopatra cleopatra = new Cleopatra();

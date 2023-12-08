@@ -16,6 +16,8 @@ import Util.PreguntaTableModelSegundoNivel;
 import javax.swing.JScrollPane;
 
 import ComponentesVisuales.Componentes.BotonExtendido;
+import ComponentesVisuales.Componentes.EditarNivel3;
+import ComponentesVisuales.Componentes.EditarNivel4;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -41,17 +43,21 @@ public class PantallaModificaciones extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 900, 563);
+		tabbedPane.setBounds(10, 11, 864, 556);
 		contentPane.add(tabbedPane);
 		
+		
+		//Editar Nivel Uno
 		scrollPane = new JScrollPane();
 		tabbedPane.addTab("Nivel 1", null, scrollPane, null);
 		
 		tabla = new JTable();
 		scrollPane.setViewportView(tabla);
-		PreguntaTableModel model = new PreguntaTableModel();
+		PreguntaTableModel model = new PreguntaTableModel(miJuego.getInformacionJuego().getPreguntasNivelUno());
 		tabla.setModel(model);
 		
+		
+		//Editar Nivel Dos
 		JScrollPane scrollPane_1 = new JScrollPane();
 		tabbedPane.addTab("Nivel 2", null, scrollPane_1, null);
 		
@@ -59,6 +65,14 @@ public class PantallaModificaciones extends JFrame {
 		scrollPane_1.setViewportView(tablaNivelDos);
 		PreguntaTableModelSegundoNivel modelNivelDos = new PreguntaTableModelSegundoNivel();
 		tablaNivelDos.setModel(modelNivelDos);
+		
+		//Editar Nivel Tres
+		EditarNivel3 editarTres = new EditarNivel3(miJuego.getInformacionJuego().getCartas());
+		tabbedPane.addTab("Nivel 3",editarTres);
+		
+		//Editar Nivel Cuatro
+		EditarNivel4 editarCuatro = new EditarNivel4();
+		tabbedPane.addTab("Nivel 4",editarCuatro);
 		
 		BotonExtendido btnxtndVolver = new BotonExtendido();
 		btnxtndVolver.addActionListener(new ActionListener() {
