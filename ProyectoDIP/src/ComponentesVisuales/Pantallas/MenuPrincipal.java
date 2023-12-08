@@ -26,7 +26,6 @@ public class MenuPrincipal extends JFrame {
 	private static Frame save;
 	private BotonExtendido botonNuevoJuego;
 	private BotonExtendido botonReanudar;
-	private BotonExtendido botonOpciones;
 	private BotonExtendido botonCuriosidades;
 	private BotonExtendido botonSalir;
 	private Juego miJuego;
@@ -93,18 +92,6 @@ public class MenuPrincipal extends JFrame {
 		botonReanudar.setBounds(202, 280, 252, 28);
 		contentPane.add(botonReanudar);
 		
-		botonOpciones = new BotonExtendido();
-		botonOpciones.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MenuOpciones menuOpciones = new MenuOpciones(miJuego);
-				dispose();
-				menuOpciones.setVisible(true);
-			}
-		});
-		botonOpciones.setText("Opciones");
-		botonOpciones.setBounds(202, 326, 252, 28);
-		contentPane.add(botonOpciones);
-		
 		botonCuriosidades = new BotonExtendido();
 		botonCuriosidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,7 +101,7 @@ public class MenuPrincipal extends JFrame {
 			}
 		});
 		botonCuriosidades.setText("Curiosidades");
-		botonCuriosidades.setBounds(202, 376, 252, 28);
+		botonCuriosidades.setBounds(202, 319, 252, 28);
 		contentPane.add(botonCuriosidades);
 		
 		botonSalir = new BotonExtendido();
@@ -125,7 +112,7 @@ public class MenuPrincipal extends JFrame {
 			}
 		});
 		botonSalir.setText("Salir");
-		botonSalir.setBounds(202, 415, 252, 28);
+		botonSalir.setBounds(202, 358, 252, 28);
 		contentPane.add(botonSalir);
 		
 		JLabel nombreUsuario = new JLabel("Nombe Usuario:");

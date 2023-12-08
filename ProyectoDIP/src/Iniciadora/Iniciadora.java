@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 
 
+
+import ComponentesVisuales.Pantallas.MenuPrincipal;
 import ComponentesVisuales.Pantallas.PantallaCarga;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
@@ -25,6 +27,7 @@ public class Iniciadora {
 					inicializarDatosSegundoNivel(juego);
 					//PantallaCarga frame = new PantallaCarga(juego);
 					PantallaProfesores frame = new PantallaProfesores(juego);
+					//MenuPrincipal frame = new MenuPrincipal(juego);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -34,7 +34,7 @@ public class BarraMenu extends JMenuBar{
 				MenuPrincipal.guardarEstado(frame);
 			}
 		});
-		JMenuItem configuraciones = new JMenuItem("Configuraciones");
+		//JMenuItem configuraciones = new JMenuItem("Configuraciones");
 		JMenuItem volver = new JMenuItem("Volver a Menú");
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -53,7 +53,6 @@ public class BarraMenu extends JMenuBar{
 		resolucion.add(media);
 		resolucion.add(alta);
 		menuOpciones.add(guardarPartida);
-		menuOpciones.add(configuraciones);
 		menuOpciones.add(volver);
 		menuOpciones.add(resolucion);
 		
