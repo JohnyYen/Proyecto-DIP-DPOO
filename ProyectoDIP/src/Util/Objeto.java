@@ -2,15 +2,15 @@ package Util;
 import java.lang.String;
 
 
-public class Objetos {
+public class Objeto {
 private String nombre;
-private float tamaño;
+private float tamanio;
 private String tipo;
 
 
-public Objetos(String nombre,float tamaño, String tipo){
+public Objeto(String nombre,float tamanio, String tipo){
 	setNombre(nombre);
-	setTamaño(tamaño);
+	setTamaño(tamanio);
 	setTipo(tipo);
 }
 
@@ -22,13 +22,13 @@ public String getNombre() {
 public void setNombre(String nombre) {
 	this.nombre = nombre;
 }
-public float getTamaño() {
-	return tamaño;
+public float getTamanio() {
+	return tamanio;
 }
 
-public void setTamaño(float tamaño) {
-if(tamaño > 0|| tamaño < 1000){
-	this.tamaño = tamaño;}
+public void setTamaño(float tamanio) {
+if(tamanio > 0|| tamanio < 1000){
+	this.tamanio = tamanio;}
 else {
 throw new IllegalArgumentException ("Error. Solo valores superiores a 0 e inferiores a 1000");
 }

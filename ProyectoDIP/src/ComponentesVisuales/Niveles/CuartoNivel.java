@@ -22,23 +22,27 @@ import Logica.Juego;
 import Personajes.GlitchMonster;
 import Personajes.Heroe;
 import Util.ControladorCorazones;
-import Util.Objetos;
+import Util.Corazon;
+import Util.Objeto;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
+import java.awt.Font;
 
 public class CuartoNivel extends JFrame {
 	private Juego mijuego;
 	private JPanel contentPane;
+	private JPanel contentPane_1;
 	private String comunicar;
-    private  int ordenar;
+	private  int ordenar;
 	private Heroe heroe;
-	private GlitchMonster monstruo;
-	private  ImageIcon GlitchImage;
-	private  JLabel GlitchLabel;
-	private  JPanel labelPanel;
-	private JLabel labelBotones;
+	private Corazon villano1;
+	private Corazon villano2;
+	private Corazon villano3;
+	private Corazon heroe1;
+	private Corazon heroe2;
+	private Corazon heroe3;
 	private JButton button;
 	private JButton button_1;
 	private JButton button_2;
@@ -49,205 +53,310 @@ public class CuartoNivel extends JFrame {
 	private JButton button_7;
 	private JButton button_8;
 	private JButton button_9;
-	private ControladorCorazones controlCorazon;
+	private JLabel ComunicarLabel;
+	private ControladorCorazones corazonesNivel;
 	BufferedReader buffer;
-	
-	
-	
+	private GlitchMonster glitchMonster_1;
+	private JLabel RecuerdameLabel;
+	private boolean continuar;
+	private JButton button_10;
+	private JButton button_11;
+
 	/**
 	 * @wbp.parser.constructor
 	 */
 	public CuartoNivel(final Juego juego ){
 		setTitle("¡Encuentra los objetos!");
-        this.mijuego = juego;
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	setBounds(300, 20, 900, 700);
-        this.contentPane= new JPanel(){
-       	private static final long serialVersionUID = 1L;
-        
-		/*Fondo*/
-        /*ImageIcon backgroundImage = new ImageIcon("src/Recursos/fondo cuarto nivel.jpg");
-        getContentPane().setLayout(null);*/
-       
-       public void paintComponent(Graphics g) {
-			Image img = Toolkit.getDefaultToolkit().getImage(CuartoNivel.class.getResource("/Recursos/fondo cuarto nivel.jpg"));
-			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-		}
-	};		
+		this.mijuego = juego;
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(300, 20, 900, 700);
+		this.contentPane_1= new JPanel(){
+			private static final long serialVersionUID = 1L;
 
-        
-        /*Glitch*/
-        JPanel GlitchPanel = new JPanel();
-        GlitchPanel.setBounds(562, 389, 201, 188);
-        GlitchPanel.setBackground(Color.WHITE);
-        getContentPane().add(GlitchPanel);
-    
-        ImageIcon GlitchImage = new ImageIcon("src/Recursos/monstruo.jpg");
-        Image image = GlitchImage.getImage();
-        int newWidth = 198; 
-        int newHeight = 178; 
-        Image newImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
- 
-        ImageIcon resizedImageGlitch = new ImageIcon(newImage);
-        GlitchPanel.setLayout(null);
-        
-        JLabel GlitchLabel = new JLabel(new ImageIcon("C:\\Users\\mirai\\OneDrive\\Desktop\\Proyecto-DIP-DPOO\\ProyectoDIP\\src\\Recursos\\monstruo.jpg"));
-        GlitchLabel.setBounds(0, 0, 201, 188);
-        GlitchPanel.add(GlitchLabel);
-        
-        //crear controlador
-        this.mijuego.crearControladorCuartoNivel(heroe, monstruo);;
-       
-     
-        
-        /*Peticion objetos*/
-        
-       labelPanel = new JPanel();
-        labelPanel.setBounds(107, 58, 580, 75);
-        labelPanel.setBackground(Color.WHITE); 
-        getContentPane().add(labelPanel);
-        labelPanel.setLayout(null);
-        
-        
-        JLabel lblNewLabel = new JLabel(this.comunicar);
-        lblNewLabel.setBounds(0, 0, 568, 75);
-        labelPanel.add(lblNewLabel);
-        
-        /*Aceptar*/
-        JButton acceptButton = new JButton("Aceptar");
-        acceptButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        	 
-        });
-        acceptButton.setBounds(266, 463, 253, 75);
-        getContentPane().add(acceptButton);
-        
-        /*Menú*/
-        
-        BarraMenu barraMenu = new BarraMenu();
+			/*Fondo*/
+
+			public void paintComponent(Graphics g) {
+				Image img = Toolkit.getDefaultToolkit().getImage(CuartoNivel.class.getResource("/Recursos/fondo cuarto nivel.jpg"));
+				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};		
+		contentPane_1.setForeground(Color.WHITE);
+
+		this.setContentPane(contentPane_1);
+
+		/*Glitch*/
+		contentPane_1.setLayout(null);
+
+		glitchMonster_1 = new GlitchMonster(3);
+		glitchMonster_1.setBounds(579, 380, 216, 192);
+		contentPane_1.add(glitchMonster_1);
+
+		heroe = new Heroe();
+
+
+		//crear controlador
+		this.mijuego.crearControladorCuartoNivel(heroe.getVidas(), glitchMonster_1.getVidas());
+
+		/*Peticion objetos*/
+
+		JLabel lblNewLabel = new JLabel(this.comunicar);
+		lblNewLabel.setBounds(130, 33, 568, 75);
+		contentPane_1.add(lblNewLabel);
+
+		/*Aceptar*/
+		JButton acceptButton = new JButton("Aceptar");
+		acceptButton.setBounds(256, 408, 271, 95);
+		acceptButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(mijuego.getControladorCuartoNivel().finalizarPartida() == 0){
+					if(mijuego.getControladorCuartoNivel().getObjEncontrados().isEmpty()){
+						ComunicarLabel.setText(mijuego.getControladorCuartoNivel().prepararLabel());
+					}else{
+						continuar = mijuego.getControladorCuartoNivel().ordenEsCorrecto();
+						ComunicarLabel.setText(mijuego.getControladorCuartoNivel().getComunicar());	
+						if (continuar){
+							mijuego.getControladorCuartoNivel().quitarVidaVillano();
+							corazonesNivel.quitarVidaVillano();
+						}else{
+							mijuego.getControladorCuartoNivel().quitarVidaHeroe();
+							corazonesNivel.quitarVidaHeroe();
+
+							
+						}
+						mijuego.getControladorCuartoNivel().getObjEncontrados().clear();
+							mijuego.getControladorCuartoNivel().getObjPerdidos().clear();
+							mijuego.getControladorCuartoNivel().asignarObjetosPerdidos();
+							ComunicarLabel.setText(mijuego.getControladorCuartoNivel().informarOrden());
+					}
+
+				}
+				else{
+					if(mijuego.getControladorCuartoNivel().finalizarPartida() == -1){
+						CuartoNivel frame = new CuartoNivel(mijuego);
+						dispose();
+						frame.setVisible(true);
+					}
+					else{
+
+					}
+				}
+			}
+		});
+		getContentPane().setLayout(null);
+		getContentPane().add(acceptButton);
+
+		/*Menú*/
+
+		BarraMenu barraMenu = new BarraMenu();
 		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;};
-        
-       
-        
-        JPanel panel = new JPanel();
-        panel.setBounds(40, 172, 792, 175);
-        getContentPane().add(panel);
-        panel.setLayout(null);
-        
-         button = new JButton( mijuego.getControladorCuartoNivel().getObjDisponibles().get(0).getNombre());
-        button.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel().getObjDisponibles().get(0));
-        		
-        	}
-        });
-        button.setBounds(61, 27, 108, 44);
-        panel.add(button);
-        
-         button_1 = new JButton( mijuego.getControladorCuartoNivel().getObjPerdidos().get(0).getNombre());
-         button_1.addActionListener(new ActionListener() {
-         	public void actionPerformed(ActionEvent e) {
-         	mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel(). getObjPerdidos().get(0));
-         	}
-         });
-      
-        button_1.setBounds(206, 27, 108, 44);
-        panel.add(button_1);
-        
-        button_2 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(8).getNombre());
-        button_2.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel().getObjDisponibles().get(8));	
-        	}
-        });
-        button_2.setBounds(352, 27, 108, 44);
-        panel.add(button_2);
-        
-       button_3 = new JButton(mijuego.getControladorCuartoNivel().getObjPerdidos().get(1).getNombre());
-       button_3.addActionListener(new ActionListener() {
-       	public void actionPerformed(ActionEvent e) {
-       		mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel().getObjPerdidos() .get(1));
-       	}
-       });
-        button_3.setBounds(491, 27, 108, 44);
-        panel.add(button_3);
-        
-         button_4 = new JButton(mijuego.getControladorCuartoNivel().getObjPerdidos().get(2).getNombre());
-         button_4.addActionListener(new ActionListener() {
-         	public void actionPerformed(ActionEvent e) {
-         		mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel().getObjPerdidos().get(2));
-         	}
-         });
-        button_4.setBounds(625, 27, 108, 44);
-        panel.add(button_4);
-        
-         button_5 = new JButton(mijuego.getControladorCuartoNivel().getObjPerdidos().get(3).getNombre());
-         button_5.addActionListener(new ActionListener() {
-         	public void actionPerformed(ActionEvent e) {
-         		mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel().getObjPerdidos().get(3));
-         	}
-         });
-        button_5.setBounds(61, 101, 108, 44);
-        panel.add(button_5);
-        
-         button_6 = new JButton( mijuego.getControladorCuartoNivel().getObjDisponibles().get(2).getNombre());
-         button_6.addActionListener(new ActionListener() {
-         	public void actionPerformed(ActionEvent e) {
-         		mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel().getObjDisponibles().get(2));
-         	}
-         });
-        button_6.setBounds(206, 101, 108, 44);
-        panel.add(button_6);
-        
-         button_7 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(7).getNombre());
-         button_7.addActionListener(new ActionListener() {
-         	public void actionPerformed(ActionEvent e) {
-         		mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel().getObjDisponibles().get(7));
-         	}
-         });
-        button_7.setBounds(352, 101, 108, 44);
-        panel.add(button_7);
-        
-        button_8 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(5).getNombre());
-        button_8.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel().getObjDisponibles().get(5));
-        	}
-        });
-        button_8.setBounds(491, 101, 108, 44);
-        panel.add(button_8);
-        
-        button_9 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(9).getNombre());
-        button_9.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		mijuego.getControladorCuartoNivel().getObjEncontrados().add(mijuego.getControladorCuartoNivel().getObjDisponibles().get(9));
-        	}
-        });
-        button_9.setBounds(625, 101, 108, 44);
-        panel.add(button_9);
-        
-        labelBotones = new JLabel();
-        labelBotones.setIcon(new ImageIcon("src/Recursos/fondo cuarto nivel - copia.jpg"));
-        labelBotones.setBounds(0, 0, 792, 175);
-        panel.add(labelBotones);
-       
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, 900, 700);
-        getContentPane().add(backgroundLabel);
-        
 
-        
-        
+
+
+		button = new JButton( mijuego.getControladorCuartoNivel().getObjDisponibles().get(0).getNombre());
+						button.setBounds(51, 161, 108, 44);
+						button.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel(). getObjDisponibles().get(0));
+								RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(0).getNombre());
+							}
+						});
+						getContentPane().add(button);
+						
+
+			button_1 = new JButton( mijuego.getControladorCuartoNivel().getObjDisponibles().get(1).getNombre());
+			button_1.setBounds(196, 161, 108, 44);
+			button_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(1));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(1).getNombre());
+				}
+			});
+						
+			getContentPane().add(button_1);
+
+			button_2 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(8).getNombre());
+			button_2.setBounds(342, 161, 108, 44);
+			button_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(8));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(8).getNombre());
+				}
+			});
+			getContentPane().add(button_2);
+
+			button_3 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(3).getNombre());
+			button_3.setBounds(481, 161, 108, 44);
+			button_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(3));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(3).getNombre());
+				}
+			});
+			getContentPane().add(button_3);
+
+			button_4 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(4).getNombre());
+			button_4.setBounds(615, 161, 108, 44);
+			button_4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(4));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(4).getNombre());
+				}
+			});
+			getContentPane().add(button_4);
+
+			button_5 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(6).getNombre());
+			button_5.setBounds(745, 161, 108, 44);
+			button_5.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(6));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(6).getNombre());
+				}
+			});
+			getContentPane().add(button_5);
+
+			button_7 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(7).getNombre());
+			button_7.setBounds(196, 235, 108, 44);
+			button_7.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(7));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(7).getNombre());
+				}
+			});
+			
+						button_6 = new JButton( mijuego.getControladorCuartoNivel().getObjDisponibles().get(2).getNombre());
+						button_6.setBounds(51, 235, 108, 44);
+						button_6.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(2));
+								RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(2).getNombre());
+							}
+						});
+						getContentPane().add(button_6);
+			getContentPane().add(button_7);
+
+			button_8 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(5).getNombre());
+			button_8.setBounds(342, 235, 108, 44);
+			button_8.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(5));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(5).getNombre());
+				}
+			});
+			getContentPane().add(button_8);
+
+			button_9 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(9).getNombre());
+			button_9.setBounds(481, 235, 108, 44);
+			button_9.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(9));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(9).getNombre());
+				}
+			});
+			getContentPane().add(button_9);
+			
+			button_10 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(11).getNombre());
+			button_10.setBounds(615, 235, 108, 44);
+			button_10.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(11));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(11).getNombre());
+				}
+			});
+			
+			getContentPane().add(button_10);
+			
+			
+			button_11 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(10).getNombre());
+			button_11.setBounds(745, 235, 108, 44);
+			button_11.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(10));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(10).getNombre());
+				}
+			});
+			
+			getContentPane().add(button_11);
+									
+									
+									
+									
+
+			ComunicarLabel = new JLabel("");
+			ComunicarLabel.setForeground(Color.WHITE);
+			ComunicarLabel.setBackground(Color.WHITE);
+			ComunicarLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			ComunicarLabel.setBounds(55, 13, 747, 84);
+			ComunicarLabel.setText(mijuego.getControladorCuartoNivel().informarOrden());
+			getContentPane().add(ComunicarLabel);
+
+			JButton RehacerBoton = new JButton("Limpiar");
+			RehacerBoton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().getObjEncontrados().clear();
+					RecuerdameLabel.setText(null );
+				}
+			});
+			RehacerBoton.setBounds(143, 433, 75, 45);
+			getContentPane().add(RehacerBoton);
+
+			RecuerdameLabel = new JLabel("");
+			RecuerdameLabel.setBackground(Color.WHITE);
+			RecuerdameLabel.setBounds(291, 356, 170, 39);
+			getContentPane().add(RecuerdameLabel);
+
+
+
+			//Corazon 
+			corazonesNivel = new ControladorCorazones();
+			crearCorazonesHeroe();
+			crearCorazonVillano();
+
+
 	}
-	
-     
+
+	public void crearCorazonesHeroe(){
+
+		heroe1 = new Corazon();
+		corazonesNivel.agregarCorarazonHeroe(heroe1);
+		corazonesNivel.getLastCorazonHeroe().setBounds(27, 518, 52, 45);
+		getContentPane().add(corazonesNivel.getLastCorazonHeroe());
+
+		heroe2 = new Corazon();
+		corazonesNivel.agregarCorarazonHeroe(heroe2);
+		corazonesNivel.getLastCorazonHeroe().setBounds(80, 518, 52, 45);
+		getContentPane().add(corazonesNivel.getLastCorazonHeroe());
+
+		heroe3 = new Corazon();
+		corazonesNivel.agregarCorarazonHeroe(heroe3);
+		corazonesNivel.getLastCorazonHeroe().setBounds(131, 518, 52, 45);
+		contentPane.add(corazonesNivel.getLastCorazonHeroe());
+		getContentPane().add(corazonesNivel.getLastCorazonHeroe());
+
+	}
+
+	public void crearCorazonVillano(){
+		villano1 = new Corazon();
+		corazonesNivel.agregarCorazonVillano(villano1);
+		corazonesNivel.getLastCorazonVillano().setBounds(695, 343, 26, 27);
+		getContentPane().add(corazonesNivel.getLastCorazonVillano());
+
+		villano2 = new Corazon();
+		corazonesNivel.agregarCorazonVillano(villano2);
+		corazonesNivel.getLastCorazonVillano().setBounds(721, 343, 26, 27);
+		getContentPane().add(corazonesNivel.getLastCorazonVillano());
+
+		villano3 = new Corazon();
+		corazonesNivel.agregarCorazonVillano(villano3);
+		corazonesNivel.getLastCorazonVillano().setBounds(747, 343, 26, 27);
+		getContentPane().add(corazonesNivel.getLastCorazonVillano());}
 
 
 
-	
+
+
+
 
 
 
@@ -261,7 +370,7 @@ public class CuartoNivel extends JFrame {
 	/**
 	 * @param ordenar the ordenar to set
 	 */
- public void setOrdenar(int ordenar) {
+	public void setOrdenar(int ordenar) {
 		this.ordenar = ordenar;
 	}
 

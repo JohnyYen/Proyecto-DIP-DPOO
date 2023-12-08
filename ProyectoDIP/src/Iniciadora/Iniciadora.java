@@ -2,12 +2,14 @@ package Iniciadora;
 
 import java.awt.EventQueue;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
 import ComponentesVisuales.Niveles.*;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
+import Util.Objeto;
 
 public class Iniciadora {
 
@@ -16,11 +18,13 @@ public class Iniciadora {
 			public void run() {
 				try {  
 					Juego juego = new Juego();
+					inicializarDatosCuartoNivel(juego);
 					inicializarDatosPrimerNivel(juego);
 					inicializarDatosTercerNivel(juego);
+					
 					//PrimerNivel frame = new PrimerNivel(juego);
 					//PantallaProfesores frame = new PantallaProfesores();
-					TercerNivel frame = new TercerNivel(juego);
+					CuartoNivel frame = new CuartoNivel(juego);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,6 +51,25 @@ public class Iniciadora {
 		
 	}
 	
+	public static void inicializarDatosCuartoNivel(Juego juego) {
+		
+	    try {
+	        FileReader fr = new FileReader("src/Textos/parametrosObjetos.txt");
+	        BufferedReader br = new BufferedReader(fr);
+	        String nombre, tipo;
+	        float tamanio;
+	        while(br.ready()) {
+	        	nombre = br.readLine();
+	        	tamanio = Float.parseFloat(br.readLine());
+	        	tipo = br.readLine();
+	        	juego.getInformacionJuego().crearObjeto(nombre, tamanio, tipo);
+	        }
+	        br.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
 	public static void inicializarDatosTercerNivel(Juego juego){
 		try{
 			FileReader file = new FileReader("src/Textos/Cartas.txt");
@@ -56,6 +79,8 @@ public class Iniciadora {
 				nombre = buffer.readLine();
 				funcionalidad = buffer.readLine();
 				codigo = buffer.readLine();
+				
+				
 				juego.getInformacionJuego().crearCarta(nombre, funcionalidad, codigo);
 			}
 			buffer.close();

@@ -6,7 +6,7 @@ import java.util.Random;
 
 
 import Personajes.*;
-import Util.Objetos;
+import Util.Objeto;
 
 
 
@@ -16,46 +16,36 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ControladorCuartoNivel extends ControladorJuego {
-private GlitchMonster monster;
-public ArrayList <Objetos> objDisponibles ;
-private ArrayList<Objetos>objPerdidos;	
-private	ArrayList<Objetos> objEncontrados;
-private String comunicar;
+
+	
+	private int control;
+	private ArrayList<Objeto> objPerdidos;	
+	private	ArrayList<Objeto> objEncontrados;
+	private String comunicar;
+	private String tusObjetos;
 
 
 
-public ControladorCuartoNivel(Heroe heroe,GlitchMonster monster,InformacionJuego info ) {
-		super(heroe, info);
-			
-		objDisponibles = new ArrayList <Objetos>(12);
-		objPerdidos = new ArrayList<Objetos>(4);
-		objEncontrados  = new ArrayList<Objetos>(4);
-		objDisponibles.addAll(procesarArchivoTexto());
+public ControladorCuartoNivel(int vidaHeroe,int vidaMonster,InformacionJuego info ) {
+		super(vidaHeroe,vidaMonster, info);
+		objPerdidos = new ArrayList<Objeto>(4);
+		objEncontrados  = new ArrayList<Objeto>(4);
 		asignarObjetosPerdidos();
-        this.monster = monster;
 	   
 	}
 
 
-public ArrayList <Objetos> getObjDisponibles() {
-	return objDisponibles;
+public ArrayList <Objeto> getObjDisponibles() {
+	return this.informacionActual.getObjetosDisponibles();
 }
 
-
-
-public void setObjDisponibles(ArrayList <Objetos> objDisponibles) {
-	this.objDisponibles = objDisponibles;
-}
-
-
-
-public ArrayList<Objetos> getObjEncontrados() {
+public ArrayList<Objeto> getObjEncontrados() {
 	return objEncontrados;
 }
 
 
 
- public void setObjEncontrados(Objetos objEncontrados) {
+ public void setObjEncontrados(Objeto objEncontrados) {
 	 if (this.objEncontrados.size() < 4) {
 	 this.objEncontrados.add(objEncontrados);
 	 } else {
@@ -65,13 +55,13 @@ public ArrayList<Objetos> getObjEncontrados() {
 
 
 
-public ArrayList<Objetos> getObjPerdidos() {
+public ArrayList<Objeto> getObjPerdidos() {
 	return objPerdidos;
 }
 
 
 
-public void setObjPerdidos(ArrayList<Objetos> objPerdidos) {
+public void setObjPerdidos(ArrayList<Objeto> objPerdidos) {
 	this.objPerdidos = objPerdidos;
 }
 
@@ -79,117 +69,91 @@ public void setObjPerdidos(ArrayList<Objetos> objPerdidos) {
 
 
 public void asignarObjetosPerdidos() {
-    Collections.shuffle(objDisponibles); 
+    Collections.shuffle(getObjDisponibles()); 
     for (int i = 0; i < 4; i++) {
-    	objPerdidos.add(objDisponibles.get(i)); 
+    	objPerdidos.add(getObjDisponibles().get(i)); 
     }
 }
 
 
-
+public String prepararLabel(){
 	
-public boolean ordenEsCorrecto(int accept,int control, ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados){
+	return comunicar = objPerdidos.get(0).getNombre()+ " "+  objPerdidos.get(0).getTamanio()+ " " + objPerdidos.get(1).getNombre()+" "+ objPerdidos.get(1).getTamanio()+" "+ objPerdidos.get(2).getNombre()+" "+objPerdidos.get(2).getTamanio()+" "+objPerdidos.get(3).getNombre()
+			+" "+objPerdidos.get(3).getTamanio();
+	
+}
+	
+public boolean ordenEsCorrecto(){
 	boolean orden = true;
-if (accept ==1){
-	if(objEncontrados.size()!= objPerdidos.size()){
+	if(objEncontrados.size() != objPerdidos.size()){
 		orden = false;
 		
 	}else{
 	
 	switch(control){
-	case 1: mismOrden(  objPerdidos,objEncontrados);
+	case 1: 
+		orden = mismOrden();
 		
 		break;
 		
-	case 2: ordenInverso(objPerdidos,objEncontrados);
+	case 2: 
+		orden = ordenInverso();
 		break;
 		
 		
-	case 3: mayorMenor(objEncontrados);
+	case 3: 
+		orden = mayorMenor();
 		break;
 	
-	case 4: menorMayor(objEncontrados);
+	case 4: 
+		orden = menorMayor();
 		
 		break;
 		
 		default:
-		orden = false;	
-		super.quitarVidaHeroe();
-	}
+			orden = false;
+			
 	}
 	
-	if(orden == true){
-		quitarVidaVillano();
+	if(orden ){
 		
-	}}
+	comunicar = "¡Felicitaciones, solo un poco más!";
+	}
+	else {
+		comunicar = "Qué decepcionante ¿Es que no puedes hacerlo mejor?";
+}}
 	
-	return orden;
-	
-	
-	
-}	
+return orden;}
 	
 
 
 
-public ArrayList<Objetos> procesarArchivoTexto() {
-    ArrayList<Objetos> objDisponibles = new ArrayList<>();
-
-    try {
-        File archivo = new File("src/Textos/parametrosObjetos.txt");
-        FileReader fr = new FileReader(archivo);
-        BufferedReader br = new BufferedReader(fr);
-        String linea;
-
-        while ((linea = br.readLine()) != null) {
-            String[] partes = linea.split(","); 
-            if (partes.length == 3) {
-                String nombre = partes[0].trim();
-                int tamaño = Integer.parseInt(partes[1].trim());
-                String tipo = partes[2].trim();
-                Objetos obj = new Objetos(nombre, tamaño, tipo);
-                objDisponibles.add(obj);
-            }
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-
-    return objDisponibles;
-}
 
 
-public int informarOrden(){
-	int control = -1;
-	Random r =new Random();
-   control = (int)(r.nextDouble()*10-6);
+
+public String informarOrden(){
+	control = -1;
+	Random r = new Random();
+   control = r.nextInt(4);
 	
    switch(control){
-	case 1: this.setComunicar("El orden seleccionado es: mismo orden") ;
+	case 1: this.setComunicar("El orden seleccionado es: MISMO ORDEN") ;
 		
 		break;
 		
-	case 2: this.setComunicar("El orden seleccionado es: orden inverso");
+	case 2: this.setComunicar("El orden seleccionado es: ORDEN INVERSO");
 		break;
 		
 		
-	case 3: this.setComunicar("El orden seleccionado es: ascendente");
+	case 3: this.setComunicar("El orden seleccionado es: ASCENDENTE");
 		break;
 		
-
-	
-		
-		default: this.setComunicar("El orden seleccionado es: descendente")
-			
-			 ;
+	default: this.setComunicar("El orden seleccionado es: DESCENDENTE");
 			
 	}
-return control;
+   return comunicar;
    
 }
-
-
-
 
 /**
  * @return the comunicar
@@ -207,7 +171,9 @@ public void setComunicar(String comunicar) {
 }
 
 
-public boolean mismOrden( ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados){
+// COMPROBAR LOS ORDENES
+
+public boolean mismOrden(){
 	boolean correcto = true;
 	
 	for(int i=0;i<4 && correcto != false;i++){
@@ -217,18 +183,20 @@ public boolean mismOrden( ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objE
 	}
 	
 	
-	return correcto;}
+	return correcto;
+}
 
 
 
 
 
 
-public boolean ordenInverso( ArrayList<Objetos> objPerdidos,ArrayList<Objetos> objEncontrados){
+public boolean ordenInverso( ){
 boolean correcto = true;
 	
 for(int i=0;i<4 && correcto != false;i++){
-	if(!(objEncontrados.get(i).getNombre().equalsIgnoreCase(objPerdidos.get(4-i).getNombre()))){
+	if(!(objEncontrados.get(i).getNombre().equalsIgnoreCase(objPerdidos.get(3
+			-i).getNombre()))){
 		correcto = false;
 	}
 }
@@ -238,68 +206,34 @@ for(int i=0;i<4 && correcto != false;i++){
 
 
 
-public boolean mayorMenor( ArrayList<Objetos> objEncontrados){
+public boolean mayorMenor( ){
 boolean correcto = true;
 
 for(int i=1;i<4 && correcto != false;i++){
-	if(objEncontrados.get(i).getTamaño() < objEncontrados.get(i-1).getTamaño()){
+	if(objEncontrados.get(i).getTamanio() < objEncontrados.get(i-1).getTamanio()){
 		correcto = false;
 	}
 }
 	
 	
-	return correcto;}
+	return correcto;
+	}
 
 
 
 
-public boolean menorMayor(ArrayList<Objetos> objEncontrados){
-boolean correcto = true;
+public boolean menorMayor(){
+	boolean correcto = true;
 	
 	
 for(int i=1;i<4 && correcto != false;i++){
-	if(objEncontrados.get(i).getTamaño() > objEncontrados.get(i-1).getTamaño()){
+	if(objEncontrados.get(i).getTamanio() > objEncontrados.get(i-1).getTamanio()){
 		correcto = false;
 	}
 }
 	
-	return correcto;}
-
-
-
-
-@Override
-public void quitarVidaVillano() {
-	if(monster.getCantVidas() > 0) {
-		monster.setCantVidas();
+	return correcto;
 	}
-	
-}
-@Override
-public int finalizarPartida() {
-	// TODO Auto-generated method stub
-	return 0;
-}
-
-
-
-/**
- * @return the monster
- */
-public GlitchMonster getMonster() {
-	return monster;
-}
-
-
-
-/**
- * @param monster the monster to set
- */
-public void setMonster(GlitchMonster monster) {
-	this.monster = monster;
-}
-
-
 
 
 	

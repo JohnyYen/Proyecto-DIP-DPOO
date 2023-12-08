@@ -3,7 +3,7 @@ package Logica;
 import java.util.ArrayList;
 
 import Personajes.*;
-import Util.Objetos;
+import Util.Objeto;
 
 public class Juego { 
 	
@@ -44,9 +44,9 @@ public class Juego {
 	}
 	
 	
-	public void crearControladorCuartoNivel(Heroe heroe ,GlitchMonster monster){
+	public void crearControladorCuartoNivel(int vidaHeroe ,int vidaMonster){
 		controlador = null;
-		controlador = new ControladorCuartoNivel(heroe, monster, informacionActual);
+		controlador = new ControladorCuartoNivel(vidaHeroe, vidaMonster, informacionActual);
 	}
 	
 	

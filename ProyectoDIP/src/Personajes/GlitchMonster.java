@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,64 +16,41 @@ import javax.swing.ImageIcon;
 public class GlitchMonster extends Personaje{
 	private ImageIcon imagen; 
 	private static final long serialVersionUID = 1L;
-private  int cantVidas;
     
 	
-	public GlitchMonster(){
-	super(2);
-	super.urlNormal = "src/Recursos/monstruo.jpg";
-	}
-	
-	
-	
-	public GlitchMonster(int x, int y, int ancho, int alto, int cantVidas) {
-		super(cantVidas);
-	cantVidas = 3;
-	ancho = 198;
-	alto=178;
-	x = 571;
-	y = 380;
-	}
-
-	public void setGlitchMonster(){
-		super.dibujar(getGraphics(), "src/Recursos/");
+	public GlitchMonster(int vida){
+		super(vida);
+		super.urlNormal = "src/Recursos/monstruo.jpg";
+		try{
+			BufferedImage img = ImageIO.read(new File(urlNormal));
+			imagen = new ImageIcon(img);
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
 		
-
 	}
 	
-	public void dibujar(Graphics g, String url) {
-		Image im = Toolkit.getDefaultToolkit().getImage(url);
-		g.drawImage(im, 0, 0, getWidth(), getHeight(), this);
-	}
-	
-	
+	@Override
 	protected void paintComponent(Graphics g) {
-		Image im = Toolkit.getDefaultToolkit().getImage("src/Recursos/");
-		g.drawImage(im, 0, 0, getWidth(), getHeight(), this);
-	}
-public int getCantVidas(){
-	return cantVidas;
-	
-}
-	public void setCantVidas(){
-		this.cantVidas --;
+		super.paintComponent(g);
+		if(imagen != null)
+			imagen.paintIcon(this, g, 0, 0);
 	}
 	@Override
 	public void setNormal() {
 		// TODO Auto-generated method stub
-		
+	
 	}
-
 	@Override
 	public void setGano() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPerdio() {
-		// TODO Auto-generated method stub
-		
-	}
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void setPerdio() {
+	// TODO Auto-generated method stub
+	
+}
 	
 }
