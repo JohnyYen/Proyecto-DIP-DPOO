@@ -24,7 +24,8 @@ public class Iniciadora {
 					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
 					inicializarDatosCuartoNivel(juego);
-					PantallaCarga frame = new PantallaCarga(juego);
+					//PantallaCarga frame = new PantallaCarga(juego);
+					TercerNivel frame = new TercerNivel(juego);
 					frame.setVisible(true);
 					
 				} catch (Exception e) {
