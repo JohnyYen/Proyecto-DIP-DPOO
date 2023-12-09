@@ -38,6 +38,7 @@ public class MenuPrincipal extends JFrame {
 		setBounds(300, 20, 900, 700);
 		
 		BarraMenu barraMenu = new BarraMenu();
+		BarraMenu.guardarFrameActual(this);
 		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;

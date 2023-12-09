@@ -45,7 +45,7 @@ public class PrimerNivel extends JFrame {
 		
 		//Barra de menú
 		BarraMenu barraMenu = new BarraMenu();
-		BarraMenu.guardarFrameActual(this);
+		BarraMenu.guardarEstadoActual(this);
 		BarraMenu.guardarJuegoActual(Mijuego);
 		setJMenuBar(barraMenu);
 		

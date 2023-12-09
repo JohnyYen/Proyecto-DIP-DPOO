@@ -1,3 +1,4 @@
+
 package Iniciadora;
 
 import java.awt.EventQueue;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 
 import ComponentesVisuales.Niveles.CuartoNivel;
 import ComponentesVisuales.Niveles.TercerNivel;
+import ComponentesVisuales.Pantallas.PantallaCarga;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
 
@@ -22,10 +24,7 @@ public class Iniciadora {
 					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
 					inicializarDatosCuartoNivel(juego);
-					//PantallaCarga frame = new PantallaCarga(juego);
-					//PantallaProfesores frame = new PantallaProfesores(juego);
-					CuartoNivel frame = new CuartoNivel(juego);
-					//TercerNivel frame = new TercerNivel(juego);
+					PantallaCarga frame = new PantallaCarga(juego);
 					frame.setVisible(true);
 					
 				} catch (Exception e) {

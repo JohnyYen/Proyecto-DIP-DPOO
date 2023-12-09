@@ -77,7 +77,7 @@ public class TercerNivel extends JFrame {
 		
 		//Barra de Menú
 		BarraMenu barraMenu = new BarraMenu();
-		BarraMenu.guardarFrameActual(this);
+		BarraMenu.guardarEstadoActual(this);
 		BarraMenu.guardarJuegoActual(miJuego);
 		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){

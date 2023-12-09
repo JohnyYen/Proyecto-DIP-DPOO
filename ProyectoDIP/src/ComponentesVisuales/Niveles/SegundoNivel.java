@@ -74,7 +74,7 @@ public class SegundoNivel extends JFrame {
 		
 		//Barra de menu
 		BarraMenu barraMenu = new BarraMenu();
-		BarraMenu.guardarFrameActual(this);
+		BarraMenu.guardarEstadoActual(this);
 		BarraMenu.guardarJuegoActual(miJuego);
 		setJMenuBar(barraMenu);
 		

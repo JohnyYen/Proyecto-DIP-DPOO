@@ -8,6 +8,7 @@ import javax.swing.JMenuItem;
 import com.sun.glass.ui.Menu;
 
 import ComponentesVisuales.Pantallas.MenuPrincipal;
+import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.Juego;
 
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ import java.awt.event.ActionEvent;
 public class BarraMenu extends JMenuBar{
 	private static JFrame frame;
 	private static Juego juego;
+	private static JFrame actual;
 	public BarraMenu() {
 		
 		JMenu menuOpciones = new JMenu("Opciones");
@@ -31,16 +33,28 @@ public class BarraMenu extends JMenuBar{
 		JMenuItem guardarPartida = new JMenuItem("Guardar Partida");
 		guardarPartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal.guardarEstado(frame);
+				if(frame instanceof MenuPrincipal){
+					MenuPrincipal.guardarEstado(actual);
+				}
+				else if (frame instanceof PantallaProfesores){
+					PantallaProfesores.guardarEstado(actual);
+				}
 			}
 		});
 		//JMenuItem configuraciones = new JMenuItem("Configuraciones");
 		JMenuItem volver = new JMenuItem("Volver a Menú");
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal menu = new MenuPrincipal(juego);
-				MenuPrincipal.guardarEstado(frame);
-				frame.dispose();
+				JFrame menu = null;
+				if(frame instanceof MenuPrincipal){
+					menu = new MenuPrincipal(juego);
+					
+				}
+				else if (frame instanceof PantallaProfesores){
+					menu = new PantallaProfesores(juego);
+					
+				}
+				actual.dispose();
 				menu.setVisible(true);
 			}
 		});
@@ -90,6 +104,9 @@ public class BarraMenu extends JMenuBar{
 	
 	public static void guardarFrameActual(JFrame windows){
 		frame = windows;
+	}
+	public static void guardarEstadoActual(JFrame jf){
+		actual = jf;
 	}
 	public static void guardarJuegoActual(Juego game){juego = game;}
 }

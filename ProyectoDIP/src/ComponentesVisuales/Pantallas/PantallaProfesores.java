@@ -3,6 +3,7 @@ package ComponentesVisuales.Pantallas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -26,6 +27,7 @@ public class PantallaProfesores extends JFrame {
 	private JPanel contentPane;
 	private BotonExtendido botonSalir;
 	private JLabel titulo;
+	private static JFrame save;
 	private Juego miJuego;
 	
 	public PantallaProfesores(Juego juego) {
@@ -35,6 +37,7 @@ public class PantallaProfesores extends JFrame {
 		setBounds(300, 20, 900, 700);
 		
 		BarraMenu barraMenu = new BarraMenu();
+		BarraMenu.guardarFrameActual(this);
 		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;
@@ -87,5 +90,9 @@ public class PantallaProfesores extends JFrame {
 		contentPane.add(botonNuevaPartida);
 		
 		
+	}
+	
+	public static void guardarEstado(JFrame partidaGuardada){
+		save = partidaGuardada;
 	}
 }

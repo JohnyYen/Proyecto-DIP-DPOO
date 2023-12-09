@@ -39,7 +39,7 @@ public class Validacion {
 		boolean correcto = true;
 		
 		for (int i = 0; i < nivel1.getRowCount() && correcto; i++)
-			if(String.valueOf(nivel1.getValueAt(i, 0)).replaceAll(" ", "").equalsIgnoreCase("") || String.valueOf(nivel1.getValueAt(i, 1)).replaceAll(" ", "").equalsIgnoreCase(""))
+			if(String.valueOf(nivel1.getValueAt(i, 0)).replaceAll(" ", "").equalsIgnoreCase(""))
 				correcto = false;
 		
 		if (correcto)
