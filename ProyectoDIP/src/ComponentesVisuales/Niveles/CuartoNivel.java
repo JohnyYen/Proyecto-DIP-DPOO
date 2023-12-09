@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import Logica.*;
 import ComponentesVisuales.Componentes.BarraMenu;
 import Logica.Juego;
@@ -23,8 +22,6 @@ import Personajes.GlitchMonster;
 import Personajes.Heroe;
 import Util.ControladorCorazones;
 import Util.Corazon;
-import Util.Objeto;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;

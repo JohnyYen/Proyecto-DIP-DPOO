@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import ComponentesVisuales.Niveles.CuartoNivel;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
 
@@ -22,6 +24,7 @@ public class Iniciadora {
 					//PantallaCarga frame = new PantallaCarga(juego);
 					PantallaProfesores frame = new PantallaProfesores(juego);
 					//MenuPrincipal frame = new MenuPrincipal(juego);
+					//CuartoNivel frame = new CuartoNivel(juego);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
