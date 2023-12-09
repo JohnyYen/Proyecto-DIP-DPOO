@@ -264,6 +264,11 @@ public class TercerNivel extends JFrame {
 						cartaTres.setBounds(10, 273, 91, 124);
 						cartaCuatro.setBounds(117, 273, 91, 124);
 						
+						cartaUno.setCarta(miJuego.getControladorTercerNivel().repartirCarta());
+						cartaDos.setCarta(miJuego.getControladorTercerNivel().repartirCarta());
+						cartaTres.setCarta(miJuego.getControladorTercerNivel().repartirCarta());
+						cartaCuatro.setCarta(miJuego.getControladorTercerNivel().repartirCarta());
+						
 						//Las zonas vuelven a estar desocupadas
 						ocupadoSetUno = false;
 						ocupadoSetDos = false;
@@ -403,6 +408,7 @@ public class TercerNivel extends JFrame {
 		controlCorazon.getLastCorazonVillano().setBounds(830, 50, 25, 25);
 		contentPane.add(		controlCorazon.getLastCorazonVillano());
 	}
+	
 	public void diseniarLabel(JLabel cuadro){
 		ImageIcon imagenLabel = new ImageIcon("src/Recursos/CuadroDialogos.png");
 		Image iconLabel = imagenLabel.getImage().getScaledInstance(450, 150, Image.SCALE_SMOOTH);

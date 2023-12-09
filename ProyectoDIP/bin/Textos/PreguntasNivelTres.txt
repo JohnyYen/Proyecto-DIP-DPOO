@@ -1,4 +1,10 @@
 Colocar un objeto y despues martillarlo
-CM
+MC
 Llegar al punto X y  buscar el mandado
 XB
+<html>Apuntar a un enemigo para atacarlo y despues <br>defenderse de él
+EAD
+<html>Hecha la ropa en el lavadero, lava y<br> despues tiende la ropa
+HLR
+Estudia para aprobar
+EA

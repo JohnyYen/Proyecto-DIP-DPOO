@@ -10,3 +10,51 @@ N
 Saltar
 Se traslada por el eje Y
 S
+Caminar
+Se traslada por el eje X
+X
+Recoger
+Recoge un objeto
+R
+Buscar
+Busca un Objeto
+B
+Salir
+Sale del local
+S
+Atacar
+Ataca una entidad
+A
+Defender
+Se defiende de una entidad
+D
+Quemar
+Quema un objeto
+Q
+Apuntar
+Apunta a un enemigo
+E
+Fregar
+Friega los platos
+F
+Hechar
+Hecha un objeto
+H
+Lavar
+Lava determinados objetos
+L
+Tender
+Tiende la ropa
+T
+Estudiar
+Estudiar una tematica
+E
+Aprobar
+Aprobar la materia
+A
+Festejar
+Festejar algo bueno
+F
+Llorar
+Llorar de tristeza
+L

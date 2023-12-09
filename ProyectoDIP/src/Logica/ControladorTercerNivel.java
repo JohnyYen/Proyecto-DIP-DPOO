@@ -14,7 +14,7 @@ public class ControladorTercerNivel extends ControladorJuego{
 	//El controlador analiza la respuesta del jugador con la respuesta del problema
 	public boolean respuestaCorrecta(String respuestaJugador, String respuesta){
 		boolean correcto = false;
-		if(respuestaJugador.equals(respuesta)) correcto = true;
+		if(respuestaJugador.equalsIgnoreCase(respuesta)) correcto = true;
 		
 		return correcto;
 	}
