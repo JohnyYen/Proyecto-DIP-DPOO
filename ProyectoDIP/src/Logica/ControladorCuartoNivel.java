@@ -2,45 +2,35 @@ package Logica;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-
 import Personajes.*;
-import Util.*;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class ControladorCuartoNivel extends ControladorJuego {
-private ArrayList <Objeto> objDisponibles ;
-private ArrayList<Objeto>objPerdidos;	
-private	ArrayList<Objeto> objEncontrados;
+
+	
+	private int control;
+	private ArrayList<Objeto> objPerdidos;	
+	private	ArrayList<Objeto> objEncontrados;
+	private String comunicar;
+	private String tusObjetos;
 
 
 
-public ControladorCuartoNivel(int vidaHeroe, int vidaVillano, InformacionJuego informacionActual ) {
-		super(vidaHeroe, vidaVillano, informacionActual);
-			
-		objDisponibles = new ArrayList<Objeto>();
-		objPerdidos = new ArrayList<Objeto>();
-		objEncontrados  = new ArrayList<Objeto>();
-		procesarArchivoTexto();
+public ControladorCuartoNivel(int vidaHeroe,int vidaMonster,InformacionJuego info ) {
+		super(vidaHeroe,vidaMonster, info);
+		objPerdidos = new ArrayList<Objeto>(4);
+		objEncontrados  = new ArrayList<Objeto>(4);
 		asignarObjetosPerdidos();
+	   
 	}
 
 
-
 public ArrayList <Objeto> getObjDisponibles() {
-	return objDisponibles;
+	return this.informacionActual.getObjetos();
 }
-
-
-
-public void setObjDisponibles(ArrayList <Objeto> objDisponibles) {
-	this.objDisponibles = objDisponibles;
-}
-
-
 
 public ArrayList<Objeto> getObjEncontrados() {
 	return objEncontrados;
@@ -48,7 +38,7 @@ public ArrayList<Objeto> getObjEncontrados() {
 
 
 
- void setObjEncontrados(Objeto objEncontrados) {
+ public void setObjEncontrados(Objeto objEncontrados) {
 	 if (this.objEncontrados.size() < 4) {
 	 this.objEncontrados.add(objEncontrados);
 	 } else {
@@ -72,91 +62,106 @@ public void setObjPerdidos(ArrayList<Objeto> objPerdidos) {
 
 
 public void asignarObjetosPerdidos() {
-    Collections.shuffle(objDisponibles); 
+    Collections.shuffle(getObjDisponibles()); 
     for (int i = 0; i < 4; i++) {
-    	objPerdidos.add(objDisponibles.get(i)); 
+    	objPerdidos.add(getObjDisponibles().get(i)); 
     }
 }
 
 
-
+public String prepararLabel(){
 	
-public boolean ordenEsCorrecto(int control, ArrayList<Objeto> objPerdidos,ArrayList<Objeto> objEncontrados){
+	return comunicar = objPerdidos.get(0).getNombre()+ " "+  objPerdidos.get(0).getTamanio()+ " " + objPerdidos.get(1).getNombre()+" "+ objPerdidos.get(1).getTamanio()+" "+ objPerdidos.get(2).getNombre()+" "+objPerdidos.get(2).getTamanio()+" "+objPerdidos.get(3).getNombre()
+			+" "+objPerdidos.get(3).getTamanio();
+	
+}
+	
+public boolean ordenEsCorrecto(){
 	boolean orden = true;
-
-	if(objEncontrados.size()!= objPerdidos.size()){
+	if(objEncontrados.size() != objPerdidos.size()){
 		orden = false;
 		
 	}else{
 	
 	switch(control){
-	case 1: mismOrden(  objPerdidos,objEncontrados);
+	case 1: 
+		orden = mismOrden();
 		
 		break;
 		
-	case 2: ordenInverso(objPerdidos,objEncontrados);
+	case 2: 
+		orden = ordenInverso();
 		break;
 		
 		
-	case 3: mayorMenor(objEncontrados);
+	case 3: 
+		orden = mayorMenor();
 		break;
 	
-	case 4: menorMayor(objEncontrados);
+	case 4: 
+		orden = menorMayor();
 		
 		break;
 		
 		default:
-		orden = false;	
-		super.quitarVidaHeroe();
-	}
+			orden = false;
+			
 	}
 	
-	if(orden == true){
-		quitarVidaVillano();
+	if(orden ){
 		
+	comunicar = "ï¿½Felicitaciones, solo un poco mï¿½s!";
 	}
+	else {
+		comunicar = "Quï¿½ decepcionante ï¿½Es que no puedes hacerlo mejor?";
+}}
 	
-	return orden;
+return orden;}
+
+
+public String informarOrden(){
+	control = -1;
+	Random r = new Random();
+   control = r.nextInt(4);
 	
-	
-	
-}	
-	
+   switch(control){
+	case 1: this.setComunicar("El orden seleccionado es: MISMO ORDEN") ;
+		
+		break;
+		
+	case 2: this.setComunicar("El orden seleccionado es: ORDEN INVERSO");
+		break;
+		
+		
+	case 3: this.setComunicar("El orden seleccionado es: ASCENDENTE");
+		break;
+		
+	default: this.setComunicar("El orden seleccionado es: DESCENDENTE");
+			
+	}
+   return comunicar;
+   
+}
 
-
-
-public ArrayList<Objeto> procesarArchivoTexto() {
-    ArrayList<Objeto> objDisponibles = new ArrayList<>();
-
-    try {
-        File archivo = new File("src/Recursos/parametrosObjetos.txt");
-        FileReader fr = new FileReader(archivo);
-        BufferedReader br = new BufferedReader(fr);
-        String linea;
-
-        while ((linea = br.readLine()) != null) {
-            String[] partes = linea.split(","); 
-            if (partes.length == 3) {
-                String nombre = partes[0].trim();
-                int tamaño = Integer.parseInt(partes[1].trim());
-                String tipo = partes[2].trim();
-                Objeto obj = new Objeto(nombre, tamaño, tipo);
-                objDisponibles.add(obj);
-            }
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-
-    return objDisponibles;
+/**
+ * @return the comunicar
+ */
+public String getComunicar() {
+	return comunicar;
 }
 
 
+/**
+ * @param comunicar the comunicar to set
+ */
+public void setComunicar(String comunicar) {
+	this.comunicar = comunicar;
+}
 
 
+// COMPROBAR LOS ORDENES
 
-
-public boolean mismOrden( ArrayList<Objeto> objPerdidos,ArrayList<Objeto> objEncontrados){
+public boolean mismOrden(){
 	boolean correcto = true;
 	
 	for(int i=0;i<4 && correcto != false;i++){
@@ -166,18 +171,20 @@ public boolean mismOrden( ArrayList<Objeto> objPerdidos,ArrayList<Objeto> objEnc
 	}
 	
 	
-	return correcto;}
+	return correcto;
+}
 
 
 
 
 
 
-public boolean ordenInverso( ArrayList<Objeto> objPerdidos,ArrayList<Objeto> objEncontrados){
+public boolean ordenInverso( ){
 boolean correcto = true;
 	
 for(int i=0;i<4 && correcto != false;i++){
-	if(!(objEncontrados.get(i).getNombre().equalsIgnoreCase(objPerdidos.get(4-i).getNombre()))){
+	if(!(objEncontrados.get(i).getNombre().equalsIgnoreCase(objPerdidos.get(3
+			-i).getNombre()))){
 		correcto = false;
 	}
 }
@@ -187,7 +194,7 @@ for(int i=0;i<4 && correcto != false;i++){
 
 
 
-public boolean mayorMenor( ArrayList<Objeto> objEncontrados){
+public boolean mayorMenor( ){
 boolean correcto = true;
 
 for(int i=1;i<4 && correcto != false;i++){
@@ -197,13 +204,14 @@ for(int i=1;i<4 && correcto != false;i++){
 }
 	
 	
-	return correcto;}
+	return correcto;
+	}
 
 
 
 
-public boolean menorMayor(ArrayList<Objeto> objEncontrados){
-boolean correcto = true;
+public boolean menorMayor(){
+	boolean correcto = true;
 	
 	
 for(int i=1;i<4 && correcto != false;i++){
@@ -212,7 +220,6 @@ for(int i=1;i<4 && correcto != false;i++){
 	}
 }
 	
-	return correcto;}
-	
-	
+	return correcto;
+	}
 }

@@ -43,11 +43,11 @@ public class Juego {
 	
 	public void crearControladorCuartoNivel(int vidaHeroe, int vidaVillano){
 		controlador = null;
-		//controlador = new ControladorCuartoNivel(vidaHeroe, vidaVillano);
+		controlador = new ControladorCuartoNivel(vidaHeroe, vidaVillano, informacionActual);
 	}
 	
 	public ControladorTercerNivel getControladorTercerNivel(){return (ControladorTercerNivel)controlador;}
 	public ControladorPrimerNivel getControladorNivelUno(){ return (ControladorPrimerNivel)controlador;}
-	//public ControladorCuartoNivel getControladorCuartoNivel(){return (ControladorCuartoNivel)controlador;}
+	public ControladorCuartoNivel getControladorCuartoNivel(){return (ControladorCuartoNivel)controlador;}
 
 }
