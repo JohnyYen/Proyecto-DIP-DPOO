@@ -1,7 +1,7 @@
 package ComponentesVisuales.Pantallas;
 
 import java.awt.ScrollPane;
-
+import Util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -12,13 +12,10 @@ import javax.swing.JTabbedPane;
 import Logica.*;
 import Util.PreguntaTableModel;
 import Util.PreguntaTableModelSegundoNivel;
-
 import javax.swing.JScrollPane;
-
 import ComponentesVisuales.Componentes.BotonExtendido;
 import ComponentesVisuales.Componentes.EditarNivel3;
 import ComponentesVisuales.Componentes.EditarNivel4;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -73,7 +70,7 @@ public class PantallaModificaciones extends JFrame {
 		tabbedPane.addTab("Nivel 3",editarTres);
 		
 		//Editar Nivel Cuatro
-		EditarNivel4 editarCuatro = new EditarNivel4(miJuego.getInformacionJuego().getObjetos());
+		final EditarNivel4 editarCuatro = new EditarNivel4(miJuego.getInformacionJuego().getObjetos());
 		tabbedPane.addTab("Nivel 4",editarCuatro);
 		
 		BotonExtendido Volver = new BotonExtendido();
@@ -95,6 +92,7 @@ public class PantallaModificaciones extends JFrame {
 					miJuego.getInformacionJuego().setPreguntasNivelUno(model.getPreguntas());
 					miJuego.getInformacionJuego().setPreguntasNivelDos(modelNivelDos.getPreguntas());
 					miJuego.getInformacionJuego().setCartas(editarTres.getNuevasCartas());
+					miJuego.getInformacionJuego().setObjetos(editarCuatro.getNuevosObjetos());
 				}
 				
 				else{

@@ -2,7 +2,10 @@ package Logica;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+
 import Personajes.*;
+import Util.*;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -188,7 +191,7 @@ public boolean mayorMenor( ArrayList<Objeto> objEncontrados){
 boolean correcto = true;
 
 for(int i=1;i<4 && correcto != false;i++){
-	if(objEncontrados.get(i).getTamaño() < objEncontrados.get(i-1).getTamaño()){
+	if(objEncontrados.get(i).getTamanio() < objEncontrados.get(i-1).getTamanio()){
 		correcto = false;
 	}
 }
@@ -204,7 +207,7 @@ boolean correcto = true;
 	
 	
 for(int i=1;i<4 && correcto != false;i++){
-	if(objEncontrados.get(i).getTamaño() > objEncontrados.get(i-1).getTamaño()){
+	if(objEncontrados.get(i).getTamanio() > objEncontrados.get(i-1).getTamanio()){
 		correcto = false;
 	}
 }

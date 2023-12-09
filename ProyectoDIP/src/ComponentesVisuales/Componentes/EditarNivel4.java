@@ -130,9 +130,6 @@ public class EditarNivel4 extends JPanel {
 		spinner.setBounds(345, 83, 57, 20);
 		this.add(spinner);
 		
-
-	
-
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Aleatorio", "Ascendente", "Descendente", "Mismo Orden", "Orden Inverso"}));
 		comboBox.setToolTipText("");
@@ -402,7 +399,7 @@ public class EditarNivel4 extends JPanel {
 		componentesTam.add(txtTamao_12);
 		
 		for(int i = 0; i < nuevosObjetos.size(); i++){
-			componentesTam.get(i).setText(String.valueOf((nuevosObjetos.get(i).getTamaño())));
+			componentesTam.get(i).setText(String.valueOf((nuevosObjetos.get(i).getTamanio())));
 			componentesNom.get(i).setText((nuevosObjetos.get(i).getNombre()));
 			
 
@@ -419,7 +416,7 @@ public class EditarNivel4 extends JPanel {
 		
 	}	
 	
-	public ArrayList<Objeto> getGuardados(){
+	public ArrayList<Objeto> getNuevosObjetos(){
 		return nuevosObjetos;
 	}
 }

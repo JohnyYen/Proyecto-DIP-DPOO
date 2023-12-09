@@ -25,7 +25,6 @@ import javax.swing.JLabel;
 
 import Recursos.CustomFont;
 import Util.ControladorCorazones;
-import Util.Puntuacion;
 import ComponentesVisuales.Componentes.CartaVisual;
 import ComponentesVisuales.Componentes.BarraMenu;
 import ComponentesVisuales.Componentes.TextPanel;
@@ -37,6 +36,7 @@ import javax.swing.BoxLayout;
 import java.awt.*;
 
 import Logica.Juego;
+import Logica.Puntuacion;
 import Personajes.Heroe;
 import ComponentesVisuales.Componentes.BotonExtendido;
 

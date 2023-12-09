@@ -1,7 +1,7 @@
 package Logica;
 
 import java.util.ArrayList;
-
+import Util.*;
 import Personajes.*;
 
 public class Juego { 
