@@ -1,4 +1,5 @@
 package ComponentesVisuales.Niveles;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.Color;
@@ -10,6 +11,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,8 +29,12 @@ import Util.Objeto;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.awt.Font;
+
+import ComponentesVisuales.Componentes.BotonExtendidoNivelCuatro;
 
 public class CuartoNivel extends JFrame {
 	private Juego mijuego;
@@ -43,6 +49,7 @@ public class CuartoNivel extends JFrame {
 	private Corazon heroe1;
 	private Corazon heroe2;
 	private Corazon heroe3;
+	JButton acceptButton; 
 	private JButton button;
 	private JButton button_1;
 	private JButton button_2;
@@ -61,6 +68,7 @@ public class CuartoNivel extends JFrame {
 	private boolean continuar;
 	private JButton button_10;
 	private JButton button_11;
+	private BotonExtendidoNivelCuatro boton;
 
 	/**
 	 * @wbp.parser.constructor
@@ -105,8 +113,11 @@ public class CuartoNivel extends JFrame {
 		contentPane_1.add(lblNewLabel);
 
 		/*Aceptar*/
-		JButton acceptButton = new JButton("Aceptar");
-		acceptButton.setBounds(256, 408, 271, 95);
+		
+	   acceptButton = new JButton("Aceptar");
+	   acceptButton.setIcon(new ImageIcon(CuartoNivel.class.getResource("/Recursos/botonrojoNivel4.png")));
+		acceptButton.setBounds(274, 425, 228, 95);
+		acceptButton.setText("Aceptar");
 		acceptButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(mijuego.getControladorCuartoNivel().finalizarPartida() == 0){
@@ -143,9 +154,13 @@ public class CuartoNivel extends JFrame {
 				}
 			}
 		});
+
 		getContentPane().setLayout(null);
 		getContentPane().add(acceptButton);
 
+		
+
+		
 		/*Menú*/
 
 		BarraMenu barraMenu = new BarraMenu();
@@ -154,20 +169,25 @@ public class CuartoNivel extends JFrame {
 			private static final long serialVersionUID = 1L;};
 
 
+		/*Botones*/
+			
 
-		button = new JButton( mijuego.getControladorCuartoNivel().getObjDisponibles().get(0).getNombre());
-						button.setBounds(51, 161, 108, 44);
-						button.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel(). getObjDisponibles().get(0));
-								RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(0).getNombre());
-							}
-						});
-						getContentPane().add(button);
+			boton = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(0).getNombre() );
+			boton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel(). getObjDisponibles().get(0));
+					RecuerdameLabel.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(0).getNombre());
+				}
+			});
+			boton.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(0).getNombre());
+			boton.setBounds(12, 144, 150, 61);
+		    getContentPane().add(boton);
 						
 
-			button_1 = new JButton( mijuego.getControladorCuartoNivel().getObjDisponibles().get(1).getNombre());
-			button_1.setBounds(196, 161, 108, 44);
+						
+			button_1 = new BotonExtendidoNivelCuatro( mijuego.getControladorCuartoNivel().getObjDisponibles().get(1).getNombre());
+			button_1.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(1).getNombre());
+			button_1.setBounds(174, 161, 126, 44);
 			button_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(1));
@@ -177,8 +197,9 @@ public class CuartoNivel extends JFrame {
 						
 			getContentPane().add(button_1);
 
-			button_2 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(8).getNombre());
-			button_2.setBounds(342, 161, 108, 44);
+			button_2 = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(8).getNombre());
+			button_2.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(8).getNombre());
+			button_2.setBounds(324, 161, 126, 44);
 			button_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(8));
@@ -187,8 +208,9 @@ public class CuartoNivel extends JFrame {
 			});
 			getContentPane().add(button_2);
 
-			button_3 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(3).getNombre());
-			button_3.setBounds(481, 161, 108, 44);
+			button_3 = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(3).getNombre());
+			button_3.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(3).getNombre());
+			button_3.setBounds(462, 161, 127, 44);
 			button_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(3));
@@ -197,8 +219,9 @@ public class CuartoNivel extends JFrame {
 			});
 			getContentPane().add(button_3);
 
-			button_4 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(4).getNombre());
-			button_4.setBounds(615, 161, 108, 44);
+			button_4 = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(4).getNombre());
+			button_4.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(4).getNombre());
+			button_4.setBounds(601, 161, 122, 44);
 			button_4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(4));
@@ -207,8 +230,9 @@ public class CuartoNivel extends JFrame {
 			});
 			getContentPane().add(button_4);
 
-			button_5 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(6).getNombre());
-			button_5.setBounds(745, 161, 108, 44);
+			button_5 = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(6).getNombre());
+			button_5.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(6).getNombre());
+			button_5.setBounds(735, 161, 118, 44);
 			button_5.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(6));
@@ -217,8 +241,9 @@ public class CuartoNivel extends JFrame {
 			});
 			getContentPane().add(button_5);
 
-			button_7 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(7).getNombre());
-			button_7.setBounds(196, 235, 108, 44);
+			button_7 = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(7).getNombre());
+			button_7.setBounds(187, 235, 117, 44);
+			button_7.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(7).getNombre());
 			button_7.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(7));
@@ -226,8 +251,9 @@ public class CuartoNivel extends JFrame {
 				}
 			});
 			
-						button_6 = new JButton( mijuego.getControladorCuartoNivel().getObjDisponibles().get(2).getNombre());
-						button_6.setBounds(51, 235, 108, 44);
+						button_6 = new BotonExtendidoNivelCuatro( mijuego.getControladorCuartoNivel().getObjDisponibles().get(2).getNombre());
+						button_6.setBounds(28, 235, 123, 44);
+						button_6.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(2).getNombre());
 						button_6.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(2));
@@ -236,9 +262,11 @@ public class CuartoNivel extends JFrame {
 						});
 						getContentPane().add(button_6);
 			getContentPane().add(button_7);
+			
 
-			button_8 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(5).getNombre());
-			button_8.setBounds(342, 235, 108, 44);
+			button_8 = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(5).getNombre());
+			button_8.setBounds(324, 235, 126, 44);
+			button_8.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(5).getNombre()); 
 			button_8.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(5));
@@ -247,8 +275,10 @@ public class CuartoNivel extends JFrame {
 			});
 			getContentPane().add(button_8);
 
-			button_9 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(9).getNombre());
-			button_9.setBounds(481, 235, 108, 44);
+			
+			button_9 = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(9).getNombre());
+			button_9.setBounds(472, 235, 117, 44);
+			button_9.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(9).getNombre());
 			button_9.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(9));
@@ -257,8 +287,11 @@ public class CuartoNivel extends JFrame {
 			});
 			getContentPane().add(button_9);
 			
-			button_10 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(11).getNombre());
-			button_10.setBounds(615, 235, 108, 44);
+			
+			
+			button_10 = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(11).getNombre());
+			button_10.setBounds(601, 235, 122, 44);
+			button_10.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(11).getNombre());
 			button_10.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(11));
@@ -269,8 +302,10 @@ public class CuartoNivel extends JFrame {
 			getContentPane().add(button_10);
 			
 			
-			button_11 = new JButton(mijuego.getControladorCuartoNivel().getObjDisponibles().get(10).getNombre());
-			button_11.setBounds(745, 235, 108, 44);
+			
+			button_11 = new BotonExtendidoNivelCuatro(mijuego.getControladorCuartoNivel().getObjDisponibles().get(10).getNombre());
+			button_11.setBounds(735, 235, 118, 44);
+			button_11.setText(mijuego.getControladorCuartoNivel().getObjDisponibles().get(10).getNombre());
 			button_11.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().setObjEncontrados(mijuego.getControladorCuartoNivel().getObjDisponibles().get(10));
@@ -292,20 +327,24 @@ public class CuartoNivel extends JFrame {
 			ComunicarLabel.setText(mijuego.getControladorCuartoNivel().informarOrden());
 			getContentPane().add(ComunicarLabel);
 
-			JButton RehacerBoton = new JButton("Limpiar");
+			JButton RehacerBoton = new BotonExtendidoNivelCuatro("Limpiar");
+			RehacerBoton.setText("Limpiar");
 			RehacerBoton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mijuego.getControladorCuartoNivel().getObjEncontrados().clear();
 					RecuerdameLabel.setText(null );
 				}
 			});
-			RehacerBoton.setBounds(143, 433, 75, 45);
+			RehacerBoton.setBounds(104, 433, 114, 45);
 			getContentPane().add(RehacerBoton);
 
 			RecuerdameLabel = new JLabel("");
+			RecuerdameLabel.setForeground(Color.WHITE);
 			RecuerdameLabel.setBackground(Color.WHITE);
-			RecuerdameLabel.setBounds(291, 356, 170, 39);
+			RecuerdameLabel.setBounds(289, 342, 170, 39);
 			getContentPane().add(RecuerdameLabel);
+			
+		
 
 
 
@@ -355,9 +394,7 @@ public class CuartoNivel extends JFrame {
 
 
 
-
-
-
+	
 
 
 
