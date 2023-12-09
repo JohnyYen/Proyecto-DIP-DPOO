@@ -189,7 +189,11 @@ public class TercerNivel extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				//Cuando el mouse entra en contacto con el frame y se finalizo el nivel
 				//Se pasa al siguiente o se mantiene en el mismo
-				if(miJuego.getControladorTercerNivel().finalizarPartida() > 0) System.out.println("Gane");
+				if(miJuego.getControladorTercerNivel().finalizarPartida() > 0) {
+					CuartoNivel frame = new CuartoNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
 				else if(miJuego.getControladorTercerNivel().finalizarPartida() < 0) {
 					TercerNivel frame = new TercerNivel(miJuego);
 					dispose();
