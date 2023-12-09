@@ -28,7 +28,7 @@ public class PreguntaTableModelSegundoNivel extends DefaultTableModel{
 		
 		for (int i = 0; i < this.getRowCount(); i++) {
 			String textoPregunta = (String)this.getValueAt(i, 0);
-			String textoRespuesta = (String)this.getValueAt(i, 1);
+			String textoRespuesta = agregarEtiquetaHTML((String)this.getValueAt(i, 1));
 			String posibleRespuesta1 = agregarEtiquetaHTML((String)this.getValueAt(i, 2));
 			String posibleRespuesta2 = agregarEtiquetaHTML((String)this.getValueAt(i, 3));
 			String posibleRespuesta3 = agregarEtiquetaHTML((String)this.getValueAt(i, 4));

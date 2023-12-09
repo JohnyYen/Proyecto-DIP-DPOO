@@ -38,3 +38,8 @@
 <html>for (inicialización; condición; incremento) {acción}
 <html>for (tipo variable : arreglo) {acción}
 <html>for (inicialización; condición; incremento) {tipo variable : arreglo}
+¿Cuál es la diferencia entre "continue" y "break" en un bucle?
+<html>"Continue" pasa a la siguiente iteración del bucle, mientras que "break" finaliza completamente la ejecución del bucle.
+<html>"Continue" finaliza la ejecución del bucle actual, mientras que "break" pasa a la siguiente iteración del bucle.
+<html>"Continue" pasa a la siguiente iteración del bucle, mientras que "break" finaliza completamente la ejecución del bucle.
+<html>"Continue" y "break" tienen el mismo efecto en un bucle.
