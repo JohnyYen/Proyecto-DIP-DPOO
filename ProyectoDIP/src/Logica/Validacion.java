@@ -1,5 +1,7 @@
 package Logica;
 
+import java.util.ArrayList;
+
 import Util.PreguntaTableModel;
 import Util.PreguntaTableModelSegundoNivel;
 
@@ -46,6 +48,23 @@ public class Validacion {
 					correcto = false;
 
 		return correcto;
+	}
+	
+	//Validar los atributos de las cartas en el modo Profesor
+	public boolean validarCarta(ArrayList<Carta> cartas){
+		boolean valido = true;
+		
+		for(int i = 0; i < cartas.size(); i++){
+			Carta c = cartas.get(i);
+			if(c.getCodigo().replace(" ", "").equalsIgnoreCase(" ") || c.getCodigo().length() != 1) 
+				valido = false;
+			if(c.getNombre().replace(" ", "").equalsIgnoreCase(" ") || c.getNombre().length() < 7)
+				valido = false;
+			if(c.getFuncionalidad().replace(" ", "").equalsIgnoreCase(" ") || c.getFuncionalidad().length() < 15)
+				valido = false;	
+		}
+		
+		return valido;
 	}
 	
 	//Validamos si la cadena de entrada se puede transformar a flotante

@@ -19,14 +19,28 @@ public class InformacionJuego {
 		cartas.add(new Carta(nombre, funcionalidad, codigo));
 	}
 	
+	//Obtener el arrayList de cartas
+	public ArrayList<Carta> getCartas(){return this.cartas;}
+	
+	//Agregar un nuevo arrayList de cartas
+	public void setCartas(ArrayList<Carta> nuevasCartas){
+		cartas.removeAll(cartas);
+		cartas.addAll(nuevasCartas);
+	}
+	
+	//Crear objeto nuevo
 	public void crearObjeto(String nombre, float tamanio, String tipo){
 		objetos.add(new Objeto(nombre, tamanio, tipo));
 	}
 	
-	//Obtener el arrayList de cartas
-	public ArrayList<Carta> getCartas(){return this.cartas;}
-	
+	//Obtener el ArrayList de objetos
 	public ArrayList<Objeto> getObjetos(){return this.objetos;}
+	
+	//Agregar una nueva lista de Objetos
+	public void setObjetos(ArrayList<Objeto> nuevosObjetos){
+		objetos.removeAll(objetos);
+		objetos.addAll(nuevosObjetos);
+	}
 	
 	//Crear una nueva pregunta para el nivel uno
 	public void crearPreguntaNivelUno(String texto, boolean respuesta){
@@ -49,6 +63,7 @@ public class InformacionJuego {
 		return preguntasNivelUno;
 	}
 	
+	//Agregar un ArrayList nuevo al de preguntas del nivel uno
 	public void setPreguntasNivelUno(ArrayList<PreguntaNivelUno> preguntasNuevas){
 		int size = preguntas.size();
 		for(int i = 0; i < size; i++){
@@ -62,6 +77,7 @@ public class InformacionJuego {
 		preguntas.addAll(preguntasNuevas);
 	}
 	
+	//Agregar un nuevo arrayList para las preguntas del nivel dos
 	public void setPreguntasNivelDos(ArrayList<PreguntaNivelDos> preguntasNuevas){
 		int size = preguntas.size();
 		for(int i = 0; i < size; i++){

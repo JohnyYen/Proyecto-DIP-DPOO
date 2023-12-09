@@ -69,7 +69,7 @@ public class PantallaModificaciones extends JFrame {
 		tablaNivelDos.setModel(modelNivelDos);
 		
 		//Editar Nivel Tres
-		EditarNivel3 editarTres = new EditarNivel3(miJuego.getInformacionJuego().getCartas());
+		final EditarNivel3 editarTres = new EditarNivel3(miJuego.getInformacionJuego().getCartas());
 		tabbedPane.addTab("Nivel 3",editarTres);
 		
 		//Editar Nivel Cuatro
@@ -91,9 +91,10 @@ public class PantallaModificaciones extends JFrame {
 		BotonExtendido Guardar = new BotonExtendido();
 		Guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(validacion.casillasVaciasEnTablas(model, modelNivelDos)){
+				if(validacion.casillasVaciasEnTablas(model, modelNivelDos) || validacion.validarCarta(editarTres.getNuevasCartas())){
 					miJuego.getInformacionJuego().setPreguntasNivelUno(model.getPreguntas());
 					miJuego.getInformacionJuego().setPreguntasNivelDos(modelNivelDos.getPreguntas());
+					miJuego.getInformacionJuego().setCartas(editarTres.getNuevasCartas());
 				}
 				
 				else{
