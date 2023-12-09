@@ -1,24 +1,17 @@
 package ComponentesVisuales.Niveles;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-import java.util.Random;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
-import Logica.*;
 import ComponentesVisuales.Componentes.BarraMenu;
 import Logica.Juego;
 import Personajes.GlitchMonster;
@@ -28,12 +21,11 @@ import Util.Corazon;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.File;
 import java.awt.Font;
 
 import ComponentesVisuales.Componentes.BotonExtendidoNivelCuatro;
+import ComponentesVisuales.Pantallas.PantallaFinal;
 
 public class CuartoNivel extends JFrame {
 	private Juego mijuego;
@@ -48,7 +40,8 @@ public class CuartoNivel extends JFrame {
 	private Corazon heroe1;
 	private Corazon heroe2;
 	private Corazon heroe3;
-	JButton acceptButton; 
+	private JButton acceptButton; 
+	private boolean mensajeHecho = false;
 	private JButton button;
 	private JButton button_1;
 	private JButton button_2;
@@ -114,9 +107,15 @@ public class CuartoNivel extends JFrame {
 		/*Aceptar*/
 		
 	   acceptButton = new JButton("Aceptar");
-	   acceptButton.setIcon(new ImageIcon(CuartoNivel.class.getResource("/Recursos/botonrojoNivel4.png")));
-		acceptButton.setBounds(274, 425, 228, 95);
-		acceptButton.setText("Aceptar");
+	   acceptButton.setBounds(274, 425, 228, 95);
+	   acceptButton.setText("Aceptar");
+	   acceptButton.setBorderPainted(false);
+	   acceptButton.setFocusPainted(false);
+	   acceptButton.setContentAreaFilled(false);
+	   ImageIcon icono = new ImageIcon("src/Recursos/botonrojoNivel4.png");
+	   Image icon = icono.getImage().getScaledInstance(acceptButton.getWidth(), acceptButton.getHeight(), Image.SCALE_SMOOTH);
+	   acceptButton.setIcon(new ImageIcon(icon));
+	
 		acceptButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(mijuego.getControladorCuartoNivel().finalizarPartida() == 0){
@@ -148,7 +147,9 @@ public class CuartoNivel extends JFrame {
 						frame.setVisible(true);
 					}
 					else{
-
+						PantallaFinal frame = new PantallaFinal();
+						dispose();
+						frame.setVisible(true);
 					}
 				}
 			}
@@ -338,7 +339,23 @@ public class CuartoNivel extends JFrame {
 			RecuerdameLabel.setBounds(289, 342, 170, 39);
 			getContentPane().add(RecuerdameLabel);
 			
-		
+			//Un timer para colocar una nota informativa de lo que consiste el nivel al cabo de 1 seg
+			Timer timer = new Timer(1000, new ActionListener() {	
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(!mensajeHecho){
+						JOptionPane.showMessageDialog(null, "Ya estas en la recta final, solo te falta vencer al Glitch.\n"
+								+ "Él te retará con desafiante problema de ordenamiento.\n"
+								+ "El orden que él te especifique tendras que seguirlo\n"
+								+ " con los objetos en pantalla y cuando estes listo\n"
+								+ "toca el botón rojo para vencerlo. Buena suerte");
+						mensajeHecho = true;
+					}
+						
+					
+				}
+			});
+			timer.start();
 
 
 
