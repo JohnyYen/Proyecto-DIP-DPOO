@@ -22,9 +22,9 @@ public class Iniciadora {
 					inicializarDatosSegundoNivel(juego);
 					inicializarDatosCuartoNivel(juego);
 					//PantallaCarga frame = new PantallaCarga(juego);
-					PantallaProfesores frame = new PantallaProfesores(juego);
+					//PantallaProfesores frame = new PantallaProfesores(juego);
 					//MenuPrincipal frame = new MenuPrincipal(juego);
-					//CuartoNivel frame = new CuartoNivel(juego);
+					CuartoNivel frame = new CuartoNivel(juego);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
