@@ -98,14 +98,15 @@ public class PantallaCrearUsuario extends JFrame {
 					if(profesor.isSelected()){
 						miJuego.crearUsuario(textField.getText(), passwordField.getText(), true);
 						PantallaProfesores frame = new PantallaProfesores(miJuego);
-						dispose();
-						frame.setVisible(true);
+						setVisible(false);
+						//dispose();
+						//frame.setVisible(true);
 					}
 					else{
 						miJuego.crearUsuario(textField.getText(), "Pasworrd", true);
 						MenuPrincipal frame = new MenuPrincipal(miJuego);
 						dispose();
-						frame.setVisible(true);
+						//frame.setVisible(true);
 					}
 				}
 				else{

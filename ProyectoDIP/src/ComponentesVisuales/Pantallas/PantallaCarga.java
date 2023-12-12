@@ -19,6 +19,8 @@ import Recursos.CustomFont;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
+import com.sun.prism.paint.Stop;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +30,8 @@ public class PantallaCarga extends JFrame {
 	private JPanel contentPane;
 	private JProgressBar bar;
 	private static Juego miJuego;
+	private PantallaCrearUsuario frame;
+	private Timer timer;
 	
 	public PantallaCarga(Juego juego) {
 		this.miJuego = juego;
@@ -63,16 +67,19 @@ public class PantallaCarga extends JFrame {
 		bar.setStringPainted(true);
 		
 		
-		final Timer timer = new Timer(100, new ActionListener() {
+		timer = new Timer(100, new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int value = bar.getValue()+1;
-				if(bar.getValue() == 100){
-					PantallaCrearUsuario frame = new PantallaCrearUsuario(miJuego);
+				if(bar.getValue() == 0){
+					frame = new PantallaCrearUsuario(miJuego);
 					frame.setVisible(true);
+					timer.stop();
+					if(!frame.isVisible()) timer.restart();
 					
 				}
+				
 				if(value <= bar.getMaximum()) bar.setValue(value);
 				
 			}
