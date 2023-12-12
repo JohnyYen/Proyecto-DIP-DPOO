@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -73,6 +74,11 @@ public class PantallaProfesores extends JFrame {
 		contentPane.add(botonEditar);
 		
 		botonSalir = new BotonExtendido();
+		botonSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(contentPane, "Estas seguro que quieres salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) dispose();
+			}
+		});
 		botonSalir.setText("Salir");
 		botonSalir.setBounds(290, 307, 241, 40);
 		contentPane.add(botonSalir);

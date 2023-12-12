@@ -58,7 +58,7 @@ public class PantallaCarga extends JFrame {
 		bar = new JProgressBar();
 		bar.setBounds(10, 588, 864, 23);
 		bar.setMinimum(0);
-		bar.setForeground(Color.BLUE);
+		bar.setForeground(new Color(0, 0, 102));
 		bar.setMaximum(100);
 		bar.setStringPainted(true);
 		

@@ -18,9 +18,9 @@ public class LabelPreguntas extends JLabel{
 	public LabelPreguntas(int x, int y, int ancho, int alto){
 		Image iconLabel = imagenLabel.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
 		textoPanel = new TextPanel();
+		this.setLayout(null);
+		textoPanel.setBounds(120,70,ancho-100, alto);
 		
-		textoPanel.setSize(ancho, alto);
-		this.setLayout(new GridBagLayout());
 		
 		
 		this.add(textoPanel);

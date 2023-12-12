@@ -76,9 +76,12 @@ public class PantallaModificaciones extends JFrame {
 		BotonExtendido Volver = new BotonExtendido();
 		Volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PantallaProfesores frame = new PantallaProfesores(miJuego);
-				dispose();
-				frame.setVisible(true);
+				if(JOptionPane.showConfirmDialog(contentPane, "Estas seguro que vas a salir? Los cambios sin guardar se van a perder", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+					PantallaProfesores frame = new PantallaProfesores(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
+				
 			}
 		});
 		Volver.setText("Volver");

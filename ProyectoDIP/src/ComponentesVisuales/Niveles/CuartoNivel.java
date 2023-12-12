@@ -111,6 +111,7 @@ public class CuartoNivel extends JFrame {
 
 		BarraMenu barraMenu = new BarraMenu();
 		BarraMenu.guardarEstadoActual(this);
+		barraMenu.getMenu(1).getItem(3).setEnabled(true);
 		BarraMenu.guardarJuegoActual(mijuego);
 		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){

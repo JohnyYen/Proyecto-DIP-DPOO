@@ -67,12 +67,12 @@ public class PantallaTransicion extends JFrame {
 		
 		CustomFont myfont = new CustomFont();
 	
-		BotonZ = new JLabel("Z -> Continuar");
+		BotonZ = new JLabel("Continuar");
 		BotonZ.setForeground(Color.black);
 		BotonZ.setBounds(10, 519, 131, 50);
 		BotonZ.setFont(myfont.MyFont(1, 15));
 		
-		BotonX = new JLabel("X -> Saltar");
+		BotonX = new JLabel("Saltar");
 		BotonX.setBounds(151, 519, 138, 50);
 		BotonX.setFont(myfont.MyFont(1, 15));
 		BotonX.setForeground(Color.black);
@@ -105,7 +105,7 @@ public class PantallaTransicion extends JFrame {
 				}
 			}
 		});
-		teclaZ.setText("Z - Continuar");
+		teclaZ.setText("Continuar");
 		teclaZ.setBounds(10, 490, 231, 28);
 		frame.add(teclaZ);
 		
@@ -117,7 +117,7 @@ public class PantallaTransicion extends JFrame {
 				pri.setVisible(true);
 			}
 		});
-		btnxtndXSaltar.setText("X - Saltar");
+		btnxtndXSaltar.setText("Saltar");
 		btnxtndXSaltar.setBounds(243, 490, 231, 28);
 		frame.add(btnxtndXSaltar);
 		

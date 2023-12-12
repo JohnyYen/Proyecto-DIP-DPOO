@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import ComponentesVisuales.Niveles.CuartoNivel;
+import ComponentesVisuales.Niveles.PrimerNivel;
+import ComponentesVisuales.Niveles.SegundoNivel;
 import ComponentesVisuales.Niveles.TercerNivel;
 import ComponentesVisuales.Pantallas.PantallaCarga;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
@@ -26,6 +28,8 @@ public class Iniciadora {
 					inicializarDatosCuartoNivel(juego);
 					PantallaCarga frame = new PantallaCarga(juego);
 					//TercerNivel frame = new TercerNivel(juego);
+					//PrimerNivel frame = new PrimerNivel(juego);
+					//SegundoNivel frame = new SegundoNivel(juego);
 					frame.setVisible(true);
 					
 				} catch (Exception e) {

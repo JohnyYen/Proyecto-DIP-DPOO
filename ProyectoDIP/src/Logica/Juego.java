@@ -38,6 +38,7 @@ public class Juego {
 		controlador = null;
 		controlador = new ControladorSegundoNivel(vidaHeroe, vidaVillano, informacionActual);
 	}
+	
 	public ControladorSegundoNivel getControladorNivelDos(){return (ControladorSegundoNivel)controlador;}
 	
 	

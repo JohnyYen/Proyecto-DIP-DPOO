@@ -2,6 +2,10 @@ package ComponentesVisuales.Pantallas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -9,9 +13,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import ComponentesVisuales.Componentes.Boton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import Logica.*;
 
 public class PantallaLogin extends JFrame {
@@ -25,7 +32,14 @@ public class PantallaLogin extends JFrame {
 		this.miJuego = juego;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 392, 253);
-		contentPane = new JPanel();
+		contentPane = new JPanel(){
+			private static final long serialVersionUID = 1L;
+
+			public void paintComponent(Graphics g) {
+				Image img = Toolkit.getDefaultToolkit().getImage(MenuPrincipal.class.getResource("/Recursos/FondoMenuPrincipal.png"));
+				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

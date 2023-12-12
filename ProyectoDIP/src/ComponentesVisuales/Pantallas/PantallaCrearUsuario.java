@@ -19,6 +19,12 @@ import java.awt.event.ActionEvent;
 import ComponentesVisuales.Componentes.BotonExtendido;
 
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PantallaCrearUsuario extends JFrame {
 
@@ -36,22 +42,40 @@ public class PantallaCrearUsuario extends JFrame {
 		
 		setTitle("Hello World!: Crear Usuario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 487, 300);
-		contentPane = new JPanel();
+		setBounds(500, 200, 487, 300);
+		contentPane = new JPanel(){
+			private static final long serialVersionUID = 1L;
+
+			public void paintComponent(Graphics g) {
+				Image img = Toolkit.getDefaultToolkit().getImage(MenuPrincipal.class.getResource("/Recursos/FondoMenuPrincipal.png"));
+				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setForeground(Color.WHITE);
 		lblNombre.setBounds(20, 11, 79, 14);
 		contentPane.add(lblNombre);
 		
 		textField = new JTextField();
+		textField.setText("Escribe tu nombre de usuario");
+		textField.setEditable(false);
+		textField.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				textField.setText("");
+				textField.setEditable(true);
+			}
+		});
 		textField.setBounds(20, 36, 185, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
+		lblContrasea.setForeground(Color.WHITE);
 		lblContrasea.setBounds(20, 67, 100, 14);
 		contentPane.add(lblContrasea);
 		
@@ -60,6 +84,10 @@ public class PantallaCrearUsuario extends JFrame {
 		contentPane.add(passwordField);
 		
 		final JRadioButton profesor = new JRadioButton("Profesor");
+		profesor.setForeground(Color.WHITE);
+		profesor.setBorderPainted(false);
+		profesor.setFocusPainted(false);
+		profesor.setContentAreaFilled(false);
 		profesor.setBounds(21, 143, 109, 23);
 		contentPane.add(profesor);
 		
@@ -91,6 +119,7 @@ public class PantallaCrearUsuario extends JFrame {
 		contentPane.add(btnxtndCrearUsuario);
 		
 		JLabel lblEresProfesor = new JLabel("Eres Profesor:");
+		lblEresProfesor.setForeground(Color.WHITE);
 		lblEresProfesor.setBounds(20, 122, 110, 14);
 		contentPane.add(lblEresProfesor);
 		

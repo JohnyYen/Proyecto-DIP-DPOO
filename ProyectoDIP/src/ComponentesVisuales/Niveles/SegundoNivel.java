@@ -75,6 +75,7 @@ public class SegundoNivel extends JFrame {
 		//Barra de menu
 		BarraMenu barraMenu = new BarraMenu();
 		BarraMenu.guardarEstadoActual(this);
+		barraMenu.getMenu(1).getItem(1).setEnabled(true);
 		BarraMenu.guardarJuegoActual(miJuego);
 		setJMenuBar(barraMenu);
 		
@@ -103,6 +104,7 @@ public class SegundoNivel extends JFrame {
 		labelPreguntas.setSize(new Dimension(450, 179));
 		labelPreguntas.setSize(450, 179);
 		labelPreguntas.setLocation(345, 102);
+		//labelPreguntas.setHorizontalAlignment(SwingConstants.BOTTOM);
 		labelPreguntas.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPreguntas.ponerPregunta(juego.getControladorNivelDos().darPregunta());
 		contentPane.add(labelPreguntas);

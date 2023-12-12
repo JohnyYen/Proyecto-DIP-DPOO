@@ -7,6 +7,10 @@ import javax.swing.JMenuItem;
 
 import com.sun.glass.ui.Menu;
 
+import ComponentesVisuales.Niveles.CuartoNivel;
+import ComponentesVisuales.Niveles.PrimerNivel;
+import ComponentesVisuales.Niveles.SegundoNivel;
+import ComponentesVisuales.Niveles.TercerNivel;
 import ComponentesVisuales.Pantallas.MenuPrincipal;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.Juego;
@@ -71,10 +75,52 @@ public class BarraMenu extends JMenuBar{
 		menuOpciones.add(resolucion);
 		
 		
-		JMenuItem itemNivelUno = new JMenuItem("Nive 1");
+		JMenuItem itemNivelUno = new JMenuItem("Nivel 1");
+		itemNivelUno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+				PrimerNivel item = new PrimerNivel(juego);
+				item.setVisible(true);
+			}
+		});
 		JMenuItem itemNivelDos = new JMenuItem("Nivel 2");
+		itemNivelDos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+				SegundoNivel item = new SegundoNivel(juego);
+				item.setVisible(true);
+			}
+		});
 		JMenuItem itemNivelTres = new JMenuItem("Nivel 3");
+		itemNivelTres.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+				TercerNivel item = new TercerNivel(juego);
+				item.setVisible(true);
+			}
+		});
 		JMenuItem itemNivelCuatro = new JMenuItem("Nivel 4");
+		itemNivelCuatro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+				CuartoNivel item = new CuartoNivel(juego);
+				item.setVisible(true);
+			}
+		});
+		
+		if(frame instanceof PantallaProfesores){
+			itemNivelUno.setEnabled(true);
+			itemNivelDos.setEnabled(true);
+			itemNivelTres.setEnabled(true);
+			itemNivelCuatro.setEnabled(true);
+		}
+		else{
+			itemNivelUno.setEnabled(false);
+			itemNivelDos.setEnabled(false);
+			itemNivelTres.setEnabled(false);
+			itemNivelCuatro.setEnabled(false);
+		}
+		
 		
 		menuNiveles.add(itemNivelUno);
 		menuNiveles.add(itemNivelDos);

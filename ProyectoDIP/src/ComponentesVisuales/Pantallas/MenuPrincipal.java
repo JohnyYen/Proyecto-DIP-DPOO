@@ -116,10 +116,10 @@ public class MenuPrincipal extends JFrame {
 		botonSalir.setBounds(202, 358, 252, 28);
 		contentPane.add(botonSalir);
 		
-		JLabel nombreUsuario = new JLabel("Nombe Usuario:");
+		JLabel nombreUsuario = new JLabel("Nombre Usuario:");
 		nombreUsuario.setFont(new Font("Tahoma", Font.BOLD, 17));
 		nombreUsuario.setBounds(10, 11, 301, 28);
-		nombreUsuario.setText(nombreUsuario.getText() + "  " + miJuego.getUsuario().getNombreUsuario());
+		nombreUsuario.setText("Nombre Usuario:  " + miJuego.getUsuario().getNombreUsuario());
 		nombreUsuario.setForeground(Color.WHITE);
 		contentPane.add(nombreUsuario);
 		
