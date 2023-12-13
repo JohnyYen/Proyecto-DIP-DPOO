@@ -78,6 +78,7 @@ public class PantallaCarga extends JFrame {
 					timer.stop();
 					if(!frame.isVisible()) timer.restart();
 					
+					
 				}
 				
 				if(value <= bar.getMaximum()) bar.setValue(value);

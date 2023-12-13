@@ -30,17 +30,17 @@ public class ControladorCuartoNivel extends ControladorJuego {
 
 	}
 
-
+	//Obtener los objetos disponibles
 	public ArrayList <Objeto> getObjDisponibles() {
 		return this.informacionActual.getObjetos();
 	}
 
+	//Obtener los objetos encontrados
 	public ArrayList<Objeto> getObjEncontrados() {
 		return objEncontrados;
 	}
 
-
-
+	//Agregar objetos encontrados
 	public void setObjEncontrados(Objeto objEncontrados) {
 		if (this.objEncontrados.size() < 4) {
 			this.objEncontrados.add(objEncontrados);
@@ -50,18 +50,17 @@ public class ControladorCuartoNivel extends ControladorJuego {
 	}
 
 
-
+	//Devolver los objetos perdidos
 	public ArrayList<Objeto> getObjPerdidos() {
 		return objPerdidos;
 	}
 
-
-
+	//Setear objetos perdidos
 	public void setObjPerdidos(ArrayList<Objeto> objPerdidos) {
 		this.objPerdidos = objPerdidos;
 	}
 
-
+	//Asignar objetos perdidos entre los objetos disponibles
 	public void asignarObjetosPerdidos() {
 		Collections.shuffle(getObjDisponibles()); 
 		for (int i = 0; i < 4; i++) {
@@ -77,6 +76,7 @@ public class ControladorCuartoNivel extends ControladorJuego {
 
 	}
 
+	//Comprobar que el orden es correcto
 	public boolean ordenEsCorrecto(){
 		boolean orden = true;
 		if(objEncontrados.size() != objPerdidos.size()){
@@ -120,6 +120,7 @@ public class ControladorCuartoNivel extends ControladorJuego {
 		return orden;}
 
 
+	//Informar el orden en el que el jugador tiene que ordenar los objetos
 	public String informarOrden(){
 		control = -1;
 		Random r = new Random();
@@ -162,6 +163,7 @@ public class ControladorCuartoNivel extends ControladorJuego {
 
 	// COMPROBAR LOS ORDENES
 
+	//Comprobar que los objetos esten ordenados de la misma forma
 	public boolean mismOrden(){
 		boolean correcto = true;
 
@@ -174,12 +176,8 @@ public class ControladorCuartoNivel extends ControladorJuego {
 
 		return correcto;
 	}
-
-
-
-
-
-
+	
+	//Comprobar que el orden es el inverso a los objetos mostrados
 	public boolean ordenInverso( ){
 		boolean correcto = true;
 
@@ -207,9 +205,6 @@ public class ControladorCuartoNivel extends ControladorJuego {
 
 		return correcto;
 	}
-
-
-
 
 	public boolean menorMayor(){
 		boolean correcto = true;

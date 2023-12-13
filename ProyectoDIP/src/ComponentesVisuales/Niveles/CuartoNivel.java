@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.util.Random;
 import java.awt.Font;
 
 import ComponentesVisuales.Componentes.BotonExtendidoNivelCuatro;
@@ -331,9 +332,19 @@ public class CuartoNivel extends JFrame {
 							mijuego.getControladorCuartoNivel().getObjEncontrados().clear();
 							mijuego.getControladorCuartoNivel().getObjPerdidos().clear();
 							mijuego.getControladorCuartoNivel().asignarObjetosPerdidos();
-							for(int i = 0; i < botones.size(); i++){
-								String text = mijuego.getControladorCuartoNivel().getObjDisponibles().get(i).getNombre();
-								botones.get(i).setText(text);
+							
+							ArrayList<Integer> guardar = new ArrayList<Integer>();
+							int i = 0;
+							int index;
+							while(guardar.size() != 12){
+								long semilla = System.currentTimeMillis();
+								Random r = new Random(semilla);
+								index = r.nextInt(12);
+								if(!guardar.contains(index)){
+									guardar.add(index);
+									String text = mijuego.getControladorCuartoNivel().getObjDisponibles().get(index).getNombre();
+									botones.get(i++).setText(text);
+								}
 							}
 							ComunicarLabel.setText(mijuego.getControladorCuartoNivel().informarOrden());
 						}

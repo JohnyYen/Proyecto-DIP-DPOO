@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import Util.*;
 
+
+//Clase que guarda la información de todas las entidades necesarias para jugar
 public class InformacionJuego {
 	private ArrayList<Pregunta> preguntas;
 	private ArrayList<Carta> cartas;

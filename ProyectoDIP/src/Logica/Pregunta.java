@@ -3,7 +3,8 @@
 import javax.swing.JOptionPane;
 import javax.swing.RepaintManager;
 
-public class Pregunta {
+//Clase abstracta usada como modelo para las demás preguntaas usadas en el juego
+public abstract class Pregunta {
 	private String textoPregunta;
 	public Pregunta(String texto){
 		try {

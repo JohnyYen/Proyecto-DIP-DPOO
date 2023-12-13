@@ -4,6 +4,7 @@ public class Usuario {
 	private String nombreUsuario, password;
 	boolean esProfesor;
 	
+	
 	public Usuario(String nombreUsuario, String password, boolean esProfesor){
 		this.setNombre(nombreUsuario);
 		this.password = password;
