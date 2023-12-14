@@ -1,12 +1,16 @@
 package Logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+
 import Util.*;
 import Personajes.*;
 
 //Clase principal del juego, controladora de todas las funcionalidades el juego
-public class Juego { 
+public class Juego implements Serializable { 
 
+	
+	private static final long serialVersionUID = 1L;
 	private InformacionJuego informacionActual;
 	private Usuario usuario;
 	private ControladorJuego controlador;

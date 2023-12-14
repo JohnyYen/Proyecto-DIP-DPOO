@@ -1,12 +1,13 @@
 package Logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import Util.*;
 
 
 //Clase que guarda la información de todas las entidades necesarias para jugar
-public class InformacionJuego {
+public class InformacionJuego implements Serializable {
 	private ArrayList<Pregunta> preguntas;
 	private ArrayList<Carta> cartas;
 	private ArrayList<Objeto> objetos;
@@ -67,6 +68,9 @@ public class InformacionJuego {
 	
 	//Agregar un ArrayList nuevo al de preguntas del nivel uno
 	public void setPreguntasNivelUno(ArrayList<PreguntaNivelUno> preguntasNuevas){
+		System.out.println("Entre");
+		for(PreguntaNivelUno p : preguntasNuevas)
+			if(preguntas.get(0).equals(p)) System.out.println("Hols");
 		int size = preguntas.size();
 		for(int i = 0; i < size; i++){
 			Pregunta p = preguntas.get(i);

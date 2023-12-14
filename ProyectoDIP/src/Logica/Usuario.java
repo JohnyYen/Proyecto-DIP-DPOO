@@ -1,6 +1,8 @@
 package Logica;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable{
 	private String nombreUsuario, password;
 	boolean esProfesor;
 	
@@ -26,6 +28,8 @@ public class Usuario {
 		else
 			this.nombreUsuario = nombre;
 	}
+	
+	public boolean getEsProfesor(){return this.esProfesor;}
 	
 	public String getNombreUsuario(){ return this.nombreUsuario;}
 }

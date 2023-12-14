@@ -72,15 +72,6 @@ public class PantallaCarga extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int value = bar.getValue()+1;
-				if(bar.getValue() == 0){
-					frame = new PantallaCrearUsuario(miJuego);
-					frame.setVisible(true);
-					timer.stop();
-					if(!frame.isVisible()) timer.restart();
-					
-					
-				}
-				
 				if(value <= bar.getMaximum()) bar.setValue(value);
 				
 			}
@@ -93,6 +84,16 @@ public class PantallaCarga extends JFrame {
 				if(bar.getValue() == 100){
 					timer.stop();
 					dispose();
+					if(miJuego.getUsuario() != null){
+						PantallaLogin login = new PantallaLogin(miJuego);
+						login.setVisible(true);
+					}
+					else{
+						frame = new PantallaCrearUsuario(miJuego);
+						frame.setVisible(true);	
+					}
+					
+					
 				}
 				
 			}

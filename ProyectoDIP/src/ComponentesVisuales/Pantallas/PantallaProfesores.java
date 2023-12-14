@@ -9,6 +9,9 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -76,7 +79,16 @@ public class PantallaProfesores extends JFrame {
 		botonSalir = new BotonExtendido();
 		botonSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(contentPane, "Estas seguro que quieres salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) dispose();
+				if(JOptionPane.showConfirmDialog(contentPane, "Estas seguro que quieres salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					try {
+						ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("src/Textos/partidaGuardada.json"));
+						stream.writeObject(miJuego);
+						stream.close();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					dispose();
+				}
 			}
 		});
 		botonSalir.setText("Salir");

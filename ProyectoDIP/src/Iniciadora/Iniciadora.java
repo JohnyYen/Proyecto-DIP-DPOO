@@ -3,8 +3,11 @@ package Iniciadora;
 
 import java.awt.EventQueue;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import ComponentesVisuales.Niveles.CuartoNivel;
@@ -20,22 +23,22 @@ public class Iniciadora {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {  
-					Juego juego = new Juego();
+				Juego juego;
+				PantallaCarga frame;
+				try {  	
+					ObjectInputStream stream = new ObjectInputStream(new FileInputStream("src/Textos/partidaGuardada.json"));
+					juego = (Juego)stream.readObject();
+					stream.close();
+				} catch (Exception e) {
+					juego = new Juego();
 					inicializarDatosPrimerNivel(juego);
 					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
 					inicializarDatosCuartoNivel(juego);
-					//PantallaCarga frame = new PantallaCarga(juego);
-					//TercerNivel frame = new TercerNivel(juego);
-					//PrimerNivel frame = new PrimerNivel(juego);
-					//SegundoNivel frame = new SegundoNivel(juego);
-					CuartoNivel frame = new CuartoNivel(juego);
-					frame.setVisible(true);
 					
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
+				frame = new PantallaCarga(juego);
+				frame.setVisible(true);
 			}
 		});
 	}

@@ -1,11 +1,15 @@
 package Logica;
 
+import java.io.Serializable;
+
 import javax.swing.*;
 
 import Personajes.*;
 import ComponentesVisuales.Pantallas.MenuPrincipal;
 
-public abstract class ControladorJuego {
+public abstract class ControladorJuego implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	int vidaHeroe, vidaVillano;
 	protected InformacionJuego informacionActual;
 	public ControladorJuego(int vidaHeroe, int vidaVillano, InformacionJuego informacionActual){

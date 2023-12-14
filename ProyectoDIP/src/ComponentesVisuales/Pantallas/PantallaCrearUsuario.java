@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import javax.swing.Timer;
 
 import Logica.Juego;
 import Logica.Validacion;
@@ -98,15 +99,15 @@ public class PantallaCrearUsuario extends JFrame {
 					if(profesor.isSelected()){
 						miJuego.crearUsuario(textField.getText(), passwordField.getText(), true);
 						PantallaProfesores frame = new PantallaProfesores(miJuego);
-						setVisible(false);
-						//dispose();
-						//frame.setVisible(true);
+						dispose();
+						frame.setVisible(true);
 					}
 					else{
-						miJuego.crearUsuario(textField.getText(), "Pasworrd", true);
+						miJuego.crearUsuario(textField.getText(), passwordField.getText(), false);
 						MenuPrincipal frame = new MenuPrincipal(miJuego);
+						
 						dispose();
-						//frame.setVisible(true);
+						frame.setVisible(true);
 					}
 				}
 				else{
@@ -133,5 +134,23 @@ public class PantallaCrearUsuario extends JFrame {
 		btnxtndCancelar.setText("Cancelar");
 		btnxtndCancelar.setBounds(10, 188, 216, 34);
 		contentPane.add(btnxtndCancelar);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				passwordField.setEchoChar('\u0000');
+				Timer timer = new Timer(500, new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						passwordField.setEchoChar('*');;
+					}
+				});
+				timer.start();
+			}
+		});
+		btnNewButton.setBounds(223, 92, 32, 23);
+		contentPane.add(btnNewButton);
 	}
 }

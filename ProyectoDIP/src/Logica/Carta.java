@@ -1,6 +1,8 @@
 package Logica;
 
-public class Carta {
+import java.io.Serializable;
+
+public class Carta implements Serializable{
 	private String nombre, funcionalidad, codigo;
 	
 	public Carta(String nombre, String funcionalidad, String codigo){
