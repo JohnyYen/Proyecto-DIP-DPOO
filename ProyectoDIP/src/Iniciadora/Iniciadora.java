@@ -6,12 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
-
-
-
-import ComponentesVisuales.Pantallas.MenuPrincipal;
-import ComponentesVisuales.Pantallas.PantallaCarga;
+import ComponentesVisuales.Niveles.CuartoNivel;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
 
@@ -25,9 +20,11 @@ public class Iniciadora {
 					inicializarDatosPrimerNivel(juego);
 					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
+					inicializarDatosCuartoNivel(juego);
 					//PantallaCarga frame = new PantallaCarga(juego);
 					PantallaProfesores frame = new PantallaProfesores(juego);
 					//MenuPrincipal frame = new MenuPrincipal(juego);
+					//CuartoNivel frame = new CuartoNivel(juego);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -97,6 +94,25 @@ public class Iniciadora {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public static void inicializarDatosCuartoNivel(Juego juego) {
+		
+	    try {
+	        FileReader fr = new FileReader("src/Textos/parametrosObjetos.txt");
+	        BufferedReader br = new BufferedReader(fr);
+	        String nombre, tipo;
+	        float tamanio;
+	        while(br.ready()) {
+	        	nombre = br.readLine();
+	        	tamanio = Float.parseFloat(br.readLine());
+	        	tipo = br.readLine();
+	        	juego.getInformacionJuego().crearObjeto(nombre, tamanio, tipo);
+	        }
+	        br.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 	
 }

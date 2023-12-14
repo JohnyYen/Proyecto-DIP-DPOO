@@ -1,24 +1,21 @@
 package ComponentesVisuales.Pantallas;
 
 import java.awt.ScrollPane;
-
+import Util.*;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 
-import Logica.Juego;
-import Logica.PreguntaNivelUno;
+import Logica.*;
 import Util.PreguntaTableModel;
 import Util.PreguntaTableModelSegundoNivel;
-
 import javax.swing.JScrollPane;
-
 import ComponentesVisuales.Componentes.BotonExtendido;
 import ComponentesVisuales.Componentes.EditarNivel3;
 import ComponentesVisuales.Componentes.EditarNivel4;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -26,6 +23,7 @@ public class PantallaModificaciones extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
+	private Validacion validacion;
 	private JScrollPane scrollPane;
 	private JTable tabla;
 	private JTable tablaNivelDos;
@@ -33,7 +31,7 @@ public class PantallaModificaciones extends JFrame {
 	private PreguntaTableModel model;
 	
 	public PantallaModificaciones(Juego juego) {
-		
+		validacion = new Validacion();
 		this.miJuego = juego;
 		setTitle("Hello World!: Editar Niveles");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,11 +66,11 @@ public class PantallaModificaciones extends JFrame {
 		tablaNivelDos.setModel(modelNivelDos);
 		
 		//Editar Nivel Tres
-		EditarNivel3 editarTres = new EditarNivel3(miJuego.getInformacionJuego().getCartas());
+		final EditarNivel3 editarTres = new EditarNivel3(miJuego.getInformacionJuego().getCartas());
 		tabbedPane.addTab("Nivel 3",editarTres);
 		
 		//Editar Nivel Cuatro
-		EditarNivel4 editarCuatro = new EditarNivel4();
+		final EditarNivel4 editarCuatro = new EditarNivel4(miJuego.getInformacionJuego().getObjetos());
 		tabbedPane.addTab("Nivel 4",editarCuatro);
 		
 		BotonExtendido Volver = new BotonExtendido();
@@ -90,8 +88,17 @@ public class PantallaModificaciones extends JFrame {
 		BotonExtendido Guardar = new BotonExtendido();
 		Guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				miJuego.getInformacionJuego().setPreguntasNivelUno(model.getPreguntas());
-				miJuego.getInformacionJuego().setPreguntasNivelDos(modelNivelDos.getPreguntas());
+				if(validacion.casillasVaciasEnTablas(model, modelNivelDos) || validacion.validarCarta(editarTres.getNuevasCartas())){
+					miJuego.getInformacionJuego().setPreguntasNivelUno(model.getPreguntas());
+					miJuego.getInformacionJuego().setPreguntasNivelDos(modelNivelDos.getPreguntas());
+					miJuego.getInformacionJuego().setCartas(editarTres.getNuevasCartas());
+					miJuego.getInformacionJuego().setObjetos(editarCuatro.getNuevosObjetos());
+				}
+				
+				else{
+					System.out.print("Holaaa");
+					JOptionPane.showMessageDialog(null, "Error en la edición de algún nivel, REVISE BIEN!");
+				}
 			}
 		});
 		Guardar.setText("Guardar");
