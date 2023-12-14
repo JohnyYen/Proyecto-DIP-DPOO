@@ -69,8 +69,6 @@ public class InformacionJuego implements Serializable {
 	//Agregar un ArrayList nuevo al de preguntas del nivel uno
 	public void setPreguntasNivelUno(ArrayList<PreguntaNivelUno> preguntasNuevas){
 		System.out.println("Entre");
-		for(PreguntaNivelUno p : preguntasNuevas)
-			if(preguntas.get(0).equals(p)) System.out.println("Hols");
 		int size = preguntas.size();
 		for(int i = 0; i < size; i++){
 			Pregunta p = preguntas.get(i);
