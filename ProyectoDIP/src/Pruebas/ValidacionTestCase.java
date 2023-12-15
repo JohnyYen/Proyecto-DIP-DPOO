@@ -2,12 +2,15 @@ package Pruebas;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import Logica.Carta;
 import Logica.Validacion;
 
 public class ValidacionTestCase {
@@ -51,5 +54,23 @@ public class ValidacionTestCase {
 	@Test
 	public void testNoEsNumeroFlotante() {
 		assertEquals(false, validar.esNumeroflotante("13r54.2"));
+	}
+	
+	@Test
+	public void testCartasValidas() {
+		ArrayList<Carta> cartas = new ArrayList<Carta>();
+		cartas.add(new Carta("sumatoria", "permite sumar dos numeros dados", "5235"));
+		cartas.add(new Carta("corredor", "permite al usuario correr hacia un lugar especifico", "787"));
+		cartas.add(new Carta("escalador", "permite escalar cierto objetivo especificado", "10780"));
+		assertEquals(true, validar.validarCarta(cartas));
+	}
+	
+	@Test
+	public void testCartasNoValidas() {
+		ArrayList<Carta> cartas = new ArrayList<Carta>();
+		cartas.add(new Carta("suma", "permite sumar dos numeros dados", "1"));
+		cartas.add(new Carta("corredor", "permite al usuario correr hacia un lugar especifico", "787"));
+		cartas.add(new Carta("escalar", "permite escalar cierto objetivo especificado", "2"));
+		assertEquals(false, validar.validarCarta(cartas));
 	}
 }
