@@ -14,6 +14,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import ComponentesVisuales.Componentes.BotonExtendido;
 import ComponentesVisuales.Componentes.BarraMenu;
@@ -38,6 +42,7 @@ public class MenuPrincipal extends JFrame {
 		setBounds(300, 20, 900, 700);
 		
 		BarraMenu barraMenu = new BarraMenu();
+		BarraMenu.guardarFrameActual(this);
 		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;
@@ -108,17 +113,27 @@ public class MenuPrincipal extends JFrame {
 		botonSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Se comprueba que el usuario de verdad quiere salir del juego 
-				if(JOptionPane.showConfirmDialog(contentPane, "Estas seguro que vas a salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) dispose();
+				if(JOptionPane.showConfirmDialog(contentPane, "Estas seguro que vas a salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					try {
+						ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("src/Textos/partidaGuardada.json"));
+						stream.writeObject(miJuego);
+						
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					dispose();
+				}
 			}
 		});
 		botonSalir.setText("Salir");
 		botonSalir.setBounds(202, 358, 252, 28);
 		contentPane.add(botonSalir);
 		
-		JLabel nombreUsuario = new JLabel("Nombe Usuario:");
+		JLabel nombreUsuario = new JLabel("Nombre Usuario:");
 		nombreUsuario.setFont(new Font("Tahoma", Font.BOLD, 17));
 		nombreUsuario.setBounds(10, 11, 301, 28);
-		nombreUsuario.setText(nombreUsuario.getText() + "  " + miJuego.getUsuario().getNombreUsuario());
+		nombreUsuario.setText("Nombre Usuario:  " + miJuego.getUsuario().getNombreUsuario());
 		nombreUsuario.setForeground(Color.WHITE);
 		contentPane.add(nombreUsuario);
 		

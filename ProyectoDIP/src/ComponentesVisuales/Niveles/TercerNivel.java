@@ -77,7 +77,8 @@ public class TercerNivel extends JFrame {
 		
 		//Barra de Menú
 		BarraMenu barraMenu = new BarraMenu();
-		BarraMenu.guardarFrameActual(this);
+		BarraMenu.guardarEstadoActual(this);
+		barraMenu.getMenu(1).getItem(2).setEnabled(true);
 		BarraMenu.guardarJuegoActual(miJuego);
 		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){
@@ -189,7 +190,11 @@ public class TercerNivel extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				//Cuando el mouse entra en contacto con el frame y se finalizo el nivel
 				//Se pasa al siguiente o se mantiene en el mismo
-				if(miJuego.getControladorTercerNivel().finalizarPartida() > 0) System.out.println("Gane");
+				if(miJuego.getControladorTercerNivel().finalizarPartida() > 0) {
+					CuartoNivel frame = new CuartoNivel(miJuego);
+					dispose();
+					frame.setVisible(true);
+				}
 				else if(miJuego.getControladorTercerNivel().finalizarPartida() < 0) {
 					TercerNivel frame = new TercerNivel(miJuego);
 					dispose();
@@ -259,6 +264,11 @@ public class TercerNivel extends JFrame {
 						cartaDos.setBounds(117, 138, 91, 124);
 						cartaTres.setBounds(10, 273, 91, 124);
 						cartaCuatro.setBounds(117, 273, 91, 124);
+						
+						cartaUno.setCarta(miJuego.getControladorTercerNivel().repartirCarta());
+						cartaDos.setCarta(miJuego.getControladorTercerNivel().repartirCarta());
+						cartaTres.setCarta(miJuego.getControladorTercerNivel().repartirCarta());
+						cartaCuatro.setCarta(miJuego.getControladorTercerNivel().repartirCarta());
 						
 						//Las zonas vuelven a estar desocupadas
 						ocupadoSetUno = false;
@@ -399,6 +409,7 @@ public class TercerNivel extends JFrame {
 		controlCorazon.getLastCorazonVillano().setBounds(830, 50, 25, 25);
 		contentPane.add(		controlCorazon.getLastCorazonVillano());
 	}
+	
 	public void diseniarLabel(JLabel cuadro){
 		ImageIcon imagenLabel = new ImageIcon("src/Recursos/CuadroDialogos.png");
 		Image iconLabel = imagenLabel.getImage().getScaledInstance(450, 150, Image.SCALE_SMOOTH);

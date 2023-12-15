@@ -7,7 +7,12 @@ import javax.swing.JMenuItem;
 
 import com.sun.glass.ui.Menu;
 
+import ComponentesVisuales.Niveles.CuartoNivel;
+import ComponentesVisuales.Niveles.PrimerNivel;
+import ComponentesVisuales.Niveles.SegundoNivel;
+import ComponentesVisuales.Niveles.TercerNivel;
 import ComponentesVisuales.Pantallas.MenuPrincipal;
+import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.Juego;
 
 import java.awt.event.ActionListener;
@@ -16,6 +21,7 @@ import java.awt.event.ActionEvent;
 public class BarraMenu extends JMenuBar{
 	private static JFrame frame;
 	private static Juego juego;
+	private static JFrame actual;
 	public BarraMenu() {
 		
 		JMenu menuOpciones = new JMenu("Opciones");
@@ -31,16 +37,28 @@ public class BarraMenu extends JMenuBar{
 		JMenuItem guardarPartida = new JMenuItem("Guardar Partida");
 		guardarPartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal.guardarEstado(frame);
+				if(frame instanceof MenuPrincipal){
+					MenuPrincipal.guardarEstado(actual);
+				}
+				else if (frame instanceof PantallaProfesores){
+					PantallaProfesores.guardarEstado(actual);
+				}
 			}
 		});
 		//JMenuItem configuraciones = new JMenuItem("Configuraciones");
 		JMenuItem volver = new JMenuItem("Volver a Menú");
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal menu = new MenuPrincipal(juego);
-				MenuPrincipal.guardarEstado(frame);
-				frame.dispose();
+				JFrame menu = null;
+				if(frame instanceof MenuPrincipal){
+					menu = new MenuPrincipal(juego);
+					
+				}
+				else if (frame instanceof PantallaProfesores){
+					menu = new PantallaProfesores(juego);
+					
+				}
+				actual.dispose();
 				menu.setVisible(true);
 			}
 		});
@@ -57,10 +75,52 @@ public class BarraMenu extends JMenuBar{
 		menuOpciones.add(resolucion);
 		
 		
-		JMenuItem itemNivelUno = new JMenuItem("Nive 1");
+		JMenuItem itemNivelUno = new JMenuItem("Nivel 1");
+		itemNivelUno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+				PrimerNivel item = new PrimerNivel(juego);
+				item.setVisible(true);
+			}
+		});
 		JMenuItem itemNivelDos = new JMenuItem("Nivel 2");
+		itemNivelDos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+				SegundoNivel item = new SegundoNivel(juego);
+				item.setVisible(true);
+			}
+		});
 		JMenuItem itemNivelTres = new JMenuItem("Nivel 3");
+		itemNivelTres.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+				TercerNivel item = new TercerNivel(juego);
+				item.setVisible(true);
+			}
+		});
 		JMenuItem itemNivelCuatro = new JMenuItem("Nivel 4");
+		itemNivelCuatro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+				CuartoNivel item = new CuartoNivel(juego);
+				item.setVisible(true);
+			}
+		});
+		
+		if(frame instanceof PantallaProfesores){
+			itemNivelUno.setEnabled(true);
+			itemNivelDos.setEnabled(true);
+			itemNivelTres.setEnabled(true);
+			itemNivelCuatro.setEnabled(true);
+		}
+		else{
+			itemNivelUno.setEnabled(false);
+			itemNivelDos.setEnabled(false);
+			itemNivelTres.setEnabled(false);
+			itemNivelCuatro.setEnabled(false);
+		}
+		
 		
 		menuNiveles.add(itemNivelUno);
 		menuNiveles.add(itemNivelDos);
@@ -90,6 +150,9 @@ public class BarraMenu extends JMenuBar{
 	
 	public static void guardarFrameActual(JFrame windows){
 		frame = windows;
+	}
+	public static void guardarEstadoActual(JFrame jf){
+		actual = jf;
 	}
 	public static void guardarJuegoActual(Juego game){juego = game;}
 }

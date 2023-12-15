@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import Logica.Carta;
+import Recursos.CustomFont;
 
 import com.sun.crypto.provider.DESCipher;
 
@@ -26,11 +27,14 @@ public class CartaVisual extends JPanel {
 	private boolean cartaUsada;
 	public CartaVisual() {
 		cartaUsada = false;
+		CustomFont mf = new CustomFont();
 		setBackground(Color.LIGHT_GRAY);
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
-		
+		setLayout(null);
+		//this.setFont(mf.MyFont(1, 30));
 		titulo = new TextPanel();
+		titulo.setFocusable(false);
+		titulo.setBounds(10, 10, 65, 25);
+		titulo.setForeground(Color.RED);
 		add(titulo);
 		
 		

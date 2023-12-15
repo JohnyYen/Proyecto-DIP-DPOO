@@ -3,14 +3,19 @@ package ComponentesVisuales.Pantallas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -26,6 +31,7 @@ public class PantallaProfesores extends JFrame {
 	private JPanel contentPane;
 	private BotonExtendido botonSalir;
 	private JLabel titulo;
+	private static JFrame save;
 	private Juego miJuego;
 	
 	public PantallaProfesores(Juego juego) {
@@ -35,6 +41,7 @@ public class PantallaProfesores extends JFrame {
 		setBounds(300, 20, 900, 700);
 		
 		BarraMenu barraMenu = new BarraMenu();
+		BarraMenu.guardarFrameActual(this);
 		setJMenuBar(barraMenu);
 		contentPane = new JPanel(){
 			private static final long serialVersionUID = 1L;
@@ -70,6 +77,20 @@ public class PantallaProfesores extends JFrame {
 		contentPane.add(botonEditar);
 		
 		botonSalir = new BotonExtendido();
+		botonSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(contentPane, "Estas seguro que quieres salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					try {
+						ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("src/Textos/partidaGuardada.json"));
+						stream.writeObject(miJuego);
+						stream.close();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					dispose();
+				}
+			}
+		});
 		botonSalir.setText("Salir");
 		botonSalir.setBounds(290, 307, 241, 40);
 		contentPane.add(botonSalir);
@@ -87,5 +108,9 @@ public class PantallaProfesores extends JFrame {
 		contentPane.add(botonNuevaPartida);
 		
 		
+	}
+	
+	public static void guardarEstado(JFrame partidaGuardada){
+		save = partidaGuardada;
 	}
 }

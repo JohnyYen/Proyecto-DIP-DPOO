@@ -19,6 +19,8 @@ import Recursos.CustomFont;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
+import com.sun.prism.paint.Stop;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +30,8 @@ public class PantallaCarga extends JFrame {
 	private JPanel contentPane;
 	private JProgressBar bar;
 	private static Juego miJuego;
+	private PantallaCrearUsuario frame;
+	private Timer timer;
 	
 	public PantallaCarga(Juego juego) {
 		this.miJuego = juego;
@@ -58,21 +62,16 @@ public class PantallaCarga extends JFrame {
 		bar = new JProgressBar();
 		bar.setBounds(10, 588, 864, 23);
 		bar.setMinimum(0);
-		bar.setForeground(Color.BLUE);
+		bar.setForeground(new Color(0, 0, 102));
 		bar.setMaximum(100);
 		bar.setStringPainted(true);
 		
 		
-		final Timer timer = new Timer(100, new ActionListener() {
+		timer = new Timer(100, new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int value = bar.getValue()+1;
-				if(bar.getValue() == 100){
-					PantallaCrearUsuario frame = new PantallaCrearUsuario(miJuego);
-					frame.setVisible(true);
-					
-				}
 				if(value <= bar.getMaximum()) bar.setValue(value);
 				
 			}
@@ -85,6 +84,16 @@ public class PantallaCarga extends JFrame {
 				if(bar.getValue() == 100){
 					timer.stop();
 					dispose();
+					if(miJuego.getUsuario() != null){
+						PantallaLogin login = new PantallaLogin(miJuego);
+						login.setVisible(true);
+					}
+					else{
+						frame = new PantallaCrearUsuario(miJuego);
+						frame.setVisible(true);	
+					}
+					
+					
 				}
 				
 			}
