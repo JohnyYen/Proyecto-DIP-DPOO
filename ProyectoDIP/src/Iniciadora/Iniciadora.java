@@ -1,12 +1,20 @@
+
 package Iniciadora;
 
 import java.awt.EventQueue;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import ComponentesVisuales.Niveles.CuartoNivel;
+import ComponentesVisuales.Niveles.PrimerNivel;
+import ComponentesVisuales.Niveles.SegundoNivel;
+import ComponentesVisuales.Niveles.TercerNivel;
+import ComponentesVisuales.Pantallas.PantallaCarga;
 import ComponentesVisuales.Pantallas.PantallaProfesores;
 import Logica.*;
 
@@ -15,20 +23,22 @@ public class Iniciadora {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {  
-					Juego juego = new Juego();
+				Juego juego;
+				PantallaCarga frame;
+				try {  	
+					ObjectInputStream stream = new ObjectInputStream(new FileInputStream("src/Textos/partidaGuardada.json"));
+					juego = (Juego)stream.readObject();
+					stream.close();
+				} catch (Exception e) {
+					juego = new Juego();
 					inicializarDatosPrimerNivel(juego);
 					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
 					inicializarDatosCuartoNivel(juego);
-					//PantallaCarga frame = new PantallaCarga(juego);
-					PantallaProfesores frame = new PantallaProfesores(juego);
-					//MenuPrincipal frame = new MenuPrincipal(juego);
-					//CuartoNivel frame = new CuartoNivel(juego);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
+					
 				}
+				frame = new PantallaCarga(juego);
+				frame.setVisible(true);
 			}
 		});
 	}

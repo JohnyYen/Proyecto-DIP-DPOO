@@ -10,12 +10,12 @@ import Personajes.*;
 public class ControladorPrimerNivel extends ControladorJuego {
 	private ArrayList<PreguntaNivelUno> preguntasAnteriores;
 	private int preguntaActual;
-	
+
 	public ControladorPrimerNivel(int vidaHeroe, int vidaVillano,InformacionJuego informacionActual){
 		super(vidaHeroe, vidaVillano, informacionActual);
 		preguntasAnteriores = new ArrayList<PreguntaNivelUno>();
 	}
-	
+
 	//Se recibe una respuesta por parte del jugador y el controlador analiza si es la correcta
 	public boolean analizarRespuesta(boolean respuesta){
 		boolean respuestaFinal = false;
@@ -23,7 +23,7 @@ public class ControladorPrimerNivel extends ControladorJuego {
 			respuestaFinal = true;
 		return respuestaFinal;
 	}
-	
+
 	//El controlador da las preguntas de forma aleatoria
 	public String darPregunta(){
 		Random random = new Random();

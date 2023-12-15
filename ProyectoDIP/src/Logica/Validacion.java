@@ -8,19 +8,22 @@ import Util.PreguntaTableModelSegundoNivel;
 //Clase que se usara para todas las validaciones en el juego
 public class Validacion {
 	
+	//Validar la contraseña en la pantalla de crear Usuario
 	public boolean esValidaContrasenia(char[] password){
 		int cantNumeros = 0,cantLetras = 0, cantMayusculas = 0;
 		
 		for(char c : password){
-			if(Character.isDigit(c)) cantNumeros++;
-			if(Character.isLetter(c)) cantLetras++;
-			if(Character.isUpperCase(c)) cantMayusculas++;
+			if(Character.isDigit(c)) cantNumeros++; //Contar la cantidad  de números en el password
+			if(Character.isLetter(c)) cantLetras++; //Contar la cantidad de letras en la password
+			if(Character.isUpperCase(c)) cantMayusculas++; //Contar la cantidad de mayusculas en la password
 		}
 		
+		//Comprobar que la contraseña tiene un mínimo de seguridad
 		return ((cantNumeros >= 2)&&(cantLetras >= 3) && (cantMayusculas >=1)) ? true : false;
 				
 	}
 	
+	//Comprobar que el usuario es correcto
 	public boolean esUsuarioCorrecto(String usuario){
 		boolean correcto = false;
 		if(usuario.length() >= 3){
@@ -39,7 +42,7 @@ public class Validacion {
 		boolean correcto = true;
 		
 		for (int i = 0; i < nivel1.getRowCount() && correcto; i++)
-			if(String.valueOf(nivel1.getValueAt(i, 0)).replaceAll(" ", "").equalsIgnoreCase("") || String.valueOf(nivel1.getValueAt(i, 1)).replaceAll(" ", "").equalsIgnoreCase(""))
+			if(String.valueOf(nivel1.getValueAt(i, 0)).replaceAll(" ", "").equalsIgnoreCase(""))
 				correcto = false;
 		
 		if (correcto)

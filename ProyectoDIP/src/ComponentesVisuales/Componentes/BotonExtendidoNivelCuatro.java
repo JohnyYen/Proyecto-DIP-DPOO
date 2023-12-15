@@ -24,4 +24,19 @@ public class BotonExtendidoNivelCuatro extends BotonExtendido {
 		}
 		
 	}
+
+	public BotonExtendidoNivelCuatro(String nombre) {
+		super();
+		this.urlPresionado = "src/Recursos/BotonNivelCuatroPressed.png";
+		this.urlLiberado = "src/Recursos/BotonNivelCuatroRealesed.png";
+		
+		try{
+			BufferedImage img = ImageIO.read(new File(urlLiberado));
+			imagen = new ImageIcon(img);
+			setIcon(imagen);
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+	}
 }
