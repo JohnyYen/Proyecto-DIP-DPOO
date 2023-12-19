@@ -35,7 +35,6 @@ public class Iniciadora {
 					inicializarDatosTercerNivel(juego);
 					inicializarDatosSegundoNivel(juego);
 					inicializarDatosCuartoNivel(juego);
-					
 				}
 				frame = new PantallaCarga(juego);
 				frame.setVisible(true);
@@ -107,7 +106,6 @@ public class Iniciadora {
 	}
 	
 	public static void inicializarDatosCuartoNivel(Juego juego) {
-		
 	    try {
 	        FileReader fr = new FileReader("src/Textos/parametrosObjetos.txt");
 	        BufferedReader br = new BufferedReader(fr);

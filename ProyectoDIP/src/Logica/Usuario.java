@@ -6,15 +6,14 @@ public class Usuario implements Serializable{
 	private String nombreUsuario, password;
 	boolean esProfesor;
 	
-	
 	public Usuario(String nombreUsuario, String password, boolean esProfesor){
 		this.setNombre(nombreUsuario);
-		this.password = password;
+		this.setPassword(password);
 		this.esProfesor = esProfesor;
 	}
 	
 	public void setPassword(String contrasenia){
-		if(contrasenia.trim().equalsIgnoreCase(""))
+		if(contrasenia.replaceAll(" ", "").equalsIgnoreCase(""))
 			throw new IllegalArgumentException();
 		else
 			this.password = contrasenia;
@@ -23,7 +22,7 @@ public class Usuario implements Serializable{
 	public String getPassword(){return this.password;}
 	
 	public void setNombre(String nombre){
-		if(nombre.trim().equalsIgnoreCase(""))
+		if(nombre.replaceAll(" ", "").equalsIgnoreCase(""))
 			throw new IllegalArgumentException();
 		else
 			this.nombreUsuario = nombre;

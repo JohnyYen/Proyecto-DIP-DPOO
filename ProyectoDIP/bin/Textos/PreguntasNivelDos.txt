@@ -1,8 +1,8 @@
-¿En que se diferencian los bucles "for" y "while" en programacion?
-<html>Un bucle "for" siempre ejecuta un numero fijo de iteraciones, mientras que un bucle "while" depende de una condicion.
-<html>Un bucle "for" siempre ejecuta un numero fijo de iteraciones, mientras que un bucle "while" depende de una condicion.
-<html>Un bucle "for" solo se utiliza para contar, mientras que un bucle "while" se utiliza para otras tareas.
-<html>Un bucle "for" siempre es mas eficiente que un bucle "while".
+¿En que se diferencian los bucles "foreach" y "while" en programacion?
+<html>Un bucle "foreach" siempre ejecuta un numero fijo de iteraciones, mientras que un bucle "while" depende de una condicion.
+<html>Un bucle "foreach" siempre ejecuta un numero fijo de iteraciones, mientras que un bucle "while" depende de una condicion.
+<html>Un bucle "foreach" solo se utiliza para contar, mientras que un bucle "while" se utiliza para otras tareas.
+<html>Un bucle "foreach" siempre es mas eficiente que un bucle "while".
 ¿Cual es la diferencia principal entre un bucle while y un bucle do-while?
 <html>Un bucle do-while se ejecuta al menos una vez, independientemente de la condicion.
 <html>Un bucle while se ejecuta al menos una vez, independientemente de la condicion.

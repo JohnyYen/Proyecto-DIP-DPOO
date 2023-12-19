@@ -13,7 +13,7 @@ public class Carta implements Serializable{
 	}
 	
 	public void setCodigo(String codigo){
-		if(nombre.equalsIgnoreCase(""))
+		if(codigo.replaceAll(" ", "").equalsIgnoreCase(""))
 			throw new IllegalArgumentException();
 		else
 			this.codigo = codigo;
@@ -22,7 +22,7 @@ public class Carta implements Serializable{
 	public String getCodigo(){return this.codigo;}
 	
 	public void setNombre(String nombre){
-		if(nombre.equalsIgnoreCase(""))
+		if(nombre.replaceAll(" ", "").equalsIgnoreCase(""))
 			throw new IllegalArgumentException();
 		else
 			this.nombre = nombre;
@@ -31,7 +31,7 @@ public class Carta implements Serializable{
 	public String getFuncionalidad(){ return this.funcionalidad;}
 	
 	public void setFuncionalidad(String funcionalidad){
-		if(funcionalidad.equalsIgnoreCase(""))
+		if(funcionalidad.replaceAll(" ", "").equalsIgnoreCase(""))
 			throw new IllegalArgumentException();
 		else
 			this.funcionalidad = funcionalidad;

@@ -13,21 +13,17 @@ import java.io.IOException;
 
 public class ControladorCuartoNivel extends ControladorJuego {
 
-
 	private int control;
 	private ArrayList<Objeto> objPerdidos;	
 	private	ArrayList<Objeto> objEncontrados;
 	private String comunicar;
 	private String tusObjetos;
 
-
-
 	public ControladorCuartoNivel(int vidaHeroe,int vidaMonster,InformacionJuego info ) {
 		super(vidaHeroe,vidaMonster, info);
 		objPerdidos = new ArrayList<Objeto>(4);
 		objEncontrados  = new ArrayList<Objeto>(4);
 		asignarObjetosPerdidos();
-
 	}
 
 	//Obtener los objetos disponibles
@@ -49,7 +45,6 @@ public class ControladorCuartoNivel extends ControladorJuego {
 		}
 	}
 
-
 	//Devolver los objetos perdidos
 	public ArrayList<Objeto> getObjPerdidos() {
 		return objPerdidos;
@@ -70,10 +65,8 @@ public class ControladorCuartoNivel extends ControladorJuego {
 
 
 	public String prepararLabel(){
-
 		return comunicar = objPerdidos.get(0).getNombre()+ " "+  objPerdidos.get(0).getTamanio()+ " " + objPerdidos.get(1).getNombre()+" "+ objPerdidos.get(1).getTamanio()+" "+ objPerdidos.get(2).getNombre()+" "+objPerdidos.get(2).getTamanio()+" "+objPerdidos.get(3).getNombre()
 				+" "+objPerdidos.get(3).getTamanio();
-
 	}
 
 	//Comprobar que el orden es correcto
@@ -81,43 +74,33 @@ public class ControladorCuartoNivel extends ControladorJuego {
 		boolean orden = true;
 		if(objEncontrados.size() != objPerdidos.size()){
 			orden = false;
-
 		}else{
-
 			switch(control){
 			case 1: 
 				orden = mismOrden();
-
 				break;
-
 			case 2: 
 				orden = ordenInverso();
 				break;
-
-
 			case 3: 
 				orden = mayorMenor();
 				break;
-
 			case 4: 
 				orden = menorMayor();
-
 				break;
-
 			default:
 				orden = false;
-
 			}
-
-			if(orden ){
-
+			if(orden){
 				comunicar = "�Felicitaciones, solo un poco m�s!";
 			}
 			else {
 				comunicar = "Qu� decepcionante �Es que no puedes hacerlo mejor?";
-			}}
+			}
+		}
 
-		return orden;}
+		return orden;
+	}
 
 
 	//Informar el orden en el que el jugador tiene que ordenar los objetos
@@ -127,22 +110,19 @@ public class ControladorCuartoNivel extends ControladorJuego {
 		control = r.nextInt(4);
 
 		switch(control){
-		case 1: this.setComunicar("El orden seleccionado es: MISMO ORDEN") ;
-
-		break;
-
-		case 2: this.setComunicar("El orden seleccionado es: ORDEN INVERSO");
-		break;
-
-
-		case 3: this.setComunicar("El orden seleccionado es: ASCENDENTE");
-		break;
-
-		default: this.setComunicar("El orden seleccionado es: DESCENDENTE");
-
+		case 1:
+			this.setComunicar("El orden seleccionado es: MISMO ORDEN") ;
+			break;
+		case 2: 
+			this.setComunicar("El orden seleccionado es: ORDEN INVERSO");
+			break;
+		case 3: 
+			this.setComunicar("El orden seleccionado es: ASCENDENTE");
+			break;
+		default: 
+			this.setComunicar("El orden seleccionado es: DESCENDENTE");
 		}
 		return comunicar;
-
 	}
 
 	/**
@@ -151,7 +131,6 @@ public class ControladorCuartoNivel extends ControladorJuego {
 	public String getComunicar() {
 		return comunicar;
 	}
-
 
 	/**
 	 * @param comunicar the comunicar to set
@@ -173,7 +152,6 @@ public class ControladorCuartoNivel extends ControladorJuego {
 			}
 		}
 
-
 		return correcto;
 	}
 	
@@ -188,10 +166,8 @@ public class ControladorCuartoNivel extends ControladorJuego {
 			}
 		}
 
-
-		return correcto;}
-
-
+		return correcto;
+	}
 
 	public boolean mayorMenor( ){
 		boolean correcto = true;
@@ -202,13 +178,11 @@ public class ControladorCuartoNivel extends ControladorJuego {
 			}
 		}
 
-
 		return correcto;
 	}
 
 	public boolean menorMayor(){
 		boolean correcto = true;
-
 
 		for(int i=1;i<4 && correcto != false;i++){
 			if(objEncontrados.get(i).getTamanio() > objEncontrados.get(i-1).getTamanio()){

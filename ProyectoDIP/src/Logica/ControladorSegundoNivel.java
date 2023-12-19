@@ -15,6 +15,7 @@ public class ControladorSegundoNivel extends ControladorJuego {
 		preguntasAnteriores = new ArrayList<PreguntaNivelDos>();
 	}
 	
+	//Para verificar si la respuesta del usuario es la correcta
 	public boolean analizarRespuesta(String respuesta){
 		boolean respuestaCorrecta = false;
 		if(respuesta.equals(informacionActual.getPreguntasNivelDos().get(preguntaActual).getRespuesta())){

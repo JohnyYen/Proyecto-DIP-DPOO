@@ -12,7 +12,7 @@ public class PreguntaNivelDos extends Pregunta{
 		super(texto);
 		posiblesRespuestas = new ArrayList<String>();
 		posiblesRespuestas.addAll(respuestas);
-		this.respuesta = respuestaFinal;
+		setRespuesta(respuestaFinal);
 	}
 
 	//Obtener todas las posibles respuestas a la pregunta
@@ -23,6 +23,14 @@ public class PreguntaNivelDos extends Pregunta{
 	//Obtener la respuesta de la pregunta
 	public String getRespuesta() {
 		return respuesta;
+	}
+	
+	//Establecer la respuesta correcta
+	public void setRespuesta(String respuesta) {
+		if (respuesta.replaceAll(" ", "").equalsIgnoreCase(""))
+			throw new IllegalArgumentException("Error, No puede estar vacio");
+		else 
+			this.respuesta = respuesta;
 	}
 	
 }

@@ -20,7 +20,7 @@ public abstract class Pregunta implements Serializable{
 		}
 	}
 	public void setTexto(String text){
-		if (text.equals(null))
+		if (text.replaceAll(" ", "").equalsIgnoreCase(""))
 			throw new IllegalArgumentException("Error, No puede estar vacio");
 		else this.textoPregunta = text;
 	}
