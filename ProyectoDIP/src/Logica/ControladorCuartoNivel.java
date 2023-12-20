@@ -218,4 +218,8 @@ public class ControladorCuartoNivel extends ControladorJuego {
 
 		return correcto;
 	}
+
+	public void setControl(int control) {
+		this.control = control;
+	}
 }
