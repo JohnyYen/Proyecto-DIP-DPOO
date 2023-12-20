@@ -192,8 +192,8 @@ public class SegundoNivel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(!mensajeHecho){
 					JOptionPane.showMessageDialog(null, "Para ganarle a Medusa tendr�s que ser inteligente y\n"
-							+ "responder correctamente las preguntas pero no te confies\n"
-							+ "este nivel no es como el anterior. Buena Suerte");
+							+ "responder correctamente las preguntas, pero no te confies,\n"
+							+ "este nivel no es como el anterior. Buena Suerte.");
 					mensajeHecho = true;
 				}
 					

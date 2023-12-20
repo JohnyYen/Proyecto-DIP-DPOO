@@ -1,17 +1,17 @@
-¿En que se diferencian los bucles "foreach" y "while" en programacion?
+¿En qué se diferencian los bucles "foreach" y "while" en programación?
 <html>Un bucle "foreach" siempre ejecuta un numero fijo de iteraciones, mientras que un bucle "while" depende de una condicion.
 <html>Un bucle "foreach" siempre ejecuta un numero fijo de iteraciones, mientras que un bucle "while" depende de una condicion.
 <html>Un bucle "foreach" solo se utiliza para contar, mientras que un bucle "while" se utiliza para otras tareas.
-<html>Un bucle "foreach" siempre es mas eficiente que un bucle "while".
-¿Cual es la diferencia principal entre un bucle while y un bucle do-while?
-<html>Un bucle do-while se ejecuta al menos una vez, independientemente de la condicion.
-<html>Un bucle while se ejecuta al menos una vez, independientemente de la condicion.
-<html>Un bucle do-while se ejecuta al menos una vez, independientemente de la condicion.
+<html>Un bucle "foreach" siempre es más eficiente que un bucle "while".
+¿Cuál es la diferencia principal entre un bucle while y un bucle do-while?
+<html>Un bucle do-while se ejecuta al menos una vez, independientemente de la condición.
+<html>Un bucle while se ejecuta al menos una vez, independientemente de la condición.
+<html>Un bucle do-while se ejecuta al menos una vez, independientemente de la condición.
 <html>Un bucle do-while se ejecuta solo si la condicion es verdadera desde el principio.
-¿Cual es el proposito de la declaracion break en un bucle?
-<html>Para salir de un bucle y continuar con la ejecucion del programa.
-<html>Para salir de un bucle y continuar con la ejecucion del programa.
-<html>Para detener por completo la ejecucion del programa.
+¿Cuál es el propósito de la declaración break en un bucle?
+<html>Para salir de un bucle y continuar con la ejecución del programa.
+<html>Para salir de un bucle y continuar con la ejecución del programa.
+<html>Para detener por completo la ejecución del programa.
 <html>Para cambiar el valor de una variable de control en un bucle.
 ¿Cuál es el propósito de la palabra clave "continue" en un bucle?
 <html>Pasar a la siguiente iteración del bucle.

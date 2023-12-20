@@ -53,7 +53,7 @@ public class PantallaTransicion extends JFrame {
 		textPane = new TextPanel();
 		textPane.setFont(new Font("Dialog", Font.BOLD, 18));
 		textPane.setForeground(Color.RED);
-		textPane.setText("Qué tarde es...");
+		textPane.setText("Que tarde es...");
 		textPane.setBounds(10, 580, 480, 70);
 		frame.add(textPane);
 		

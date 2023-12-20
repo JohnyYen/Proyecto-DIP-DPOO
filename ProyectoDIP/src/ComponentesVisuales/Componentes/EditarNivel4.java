@@ -84,7 +84,7 @@ public class EditarNivel4 extends JPanel {
 				boolean correct = true;
 
 				for(int i = 0; i < valor; i++)
-					if(componentesNom.get(i).getText().trim().isEmpty() || componentesTam.get(i).getText().trim().isEmpty())
+					if(componentesNom.get(i).getText().replaceAll(" ", "").equalsIgnoreCase("") || componentesTam.get(i).getText().replaceAll(" ", "").equalsIgnoreCase(""))
 						correct = false;
 
 				if(correct == false)
@@ -144,7 +144,7 @@ public class EditarNivel4 extends JPanel {
 		lblElegirModalidad.setBounds(283, 138, 96, 23);
 		this.add(lblElegirModalidad);
 
-		JLabel lblEdiccintoNivel = new JLabel("Edicci\u00F3n 4to Nivel");
+		JLabel lblEdiccintoNivel = new JLabel("Edici\u00F3n 4to Nivel");
 		lblEdiccintoNivel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblEdiccintoNivel.setBounds(162, 0, 217, 45);
 		this.add(lblEdiccintoNivel);

@@ -379,15 +379,13 @@ public class CuartoNivel extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(!mensajeHecho){
-						JOptionPane.showMessageDialog(null, "Ya estas en la recta final, solo te falta vencer al Glitch.\n"
+						JOptionPane.showMessageDialog(null, "Ya estás en la recta final, solo te falta vencer al Glitch.\n"
 								+ "Él te retará con un desafiante problema de ordenamiento.\n"
-								+ "El orden que él te especifique tendras que seguirlo\n"
-								+ " con los objetos en pantalla y cuando estes listo\n"
+								+ "El orden que él te especifique tendrás que seguirlo\n"
+								+ " con los objetos en pantalla, y cuando estés listo\n"
 								+ "toca el botón rojo para vencerlo. Buena suerte");
 						mensajeHecho = true;
 					}
-
-
 				}
 			});
 			timer.start();

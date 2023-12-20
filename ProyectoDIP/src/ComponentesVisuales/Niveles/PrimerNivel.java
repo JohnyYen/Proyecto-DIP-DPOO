@@ -191,9 +191,9 @@ public class PrimerNivel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!mensajeHecho){
-					JOptionPane.showMessageDialog(null, "Para combatir con Sphinxx tendrás qu ganarla en su juego.\n"
-							+ "Ella te hara una serie de preguntas de lógica informática y tendrás que responder\n"
-							+ "lo más acertado posible. Buena Suerte");
+					JOptionPane.showMessageDialog(null, "Para combatir con Sphinxx tendrás que ganarle en su juego.\n"
+							+ "Ella te hará una serie de preguntas de lógica informática y tendrás que responder\n"
+							+ "lo más acertado posible. Buena Suerte.");
 					mensajeHecho = true;
 				}
 					

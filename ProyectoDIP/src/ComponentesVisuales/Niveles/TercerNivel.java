@@ -314,7 +314,7 @@ public class TercerNivel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!mensajeHecho){
-					JOptionPane.showMessageDialog(null, "La batalla con Dullahan no sera como las otras\n"
+					JOptionPane.showMessageDialog(null, "La batalla con Dullahan no será como las otras\n"
 							+ "tendrás que resolver los problemas del jinete, con las cartas disponibles");
 					mensajeHecho = true;
 				}

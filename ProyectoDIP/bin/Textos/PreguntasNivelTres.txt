@@ -1,10 +1,10 @@
-Colocar un objeto y despues martillarlo
+Colocar un objeto y después martillarlo
 MC
-Llegar al punto X y  buscar el mandado
+Llegar al punto "X" y buscar el mandado
 XB
-<html>Apuntar a un enemigo para atacarlo y despues <br>defenderse de él
+<html>Apuntar a un enemigo para atacarlo y después <br>defenderse de él
 DEA
-<html>Hecha la ropa en el lavadero, lava y<br> despues tiende la ropa
+<html>Hecha la ropa en el lavadero, lava y<br> después tiende la ropa
 HLR
 Estudia para aprobar
 EA
