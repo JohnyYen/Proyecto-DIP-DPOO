@@ -37,7 +37,7 @@ public class Iniciadora {
 					inicializarDatosCuartoNivel(juego);
 				}
 				frame = new PantallaCarga(juego);
-				//PrimerNivel frame = new PrimerNivel(juego);
+				
 				frame.setVisible(true);
 			}
 		});

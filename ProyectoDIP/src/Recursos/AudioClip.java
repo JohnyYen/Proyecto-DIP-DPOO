@@ -6,8 +6,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class AudioClip extends Application implements Runnable{
-    public static void main(String[] args) {
-        launch(args);
+    public static void main() {
+        launch();
     }
 
     @Override
@@ -22,7 +22,7 @@ public class AudioClip extends Application implements Runnable{
 
 	@Override
 	public void run() {
-		this.main(null);
+		AudioClip.main();
 		
 	}
 }

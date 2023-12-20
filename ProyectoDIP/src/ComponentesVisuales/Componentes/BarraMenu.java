@@ -28,11 +28,13 @@ public class BarraMenu extends JMenuBar{
 		JMenu menuNiveles = new JMenu("Niveles");
 		JMenu menuPuntuaciones = new JMenu("Puntuaciones");
 		JMenu menuEditar = new JMenu("Editar Niveles");
+		JMenu menuEspecial = new JMenu("Acceso Especial");
 		
 		this.add(menuOpciones);
 		this.add(menuNiveles);
 		this.add(menuPuntuaciones);
-		this.add(menuEditar);		
+		this.add(menuEditar);
+		this.add(menuEspecial);
 		
 		JMenuItem guardarPartida = new JMenuItem("Guardar Partida");
 		guardarPartida.addActionListener(new ActionListener() {
@@ -146,6 +148,16 @@ public class BarraMenu extends JMenuBar{
 		menuEditar.add(editarNivelDos);
 		menuEditar.add(editarNivelTres);
 		menuEditar.add(editarNivelCuatro);
+		
+		JMenuItem accessoAdmin = new JMenuItem("Acceso Admin");
+		accessoAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PantallaProfesores p = new PantallaProfesores(juego);
+				actual.dispose();
+				p.setVisible(true);
+			}
+		});
+		menuEspecial.add(accessoAdmin);
 	}
 	
 	public static void guardarFrameActual(JFrame windows){

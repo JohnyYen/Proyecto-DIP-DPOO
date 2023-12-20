@@ -3,17 +3,15 @@ package Pruebas;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import Logica.Carta;
 import Logica.Validacion;
 
-public class ValidacionTestCase {
+public class ValidacionTestCase{
 	private Validacion validar;
 	
 	@Before

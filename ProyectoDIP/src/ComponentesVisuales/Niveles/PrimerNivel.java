@@ -32,6 +32,8 @@ public class PrimerNivel extends JFrame {
 	private LabelPreguntas labelPreguntas;
 	private ControladorCorazones corazonesNivel;
 	private Juego miJuego;
+	private AudioClip audio;
+	private Thread thread;
 	public PrimerNivel(Juego juego) {
 
 		this.miJuego = juego;
@@ -53,6 +55,9 @@ public class PrimerNivel extends JFrame {
 		BarraMenu barraMenu = new BarraMenu();
 		BarraMenu.guardarEstadoActual(this);
 		barraMenu.getMenu(1).getItem(0).setEnabled(true);
+		barraMenu.getMenu(1).getItem(1).setEnabled(true);
+		barraMenu.getMenu(1).getItem(2).setEnabled(true);
+		barraMenu.getMenu(1).getItem(3).setEnabled(true);
 		BarraMenu.guardarJuegoActual(Mijuego);
 		setJMenuBar(barraMenu);
 
@@ -180,11 +185,13 @@ public class PrimerNivel extends JFrame {
 				//En caso que el mouse se mueva por la pantalla y se haya terminado el nivel
 				//Se pasa al siguiente Nivel si ganó o se queda en el mismo si perdió
 				if(Mijuego.getControladorNivelUno().finalizarPartida() > 0){
+					
 					dispose();
 					SegundoNivel frame = new SegundoNivel(Mijuego);
 					frame.setVisible(true);
 				}
 				else if(Mijuego.getControladorNivelUno().finalizarPartida() < 0){
+				
 					dispose();
 					PrimerNivel frame = new PrimerNivel(Mijuego);
 					frame.setVisible(true);
@@ -201,15 +208,13 @@ public class PrimerNivel extends JFrame {
 							+ "Ella te hara una serie de preguntas de lógica informática y tendrás que responder\n"
 							+ "lo más acertado posible. Buena Suerte");
 					mensajeHecho = true;
-				}	
+					
+				}
 			}
 		});
 		timer.start();		
 
-		//Audio
-		AudioClip audio = new AudioClip();
-		Thread thread = new Thread(audio);
-		thread.start();
+		
 
 		//Modificaciones al Frame
 		this.setLocationRelativeTo(null);
