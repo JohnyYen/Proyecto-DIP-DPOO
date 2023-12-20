@@ -100,7 +100,7 @@ public class CuartoNivel extends JFrame {
 
 
 		//crear controlador
-		this.mijuego.crearControladorCuartoNivel(heroe.getVidas(), glitchMonster_1.getVidas());
+		this.mijuego.crearControladorCuartoNivel(3, 3);
 
 		/*Peticion objetos*/
 
@@ -112,6 +112,9 @@ public class CuartoNivel extends JFrame {
 
 		BarraMenu barraMenu = new BarraMenu();
 		BarraMenu.guardarEstadoActual(this);
+		barraMenu.getMenu(1).getItem(0).setEnabled(true);
+		barraMenu.getMenu(1).getItem(1).setEnabled(true);
+		barraMenu.getMenu(1).getItem(2).setEnabled(true);
 		barraMenu.getMenu(1).getItem(3).setEnabled(true);
 		BarraMenu.guardarJuegoActual(mijuego);
 		setJMenuBar(barraMenu);
@@ -333,19 +336,6 @@ public class CuartoNivel extends JFrame {
 							mijuego.getControladorCuartoNivel().getObjPerdidos().clear();
 							mijuego.getControladorCuartoNivel().asignarObjetosPerdidos();
 							
-							ArrayList<Integer> guardar = new ArrayList<Integer>();
-							int i = 0;
-							int index;
-							while(guardar.size() != 12){
-								long semilla = System.currentTimeMillis();
-								Random r = new Random(semilla);
-								index = r.nextInt(12);
-								if(!guardar.contains(index)){
-									guardar.add(index);
-									String text = mijuego.getControladorCuartoNivel().getObjDisponibles().get(index).getNombre();
-									botones.get(i++).setText(text);
-								}
-							}
 							ComunicarLabel.setText(mijuego.getControladorCuartoNivel().informarOrden());
 						}
 

@@ -56,7 +56,7 @@ public class PantallaCarga extends JFrame {
 		JLabel helloWorld = new JLabel("Hello World!");
 		helloWorld.setForeground(Color.WHITE);
 		helloWorld.setFont(cf.MyFont(1, 100));
-		helloWorld.setBounds(102, 235, 678, 81);
+		helloWorld.setBounds(192, 234, 678, 81);
 		contentPane.add(helloWorld);
 		
 		bar = new JProgressBar();

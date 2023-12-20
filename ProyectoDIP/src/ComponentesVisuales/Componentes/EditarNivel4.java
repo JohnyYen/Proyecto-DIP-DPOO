@@ -31,9 +31,11 @@ import javax.swing.event.ChangeEvent;
 
 import Logica.Juego;
 import Logica.Objeto;
+import Logica.Validacion;
 
 public class EditarNivel4 extends JPanel {
-
+	
+	private Validacion val;
 	private JPanel contentPane;
 	private JSpinner spinner;
 	private JTextField textNombre_1;
@@ -72,7 +74,7 @@ public class EditarNivel4 extends JPanel {
 		
 		nuevosObjetos = new ArrayList<Objeto>();
 		nuevosObjetos.addAll(objetos);
-		
+		val = new Validacion();
 		setBounds(100, 100, 501, 440);
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(null);
@@ -82,16 +84,24 @@ public class EditarNivel4 extends JPanel {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean correct = true;
-
-				for(int i = 0; i < valor; i++)
+				boolean combFloat = true;
+				
+				for(int i = 0; i < valor; i++){
 					if(componentesNom.get(i).getText().replaceAll(" ", "").equalsIgnoreCase("") || componentesTam.get(i).getText().replaceAll(" ", "").equalsIgnoreCase(""))
 						correct = false;
+					if(val.esNumeroflotante(componentesTam.get(i).getText()) == false)
+						combFloat = false;
+					
+				}
 
 				if(correct == false)
 					JOptionPane.showMessageDialog(null, "Te faltan campos por llenar!");
-
+				
+				else if(combFloat == false)
+					JOptionPane.showMessageDialog(null, "El tamaï¿½o debe de ser un valor numï¿½rico");
+				
 				else{
-					JOptionPane.showMessageDialog(null, "Modificación Exitosa!");
+					JOptionPane.showMessageDialog(null, "Modificaciï¿½n Exitosa!");
 				}
 			}
 		});
@@ -99,6 +109,13 @@ public class EditarNivel4 extends JPanel {
 		this.add(btnAceptar);
 		
 		JButton btnCancelar = new JButton("Default");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				rellenadoObjetos();
+				spinner.setValue(0);
+				
+			}
+		});
 
 		btnCancelar.setBounds(213, 217, 115, 30);
 		this.add(btnCancelar);
@@ -167,7 +184,7 @@ public class EditarNivel4 extends JPanel {
 		textNombre_2.setBounds(33, 108, 69, 20);
 		this.add(textNombre_2);
 		
-			//Editor de Tamaños
+			//Editor de Tamaï¿½os
 		txtTamao_2 = new JTextField();
 		txtTamao_2.setEnabled(false);
 		txtTamao_2.setText("");
@@ -398,12 +415,8 @@ public class EditarNivel4 extends JPanel {
 		componentesTam.add(txtTamao_11);
 		componentesTam.add(txtTamao_12);
 		
-		for(int i = 0; i < nuevosObjetos.size(); i++){
-			componentesTam.get(i).setText(String.valueOf((nuevosObjetos.get(i).getTamanio())));
-			componentesNom.get(i).setText((nuevosObjetos.get(i).getNombre()));
-			
-
-		}
+		
+		rellenadoObjetos();
 		
 		JLabel label_10 = new JLabel("#11");
 		label_10.setBounds(10, 378, 46, 14);
@@ -415,8 +428,33 @@ public class EditarNivel4 extends JPanel {
 		
 		
 	}	
+	//Rellena los campos con los objetos existentes
+	public void rellenadoObjetos(){
+		for(int i = 0; i < nuevosObjetos.size(); i++){
+			componentesTam.get(i).setText(String.valueOf((nuevosObjetos.get(i).getTamanio())));
+			componentesNom.get(i).setText((nuevosObjetos.get(i).getNombre()));
+		}
+	}
 	
 	public ArrayList<Objeto> getNuevosObjetos(){
 		return nuevosObjetos;
 	}
+
+	public ArrayList<JTextField> getComponentesNom() {
+		return componentesNom;
+	}
+
+
+	public ArrayList<JTextField> getComponentesTam() {
+		return componentesTam;
+	}
+	
+	public Validacion getVal() {
+		return val;
+	}
+
+
+	
+	
+	
 }

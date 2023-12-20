@@ -5,9 +5,9 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
-public class AudioClip extends Application {
-    public static void main(String[] args) {
-        launch(args);
+public class AudioClip extends Application implements Runnable{
+    public static void main() {
+        launch();
     }
 
     @Override
@@ -19,4 +19,10 @@ public class AudioClip extends Application {
         
         mediaPlayer.play();
     }
+
+	@Override
+	public void run() {
+		AudioClip.main();
+		
+	}
 }
