@@ -1,4 +1,4 @@
-package Tests;
+package Pruebas;
 
 import static org.junit.Assert.*;
 
@@ -42,7 +42,8 @@ public class TestControladorCuartoNivel  extends TestCase {
 	} 
 	@After
 	public void tearDown()throws Exception{
-		c =null;
+		c = null;
+		
 	}
 
 
@@ -57,6 +58,7 @@ public class TestControladorCuartoNivel  extends TestCase {
 
 		ControladorCuartoNivel c = new ControladorCuartoNivel (3,3, inf);
 
+		
 		ArrayList<Objeto> aux = new ArrayList<Objeto>(); 
 		aux.add(new Objeto("tapete",10, "drecoracion"));
 		aux.add(new Objeto("parche", 4, "adorno"));

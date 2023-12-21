@@ -14,7 +14,7 @@ public class Objeto implements Serializable{
 
 	public Objeto(String nombre,float tamanio, String tipo){
 		setNombre(nombre);
-		setTamaño(tamanio);
+		setTamanio(tamanio);
 		setTipo(tipo);
 	}
 
@@ -30,7 +30,7 @@ public class Objeto implements Serializable{
 		return tamanio;
 	}
 
-	public void setTamaño(float tamanio) {
+	public void setTamanio(float tamanio) {
 		if(tamanio > 0|| tamanio < 1000){
 			this.tamanio = tamanio;}
 		else {

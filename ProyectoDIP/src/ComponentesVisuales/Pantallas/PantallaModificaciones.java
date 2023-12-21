@@ -91,7 +91,7 @@ public class PantallaModificaciones extends JFrame {
 		BotonExtendido Guardar = new BotonExtendido();
 		Guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(validacion.casillasVaciasEnTablas(model, modelNivelDos) || validacion.validarCarta(editarTres.getNuevasCartas())){
+				if(validacion.casillasVaciasEnTablas(model, modelNivelDos) && validacion.validarCarta(editarTres.getNuevasCartas())){
 					miJuego.getInformacionJuego().setPreguntasNivelUno(model.getPreguntas());
 					miJuego.getInformacionJuego().setPreguntasNivelDos(modelNivelDos.getPreguntas());
 					miJuego.getInformacionJuego().setCartas(editarTres.getNuevasCartas());
@@ -99,7 +99,6 @@ public class PantallaModificaciones extends JFrame {
 				}
 				
 				else{
-					System.out.print("Holaaa");
 					JOptionPane.showMessageDialog(null, "Error en la edición de algún nivel, REVISE BIEN!");
 				}
 			}

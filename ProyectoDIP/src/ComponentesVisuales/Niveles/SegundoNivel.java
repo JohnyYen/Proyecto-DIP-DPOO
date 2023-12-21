@@ -220,13 +220,13 @@ public class SegundoNivel extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				if(miJuego.getControladorNivelDos().finalizarPartida() > 0){
-					thread.interrupt();
+					
 					TercerNivel frame = new TercerNivel(miJuego);
 					dispose();
 					frame.setVisible(true);
 				}
 				else if(miJuego.getControladorNivelDos().finalizarPartida() < 0){
-					thread.interrupt();
+					
 					SegundoNivel frame = new SegundoNivel(miJuego);
 					dispose();
 					frame.setVisible(true);

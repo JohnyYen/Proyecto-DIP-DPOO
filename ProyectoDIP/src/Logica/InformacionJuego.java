@@ -30,7 +30,7 @@ public class InformacionJuego implements Serializable {
 	
 	//Agregar un nuevo arrayList de cartas
 	public void setCartas(ArrayList<Carta> nuevasCartas){
-		cartas.removeAll(cartas);
+		cartas.clear();
 		cartas.addAll(nuevasCartas);
 	}
 	
@@ -44,7 +44,7 @@ public class InformacionJuego implements Serializable {
 	
 	//Agregar una nueva lista de Objetos
 	public void setObjetos(ArrayList<Objeto> nuevosObjetos){
-		objetos.removeAll(objetos);
+		objetos.clear();
 		objetos.addAll(nuevosObjetos);
 	}
 	

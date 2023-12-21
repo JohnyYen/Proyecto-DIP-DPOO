@@ -61,7 +61,7 @@ public class EditarNivel3 extends JPanel {
 	
 	
 	public EditarNivel3(ArrayList<Carta> cartas) {
-		nuevasCartas = new ArrayList<>();
+		nuevasCartas = new ArrayList<Carta>();
 		nuevasCartas.addAll(cartas);
 		setBounds(100, 100, 700, 500);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -210,8 +210,10 @@ public class EditarNivel3 extends JPanel {
 		BotonExtendido guardar = new BotonExtendido();
 		guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				nuevasCartas.remove(index);
-				nuevasCartas.add(new Carta(nombCarta.getText(), descCarta.getText(), codCarta.getText()));
+				System.out.print(index);
+				nuevasCartas.get(index-1).setCodigo(codCarta.getText());
+				nuevasCartas.get(index-1).setNombre(nombCarta.getText());
+				nuevasCartas.get(index-1).setFuncionalidad(descCarta.getText());
 			}
 		});
 		guardar.setText("Guardar Carta");

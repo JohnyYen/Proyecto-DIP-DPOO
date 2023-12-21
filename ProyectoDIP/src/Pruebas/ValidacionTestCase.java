@@ -57,9 +57,9 @@ public class ValidacionTestCase{
 	@Test
 	public void testCartasValidas() {
 		ArrayList<Carta> cartas = new ArrayList<Carta>();
-		cartas.add(new Carta("sumatoria", "permite sumar dos numeros dados", "5235"));
-		cartas.add(new Carta("corredor", "permite al usuario correr hacia un lugar especifico", "787"));
-		cartas.add(new Carta("escalador", "permite escalar cierto objetivo especificado", "10780"));
+		cartas.add(new Carta("sumatoria", "permite sumar dos numeros dados", "5"));
+		cartas.add(new Carta("corredor", "permite al usuario correr hacia un lugar especifico", "7"));
+		cartas.add(new Carta("escalador", "permite escalar cierto objetivo especificado", "1"));
 		assertEquals(true, validar.validarCarta(cartas));
 	}
 	

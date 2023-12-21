@@ -59,11 +59,11 @@ public class Validacion {
 		
 		for(int i = 0; i < cartas.size() && valido; i++){
 			Carta c = cartas.get(i);
-			if(c.getCodigo().replace(" ", "").equalsIgnoreCase(" ") || c.getCodigo().length() == 1) 
+			if(c.getCodigo().replace(" ", "").equalsIgnoreCase(" ") || c.getCodigo().length() != 1) 
 				valido = false;
-			if(c.getNombre().replace(" ", "").equalsIgnoreCase(" ") || c.getNombre().length() < 7)
+			if(c.getNombre().replace(" ", "").equalsIgnoreCase(" ") || c.getNombre().length() < 4)
 				valido = false;
-			if(c.getFuncionalidad().replace(" ", "").equalsIgnoreCase(" ") || c.getFuncionalidad().length() < 15)
+			if(c.getFuncionalidad().replace(" ", "").equalsIgnoreCase(" ") || c.getFuncionalidad().length() < 5)
 				valido = false;	
 		}
 		
