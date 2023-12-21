@@ -103,7 +103,7 @@ public class PantallaLogin extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						
-						password.setEchoChar('*');;
+						password.setEchoChar('\u2022');
 					}
 				});
 				timer.start();

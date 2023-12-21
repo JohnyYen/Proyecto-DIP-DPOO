@@ -19,6 +19,7 @@ import Logica.Carta;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.Icon;
+import javax.swing.border.LineBorder;
 
 public class EditarNivel3 extends JPanel {
 	private ArrayList<Carta> nuevasCartas;
@@ -61,6 +62,7 @@ public class EditarNivel3 extends JPanel {
 	
 	
 	public EditarNivel3(ArrayList<Carta> cartas) {
+		setBackground(new Color(0, 51, 102));
 		nuevasCartas = new ArrayList<Carta>();
 		nuevasCartas.addAll(cartas);
 		setBounds(100, 100, 700, 500);
@@ -70,6 +72,7 @@ public class EditarNivel3 extends JPanel {
 		ImageIcon icon = new ImageIcon("src/Recursos/reversoCarta.png");
 		
 		JLabel lblCartas = new JLabel("Cartas:");
+		lblCartas.setForeground(Color.WHITE);
 		lblCartas.setBounds(21, 49, 46, 14);
 		add(lblCartas);
 		
@@ -93,7 +96,7 @@ public class EditarNivel3 extends JPanel {
 		
 		cartaCuatro = new JButton("4");
 		cartaCuatro.setForeground(Color.WHITE);
-		cartaCuatro.setBounds(89, 114, 46, 28);
+		cartaCuatro.setBounds(89, 114, 46, 36);
 		diseniarBoton(cartaCuatro);
 		add(cartaCuatro);
 		
@@ -172,37 +175,42 @@ public class EditarNivel3 extends JPanel {
 		add(cartaDieciceis);
 		
 		JPanel modificarCarta = new JPanel();
-		modificarCarta.setBackground(Color.WHITE);
+		modificarCarta.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		modificarCarta.setBackground(new Color(0, 0, 102));
 		modificarCarta.setBounds(213, 46, 458, 233);
 		add(modificarCarta);
 		modificarCarta.setLayout(null);
 		
 		JLabel labelNomCarta = new JLabel("Nombre Carta: ");
-		labelNomCarta.setBounds(10, 11, 112, 14);
+		labelNomCarta.setForeground(Color.WHITE);
+		labelNomCarta.setBackground(Color.WHITE);
+		labelNomCarta.setBounds(12, 13, 112, 14);
 		modificarCarta.add(labelNomCarta);
 		
 		nombCarta = new JTextField();
-		nombCarta.setBackground(Color.LIGHT_GRAY);
-		nombCarta.setBounds(10, 24, 326, 20);
+		nombCarta.setBackground(Color.DARK_GRAY);
+		nombCarta.setBounds(10, 28, 326, 20);
 		modificarCarta.add(nombCarta);
 		nombCarta.setColumns(10);
 		
 		JLabel labelDescr = new JLabel("Descripci\u00F3n Carta:");
+		labelDescr.setForeground(Color.WHITE);
 		labelDescr.setBounds(10, 55, 213, 14);
 		modificarCarta.add(labelDescr);
 		
 		descCarta = new JTextField();
-		descCarta.setBackground(Color.LIGHT_GRAY);
+		descCarta.setBackground(Color.DARK_GRAY);
 		descCarta.setBounds(10, 80, 326, 76);
 		modificarCarta.add(descCarta);
 		descCarta.setColumns(10);
 		
 		JLabel lblCdigoDeCarta = new JLabel("C\u00F3digo de Carta:");
-		lblCdigoDeCarta.setBounds(10, 167, 93, 14);
+		lblCdigoDeCarta.setForeground(Color.WHITE);
+		lblCdigoDeCarta.setBounds(10, 167, 140, 14);
 		modificarCarta.add(lblCdigoDeCarta);
 		
 		codCarta = new JTextField();
-		codCarta.setBackground(Color.LIGHT_GRAY);
+		codCarta.setBackground(Color.DARK_GRAY);
 		codCarta.setBounds(10, 184, 70, 20);
 		modificarCarta.add(codCarta);
 		codCarta.setColumns(10);

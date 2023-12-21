@@ -18,6 +18,8 @@ import ComponentesVisuales.Componentes.EditarNivel3;
 import ComponentesVisuales.Componentes.EditarNivel4;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class PantallaModificaciones extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -37,20 +39,27 @@ public class PantallaModificaciones extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 20, 900, 700);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 51, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(Color.WHITE);
 		tabbedPane.setBounds(10, 11, 864, 556);
 		contentPane.add(tabbedPane);
 		
 		
 		//Editar Nivel Uno
 		scrollPane = new JScrollPane();
+		scrollPane.setBackground(new Color(0, 0, 102));
 		tabbedPane.addTab("Nivel 1", null, scrollPane, null);
 		
 		tabla = new JTable();
+		tabla.setSelectionForeground(Color.WHITE);
+		tabla.setSelectionBackground(new Color(0, 0, 102));
+		tabla.setForeground(Color.WHITE);
+		tabla.setBackground(new Color(0, 0, 153));
 		scrollPane.setViewportView(tabla);
 		model = new PreguntaTableModel(miJuego.getInformacionJuego().getPreguntasNivelUno());
 		tabla.setModel(model);
@@ -61,6 +70,10 @@ public class PantallaModificaciones extends JFrame {
 		tabbedPane.addTab("Nivel 2", null, scrollPane_1, null);
 		
 		tablaNivelDos = new JTable();
+		tablaNivelDos.setSelectionForeground(new Color(255, 255, 255));
+		tablaNivelDos.setSelectionBackground(new Color(0, 0, 204));
+		tablaNivelDos.setForeground(Color.WHITE);
+		tablaNivelDos.setBackground(new Color(0, 0, 153));
 		scrollPane_1.setViewportView(tablaNivelDos);
 		final PreguntaTableModelSegundoNivel modelNivelDos = new PreguntaTableModelSegundoNivel(miJuego.getInformacionJuego().getPreguntasNivelDos());
 		tablaNivelDos.setModel(modelNivelDos);

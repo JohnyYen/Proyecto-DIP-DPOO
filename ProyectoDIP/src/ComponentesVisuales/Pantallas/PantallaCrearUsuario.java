@@ -34,6 +34,7 @@ public class PantallaCrearUsuario extends JFrame {
 	private JTextField textField;
 	private JPasswordField passwordField;
 	private Juego miJuego;
+	private boolean tocado = false, toca = false;
 
 	
 	public PantallaCrearUsuario(final Juego juego) {
@@ -67,8 +68,11 @@ public class PantallaCrearUsuario extends JFrame {
 		textField.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				textField.setText("");
-				textField.setEditable(true);
+				if(!toca){
+					textField.setText("");
+					textField.setEditable(true);
+					toca = true;
+				}
 			}
 		});
 		textField.setBounds(20, 36, 185, 20);
@@ -81,6 +85,20 @@ public class PantallaCrearUsuario extends JFrame {
 		contentPane.add(lblContrasea);
 		
 		passwordField = new JPasswordField();
+		passwordField.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(!tocado){
+					passwordField.setEchoChar('\u2022');
+					passwordField.setText("");
+					passwordField.setEditable(true);
+					tocado = true;
+				}
+			}
+		});
+		passwordField.setText("Introduce la contraseña");
+		passwordField.setEditable(false);
+		passwordField.setEchoChar('\u0000');
 		passwordField.setBounds(20, 95, 185, 20);
 		contentPane.add(passwordField);
 		
@@ -135,7 +153,15 @@ public class PantallaCrearUsuario extends JFrame {
 		btnxtndCancelar.setBounds(10, 188, 216, 34);
 		contentPane.add(btnxtndCancelar);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("ver");
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setFocusable(false);
+		btnNewButton.setFocusTraversalKeysEnabled(false);
+		btnNewButton.setFocusPainted(false);
+		btnNewButton.setOpaque(false);
+		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				passwordField.setEchoChar('\u0000');
@@ -144,13 +170,13 @@ public class PantallaCrearUsuario extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						
-						passwordField.setEchoChar('*');;
+						passwordField.setEchoChar('\u2022');
 					}
 				});
 				timer.start();
 			}
 		});
-		btnNewButton.setBounds(223, 92, 32, 23);
+		btnNewButton.setBounds(223, 92, 62, 23);
 		contentPane.add(btnNewButton);
 	}
 }

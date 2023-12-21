@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -18,6 +19,7 @@ import Recursos.CustomFont;
 import com.sun.crypto.provider.DESCipher;
 
 import javax.swing.BoxLayout;
+import javax.swing.border.Border;
 
 public class CartaVisual extends JPanel {
 
@@ -28,13 +30,16 @@ public class CartaVisual extends JPanel {
 	public CartaVisual() {
 		cartaUsada = false;
 		CustomFont mf = new CustomFont();
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(new Color(0, 51, 102));
 		setLayout(null);
+		Border border = BorderFactory.createLineBorder(Color.WHITE);
+		this.setBorder(border);
 		//this.setFont(mf.MyFont(1, 30));
 		titulo = new TextPanel();
 		titulo.setFocusable(false);
-		titulo.setBounds(10, 10, 65, 25);
-		titulo.setForeground(Color.RED);
+		titulo.setBounds(10, 10, 182, 25);
+		titulo.setForeground(Color.white);
+		titulo.setBackground(Color.black);
 		add(titulo);
 		
 		
